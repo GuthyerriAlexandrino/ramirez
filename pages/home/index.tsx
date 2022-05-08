@@ -16,6 +16,7 @@ import Icon1 from "../../assets/icon1.svg";
 import Icon2 from "../../assets/icon2.svg";
 import Icon3 from "../../assets/icon3.svg";
 import { Slider } from "../../components/Slider";
+import Link from "next/link";
 
 
 export const HomePage: NextPage = () => {
@@ -34,7 +35,9 @@ export const HomePage: NextPage = () => {
                                 <Button>Sobre</Button>
                             </li>
                             <li>
-                                <Button>Log-in</Button>
+                                <Link href="/login">
+                                    <Button>Log-in</Button>
+                                </Link>
                             </li>
                             <li>
                                 /

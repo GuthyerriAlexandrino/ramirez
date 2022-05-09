@@ -18,6 +18,10 @@ export const FormBody = styled.form`
         margin-bottom: 1rem;
         color: ${pallete.whietOne};
     }
+
+    @media screen and (max-width: 641px) {
+        width: 95%;
+    }
 `
 
 export const InputContainer = styled.div`

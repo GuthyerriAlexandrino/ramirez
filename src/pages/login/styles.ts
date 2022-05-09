@@ -13,6 +13,11 @@ export const Container = styled.section`
     width: 100vw;
     height: 100vh;
     background-color: ${pallete.blackOne};
+
+    @media screen and (max-width: 1145px) {
+        display: grid;
+        place-items: center;
+    }
 `
 
 export const LogInAside = styled.aside`
@@ -29,6 +34,24 @@ export const LogInAside = styled.aside`
         max-width: 500px;
         width: 100%;
         color: ${pallete.whietOne};
+    }
+
+    @media screen and (max-width: 1145px) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-right: 0rem;
+
+
+        h1 {
+            text-align: center;
+            font-size: 1rem;
+            line-height: 1.5rem;
+            margin-top: 2rem;
+            width: 98%;
+
+        }
     }
 `
 
@@ -56,5 +79,13 @@ export const RegisterLink = styled.div`
     span {
         color: ${pallete.whietOne};
         margin-right: 5px;
+    }
+
+    @media screen and (max-width: 380px) {
+        flex-direction: column;
+
+        span {
+            margin-bottom: 0.5rem;
+        }
     }
 `

@@ -13,6 +13,15 @@ export const Container = styled.section`
     height: 100%;
     padding: 46px 0;
     background-color: ${pallete.blackOne};
+
+    @media screen and (max-width: 1008px) {
+        display: grid;
+        grid-template-rows: repeat(2, 0.7fr);
+    }
+
+    @media screen and (max-width: 486px) {
+        grid-template-rows: repeat(2, 0.7fr);
+    }
 `
 
 export const NavBar = styled.nav`
@@ -46,6 +55,15 @@ export const NavBar = styled.nav`
             }
         }
     }
+
+    @media screen and (max-width: 1008px) {
+        margin-left: 0rem;
+
+    }
+
+    @media screen and (max-width: 641px) {
+        justify-content: center;
+    }
 `
 
 export const NavBarSelector = styled.div<NavBarSelectorProps>`
@@ -57,6 +75,20 @@ export const NavBarSelector = styled.div<NavBarSelectorProps>`
     background-color: ${pallete.turquoiseOne};
     transform: ${props => `translateX(${props.positionX}px)`};
     transition: all 0.5s ease 0s;
+`
+
+export const SignUpFormContainer = styled.section`
+    display: flex;
+    flex-direction: column;
+
+    @media screen and (max-width: 1008px) {
+        grid-row: 2 / 3;
+        place-items: center;
+    }
+
+    @media screen and (max-width: 641px) {
+        width:100vw;
+    }
 `
 
 export const SignUpAside = styled.aside`
@@ -76,10 +108,36 @@ export const SignUpAside = styled.aside`
 
     p {
         font-size: 1rem;
-        line-height: 1rem;
+        line-height: 1.188rem;
         margin-top: 2.375rem;
         margin-bottom: 3.75rem;
         color: ${pallete.grayThree};
+    }
+
+    @media screen and (max-width: 1008px) {
+        grid-row: 1 / 2;
+        place-items: center;
+        width: 40rem;
+        margin-left: 0rem;
+
+        h1, p {
+            text-align: center;
+        }
+    }
+
+    @media screen and (max-width: 641px) {
+        width:100vw;
+        
+        h1 {
+            font-size: 1.5rem;
+            width: 95%;
+        }
+
+        p {
+            font-size: 1rem;
+            line-height: 1.8rem;
+            width: 95%;
+        }
     }
 `
 
@@ -102,9 +160,4 @@ export const BackPageLink = styled.div`
             cursor: pointer;
         }
     }
-`
-
-export const SignUpFormContainer = styled.section`
-    display: flex;
-    flex-direction: column;
 `

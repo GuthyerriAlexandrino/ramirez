@@ -1,15 +1,17 @@
-import Image from "next/image";
+import { useState } from "react";
 import { 
-    Button,
-     Container,
-     Icon,
-     InputContainer,
-     LogInAside,
-     LogInForm, 
-     ExternaltLink,
-     Divider,
-     RegisterLink,
+    Container,
+    LogInAside,
+    ExternaltLink,
+    Divider,
+    RegisterLink,
 } from "./styles";
+import { 
+    Button, 
+    FormBody, 
+    Icon, 
+    InputContainer 
+} from "../../styles/form";
 import Logo from "../../assets/logo.svg";
 import Password from "../../assets/password.svg";
 import Email from "../../assets/email.svg";
@@ -17,7 +19,7 @@ import EyeVisible from "../../assets/ant-design-eye-visible.svg"
 import EyeInvisible from "../../assets/ant-design_eye-invisible-filled.svg"
 
 import Link from "next/link";
-import { useState } from "react";
+import Image from "next/image";
 
 export default function LogIn()  {
 
@@ -33,7 +35,7 @@ export default function LogIn()  {
                 <Image src={Logo}/>
                 <h1>Faça o seu login na plataforma</h1>
             </LogInAside>
-            <LogInForm action="">
+            <FormBody action="">
                 <InputContainer>
                     <Icon align="left">
                         <Image src={Email} width={24} height={24}/>
@@ -76,7 +78,7 @@ export default function LogIn()  {
                         <ExternaltLink align="center" isBold={true}>Registre-se</ExternaltLink>
                     </Link>
                 </RegisterLink>
-            </LogInForm>
+            </FormBody>
         </Container>
     )
 }

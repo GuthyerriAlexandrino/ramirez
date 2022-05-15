@@ -43,7 +43,7 @@ export const InputContainer = styled.div`
         border-radius: 5px;
         padding-left: 52px;
         font-size: 1rem;
-        font-family: 'Montserrat', sans-serif;
+        font-family: 'Inter', sans-serif;
         color: ${pallete.whietOne};
         background-color: ${pallete.blackFive};
         transition: outline 0.1s ease-in;
@@ -70,7 +70,7 @@ export const Button = styled.button`
     width: 100%;
     font-size: 1rem;
     font-weight: 500;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Inter', sans-serif;
     text-transform: uppercase;
     border-radius: 5px;
     margin-top: 1rem;

@@ -11,6 +11,6 @@ export default createGlobalStyle`
     body {
         background: ${pallete.whietOne};
         font-size: 16px;
-        font-family: 'Montserrat', sans-serif;
+        font-family: 'Inter', sans-serif;
     }
 `

@@ -62,7 +62,7 @@ export const MenuContainer = styled.nav`
 `
 
 export const Button = styled.button<ButtonProps>`
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight: ${props => props.background ? "normal" : 600};
     font-size: 16px;
     line-height: 19px;

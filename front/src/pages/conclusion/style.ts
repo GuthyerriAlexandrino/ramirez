@@ -34,7 +34,7 @@ export const BackPageLink = styled.div`
     cursor: pointer;
 
     button {
-        font-family: 'Montserrat', sans-serif;
+        font-family: 'Inter', sans-serif;
         font-weight: 600;
         font-size: 1rem;
         border: none;

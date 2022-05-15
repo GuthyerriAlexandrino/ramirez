@@ -13,11 +13,13 @@ import {
      PriceRange,
      SearchButton,
      SearchInputContainer, 
-     SearchPhotographerContainer 
+     SearchPhotographerContainer, 
+     PriceRangeContainer
 } from "./styles";
 import Logo from "../../assets/logo.svg";
 import { SelectInput } from "../../components/SelectInput";
 import { useState } from "react";
+import { PhotographerCard } from "../../components/PhotographerCard";
 
 export default function Search() {
 
@@ -53,12 +55,16 @@ export default function Search() {
                         <SearchButton>Pesquisar</SearchButton>
                     </div>
                     <AditionalInputs>
-                        <SelectInput name="Especialização"/>
-                        <SelectInput name="Ordenar por"/>
-                        <PriceRange>Faixa de preço:</PriceRange>
-                        <GenericInput type="number" id="price" name="price" placeholder="Mínimo"/>
-                        <Divider/>
-                        <GenericInput type="number" id="price" name="price" placeholder="Máximo"/>
+                        <SelectInput name="Especialização" selectName="Especialização"/>
+                        <SelectInput name="Ordenar por" selectName="Ordenação por:"/>
+                        <PriceRangeContainer>
+                            <PriceRange>Faixa de preço:</PriceRange>
+                            <label htmlFor="minPrice"></label>
+                            <GenericInput type="number" id="minPrice" name="minPrice" placeholder="Mínimo"/>
+                            <Divider/>
+                            <label htmlFor="maxPrice"></label>
+                            <GenericInput type="number" id="maxPrice" name="maxPrice" placeholder="Máximo"/>
+                        </PriceRangeContainer>
                         <LocationAccordion isActive={isLocationActive}>
                             <label htmlFor="location" onClick={() => setIsLocationActive(!isLocationActive)}>
                                 <div></div>
@@ -71,7 +77,18 @@ export default function Search() {
                     </AditionalInputs>
                 </SearchInputContainer>
                 <PhotographersList>
-                    {/* <PhotographerCard/> */}
+                    <PhotographerCard/>
+                    <PhotographerCard/>
+                    <PhotographerCard/>
+                    <PhotographerCard/>
+                    <PhotographerCard/>
+                    <PhotographerCard/>
+                    <PhotographerCard/>
+                    <PhotographerCard/>
+                    <PhotographerCard/>
+                    <PhotographerCard/>
+                    <PhotographerCard/>
+                    <PhotographerCard/>
                 </PhotographersList>
             </SearchPhotographerContainer>
         </Container>

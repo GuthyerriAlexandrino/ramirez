@@ -6,7 +6,8 @@ interface LocationProps {
 }
 
 export const Container = styled.section`
-    height: 100vh;
+    min-height: 100vh;
+    height: 100%;
     background-color: ${pallete.blackOne};
 `
 
@@ -83,10 +84,13 @@ export const SearchInputContainer = styled.section`
     & > div {
         display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: flex-start;
         width: 100%;
         margin-bottom: 1.25rem;
 
+        @media screen and (max-width: 500px) {
+            flex-direction: column;
+        }
     }
 `
 
@@ -101,16 +105,47 @@ export const InputContainer = styled.div`
 
 export const InputName = styled.input`
     width: 100%;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 1rem;
     border: 1px solid #515151;
     border-radius: 10px;
     padding: 0.75rem;
+    margin-right: 1.813rem;
+
+    @media screen and (max-width: 500px) {
+        width: 93%;
+        margin-right: 0rem;
+
+    }
 `
 
 export const AditionalInputs = styled.div`
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
+    
+    @media screen and (max-width: 1102px) {
+        gap: 10px 0;
+    }
+
+    @media screen and (max-width: 870px) {
+        flex-direction: column;
+    }
+`
+
+export const PriceRangeContainer = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+
+    @media screen and (max-width: 870px) {
+        flex-direction: column;
+        width: 93%;
+        margin-right: 0px;
+        gap: 5px 0;
+
+    }
 `
 
 export const PriceRange = styled.div`
@@ -124,16 +159,27 @@ export const PriceRange = styled.div`
     color: ${pallete.whietOne};
     border-radius: 5px;
     background-color: ${pallete.blackFour};
+
+    @media screen and (max-width: 870px) {
+        width: 100%;
+        margin-right: 0;
+
+    }
 `
 
 export const GenericInput = styled.input`
     width: 125px;
     height: 30px;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Inter', sans-serif;
     border: 2px solid #515151;
     border-radius: 10px;
     padding-left: 10px;
     padding-right: 5px;
+
+    @media screen and (max-width: 870px) {
+        width: 100%;
+        margin-right: 0;
+    }
 `
 
 export const Divider = styled.div`
@@ -141,10 +187,14 @@ export const Divider = styled.div`
     height: 0.125rem;
     margin: 0 0.25rem;
     background-color: ${pallete.grayOne};
+
+    @media screen and (max-width: 870px) {
+       display: none;
+    }
 `
 
 export const SearchButton = styled.button`
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 1rem;;
     font-weight: 600;
     text-transform: uppercase;
@@ -152,6 +202,11 @@ export const SearchButton = styled.button`
     border-radius: 10px;
     padding: 0.75rem 2rem;
     background-color: ${pallete.turquoiseOne};
+
+    @media screen and (max-width: 500px) {
+        width: 93%;
+        margin-top: 1rem;
+    }   
 `
 
 export const LocationAccordion = styled.div<LocationProps>`
@@ -160,7 +215,6 @@ export const LocationAccordion = styled.div<LocationProps>`
     align-items: center;
     max-width: 100%;
     min-width: 80px;
-    margin: 0 10px;
 
     label {
         position: relative;
@@ -176,6 +230,10 @@ export const LocationAccordion = styled.div<LocationProps>`
         color: ${pallete.whietOne};
         border-radius: 5px;
         background-color: ${pallete.blackFour};
+
+        @media screen and (max-width: 870px) {
+            width: 100px;
+        }
 
         div {
             position: absolute;
@@ -210,9 +268,20 @@ export const LocationAccordion = styled.div<LocationProps>`
         overflow: hidden;
         transition: 0.5s;
         overflow-x: none;
+
+        @media screen and (max-width: 870px) {
+            width: ${props => props.isActive ? "100%" : 0};
+        }
+    }
+
+    @media screen and (max-width: 870px) {
+        width: 93%;
     }
 `
 
 export const PhotographersList = styled.div`
-
+    display: flex;
+    flex-wrap: wrap;
+    width: 93%;
+    gap: 3.75rem;
 `

@@ -10,6 +10,7 @@ export const Container = styled.section`
     align-items: center;
     justify-content: center;
     width: 100%;
+    min-height: 100vh;
     height: 100%;
     padding: 46px 0;
     background-color: ${pallete.blackOne};
@@ -119,6 +120,7 @@ export const SignUpAside = styled.aside`
         place-items: center;
         width: 40rem;
         margin-left: 0rem;
+        margin-bottom: 3rem;
 
         h1, p {
             text-align: center;
@@ -152,7 +154,7 @@ export const BackPageLink = styled.div`
         button {
             margin-left: 0.875rem;
             font-size: 1rem;
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Inter', sans-serif;
             font-weight: 500;
             color: ${pallete.turquoiseOne};
             border: none;

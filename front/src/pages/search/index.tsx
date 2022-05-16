@@ -3,11 +3,8 @@ import {
     AditionalInputs,
      Container,
      Divider,
-     Header,
-     InputContainer,
      InputName,
      LocationAccordion,
-     MenuContainer,
      PhotographersList,
      GenericInput,
      PriceRange,
@@ -16,10 +13,10 @@ import {
      SearchPhotographerContainer, 
      PriceRangeContainer
 } from "./styles";
-import Logo from "../../assets/logo.svg";
 import { SelectInput } from "../../components/SelectInput";
 import { useState } from "react";
 import { PhotographerCard } from "../../components/PhotographerCard";
+import { Header } from "../../components/Header";
 
 export default function Search() {
 
@@ -27,26 +24,7 @@ export default function Search() {
 
     return (
         <Container>
-            <Header>
-                <div>
-                    <Image 
-                        src={Logo} 
-                        width="123px" 
-                        height="40px" 
-                        style={{marginLeft: "20px"}} 
-                    />
-                    <MenuContainer>
-                        <ul>
-                            <li>
-                                <a>Ajuda</a>
-                            </li>
-                            <li>
-                                <a>Perfil</a>
-                            </li>
-                        </ul>
-                    </MenuContainer>
-                </div>
-            </Header>
+            <Header/>
             <SearchPhotographerContainer>
                 <h1>Pesquisa por algum fotógrafo</h1>
                 <SearchInputContainer>
@@ -55,8 +33,8 @@ export default function Search() {
                         <SearchButton>Pesquisar</SearchButton>
                     </div>
                     <AditionalInputs>
-                        <SelectInput name="Especialização" selectName="Especialização"/>
-                        <SelectInput name="Ordenar por" selectName="Ordenação por:"/>
+                        <SelectInput selectName="Especialização"/>
+                        <SelectInput selectName="Ordenação por:"/>
                         <PriceRangeContainer>
                             <PriceRange>Faixa de preço:</PriceRange>
                             <label htmlFor="minPrice"></label>

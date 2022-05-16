@@ -48,7 +48,7 @@ export const NavBar = styled.nav`
             span {
                 position: relative;
                 text-decoration: none;
-                color: ${pallete.whietOne};
+                color: ${pallete.whiteOne};
                 width: 100px;
                 display: flex;
                 align-items: center;
@@ -104,7 +104,7 @@ export const SignUpAside = styled.aside`
         font-size: 2.25rem;
         line-height: 2.625rem;
         margin-top: 2.375rem;
-        color: ${pallete.whietOne};
+        color: ${pallete.whiteOne};
     }
 
     p {

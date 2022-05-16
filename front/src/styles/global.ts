@@ -9,7 +9,7 @@ export default createGlobalStyle`
     }
 
     body {
-        background: ${pallete.whietOne};
+        background: ${pallete.whiteOne};
         font-size: 16px;
         font-family: 'Inter', sans-serif;
     }

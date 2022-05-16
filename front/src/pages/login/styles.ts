@@ -33,7 +33,7 @@ export const LogInAside = styled.aside`
         line-height: 4rem;
         max-width: 500px;
         width: 100%;
-        color: ${pallete.whietOne};
+        color: ${pallete.whiteOne};
     }
 
     @media screen and (max-width: 1145px) {
@@ -59,7 +59,7 @@ export const ExternaltLink = styled.a<ExternaltLinkProps>`
     font-size: 0.875rem;
     text-align: ${props => props.align};
     text-decoration: none;
-    color: ${props => props.isBold ? pallete.turquoiseOne : pallete.whietOne };
+    color: ${props => props.isBold ? pallete.turquoiseOne : pallete.whiteOne };
     cursor: pointer;
 `
 
@@ -77,7 +77,7 @@ export const RegisterLink = styled.div`
     font-size: 0.875rem;
     
     span {
-        color: ${pallete.whietOne};
+        color: ${pallete.whiteOne};
         margin-right: 5px;
     }
 

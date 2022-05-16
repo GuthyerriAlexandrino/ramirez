@@ -16,7 +16,7 @@ export const FormBody = styled.form`
         font-size: 1.563rem;
         line-height: 1.875rem;
         margin-bottom: 1rem;
-        color: ${pallete.whietOne};
+        color: ${pallete.whiteOne};
     }
 
     @media screen and (max-width: 641px) {
@@ -44,7 +44,7 @@ export const InputContainer = styled.div`
         padding-left: 52px;
         font-size: 1rem;
         font-family: 'Inter', sans-serif;
-        color: ${pallete.whietOne};
+        color: ${pallete.whiteOne};
         background-color: ${pallete.blackFive};
         transition: outline 0.1s ease-in;
 

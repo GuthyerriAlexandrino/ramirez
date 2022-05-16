@@ -13,7 +13,7 @@ export const Container = styled.div`
     height: 100%;
     width: 100%;
     background-color: ${pallete.blackOne};
-    color: ${pallete.whietOne};
+    color: ${pallete.whiteOne};
 `
 
 export const Header = styled.header`
@@ -32,7 +32,7 @@ export const Header = styled.header`
         height: 1px;
         width: 93%;
         margin: 0 auto;
-        background-color: ${pallete.whietOne};
+        background-color: ${pallete.whiteOne};
     }
 
     div {
@@ -68,8 +68,8 @@ export const Button = styled.button<ButtonProps>`
     line-height: 19px;
     text-align: center;
     padding: 5px;
-    background: ${props => props.background ? pallete.whietOne : "none"};
-    color: ${props => props.background ? "#000000" : pallete.whietOne};
+    background: ${props => props.background ? pallete.whiteOne : "none"};
+    color: ${props => props.background ? "#000000" : pallete.whiteOne};
     border: ${props => !props.background ? "none" : "1px solid #000000"};
     border-radius: ${props => props.background && "5px"};
 `
@@ -97,7 +97,7 @@ export const Services = styled.section`
         line-height: 7.25rem;
         text-align: center;
         margin-bottom: 4rem;
-        color: ${pallete.whietOne};
+        color: ${pallete.whiteOne};
     }
 `
 
@@ -126,14 +126,14 @@ export const ServiceCard = styled.div`
         line-height: 2.125rem;
         width: 15.375rem;
         margin-bottom: 0.875rem;
-        color: ${pallete.whietOne};
+        color: ${pallete.whiteOne};
     }
 
     p {
         font-weight: 400;
         font-size: 1rem;
         line-height: 1.625rem;
-        color: ${pallete.whietOne};
+        color: ${pallete.whiteOne};
         width: 17rem;
         height: 5.3125rem;
     }

@@ -27,7 +27,7 @@ export const Header = styled.header`
         height: 1px;
         width: 93%;
         margin: 0 auto;
-        background-color: ${pallete.whietOne};
+        background-color: ${pallete.whiteOne};
     }
 
     div {
@@ -51,7 +51,7 @@ export const MenuContainer = styled.nav`
 
         li {
             margin-right: 10px;
-            color: ${pallete.whietOne};
+            color: ${pallete.whiteOne};
         }
     }
 `
@@ -70,7 +70,7 @@ export const SearchPhotographerContainer = styled.main`
         margin-bottom: 0.625rem;
         width: 93%;
         text-align: left;
-        color: ${pallete.whietOne};
+        color: ${pallete.whiteOne};
     }
 `
 
@@ -156,7 +156,7 @@ export const PriceRange = styled.div`
     height: 30px;
     font-size: 1rem;
     margin-right: 1.5rem;
-    color: ${pallete.whietOne};
+    color: ${pallete.whiteOne};
     border-radius: 5px;
     background-color: ${pallete.blackFour};
 
@@ -227,7 +227,7 @@ export const LocationAccordion = styled.div<LocationProps>`
         font-size: 1rem;
         margin-right: 10px;
         padding-left: 30px;
-        color: ${pallete.whietOne};
+        color: ${pallete.whiteOne};
         border-radius: 5px;
         background-color: ${pallete.blackFour};
 

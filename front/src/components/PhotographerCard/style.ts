@@ -33,7 +33,7 @@ export const PhotographerInfo = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    color: ${pallete.whietOne};
+    color: ${pallete.whiteOne};
     margin-top: 10px;
     margin-bottom: 1rem;
 

@@ -8,6 +8,6 @@ export const pallete = {
     grayOne: "#c4c4c4",
     grayTwo: "#979797",
     grayThree: "#bbbbbb",
-    whietOne: "#ffffff",
+    whiteOne: "#ffffff",
     turquoiseOne: "#40e0d0"
 }

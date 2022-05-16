@@ -18,7 +18,7 @@ export const Icon = styled.i`
 `
 
 export const Typography = styled.h1`
-    color: ${pallete.whietOne};
+    color: ${pallete.whiteOne};
     font-style: normal;
     font-weight: 00;
     font-size: 36px;

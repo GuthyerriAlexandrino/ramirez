@@ -20,7 +20,7 @@ export const Container = styled.div`
     small {
         font-size: 1rem;
         margin-right: 0.375rem;
-        color: ${pallete.whietOne}
+        color: ${pallete.whiteOne}
     }
     
     @media screen and (max-width: 870px) {
@@ -86,7 +86,7 @@ export const PopupItem = styled.li`
     text-transform: capitalize;
     margin: 1rem 0;
     padding-left: 0.75rem;
-    color: ${pallete.whietOne};
+    color: ${pallete.whiteOne};
     cursor: pointer;
 
     &:hover {

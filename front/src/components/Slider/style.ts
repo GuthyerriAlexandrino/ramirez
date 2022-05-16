@@ -56,13 +56,13 @@ export const Bar = styled.div`
     left: 0;
     width: 70px;
     height: 1px;
-    background-color: ${pallete.whietOne};
+    background-color: ${pallete.whiteOne};
 `
 
 export const Divider = styled.div`
     width: 20px;
     height: 1px;
-    background-color: ${pallete.whietOne};
+    background-color: ${pallete.whiteOne};
 `
 
 export const Typography = styled.h3`

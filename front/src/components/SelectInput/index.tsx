@@ -4,7 +4,6 @@ import Image from "next/image";
 import { useState } from "react";
 
 interface SelectInputProps {
-    name: string;
     selectName: string;
 }
 
@@ -17,7 +16,7 @@ const data = [
     {id: 6, value: "Aérea"},
 ]
 
-export function SelectInput({name, selectName}: SelectInputProps) {
+export function SelectInput({selectName}: SelectInputProps) {
 
     const [currentName, setCurrentName] = useState(selectName);
     const [isActive, setIsActive] = useState(false);
@@ -31,7 +30,7 @@ export function SelectInput({name, selectName}: SelectInputProps) {
             <PopupContainer isActive={isActive}>
                 <PopupList isActive={isActive}>
                     {data.map((item, id) => (
-                        <PopupItem tabIndex={id} onClick={() => setCurrentName(item.value)}>
+                        <PopupItem key={id} onClick={() => setCurrentName(item.value)}>
                             {item.value}
                         </PopupItem>
                     ))}

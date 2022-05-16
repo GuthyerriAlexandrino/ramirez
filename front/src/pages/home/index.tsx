@@ -43,9 +43,11 @@ export const HomePage: NextPage = () => {
                                 /
                             </li>
                             <li>
-                                <Button background={true}>
-                                    Sign-up
-                                </Button>
+                                <Link href="/signup">
+                                    <Button background={true}>
+                                        Sign-up
+                                    </Button>
+                                </Link>
                             </li>
                         </ul>
                     </MenuContainer>

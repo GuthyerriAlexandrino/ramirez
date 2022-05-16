@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { pallete } from "../../styles/colors";
 
 interface ButtonProps {
@@ -72,6 +72,14 @@ export const Button = styled.button<ButtonProps>`
     color: ${props => props.background ? "#000000" : pallete.whiteOne};
     border: ${props => !props.background ? "none" : "1px solid #000000"};
     border-radius: ${props => props.background && "5px"};
+    cursor: pointer;
+    transition: background 0.2s ease;
+
+    &:hover {
+        ${props => props.background && css`
+            background-color: #f5f4f4;
+        `}
+    }
 `
 
 export const Main = styled.main`

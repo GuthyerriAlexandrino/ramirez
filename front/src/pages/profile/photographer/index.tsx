@@ -35,6 +35,8 @@ import Image10 from "../../../assets/water-animal/image10.jpg";
 import Image11 from "../../../assets/water-animal/image11.jpg";
 import Masonry from "react-masonry-css";
 import { Header } from "../../../components/Header";
+import { useState } from "react";
+import { PublishPhoto } from "../../../components/PublishPhoto";
 
 let photos = [
     { id: 1, src: Image1 },
@@ -58,6 +60,13 @@ const breakpointColumnsObj = {
 };
 
 export default function ProfilePhotographer() {
+
+    const [popupIsOpen, setPopupIsOpen] = useState(false);
+    
+    function handlePopUpScreen(value: boolean) {
+        setPopupIsOpen(value);
+    }
+
     return (
         <Container>
             <Header/>
@@ -104,7 +113,11 @@ export default function ProfilePhotographer() {
                 </ProfileInfo>
             </ProfileInfoContainer>
             <DividerArea>
-                <PublishButton>Postar nova foto</PublishButton>
+                <PublishButton 
+                    onClick={() => handlePopUpScreen(true)}
+                >
+                    Postar nova foto
+                </PublishButton>
                 <Divider vertical={false} height={2}/>
             </DividerArea>
             <PhotosGallery>
@@ -120,6 +133,7 @@ export default function ProfilePhotographer() {
                     ))}
                 </Masonry>
             </PhotosGallery>
+            {popupIsOpen && <PublishPhoto handlePopUp={handlePopUpScreen}/>}
         </Container>
     )
 }

@@ -5,8 +5,6 @@ interface DividerProps {
     height: number;
     vertical: boolean;
 }
-
-
 interface CareerDataProps {
     isRight: boolean;
 }
@@ -74,6 +72,18 @@ export const ProfileName = styled.span`
     margin: 0.625rem 0;
     color: ${pallete.whiteOne};
 `
+
+export const ProfileLocation = styled.small`
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 0.625rem;
+    color: ${pallete.whiteOne};
+`
+
 
 export const Divider = styled.div<DividerProps>`
     width: ${props => props.vertical ? "1px" : "100%"};

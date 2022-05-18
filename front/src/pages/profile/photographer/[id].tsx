@@ -14,7 +14,8 @@ import {
     DividerArea,
     PublishButton,
     PhotosGallery,
-    PhotoItem
+    PhotoItem,
+    ProfileLocation
 } from "./style";
 
 import styles from "./styles.module.css"
@@ -37,6 +38,8 @@ import Masonry from "react-masonry-css";
 import { Header } from "../../../components/Header";
 import { useState } from "react";
 import { PublishPhoto } from "../../../components/PublishPhoto";
+import { GetStaticPaths, GetStaticProps } from "next";
+import { User } from "../../search";
 
 let photos = [
     { id: 1, src: Image1 },
@@ -59,7 +62,55 @@ const breakpointColumnsObj = {
     500: 1,
 };
 
-export default function ProfilePhotographer() {
+export const getStaticPaths: GetStaticPaths = async (context) => {
+    
+    const data: User[] = await fetch("http://localhost:3001/users", {
+        method: "GET",
+    }).then(res => res.json());
+
+    const paths = data.map(user => {
+        return {
+            params: {
+                id: user._id.$oid
+            }
+        }
+    })
+    
+    return {
+        paths,
+        fallback: false
+    }
+}
+
+export const getStaticProps: GetStaticProps = async (context) => {
+   
+    const { id } = context.params!;
+
+    const data: User = await fetch(`http://localhost:3001/users/${id}`, {
+        method: "GET",
+    }).then(res => res.json());
+
+    const user = {
+        id: data._id.$oid ?? null,
+        name: data.name ?? null,
+        city: data.city ?? null,
+        state: data.state ?? null,
+        specialization: data.specialization ?? null
+    }
+
+    return {
+        props: {
+            user,
+        },
+        revalidate: 60 * 60 * 24
+    }
+}
+
+interface PhotographerProps {
+    user: User;
+}
+
+export default function ProfilePhotographer({user}: PhotographerProps) {
 
     const [popupIsOpen, setPopupIsOpen] = useState(false);
     
@@ -83,8 +134,11 @@ export default function ProfilePhotographer() {
                             />
                         </ProfileImage>
                         <ProfileName>
-                            Letícia Montenegro Sampaio
+                            {user.name}
                         </ProfileName>
+                        <ProfileLocation>
+                            {user.city} - {user.state}
+                        </ProfileLocation>
                         <Divider vertical={false} height={1}/>
                         <ProfileViews>
                             <p>
@@ -101,7 +155,7 @@ export default function ProfilePhotographer() {
                         <CareerDataContainer>
                             <CareerData isRight={false}>
                                 <h3>Especialização</h3>
-                                <span>Fotografia subaquática</span>
+                                <span>{user.specialization}</span>
                             </CareerData>
                             <Divider vertical={true} height={90}/>
                             <CareerData isRight={true}>

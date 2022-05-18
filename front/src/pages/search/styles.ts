@@ -237,6 +237,7 @@ export const LocationAccordion = styled.div<LocationProps>`
 export const PhotographersList = styled.div`
     display: flex;
     flex-wrap: wrap;
-    width: 93%;
+    justify-content: center;
+    width: 100%;
     gap: 3.75rem;
 `

@@ -1,0 +1,425 @@
+Started GET "/_next/webpack-hmr" for 127.0.0.1 at 2022-05-16 18:05:48 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/_next/webpack-hmr"):
+  
+Started GET "/_next/webpack-hmr" for 127.0.0.1 at 2022-05-16 18:06:48 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/_next/webpack-hmr"):
+  
+Started GET "/_next/webpack-hmr" for 127.0.0.1 at 2022-05-16 18:07:48 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/_next/webpack-hmr"):
+  
+Started GET "/_next/webpack-hmr" for 127.0.0.1 at 2022-05-16 18:08:48 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/_next/webpack-hmr"):
+  
+Started GET "/_next/webpack-hmr" for 127.0.0.1 at 2022-05-16 18:10:48 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/_next/webpack-hmr"):
+  
+Started GET "/_next/webpack-hmr" for 127.0.0.1 at 2022-05-16 18:11:48 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/_next/webpack-hmr"):
+  
+Started GET "/_next/webpack-hmr" for 127.0.0.1 at 2022-05-16 18:12:48 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/_next/webpack-hmr"):
+  
+Started GET "/_next/webpack-hmr" for 127.0.0.1 at 2022-05-16 18:13:48 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/_next/webpack-hmr"):
+  
+Started GET "/_next/webpack-hmr" for 127.0.0.1 at 2022-05-16 18:14:49 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/_next/webpack-hmr"):
+  
+Started GET "/_next/webpack-hmr" for 127.0.0.1 at 2022-05-16 18:15:49 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/_next/webpack-hmr"):
+  
+Started GET "/_next/webpack-hmr" for 127.0.0.1 at 2022-05-16 18:16:49 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/_next/webpack-hmr"):
+  
+Started GET "/_next/webpack-hmr" for 127.0.0.1 at 2022-05-16 18:17:49 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/_next/webpack-hmr"):
+  
+Started GET "/_next/webpack-hmr" for 127.0.0.1 at 2022-05-16 18:18:49 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/_next/webpack-hmr"):
+  
+Started GET "/_next/webpack-hmr" for 127.0.0.1 at 2022-05-16 18:19:49 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/_next/webpack-hmr"):
+  
+Started GET "/_next/webpack-hmr" for 127.0.0.1 at 2022-05-16 18:20:49 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/_next/webpack-hmr"):
+  
+Started GET "/_next/webpack-hmr" for 127.0.0.1 at 2022-05-16 18:21:49 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/_next/webpack-hmr"):
+  
+Started GET "/_next/webpack-hmr" for 127.0.0.1 at 2022-05-16 18:22:49 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/_next/webpack-hmr"):
+  
+Started GET "/_next/webpack-hmr" for 127.0.0.1 at 2022-05-16 18:23:49 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/_next/webpack-hmr"):
+  
+Started GET "/_next/webpack-hmr" for 127.0.0.1 at 2022-05-16 18:24:49 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/_next/webpack-hmr"):
+  
+Started GET "/_next/webpack-hmr" for 127.0.0.1 at 2022-05-16 18:25:49 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/_next/webpack-hmr"):
+  
+Started GET "/_next/webpack-hmr" for 127.0.0.1 at 2022-05-16 18:26:49 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/_next/webpack-hmr"):
+  
+Started GET "/_next/webpack-hmr" for 127.0.0.1 at 2022-05-16 18:27:49 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/_next/webpack-hmr"):
+  
+MONGODB | Topology type 'unknown' initializing.
+MONGODB | There was a change in the members of the 'Unknown' topology.
+MONGODB | Server localhost:27017 initializing.
+MONGODB | Waiting for up to 30.00 seconds for servers to be scanned: #<Cluster topology=Unknown[localhost:27017] servers=[#<Server address=localhost:27017 UNKNOWN>]>
+MONGODB | Server description for localhost:27017 changed from 'unknown' to 'standalone'.
+MONGODB | Topology type 'Unknown' changed to type 'Single'.
+MONGODB | localhost:27017 req:5 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"users", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('6282c388bf3f86e1e87d5f7f'), "name"=>"Quinn Durgan II", "email"=>"herlinda_kozey@example.org", "password"=>"0AaC04oVu9", "specialization"=>"Digital arts", "city"=>"West Briannev...
+MONGODB | localhost:27017 req:5 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:6 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"users", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('6282c388bf3f86e1e87d5f80'), "name"=>"Dana Kuvalis DDS", "email"=>"erinn@example.com", "password"=>"FaIyOjXeZiHn", "specialization"=>"Rappelling", "city"=>"Port Beckie", "state"...
+MONGODB | localhost:27017 req:6 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:7 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"users", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('6282c388bf3f86e1e87d5f81'), "name"=>"Bernardo Hyatt", "email"=>"stephan@example.net", "password"=>"7DcXp02Ro1Sx", "specialization"=>"Candle making", "city"=>"Alesiaside", "stat...
+MONGODB | localhost:27017 req:7 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:8 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"users", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('6282c388bf3f86e1e87d5f82'), "name"=>"Aurelio Howell", "email"=>"donald.lowe@example.com", "password"=>"Ll5RvN8a6", "specialization"=>"Model building", "city"=>"Quyenland", "sta...
+MONGODB | localhost:27017 req:8 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:9 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"users", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('6282c388bf3f86e1e87d5f83'), "name"=>"Michell McKenzie", "email"=>"cordelia.bergnaum@example.org", "password"=>"D7yJxQyR1tQzQaEn", "specialization"=>"Nordic skating", "city"=>"A...
+MONGODB | localhost:27017 req:9 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:10 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"users", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('6282c388bf3f86e1e87d5f84'), "name"=>"Jonathon Boyle", "email"=>"seth@example.org", "password"=>"Wt6NlPxKfJ7pAwO1", "specialization"=>"Cryptography", "city"=>"Port Kristofer", "...
+MONGODB | localhost:27017 req:10 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:11 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"users", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('6282c388bf3f86e1e87d5f85'), "name"=>"Fr. Estella Hane", "email"=>"christopher.kub@example.com", "password"=>"LgLwLxCpD", "specialization"=>"Knife making", "city"=>"Hodkiewiczmo...
+MONGODB | localhost:27017 req:11 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:12 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"users", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('6282c388bf3f86e1e87d5f86'), "name"=>"Cody Lind", "email"=>"viviana@example.org", "password"=>"IrS3kHnVqK", "specialization"=>"Roller skating", "city"=>"Hoegerfurt", "state"=>"I...
+MONGODB | localhost:27017 req:12 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:13 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"users", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('6282c388bf3f86e1e87d5f87'), "name"=>"Mervin Larson", "email"=>"bennie@example.com", "password"=>"EoUj2CwRe", "specialization"=>"Dance", "city"=>"Elnaborough", "state"=>"Ohio", ...
+MONGODB | localhost:27017 req:13 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:14 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"users", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('6282c388bf3f86e1e87d5f88'), "name"=>"Silas Pfeffer", "email"=>"reynaldo_weissnat@example.net", "password"=>"HxWjOiGuD6s", "specialization"=>"Juggling", "city"=>"Port Quincymout...
+MONGODB | localhost:27017 req:14 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:15 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"users", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('6282c388bf3f86e1e87d5f89'), "name"=>"Solomon Kub", "email"=>"fredric_shanahan@example.org", "password"=>"T1fW9qCwRcOdP2", "specialization"=>"Lapidary", "city"=>"West Winfredbur...
+MONGODB | localhost:27017 req:15 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:16 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"users", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('6282c388bf3f86e1e87d5f8a'), "name"=>"Ms. Felton Conn", "email"=>"adolph@example.com", "password"=>"KjJsY9cOyHm", "specialization"=>"Stand-up comedy", "city"=>"Tremblayland", "s...
+MONGODB | localhost:27017 req:16 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:17 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"users", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('6282c388bf3f86e1e87d5f8b'), "name"=>"Mozelle Sauer", "email"=>"heriberto@example.org", "password"=>"U2vEoN79zL0kN2", "specialization"=>"Fishing", "city"=>"Baumbachshire", "stat...
+MONGODB | localhost:27017 req:17 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:18 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"users", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('6282c388bf3f86e1e87d5f8c'), "name"=>"Rick Rath", "email"=>"carole_hilll@example.com", "password"=>"GhDpD3a0SpTh", "specialization"=>"Sewing", "city"=>"West Shira", "state"=>"Mi...
+MONGODB | localhost:27017 req:18 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:19 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"users", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('6282c388bf3f86e1e87d5f8d'), "name"=>"Glenn Balistreri VM", "email"=>"miquel_schowalter@example.org", "password"=>"Gp291PqLv1JjV8pZ", "specialization"=>"Basketball", "city"=>"Sc...
+MONGODB | localhost:27017 req:19 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:20 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"users", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('6282c388bf3f86e1e87d5f8e'), "name"=>"Boris Prosacco", "email"=>"domingo.kilback@example.net", "password"=>"RwCrN6uR9w719M", "specialization"=>"Letterboxing", "city"=>"Toyport",...
+MONGODB | localhost:27017 req:20 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:21 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"users", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('6282c388bf3f86e1e87d5f8f'), "name"=>"Reginald Runolfsson III", "email"=>"dong_keebler@example.net", "password"=>"SsEgDxPsHc7S", "specialization"=>"Nordic skating", "city"=>"New...
+MONGODB | localhost:27017 req:21 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:22 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"users", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('6282c388bf3f86e1e87d5f90'), "name"=>"Bryce Schmidt", "email"=>"keri@example.org", "password"=>"Fz5DsCrDtG1r", "specialization"=>"Hiking", "city"=>"Lake Clark", "state"=>"Delawa...
+MONGODB | localhost:27017 req:22 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:23 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"users", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('6282c388bf3f86e1e87d5f91'), "name"=>"Hiram Paucek", "email"=>"pamila_miller@example.com", "password"=>"CcM0oF0n58", "specialization"=>"Gunsmithing", "city"=>"Wileyside", "state...
+MONGODB | localhost:27017 req:23 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:24 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"users", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('6282c388bf3f86e1e87d5f92'), "name"=>"Darren Crona", "email"=>"shane@example.org", "password"=>"BwTiS7x0DpLkA5b", "specialization"=>"Do it yourself", "city"=>"South Danille", "s...
+MONGODB | localhost:27017 req:24 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:25 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"users", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('6282c388bf3f86e1e87d5f93'), "name"=>"Morgan Halvorson", "email"=>"johna.skiles@example.org", "password"=>"EbE95b1Z", "specialization"=>"Gunsmithing", "city"=>"Lake Christiniaha...
+MONGODB | localhost:27017 req:25 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:26 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"users", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('6282c388bf3f86e1e87d5f94'), "name"=>"Dr. Tammie Bosco", "email"=>"maile.grimes@example.org", "password"=>"Z6c6SqLnI", "specialization"=>"Coffee roasting", "city"=>"Jerroldfurt"...
+MONGODB | localhost:27017 req:26 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:27 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"users", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('6282c388bf3f86e1e87d5f95'), "name"=>"Brooks O'Kon", "email"=>"janee.heathcote@example.com", "password"=>"DtHmNn5OkC", "specialization"=>"Jewelry making", "city"=>"Port Norahbor...
+MONGODB | localhost:27017 req:27 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:28 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"users", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('6282c388bf3f86e1e87d5f96'), "name"=>"Leigha Howe", "email"=>"cornelius@example.net", "password"=>"K63m48Zm", "specialization"=>"Model building", "city"=>"Magaliview", "state"=>...
+MONGODB | localhost:27017 req:28 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:29 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"users", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('6282c388bf3f86e1e87d5f97'), "name"=>"Melvin Pagac", "email"=>"sherri@example.com", "password"=>"DeEo027V", "specialization"=>"Listening to music", "city"=>"Cleoberg", "state"=>...
+MONGODB | localhost:27017 req:29 | ramirez.insert | SUCCEEDED | 0.000s
+Started GET "/" for 127.0.0.1 at 2022-05-16 18:42:51 -0300
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /usr/local/lib/ruby/gems/3.1.0/gems/railties-7.0.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/local/lib/ruby/gems/3.1.0/gems/railties-7.0.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 13.4ms | Allocations: 626)
+Completed 200 OK in 67ms (Views: 28.9ms | MongoDB: 0.0ms | Allocations: 3355)
+
+
+Started GET "/users" for 127.0.0.1 at 2022-05-16 18:42:57 -0300
+Processing by UsersController#index as HTML
+MONGODB | Topology type 'unknown' initializing.
+MONGODB | There was a change in the members of the 'Unknown' topology.
+MONGODB | Server localhost:27017 initializing.
+MONGODB | Waiting for up to 30.00 seconds for servers to be scanned: #<Cluster topology=Unknown[localhost:27017] servers=[#<Server address=localhost:27017 UNKNOWN>]>
+MONGODB | Server description for localhost:27017 changed from 'unknown' to 'standalone'.
+MONGODB | Topology type 'Unknown' changed to type 'Single'.
+MONGODB | localhost:27017 req:5 conn:1:1 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x8900 type=uuid data=0x165f646829024e3e...>}}
+MONGODB | localhost:27017 req:5 | ramirez.find | SUCCEEDED | 0.000s
+Completed 200 OK in 63ms (Views: 50.2ms | MongoDB: 0.0ms | Allocations: 15722)
+
+
+Started GET "/users/0" for 127.0.0.1 at 2022-05-16 18:43:32 -0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"0"}
+MONGODB | localhost:27017 req:9 conn:1:1 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"_id"=>"0"}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x8900 type=uuid data=0x165f646829024e3e...>}}
+MONGODB | localhost:27017 req:9 | ramirez.find | SUCCEEDED | 0.001s
+Completed 404 Not Found in 527ms (MongoDB: 0.0ms | Allocations: 275476)
+
+
+  
+Mongoid::Errors::DocumentNotFound (
+message:
+  Document(s) not found for class User with id(s) 0.
+summary:
+  When calling User.find with an id or array of ids, each parameter must match a document in the database or this error will be raised. The search was for the id(s): 0 ... (1 total) and the following ids were not found: 0.
+resolution:
+  Search for an id that is in the database or set the Mongoid.raise_not_found_error configuration option to false, which will cause a nil to be returned instead of raising this error when searching for a single id, or only the matched documents when searching for multiples.):
+  
+app/controllers/users_controller.rb:43:in `set_user'
+Started GET "/favicon.ico" for 127.0.0.1 at 2022-05-16 18:43:33 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/users/6282c388bf3f86e1e87d5f7f" for 127.0.0.1 at 2022-05-16 18:43:41 -0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"6282c388bf3f86e1e87d5f7f"}
+MONGODB | localhost:27017 req:11 conn:1:1 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"_id"=>BSON::ObjectId('6282c388bf3f86e1e87d5f7f')}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x8900 type=uuid data=0x165f646829024e3e...>}}
+MONGODB | localhost:27017 req:11 | ramirez.find | SUCCEEDED | 0.000s
+Completed 200 OK in 6ms (Views: 0.5ms | MongoDB: 0.0ms | Allocations: 1232)
+
+
+Started GET "/users" for ::1 at 2022-05-16 19:05:01 -0300
+Processing by UsersController#index as */*
+MONGODB | Topology type 'unknown' initializing.
+MONGODB | There was a change in the members of the 'Unknown' topology.
+MONGODB | Server localhost:27017 initializing.
+MONGODB | Waiting for up to 30.00 seconds for servers to be scanned: #<Cluster topology=Unknown[localhost:27017] servers=[#<Server address=localhost:27017 UNKNOWN>]>
+MONGODB | Server description for localhost:27017 changed from 'unknown' to 'standalone'.
+MONGODB | Topology type 'Unknown' changed to type 'Single'.
+MONGODB | localhost:27017 req:5 conn:1:1 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x8800 type=uuid data=0xe0c9f6efbbd04b44...>}}
+MONGODB | localhost:27017 req:5 | ramirez.find | SUCCEEDED | 0.001s
+Completed 200 OK in 82ms (Views: 32.7ms | MongoDB: 0.0ms | Allocations: 17694)
+
+
+Started GET "/users/6282c388bf3f86e1e87d5f7f" for ::1 at 2022-05-16 19:05:17 -0300
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"6282c388bf3f86e1e87d5f7f"}
+MONGODB | localhost:27017 req:7 conn:1:1 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"_id"=>BSON::ObjectId('6282c388bf3f86e1e87d5f7f')}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x8800 type=uuid data=0xe0c9f6efbbd04b44...>}}
+MONGODB | localhost:27017 req:7 | ramirez.find | SUCCEEDED | 0.001s
+Completed 200 OK in 11ms (Views: 0.5ms | MongoDB: 0.0ms | Allocations: 1097)
+
+
+Started PUT "/users/6282c388bf3f86e1e87d5f7f" for ::1 at 2022-05-16 19:05:46 -0300
+Processing by UsersController#update as */*
+  Parameters: {"id"=>"6282c388bf3f86e1e87d5f7f"}
+MONGODB | localhost:27017 req:11 conn:1:1 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"_id"=>BSON::ObjectId('6282c388bf3f86e1e87d5f7f')}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x8800 type=uuid data=0xe0c9f6efbbd04b44...>}}
+MONGODB | localhost:27017 req:11 | ramirez.find | SUCCEEDED | 0.001s
+Completed 400 Bad Request in 3ms (MongoDB: 0.0ms | Allocations: 875)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: user):
+  
+app/controllers/users_controller.rb:48:in `user_params'
+app/controllers/users_controller.rb:28:in `update'
+Started GET "/users/6282c388bf3f86e1e87d5f7f" for ::1 at 2022-05-16 19:06:01 -0300
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"6282c388bf3f86e1e87d5f7f"}
+MONGODB | localhost:27017 req:13 conn:1:1 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"_id"=>BSON::ObjectId('6282c388bf3f86e1e87d5f7f')}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x8800 type=uuid data=0xe0c9f6efbbd04b44...>}}
+MONGODB | localhost:27017 req:13 | ramirez.find | SUCCEEDED | 0.001s
+Completed 200 OK in 4ms (Views: 0.7ms | MongoDB: 0.0ms | Allocations: 945)
+
+
+Started GET "/users/6282c388bf3f86e1e87d5f7f" for ::1 at 2022-05-16 19:06:38 -0300
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"6282c388bf3f86e1e87d5f7f"}
+MONGODB | localhost:27017 req:18 conn:1:1 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"_id"=>BSON::ObjectId('6282c388bf3f86e1e87d5f7f')}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x8800 type=uuid data=0xe0c9f6efbbd04b44...>}}
+MONGODB | localhost:27017 req:18 | ramirez.find | SUCCEEDED | 0.000s
+Completed 200 OK in 9ms (Views: 1.4ms | MongoDB: 0.0ms | Allocations: 947)
+
+
+Started PUT "/users/6282c388bf3f86e1e87d5f7f" for ::1 at 2022-05-16 19:06:48 -0300
+Processing by UsersController#update as */*
+  Parameters: {"id"=>"6282c388bf3f86e1e87d5f7f"}
+MONGODB | localhost:27017 req:20 conn:1:1 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"_id"=>BSON::ObjectId('6282c388bf3f86e1e87d5f7f')}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x8800 type=uuid data=0xe0c9f6efbbd04b44...>}}
+MONGODB | localhost:27017 req:20 | ramirez.find | SUCCEEDED | 0.000s
+Completed 400 Bad Request in 2ms (MongoDB: 0.0ms | Allocations: 794)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: user):
+  
+app/controllers/users_controller.rb:48:in `user_params'
+app/controllers/users_controller.rb:28:in `update'
+Started PUT "/users/6282c388bf3f86e1e87d5f7f" for ::1 at 2022-05-16 19:07:03 -0300
+Processing by UsersController#update as */*
+  Parameters: {"id"=>"6282c388bf3f86e1e87d5f7f"}
+MONGODB | localhost:27017 req:23 conn:1:1 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"_id"=>BSON::ObjectId('6282c388bf3f86e1e87d5f7f')}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x8800 type=uuid data=0xe0c9f6efbbd04b44...>}}
+MONGODB | localhost:27017 req:23 | ramirez.find | SUCCEEDED | 0.000s
+Completed 400 Bad Request in 2ms (MongoDB: 0.0ms | Allocations: 795)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: user):
+  
+app/controllers/users_controller.rb:48:in `user_params'
+app/controllers/users_controller.rb:28:in `update'
+Started PUT "/users/6282c388bf3f86e1e87d5f7f" for ::1 at 2022-05-16 19:07:22 -0300
+Processing by UsersController#update as */*
+  Parameters: {"city"=>"West Brianneville", "created_at"=>"2022-05-16T21:35:04.320Z", "email"=>"herlinda_kozey@example.org", "name"=>"Quinn Durgan II", "password"=>"[FILTERED]", "specialization"=>"EA", "state"=>"Arkansas", "updated_at"=>"2022-05-16T21:35:04.320Z", "id"=>"6282c388bf3f86e1e87d5f7f", "user"=>{"created_at"=>"2022-05-16T21:35:04.320Z", "updated_at"=>"2022-05-16T21:35:04.320Z", "name"=>"Quinn Durgan II", "email"=>"herlinda_kozey@example.org", "password"=>"[FILTERED]", "specialization"=>"EA", "city"=>"West Brianneville", "state"=>"Arkansas"}}
+MONGODB | localhost:27017 req:26 conn:1:1 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"_id"=>BSON::ObjectId('6282c388bf3f86e1e87d5f7f')}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x8800 type=uuid data=0xe0c9f6efbbd04b44...>}}
+MONGODB | localhost:27017 req:26 | ramirez.find | SUCCEEDED | 0.000s
+[31mUnpermitted parameters: :created_at, :updated_at. Context: { controller: UsersController, action: update, request: #<ActionDispatch::Request:0x00007f2a700c9760>, params: {"city"=>"West Brianneville", "created_at"=>"2022-05-16T21:35:04.320Z", "email"=>"herlinda_kozey@example.org", "name"=>"Quinn Durgan II", "password"=>"[FILTERED]", "specialization"=>"EA", "state"=>"Arkansas", "updated_at"=>"2022-05-16T21:35:04.320Z", "controller"=>"users", "action"=>"update", "id"=>"6282c388bf3f86e1e87d5f7f", "user"=>{"created_at"=>"2022-05-16T21:35:04.320Z", "updated_at"=>"2022-05-16T21:35:04.320Z", "name"=>"Quinn Durgan II", "email"=>"herlinda_kozey@example.org", "password"=>"[FILTERED]", "specialization"=>"EA", "city"=>"West Brianneville", "state"=>"Arkansas"}} }[0m
+MONGODB | localhost:27017 req:27 conn:1:1 | ramirez.update | STARTED | {"update"=>"users", "ordered"=>true, "updates"=>[{"q"=>{"_id"=>BSON::ObjectId('6282c388bf3f86e1e87d5f7f')}, "u"=>{"$set"=>{"specialization"=>"EA", "updated_at"=>2022-05-16 22:07:22.86826435 UTC}}}], "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x880...
+MONGODB | localhost:27017 req:27 | ramirez.update | SUCCEEDED | 0.010s
+Completed 200 OK in 51ms (Views: 0.4ms | MongoDB: 0.0ms | Allocations: 4487)
+
+
+Started GET "/users/" for ::1 at 2022-05-16 19:07:41 -0300
+Processing by UsersController#index as */*
+  Parameters: {"city"=>"West Brianneville", "created_at"=>"2022-05-16T21:35:04.320Z", "email"=>"herlinda_kozey@example.org", "name"=>"Quinn Durgan II", "password"=>"[FILTERED]", "specialization"=>"EA", "state"=>"Arkansas", "updated_at"=>"2022-05-16T21:35:04.320Z", "user"=>{"created_at"=>"2022-05-16T21:35:04.320Z", "updated_at"=>"2022-05-16T21:35:04.320Z", "name"=>"Quinn Durgan II", "email"=>"herlinda_kozey@example.org", "password"=>"[FILTERED]", "specialization"=>"EA", "city"=>"West Brianneville", "state"=>"Arkansas"}}
+MONGODB | localhost:27017 req:29 conn:1:1 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x8800 type=uuid data=0xe0c9f6efbbd04b44...>}}
+MONGODB | localhost:27017 req:29 | ramirez.find | SUCCEEDED | 0.009s
+Completed 200 OK in 29ms (Views: 29.1ms | MongoDB: 0.0ms | Allocations: 6342)
+
+
+Started DELETE "/users/6282c388bf3f86e1e87d5f83" for ::1 at 2022-05-16 19:08:02 -0300
+Processing by UsersController#destroy as */*
+  Parameters: {"city"=>"West Brianneville", "created_at"=>"2022-05-16T21:35:04.320Z", "email"=>"herlinda_kozey@example.org", "name"=>"Quinn Durgan II", "password"=>"[FILTERED]", "specialization"=>"EA", "state"=>"Arkansas", "updated_at"=>"2022-05-16T21:35:04.320Z", "id"=>"6282c388bf3f86e1e87d5f83", "user"=>{"created_at"=>"2022-05-16T21:35:04.320Z", "updated_at"=>"2022-05-16T21:35:04.320Z", "name"=>"Quinn Durgan II", "email"=>"herlinda_kozey@example.org", "password"=>"[FILTERED]", "specialization"=>"EA", "city"=>"West Brianneville", "state"=>"Arkansas"}}
+MONGODB | localhost:27017 req:33 conn:1:1 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"_id"=>BSON::ObjectId('6282c388bf3f86e1e87d5f83')}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x8800 type=uuid data=0xe0c9f6efbbd04b44...>}}
+MONGODB | localhost:27017 req:33 | ramirez.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:34 conn:1:1 | ramirez.delete | STARTED | {"delete"=>"users", "ordered"=>true, "deletes"=>[{"q"=>{"_id"=>BSON::ObjectId('6282c388bf3f86e1e87d5f83')}, "limit"=>1}], "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x8800 type=uuid data=0xe0c9f6efbbd04b44...>}}
+MONGODB | localhost:27017 req:34 | ramirez.delete | SUCCEEDED | 0.000s
+Completed 204 No Content in 5ms (MongoDB: 0.0ms | Allocations: 1408)
+
+
+Started GET "/users/6282c388bf3f86e1e87d5f83" for ::1 at 2022-05-16 19:08:06 -0300
+Processing by UsersController#show as */*
+  Parameters: {"city"=>"West Brianneville", "created_at"=>"2022-05-16T21:35:04.320Z", "email"=>"herlinda_kozey@example.org", "name"=>"Quinn Durgan II", "password"=>"[FILTERED]", "specialization"=>"EA", "state"=>"Arkansas", "updated_at"=>"2022-05-16T21:35:04.320Z", "id"=>"6282c388bf3f86e1e87d5f83", "user"=>{"created_at"=>"2022-05-16T21:35:04.320Z", "updated_at"=>"2022-05-16T21:35:04.320Z", "name"=>"Quinn Durgan II", "email"=>"herlinda_kozey@example.org", "password"=>"[FILTERED]", "specialization"=>"EA", "city"=>"West Brianneville", "state"=>"Arkansas"}}
+MONGODB | localhost:27017 req:35 conn:1:1 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"_id"=>BSON::ObjectId('6282c388bf3f86e1e87d5f83')}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x8800 type=uuid data=0xe0c9f6efbbd04b44...>}}
+MONGODB | localhost:27017 req:35 | ramirez.find | SUCCEEDED | 0.000s
+Completed 404 Not Found in 766ms (MongoDB: 0.0ms | Allocations: 275462)
+
+
+  
+Mongoid::Errors::DocumentNotFound (
+message:
+  Document(s) not found for class User with id(s) 6282c388bf3f86e1e87d5f83.
+summary:
+  When calling User.find with an id or array of ids, each parameter must match a document in the database or this error will be raised. The search was for the id(s): 6282c388bf3f86e1e87d5f83 ... (1 total) and the following ids were not found: 6282c388bf3f86e1e87d5f83.
+resolution:
+  Search for an id that is in the database or set the Mongoid.raise_not_found_error configuration option to false, which will cause a nil to be returned instead of raising this error when searching for a single id, or only the matched documents when searching for multiples.):
+  
+app/controllers/users_controller.rb:43:in `set_user'
+Started GET "/users/" for ::1 at 2022-05-16 19:08:11 -0300
+Processing by UsersController#index as */*
+  Parameters: {"city"=>"West Brianneville", "created_at"=>"2022-05-16T21:35:04.320Z", "email"=>"herlinda_kozey@example.org", "name"=>"Quinn Durgan II", "password"=>"[FILTERED]", "specialization"=>"EA", "state"=>"Arkansas", "updated_at"=>"2022-05-16T21:35:04.320Z", "user"=>{"created_at"=>"2022-05-16T21:35:04.320Z", "updated_at"=>"2022-05-16T21:35:04.320Z", "name"=>"Quinn Durgan II", "email"=>"herlinda_kozey@example.org", "password"=>"[FILTERED]", "specialization"=>"EA", "city"=>"West Brianneville", "state"=>"Arkansas"}}
+MONGODB | localhost:27017 req:36 conn:1:1 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x8800 type=uuid data=0xe0c9f6efbbd04b44...>}}
+MONGODB | localhost:27017 req:36 | ramirez.find | SUCCEEDED | 0.001s
+Completed 200 OK in 20ms (Views: 20.2ms | MongoDB: 0.0ms | Allocations: 6056)
+
+
+Started GET "/users/" for ::1 at 2022-05-16 19:09:51 -0300
+Processing by UsersController#index as */*
+  Parameters: {"city"=>"West Brianneville", "created_at"=>"2022-05-16T21:35:04.320Z", "email"=>"herlinda_kozey@example.org", "name"=>"Quinn Durgan II", "password"=>"[FILTERED]", "specialization"=>"EA", "state"=>"Arkansas", "updated_at"=>"2022-05-16T21:35:04.320Z", "user"=>{"created_at"=>"2022-05-16T21:35:04.320Z", "updated_at"=>"2022-05-16T21:35:04.320Z", "name"=>"Quinn Durgan II", "email"=>"herlinda_kozey@example.org", "password"=>"[FILTERED]", "specialization"=>"EA", "city"=>"West Brianneville", "state"=>"Arkansas"}}
+MONGODB | localhost:27017 req:47 conn:1:1 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x8800 type=uuid data=0xe0c9f6efbbd04b44...>}}
+MONGODB | localhost:27017 req:47 | ramirez.find | SUCCEEDED | 0.001s
+Completed 200 OK in 8ms (Views: 7.8ms | MongoDB: 0.0ms | Allocations: 6566)
+
+
+Started GET "/users/" for ::1 at 2022-05-16 19:09:52 -0300
+Processing by UsersController#index as */*
+  Parameters: {"city"=>"West Brianneville", "created_at"=>"2022-05-16T21:35:04.320Z", "email"=>"herlinda_kozey@example.org", "name"=>"Quinn Durgan II", "password"=>"[FILTERED]", "specialization"=>"EA", "state"=>"Arkansas", "updated_at"=>"2022-05-16T21:35:04.320Z", "user"=>{"created_at"=>"2022-05-16T21:35:04.320Z", "updated_at"=>"2022-05-16T21:35:04.320Z", "name"=>"Quinn Durgan II", "email"=>"herlinda_kozey@example.org", "password"=>"[FILTERED]", "specialization"=>"EA", "city"=>"West Brianneville", "state"=>"Arkansas"}}
+MONGODB | localhost:27017 req:49 conn:1:1 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x8800 type=uuid data=0xe0c9f6efbbd04b44...>}}
+MONGODB | localhost:27017 req:49 | ramirez.find | SUCCEEDED | 0.001s
+Completed 200 OK in 8ms (Views: 7.3ms | MongoDB: 0.0ms | Allocations: 6055)
+
+
+Started GET "/users/" for ::1 at 2022-05-16 19:09:59 -0300
+Processing by UsersController#index as */*
+  Parameters: {"city"=>"West Brianneville", "created_at"=>"2022-05-16T21:35:04.320Z", "email"=>"herlinda_kozey@example.org", "name"=>"Quinn Durgan II", "password"=>"[FILTERED]", "specialization"=>"EA", "state"=>"Arkansas", "updated_at"=>"2022-05-16T21:35:04.320Z", "user"=>{"created_at"=>"2022-05-16T21:35:04.320Z", "updated_at"=>"2022-05-16T21:35:04.320Z", "name"=>"Quinn Durgan II", "email"=>"herlinda_kozey@example.org", "password"=>"[FILTERED]", "specialization"=>"EA", "city"=>"West Brianneville", "state"=>"Arkansas"}}
+MONGODB | Topology type 'unknown' initializing.
+MONGODB | There was a change in the members of the 'Unknown' topology.
+MONGODB | Server localhost:27017 initializing.
+MONGODB | Waiting for up to 30.00 seconds for servers to be scanned: #<Cluster topology=Unknown[localhost:27017] servers=[#<Server address=localhost:27017 UNKNOWN>]>
+MONGODB | Server description for localhost:27017 changed from 'unknown' to 'standalone'.
+MONGODB | Topology type 'Unknown' changed to type 'Single'.
+MONGODB | localhost:27017 req:5 conn:1:1 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x8840 type=uuid data=0x6328fcde853246ea...>}}
+MONGODB | localhost:27017 req:5 | ramirez.find | SUCCEEDED | 0.001s
+Completed 200 OK in 24ms (Views: 16.7ms | MongoDB: 0.0ms | Allocations: 11866)
+
+
+Started GET "/users/" for ::1 at 2022-05-16 19:09:59 -0300
+Processing by UsersController#index as */*
+  Parameters: {"city"=>"West Brianneville", "created_at"=>"2022-05-16T21:35:04.320Z", "email"=>"herlinda_kozey@example.org", "name"=>"Quinn Durgan II", "password"=>"[FILTERED]", "specialization"=>"EA", "state"=>"Arkansas", "updated_at"=>"2022-05-16T21:35:04.320Z", "user"=>{"created_at"=>"2022-05-16T21:35:04.320Z", "updated_at"=>"2022-05-16T21:35:04.320Z", "name"=>"Quinn Durgan II", "email"=>"herlinda_kozey@example.org", "password"=>"[FILTERED]", "specialization"=>"EA", "city"=>"West Brianneville", "state"=>"Arkansas"}}
+MONGODB | localhost:27017 req:6 conn:1:1 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x8840 type=uuid data=0x6328fcde853246ea...>}}
+MONGODB | localhost:27017 req:6 | ramirez.find | SUCCEEDED | 0.001s
+Completed 200 OK in 15ms (Views: 14.3ms | MongoDB: 0.0ms | Allocations: 6084)
+
+
+Started GET "/users/" for ::1 at 2022-05-16 19:10:00 -0300
+Processing by UsersController#index as */*
+  Parameters: {"city"=>"West Brianneville", "created_at"=>"2022-05-16T21:35:04.320Z", "email"=>"herlinda_kozey@example.org", "name"=>"Quinn Durgan II", "password"=>"[FILTERED]", "specialization"=>"EA", "state"=>"Arkansas", "updated_at"=>"2022-05-16T21:35:04.320Z", "user"=>{"created_at"=>"2022-05-16T21:35:04.320Z", "updated_at"=>"2022-05-16T21:35:04.320Z", "name"=>"Quinn Durgan II", "email"=>"herlinda_kozey@example.org", "password"=>"[FILTERED]", "specialization"=>"EA", "city"=>"West Brianneville", "state"=>"Arkansas"}}
+MONGODB | localhost:27017 req:7 conn:1:1 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x8840 type=uuid data=0x6328fcde853246ea...>}}
+MONGODB | localhost:27017 req:7 | ramirez.find | SUCCEEDED | 0.001s
+Completed 200 OK in 10ms (Views: 9.3ms | MongoDB: 0.0ms | Allocations: 6069)
+
+
+Started GET "/users/" for ::1 at 2022-05-16 19:11:55 -0300
+Processing by UsersController#index as */*
+  Parameters: {"city"=>"West Brianneville", "created_at"=>"2022-05-16T21:35:04.320Z", "email"=>"herlinda_kozey@example.org", "name"=>"Quinn Durgan II", "password"=>"[FILTERED]", "specialization"=>"EA", "state"=>"Arkansas", "updated_at"=>"2022-05-16T21:35:04.320Z", "user"=>{"created_at"=>"2022-05-16T21:35:04.320Z", "updated_at"=>"2022-05-16T21:35:04.320Z", "name"=>"Quinn Durgan II", "email"=>"herlinda_kozey@example.org", "password"=>"[FILTERED]", "specialization"=>"EA", "city"=>"West Brianneville", "state"=>"Arkansas"}}
+MONGODB | Topology type 'unknown' initializing.
+MONGODB | There was a change in the members of the 'Unknown' topology.
+MONGODB | Server localhost:27017 initializing.
+MONGODB | Waiting for up to 30.00 seconds for servers to be scanned: #<Cluster topology=Unknown[localhost:27017] servers=[#<Server address=localhost:27017 UNKNOWN>]>
+MONGODB | Server description for localhost:27017 changed from 'unknown' to 'standalone'.
+MONGODB | Topology type 'Unknown' changed to type 'Single'.
+MONGODB | localhost:27017 req:5 conn:1:1 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x8840 type=uuid data=0xc1a5179ccd5645c2...>}}
+MONGODB | localhost:27017 req:5 | ramirez.find | SUCCEEDED | 0.001s
+Completed 200 OK in 21ms (Views: 16.4ms | MongoDB: 0.0ms | Allocations: 11863)
+
+
+Started GET "/users/" for ::1 at 2022-05-16 19:11:57 -0300
+Processing by UsersController#index as */*
+  Parameters: {"city"=>"West Brianneville", "created_at"=>"2022-05-16T21:35:04.320Z", "email"=>"herlinda_kozey@example.org", "name"=>"Quinn Durgan II", "password"=>"[FILTERED]", "specialization"=>"EA", "state"=>"Arkansas", "updated_at"=>"2022-05-16T21:35:04.320Z", "user"=>{"created_at"=>"2022-05-16T21:35:04.320Z", "updated_at"=>"2022-05-16T21:35:04.320Z", "name"=>"Quinn Durgan II", "email"=>"herlinda_kozey@example.org", "password"=>"[FILTERED]", "specialization"=>"EA", "city"=>"West Brianneville", "state"=>"Arkansas"}}
+MONGODB | localhost:27017 req:6 conn:1:1 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x8840 type=uuid data=0xc1a5179ccd5645c2...>}}
+MONGODB | localhost:27017 req:6 | ramirez.find | SUCCEEDED | 0.001s
+Completed 200 OK in 8ms (Views: 7.6ms | MongoDB: 0.0ms | Allocations: 6084)
+
+
+Started GET "/" for ::1 at 2022-05-16 19:11:59 -0300
+Processing by Rails::WelcomeController#index as */*
+  Parameters: {"city"=>"West Brianneville", "created_at"=>"2022-05-16T21:35:04.320Z", "email"=>"herlinda_kozey@example.org", "name"=>"Quinn Durgan II", "password"=>"[FILTERED]", "specialization"=>"EA", "state"=>"Arkansas", "updated_at"=>"2022-05-16T21:35:04.320Z", "welcome"=>{"city"=>"West Brianneville", "created_at"=>"2022-05-16T21:35:04.320Z", "email"=>"herlinda_kozey@example.org", "name"=>"Quinn Durgan II", "password"=>"[FILTERED]", "specialization"=>"EA", "state"=>"Arkansas", "updated_at"=>"2022-05-16T21:35:04.320Z"}}
+  Rendering /usr/local/lib/ruby/gems/3.1.0/gems/railties-7.0.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/local/lib/ruby/gems/3.1.0/gems/railties-7.0.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 10.9ms | Allocations: 517)
+Completed 200 OK in 27ms (Views: 13.8ms | MongoDB: 0.0ms | Allocations: 2423)
+
+
+Started GET "/" for ::1 at 2022-05-16 19:12:00 -0300
+Processing by Rails::WelcomeController#index as */*
+  Parameters: {"city"=>"West Brianneville", "created_at"=>"2022-05-16T21:35:04.320Z", "email"=>"herlinda_kozey@example.org", "name"=>"Quinn Durgan II", "password"=>"[FILTERED]", "specialization"=>"EA", "state"=>"Arkansas", "updated_at"=>"2022-05-16T21:35:04.320Z", "welcome"=>{"city"=>"West Brianneville", "created_at"=>"2022-05-16T21:35:04.320Z", "email"=>"herlinda_kozey@example.org", "name"=>"Quinn Durgan II", "password"=>"[FILTERED]", "specialization"=>"EA", "state"=>"Arkansas", "updated_at"=>"2022-05-16T21:35:04.320Z"}}
+  Rendering /usr/local/lib/ruby/gems/3.1.0/gems/railties-7.0.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/local/lib/ruby/gems/3.1.0/gems/railties-7.0.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.9ms | Allocations: 319)
+Completed 200 OK in 6ms (Views: 4.8ms | MongoDB: 0.0ms | Allocations: 1015)
+
+
+Started GET "/" for ::1 at 2022-05-16 19:12:09 -0300
+Processing by UsersController#index as */*
+  Parameters: {"city"=>"West Brianneville", "created_at"=>"2022-05-16T21:35:04.320Z", "email"=>"herlinda_kozey@example.org", "name"=>"Quinn Durgan II", "password"=>"[FILTERED]", "specialization"=>"EA", "state"=>"Arkansas", "updated_at"=>"2022-05-16T21:35:04.320Z", "user"=>{"created_at"=>"2022-05-16T21:35:04.320Z", "updated_at"=>"2022-05-16T21:35:04.320Z", "name"=>"Quinn Durgan II", "email"=>"herlinda_kozey@example.org", "password"=>"[FILTERED]", "specialization"=>"EA", "city"=>"West Brianneville", "state"=>"Arkansas"}}
+MONGODB | localhost:27017 req:8 conn:1:1 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x8840 type=uuid data=0xc1a5179ccd5645c2...>}}
+MONGODB | localhost:27017 req:8 | ramirez.find | SUCCEEDED | 0.001s
+Completed 200 OK in 8ms (Views: 7.8ms | MongoDB: 0.0ms | Allocations: 6586)
+
+
+Started GET "/Hugo/6282c388bf3f86e1e87d5f7f" for ::1 at 2022-05-16 19:13:58 -0300
+Processing by UsersController#show as */*
+  Parameters: {"city"=>"West Brianneville", "created_at"=>"2022-05-16T21:35:04.320Z", "email"=>"herlinda_kozey@example.org", "name"=>"Quinn Durgan II", "password"=>"[FILTERED]", "specialization"=>"EA", "state"=>"Arkansas", "updated_at"=>"2022-05-16T21:35:04.320Z", "id"=>"6282c388bf3f86e1e87d5f7f", "user"=>{"created_at"=>"2022-05-16T21:35:04.320Z", "updated_at"=>"2022-05-16T21:35:04.320Z", "name"=>"Quinn Durgan II", "email"=>"herlinda_kozey@example.org", "password"=>"[FILTERED]", "specialization"=>"EA", "city"=>"West Brianneville", "state"=>"Arkansas"}}
+MONGODB | localhost:27017 req:20 conn:1:1 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"_id"=>BSON::ObjectId('6282c388bf3f86e1e87d5f7f')}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x8840 type=uuid data=0xc1a5179ccd5645c2...>}}
+MONGODB | localhost:27017 req:20 | ramirez.find | SUCCEEDED | 0.000s
+Completed 200 OK in 3ms (Views: 0.6ms | MongoDB: 0.0ms | Allocations: 1583)
+
+

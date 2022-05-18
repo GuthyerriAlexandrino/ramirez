@@ -7,8 +7,8 @@ export const CardContainer = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    flex: 1 0 158px;
     flex: 1 1 158px;
+    flex: 0 1 158px;
     height: 100%;
     border: 1px solid ${pallete.blackTwo};
     border-radius: 10px;
@@ -18,6 +18,11 @@ export const CardContainer = styled.div`
     background: rgba(255, 255, 255, 0.04);
     cursor: pointer;
     transition: all 0.2s ease;
+
+    @media screen and (max-width: 375px){
+        flex: 1 1 158px;
+        flex: 1 1 158px;
+    }
 
     &:hover {
         transform: scale(1.1);
@@ -41,12 +46,15 @@ export const PhotographerInfo = styled.div`
         font-size: 0.875rem;
         font-weight: 500;
         line-height: 1.063rem;
+        text-align: center;
     }
 
     small {
         font-size: 0.75rem;
         font-weight: 500;
         line-height: 1rem;
+        text-align: center;
+        width: 100%;
     }
 
 `

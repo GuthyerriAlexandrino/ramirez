@@ -28,19 +28,6 @@ export function PhotographerForm() {
             <h2>Criar a sua conta</h2>
             <InputContainer>
                 <Icon align="left">
-                    <Image src={Email} width={24} height={24}/>
-                </Icon>
-                <label htmlFor="email"></label>
-                <input 
-                    type="email"
-                    id="email"
-                    name="email"
-                    placeholder="E-mail"
-                    required
-                />
-            </InputContainer>
-            <InputContainer>
-                <Icon align="left">
                     <Image src={User} width={24} height={24}/>
                 </Icon>
                 <label htmlFor="name"></label>
@@ -49,6 +36,19 @@ export function PhotographerForm() {
                     id="name" 
                     name="name" 
                     placeholder="Nome" 
+                    required
+                />
+            </InputContainer>
+            <InputContainer>
+                <Icon align="left">
+                    <Image src={Email} width={24} height={24}/>
+                </Icon>
+                <label htmlFor="email"></label>
+                <input 
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="E-mail"
                     required
                 />
             </InputContainer>

@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { 
     AditionalInputs,
      Container,
@@ -14,13 +13,38 @@ import {
      PriceRangeContainer
 } from "./styles";
 import { SelectInput } from "../../components/SelectInput";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { PhotographerCard } from "../../components/PhotographerCard";
 import { Header } from "../../components/Header";
+
+export type User = {
+    _id: {
+        "$oid": string;
+    },
+    name: string;
+    city: string;
+    state: string;
+    specialization: string;
+}
 
 export default function Search() {
 
     const [isLocationActive, setIsLocationActive] = useState(false);
+    const [users, setUsers] = useState<User[]>([]);
+
+    useEffect(() => {
+        async function getUsers() {
+            const data = await fetch("http://localhost:3001/users", {
+                headers:{
+                    "Access-Control-Allow-Origin": "*"
+                }
+            }).then(res => res.json());
+            setUsers(data);
+        } 
+        getUsers();
+    }, [])
+
+    console.log(users)
 
     return (
         <Container>
@@ -55,18 +79,9 @@ export default function Search() {
                     </AditionalInputs>
                 </SearchInputContainer>
                 <PhotographersList>
-                    <PhotographerCard/>
-                    <PhotographerCard/>
-                    <PhotographerCard/>
-                    <PhotographerCard/>
-                    <PhotographerCard/>
-                    <PhotographerCard/>
-                    <PhotographerCard/>
-                    <PhotographerCard/>
-                    <PhotographerCard/>
-                    <PhotographerCard/>
-                    <PhotographerCard/>
-                    <PhotographerCard/>
+                    {users.map(user => (
+                        <PhotographerCard key={user._id.$oid} user={user}/>
+                    ))}
                 </PhotographersList>
             </SearchPhotographerContainer>
         </Container>

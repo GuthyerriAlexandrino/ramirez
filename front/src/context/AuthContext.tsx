@@ -25,7 +25,6 @@ type AuthContextProps = {
     isAuthenticated: boolean;
     token: Token;
     user: User | null;
-    invalidCredentials: boolean;
     setToken: (value: Token) => void;
     verifyTokenExpiration: () => boolean;
     handleLogin: (value: User) => Promise<void>;
@@ -40,7 +39,6 @@ type AuthProviderProps = {
 export function AuthProvider({children}: AuthProviderProps) {
     const [user, setUser] = useState<User | null>(null);
     const [token, setToken] = useState<Token>({} as Token);
-    const [invalidCredentials, setInvalidCredentials] = useState(true);
 
     const isAuthenticated = !!user;
 
@@ -87,14 +85,12 @@ export function AuthProvider({children}: AuthProviderProps) {
 
         if (res.error) {
             alert("Invalid credentials")
-            setInvalidCredentials(true);
         } else {
             setCookie(undefined, "ramirez-user", res.token, {
                 expires: new Date(res.exp)
             })
     
             setUser(user.user);
-            setInvalidCredentials(false);
             Router.push("/search")
 
         }
@@ -106,7 +102,6 @@ export function AuthProvider({children}: AuthProviderProps) {
                 isAuthenticated,
                 token,
                 user,
-                invalidCredentials,
                 setToken,
                 verifyTokenExpiration,
                 handleLogin

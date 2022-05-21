@@ -1,11 +1,10 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { 
     Container,
     LogInAside,
     ExternaltLink,
     Divider,
     RegisterLink,
-    PopUpInfo,
 } from "./styles";
 import { 
     Button, 
@@ -27,12 +26,10 @@ export default function LogIn()  {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-
     const [visible, setVisible] = useState(false);
 
     const {
-        invalidCredentials,
-        handleLogin
+        handleLogin,
     } = useAuthLogin();
 
     function handleVisiblePassword() {
@@ -90,7 +87,7 @@ export default function LogIn()  {
                 <Divider/>
                 <RegisterLink>
                     <span>Não tem uma conta?</span>
-                    <Link href="#">
+                    <Link href="/signup">
                         <ExternaltLink align="center" isBold={true}>Registre-se</ExternaltLink>
                     </Link>
                 </RegisterLink>

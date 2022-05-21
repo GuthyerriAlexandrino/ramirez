@@ -13,6 +13,10 @@ export const Container = styled.section`
     align-items: center;
     justify-items: center;
     margin: 3rem 0;
+
+    @media screen and (max-width: 771px) {
+        height: 100%;
+    }
 `
 
 export const ArrowSliderLeft = styled(Image)`

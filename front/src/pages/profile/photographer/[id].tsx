@@ -38,8 +38,10 @@ import Masonry from "react-masonry-css";
 import { Header } from "../../../components/Header";
 import { useState } from "react";
 import { PublishPhoto } from "../../../components/PublishPhoto";
-import { GetStaticPaths, GetStaticProps } from "next";
+import { GetServerSideProps, GetStaticPaths, GetStaticProps } from "next";
 import { User } from "../../search";
+import Link from "next/link";
+import { parseCookies } from "nookies";
 
 let photos = [
     { id: 1, src: Image1 },
@@ -62,32 +64,25 @@ const breakpointColumnsObj = {
     500: 1,
 };
 
-export const getStaticPaths: GetStaticPaths = async (context) => {
-    
-    const data: User[] = await fetch("http://localhost:3001/users", {
-        method: "GET",
-    }).then(res => res.json());
+export const getServerSideProps: GetServerSideProps = async (context) => {
+    const { id } = context.params!;
+    const { ["ramirez-user"]: token } = parseCookies(context);
 
-    const paths = data.map(user => {
+    if (!token) {
         return {
-            params: {
-                id: user._id.$oid
+            redirect: {
+                destination: '/login',
+                permanent: false,
             }
         }
-    })
-    
-    return {
-        paths,
-        fallback: false
     }
-}
-
-export const getStaticProps: GetStaticProps = async (context) => {
-   
-    const { id } = context.params!;
 
     const data: User = await fetch(`http://localhost:3001/users/${id}`, {
         method: "GET",
+        headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Authorization": `Bearer ${token}`
+        }
     }).then(res => res.json());
 
     const user = {
@@ -102,7 +97,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
         props: {
             user,
         },
-        revalidate: 60 * 60 * 24
     }
 }
 
@@ -181,9 +175,11 @@ export default function ProfilePhotographer({user}: PhotographerProps) {
                     columnClassName={styles.myMasonryGridColumn}
                 >
                     {photos.map((photo, id) => (
-                        <PhotoItem key={id}>
-                            <Image src={photo.src}/>
-                        </PhotoItem>
+                        <Link href="/post">
+                            <PhotoItem key={id}>
+                                <Image src={photo.src}/>
+                            </PhotoItem>
+                       </Link>
                     ))}
                 </Masonry>
             </PhotosGallery>

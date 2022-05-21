@@ -16,6 +16,9 @@ import { SelectInput } from "../../components/SelectInput";
 import { useEffect, useState } from "react";
 import { PhotographerCard } from "../../components/PhotographerCard";
 import { Header } from "../../components/Header";
+import { parseCookies } from "nookies";
+import { useAuthLogin } from "../../context/AuthContext";
+import Router from "next/router";
 
 export type User = {
     _id: {
@@ -32,13 +35,27 @@ export default function Search() {
     const [isLocationActive, setIsLocationActive] = useState(false);
     const [users, setUsers] = useState<User[]>([]);
 
+    const {
+        verifyTokenExpiration
+    } = useAuthLogin();
+
     useEffect(() => {
+        if (!verifyTokenExpiration()) {
+            Router.push("/login");
+            return;
+        } 
+
+        let cookies = parseCookies();
+        let token = cookies["ramirez-user"];
+
         async function getUsers() {
             const data = await fetch("http://localhost:3001/users", {
                 headers:{
-                    "Access-Control-Allow-Origin": "*"
+                    "Access-Control-Allow-Origin": "*",
+                    "Authorization": `Bearer ${token}`
                 }
             }).then(res => res.json());
+
             setUsers(data);
         } 
         getUsers();
@@ -79,7 +96,7 @@ export default function Search() {
                     </AditionalInputs>
                 </SearchInputContainer>
                 <PhotographersList>
-                    {users.map(user => (
+                    {users?.map(user => (
                         <PhotographerCard key={user._id.$oid} user={user}/>
                     ))}
                 </PhotographersList>

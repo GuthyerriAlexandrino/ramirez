@@ -157,6 +157,12 @@ export const SearchButton = styled.button`
     border-radius: 10px;
     padding: 0.75rem 2rem;
     background-color: ${pallete.turquoiseOne};
+    transition: all 0.2s ease;
+    cursor: pointer;
+
+    &:hover {
+        filter: brightness(0.92);
+    }
 
     @media screen and (max-width: 500px) {
         width: 93%;

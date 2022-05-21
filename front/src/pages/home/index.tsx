@@ -8,6 +8,9 @@ import {
     Services,
     ServiceCardArea,
     ServiceCard,
+    MenuIcon,
+    HeaderContent,
+    LogoImage
 } from "./style";
 import Image from "next/image";
 import logo from "../../assets/logo.svg";
@@ -17,18 +20,34 @@ import Icon2 from "../../assets/icon2.svg";
 import Icon3 from "../../assets/icon3.svg";
 import { Slider } from "../../components/Slider";
 import Link from "next/link";
+import { List, X } from "phosphor-react";
+import { useState } from "react";
 
 
 export const HomePage: NextPage = () => {
+
+    const [menuIsActive, setMenuIsActive] = useState(false);
+
     return (
         <Container>
-            <Header>
-                <div>
-                    <Image src={logo} 
-                        width="123px" 
-                        height="40px" 
-                        style={{marginLeft: "20px"}} 
-                    />
+            <MenuIcon onClick={() => setMenuIsActive(!menuIsActive)}>
+                {menuIsActive ? (
+                    <X size={40} />
+                ) : (
+                    <List size={40}/>
+
+                )}
+            </MenuIcon>
+            <Header toggleMenu={menuIsActive}>
+                <HeaderContent>
+                    <LogoImage>
+                        <Image 
+                            src={logo} 
+                            width={123}
+                            height={40}
+                            objectFit="contain"
+                        />
+                    </LogoImage>
                     <MenuContainer>
                         <ul>
                             <li>
@@ -51,7 +70,7 @@ export const HomePage: NextPage = () => {
                             </li>
                         </ul>
                     </MenuContainer>
-                </div>
+                </HeaderContent>
             </Header>
             <Main>
                 <Image src={logoHome}/>

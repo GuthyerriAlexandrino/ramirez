@@ -1,6 +1,10 @@
 import styled, { css } from "styled-components";
 import { pallete } from "../../styles/colors";
 
+interface HeaderProps {
+    toggleMenu: boolean;
+}
+
 interface ButtonProps {
     background?: boolean
 }
@@ -16,7 +20,7 @@ export const Container = styled.div`
     color: ${pallete.whiteOne};
 `
 
-export const Header = styled.header`
+export const Header = styled.header<HeaderProps>`
     position: relative;
     display: flex;
     flex-direction: column;
@@ -24,6 +28,7 @@ export const Header = styled.header`
     justify-content: space-between;
     width: 100%;
     margin-bottom: 3.75rem;
+    transition: all ease 0.2s;
 
     &::after {
         content: '';
@@ -35,19 +40,69 @@ export const Header = styled.header`
         background-color: ${pallete.whiteOne};
     }
 
-    div {
+    @media screen and (max-width: 771px) {
+        position: fixed;
+        top: 0;
+        left: ${props => props.toggleMenu ? "0%" : "-100%"};
+        height: 100vh;
+        background-color: ${pallete.blackOne};
+        z-index: 999999;
+
+        &::after {
+            content: '';
+            display: none;
+        }
+
+        div {
+            flex-direction: column;
+        }
+    }
+`
+
+export const LogoImage = styled.div`
+    display: block;
+`
+
+export const HeaderContent = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    margin-bottom: 10px;
+
+    @media screen and (max-width: 771px) {
         display: flex;
         align-items: center;
-        justify-content: space-between;
-        width: 100%;
-        margin-bottom: 10px;
+        justify-content: center;
+        height: 100vh;
+
+        ${LogoImage} {
+            position: absolute;
+            top: 10px;
+            left: 0;
+        }
+    }   
+`
+
+export const MenuIcon = styled.div`
+    position: fixed;
+    display:none;
+    cursor: pointer;
+    z-index: 9999990;
+  
+
+    @media screen and (max-width: 771px) {
+        display: block;
+        top: 10px;
+        right: 10px;
     }
 `
 
 export const MenuContainer = styled.nav`
     max-width: 300px;
     width: 100%;
-    margin-right: 30px;
+    /* margin-right: 30px; */
 
     ul {
         display: flex;
@@ -57,6 +112,25 @@ export const MenuContainer = styled.nav`
 
         li {
             margin-right: 10px;
+        }
+    }
+
+    @media screen and (max-width: 771px) {
+        margin-top: 4rem;
+
+        ul {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            li {
+                margin-bottom: 2rem;
+
+                &:nth-child(3) {
+                    display: none;
+                }
+            }
         }
     }
 `
@@ -80,6 +154,11 @@ export const Button = styled.button<ButtonProps>`
             background-color: #f5f4f4;
         `}
     }
+
+    @media screen and (max-width: 771px) {
+        font-size: 2rem;
+        padding: 1rem;
+    }
 `
 
 export const Main = styled.main`
@@ -101,7 +180,7 @@ export const Services = styled.section`
     h1 {
         font-style: normal;
         font-weight: 600;
-        font-size: 6.25rem;
+        font-size: min(6.25rem, 14vw);
         line-height: 7.25rem;
         text-align: center;
         margin-bottom: 4rem;

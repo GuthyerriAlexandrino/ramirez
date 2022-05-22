@@ -1,10 +1,6 @@
 import styled, { css } from "styled-components";
 import { pallete } from "../../styles/colors";
 
-interface NavBarSelectorProps {
-    positionX: number;
-}
-
 export const Container = styled.section`
     display: flex;
     align-items: center;
@@ -23,59 +19,6 @@ export const Container = styled.section`
     @media screen and (max-width: 486px) {
         grid-template-rows: repeat(2, 0.7fr);
     }
-`
-
-export const NavBar = styled.nav`
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    width: 100%;
-    height: 100%;
-    margin-left: 4rem;
-    margin-bottom: 1.875rem;
-
-    ul {
-        position: relative;
-        display: flex;
-
-        li {
-            position: relative;
-            list-style: none;
-            padding-bottom: 1rem;
-            cursor: pointer;
-
-            span {
-                position: relative;
-                text-decoration: none;
-                color: ${pallete.whiteOne};
-                width: 100px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-        }
-    }
-
-    @media screen and (max-width: 1008px) {
-        margin-left: 0rem;
-
-    }
-
-    @media screen and (max-width: 641px) {
-        justify-content: center;
-    }
-`
-
-export const NavBarSelector = styled.div<NavBarSelectorProps>`
-    position: absolute;
-    width: 100px;
-    height: 5px;
-    bottom: 0;
-    z-index: 0;
-    background-color: ${pallete.turquoiseOne};
-    transform: ${props => `translateX(${props.positionX}px)`};
-    transition: all 0.5s ease 0s;
 `
 
 export const SignUpFormContainer = styled.section`

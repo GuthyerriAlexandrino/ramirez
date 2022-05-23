@@ -12,5 +12,6 @@ class User
   field :specialization, type: String
   field :city, type: String
   field :state, type: String
+  field :photographer, type: Boolean
   index({ email: 1 }, { unique: true })
 end

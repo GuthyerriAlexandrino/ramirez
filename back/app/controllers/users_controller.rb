@@ -4,7 +4,8 @@ class UsersController < ApplicationController
 
   # GET /users
   def index
-    @users = User.all
+    @users = User.only([:name, :email]).where(photographer: false)
+    @users += User.only([:name, :email, :specialization, :city, :state]).where(photographer: true)
     render json: @users
   end
 
@@ -41,7 +42,11 @@ class UsersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
-      @user = User.find(params[:id])
+      # @user = find(params[:id])
+      @user = []
+      @user << User.only([:name, :email]).where(photographer: false, id: params[:id]).first()
+      @user << User.only([:name, :email, :specialization, :city, :state]).where(photographer: true, id:params[:id]).first()
+      @user.compact!
     end
 
     # Only allow a list of trusted parameters through.

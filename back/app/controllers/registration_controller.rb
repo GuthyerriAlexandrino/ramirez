@@ -1,6 +1,7 @@
 class RegistrationController < ApplicationController
   VALID_EMAIL_REGEX = /\A([\w+\-]\.?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
   HOURS = 2.hours
+  SPECIALIZATIONS = SpecializationHelper.instance.specializations
 
   def login
     login_params
@@ -20,8 +21,9 @@ class RegistrationController < ApplicationController
   def register
     register_params()
     user_params = params[:user]
-    render json: { error: 'Invalid email' }, status: :bad_request  unless user_params[:email] =~ VALID_EMAIL_REGEX
-    render json: { error: 'Password too short'}, status: :bad_request unless user_params[:password].length >= 8
+    return render json: { error: 'Invalid email' }, status: :bad_request unless user_params[:email] =~ VALID_EMAIL_REGEX
+    return render json: { error: 'Password too short'}, status: :bad_request unless user_params[:password].length >= 8
+    return render json: { error: 'Specialization don\'t exists'}, status: :bad_request unless SPECIALIZATIONS.include?(user_params[:specialization])
 
     begin
       u = User.create(user_params.permit(user_params.keys).to_h)
@@ -35,10 +37,12 @@ class RegistrationController < ApplicationController
   private
   
   def login_params
-    params.require(:user).permit([:email, :password])
+    params.require(:user).permit(:email, :password).tap { |u| u.require([:email, :password]) }
   end
 
   def register_params
-    params.require(:user).require([:name, :email, :password, :password_confirmation, :specialization, :city, :state])
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :specialization, :city, :state, :photographer).tap do |u|
+      u.require([:name, :email, :password, :password_confirmation, :photographer])
+    end
   end
 end

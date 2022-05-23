@@ -4,9 +4,8 @@ import { BagSimple, Buildings, EnvelopeSimple, Eye, EyeSlash, Key, User } from "
 import Email from "../../assets/email.svg";
 
 import Image from "next/image";
-import Link from "next/link";
 import { pallete } from "../../styles/colors";
-import Router from "next/router";
+import { useNotify } from "../../context/NotifyContext";
 
 type User = {
     name: string;
@@ -34,6 +33,11 @@ export function FormRegister() {
     const [visibleConfirmPassword, setVisibleConfirmPassword] = useState(false);
     const [isPhotographer, setIsPhotographer] = useState(false);
 
+    const {
+        notifySuccess,
+        notifyError
+    } = useNotify();
+
     function handleVisiblePassword() {
         setVisiblePassword(!visiblePassword);
     }
@@ -48,7 +52,7 @@ export function FormRegister() {
             user: newUser
         }
 
-        await fetch("http://localhost:3001/register", {
+        const res = await fetch("http://localhost:3001/register", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',
@@ -57,7 +61,13 @@ export function FormRegister() {
             body: JSON.stringify(user)
         })
         .then(response => response.json())
-        .catch(error => console.error(error));
+        .catch(error => error);
+
+        if (res.error) {
+            notifyError("Falha no cadastro. Verifique os campos preenchidos");
+        } else {
+            notifySuccess("Conta registrada!");
+        }
     }
 
     return (

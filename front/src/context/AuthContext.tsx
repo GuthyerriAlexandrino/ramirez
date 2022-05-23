@@ -7,6 +7,7 @@ import React, {
 } from "react";
 import Router from "next/router";
 import { setCookie, parseCookies } from "nookies";
+import { useNotify } from "./NotifyContext";
 
 type Token = {
     token: string;
@@ -39,6 +40,11 @@ type AuthProviderProps = {
 export function AuthProvider({children}: AuthProviderProps) {
     const [user, setUser] = useState<User | null>(null);
     const [token, setToken] = useState<Token>({} as Token);
+
+    const {
+        notifySuccess,
+        notifyError
+    } = useNotify();
 
     const isAuthenticated = !!user;
 
@@ -84,13 +90,14 @@ export function AuthProvider({children}: AuthProviderProps) {
         console.log(res)
 
         if (res.error) {
-            alert("Invalid credentials")
+            notifyError("Falha no login! Verifique os campos preenchidos.")
         } else {
             setCookie(undefined, "ramirez-user", res.token, {
                 expires: new Date(res.exp)
             })
     
             setUser(user.user);
+            notifySuccess("Login feito com sucesso!")
             Router.push("/search")
 
         }

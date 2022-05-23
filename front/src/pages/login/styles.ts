@@ -1,4 +1,5 @@
-import styled, { css } from "styled-components";
+import { motion } from "framer-motion";
+import styled from "styled-components";
 import { pallete } from "../../styles/colors";
 
 interface ExternaltLinkProps {
@@ -6,7 +7,7 @@ interface ExternaltLinkProps {
     isBold: boolean;
 }
 
-export const Container = styled.section`
+export const Container = styled(motion.section)`
     display: flex;
     align-items: center;
     justify-content: center;
@@ -20,7 +21,7 @@ export const Container = styled.section`
     }
 `
 
-export const LogInAside = styled.aside`
+export const LogInAside = styled(motion.aside)`
     display: flex;
     flex-direction: column;
     align-items: flex-start;

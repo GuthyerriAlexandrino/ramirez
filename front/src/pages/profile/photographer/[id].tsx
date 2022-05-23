@@ -22,6 +22,7 @@ import styles from "./styles.module.css"
 
 import ProfileImg from "../../../assets/profile.jpg"
 import Image from "next/image";
+import Link from "next/link";
 
 import Image1 from "../../../assets/water-animal/image1.jpg";
 import Image2 from "../../../assets/water-animal/image2.jpg";
@@ -36,12 +37,13 @@ import Image10 from "../../../assets/water-animal/image10.jpg";
 import Image11 from "../../../assets/water-animal/image11.jpg";
 import Masonry from "react-masonry-css";
 import { Header } from "../../../components/Header";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { PublishPhoto } from "../../../components/PublishPhoto";
-import { GetServerSideProps, GetStaticPaths, GetStaticProps } from "next";
+import { GetServerSideProps } from "next";
 import { User } from "../../search";
-import Link from "next/link";
 import { parseCookies } from "nookies";
+import { useInView } from "react-intersection-observer";
+import { useAnimation } from "framer-motion";
 
 let photos = [
     { id: 1, src: Image1 },
@@ -112,8 +114,35 @@ export default function ProfilePhotographer({user}: PhotographerProps) {
         setPopupIsOpen(value);
     }
 
+    const { ref, inView } = useInView();
+    const animation = useAnimation();
+
+    useEffect(() => {
+        if (inView) {
+            animation.start({
+                y: 0,
+                opacity: 1,
+                transition: {
+                    duration: 0.8,
+                    ease: [0.6, -0.05, 0.01, 0.99],
+                }
+            })
+        } else {
+            animation.start({
+                y: 30,
+                opacity: 0,
+                transition: { duration: 0.6, ease: [0.6, -0.05, 0.01, 0.99] }
+            });
+        }
+        console.log(inView);
+    }, [animation, inView])
+
     return (
-        <Container>
+        <Container
+            initial={{width: 0}} 
+            animate={{width: "100vw"}} 
+            exit={{ x: "100%" }}
+        >
             <Header/>
             <ProfileInfoContainer>
                 <ProfileInfo>
@@ -172,11 +201,11 @@ export default function ProfilePhotographer({user}: PhotographerProps) {
                 <Masonry
                     breakpointCols={breakpointColumnsObj}
                     className={styles.myMasonryGrid}
-                    columnClassName={styles.myMasonryGridColumn}
+                    columnClassName={styles.msyMasonryGridColumn}
                 >
                     {photos.map((photo, id) => (
                         <Link href="/post">
-                            <PhotoItem key={id}>
+                            <PhotoItem key={id} ref={ref} animate={animation}>
                                 <Image src={photo.src}/>
                             </PhotoItem>
                        </Link>

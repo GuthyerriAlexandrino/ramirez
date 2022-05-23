@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import styled from "styled-components";
 import { pallete } from "../../styles/colors";
 
@@ -5,7 +6,7 @@ interface LocationProps {
     isActive: boolean
 }
 
-export const Container = styled.section`
+export const Container = styled(motion.section)`
     min-height: 100vh;
     height: 100%;
     background-color: ${pallete.blackOne};
@@ -240,7 +241,7 @@ export const LocationAccordion = styled.div<LocationProps>`
     }
 `
 
-export const PhotographersList = styled.div`
+export const PhotographersList = styled(motion.div)`
     display: flex;
     flex-wrap: wrap;
     justify-content: center;

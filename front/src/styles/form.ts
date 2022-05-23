@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import styled, { css } from "styled-components";
 import { pallete } from "./colors";
 
@@ -5,7 +6,7 @@ interface IconProps {
     align: string;
 }
 
-export const FormBody = styled.form`
+export const FormBody = styled(motion.form)`
     width: 38rem;
     padding: 4rem;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.25);

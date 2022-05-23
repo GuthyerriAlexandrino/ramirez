@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import styled, { css } from "styled-components";
 import { pallete } from "../../styles/colors";
 
@@ -9,7 +10,7 @@ interface ButtonProps {
     background?: boolean
 }
 
-export const Container = styled.div`
+export const Container = styled(motion.div)`
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -188,13 +189,13 @@ export const Services = styled.section`
     }
 `
 
-export const ServiceCardArea = styled.div`
+export const ServiceCardArea = styled(motion.div)`
     display: flex;
     flex-wrap: wrap;
     margin-top: 2.25rem;
 `
 
-export const ServiceCard = styled.div`
+export const ServiceCard = styled(motion.div)`
     display: flex;
     align-items: flex-start;
     justify-content: center;

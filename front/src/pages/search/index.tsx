@@ -64,7 +64,11 @@ export default function Search() {
     console.log(users)
 
     return (
-        <Container>
+        <Container
+            initial={{width: 0}} 
+            animate={{width: "100vw"}} 
+            exit={{ x: "100%" }}
+        >
             <Header/>
             <SearchPhotographerContainer>
                 <h1>Pesquisa por algum fotógrafo</h1>

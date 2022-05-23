@@ -1,7 +1,8 @@
-import styled, { css } from "styled-components";
+import { motion } from "framer-motion";
+import styled from "styled-components";
 import { pallete } from "../../styles/colors";
 
-export const Container = styled.section`
+export const Container = styled(motion.section)`
     display: flex;
     align-items: center;
     justify-content: center;
@@ -21,7 +22,7 @@ export const Container = styled.section`
     }
 `
 
-export const SignUpFormContainer = styled.section`
+export const SignUpFormContainer = styled(motion.section)`
     display: flex;
     flex-direction: column;
 
@@ -35,7 +36,7 @@ export const SignUpFormContainer = styled.section`
     }
 `
 
-export const SignUpAside = styled.aside`
+export const SignUpAside = styled(motion.aside)`
     display: flex;
     flex-direction: column;
     align-items: flex-start;

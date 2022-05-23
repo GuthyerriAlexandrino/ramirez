@@ -1,7 +1,8 @@
+import { motion } from "framer-motion";
 import styled from "styled-components";
 import { pallete } from "../../styles/colors";
 
-export const PopupContainer = styled.div`
+export const PopupContainer = styled(motion.div)`
     position: fixed;
     display: flex;
     align-items: center;

@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import styled, { css } from "styled-components";
 import { pallete } from "../../../styles/colors";
 
@@ -9,7 +10,7 @@ interface CareerDataProps {
     isRight: boolean;
 }
 
-export const Container = styled.section`
+export const Container = styled(motion.section)`
     min-height: 100vh;
     height: 100%;
     background-color: ${pallete.blackOne};
@@ -238,7 +239,7 @@ export const PhotosGallery = styled.main`
     background-color: transparent;
 `
 
-export const PhotoItem = styled.div`
+export const PhotoItem = styled(motion.div)`
     display: flex;
     align-items: center;
     justify-content: center;

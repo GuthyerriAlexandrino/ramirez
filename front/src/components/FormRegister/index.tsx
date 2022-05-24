@@ -1,11 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button, CheckBoxArea, CheckBoxConfirm, FormBody, Icon, InputContainer, InputFlex, Panel } from "./style";
-import { BagSimple, Buildings, EnvelopeSimple, Eye, EyeSlash, Key, User } from "phosphor-react";
+import { BagSimple, Buildings, CaretDown, Eye, EyeSlash, Key, User } from "phosphor-react";
 import Email from "../../assets/email.svg";
 
 import Image from "next/image";
 import { pallete } from "../../styles/colors";
 import { useNotify } from "../../context/NotifyContext";
+import Router from "next/router";
 
 type User = {
     name: string;
@@ -15,6 +16,11 @@ type User = {
     specialization: string;
     city: string;
     state: string;
+    photographer: boolean
+}
+
+type Specialization = {
+    name: string;
 }
 
 export function FormRegister() {
@@ -24,14 +30,16 @@ export function FormRegister() {
         email: "",
         password: "",
         password_confirmation: "",
-        specialization: "",
+        specialization: "Nenhum",
         city: "",
         state: "",
+        photographer: false
     } as User);
 
     const [visiblePassword, setVisiblePassword] = useState(false);
     const [visibleConfirmPassword, setVisibleConfirmPassword] = useState(false);
     const [isPhotographer, setIsPhotographer] = useState(false);
+    const [specializationOptions, setSpecializationOptions] = useState<Specialization[]>([]);
 
     const {
         notifySuccess,
@@ -48,6 +56,12 @@ export function FormRegister() {
 
     async function handleSubmit(event: any) {
         event.preventDefault();
+
+        if (newUser.password !== newUser.password_confirmation) {
+            notifyError("Falha no cadastro! Senha de confirmação inválida")
+            return;
+        }
+        
         const user = {
             user: newUser
         }
@@ -56,7 +70,7 @@ export function FormRegister() {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',
-                'Acess-Control-Allow-Origin': '*'
+                'Access-Control-Allow-Origin': '*'
             },
             body: JSON.stringify(user)
         })
@@ -67,8 +81,22 @@ export function FormRegister() {
             notifyError("Falha no cadastro. Verifique os campos preenchidos");
         } else {
             notifySuccess("Conta registrada!");
+            Router.push("/conclusion")
+            console.log(res)
         }
     }
+
+    useEffect(() => {
+        async function getAllSpecializations() {
+            const data = await fetch("http://localhost:3001/specializations", {
+                method: "GET"
+            }).then(response => response.json());
+            setSpecializationOptions(data)
+        }
+        getAllSpecializations();
+    }, [])
+
+    console.log(newUser.specialization)
 
     return (
         <FormBody action="" onSubmit={handleSubmit}>
@@ -129,7 +157,7 @@ export function FormRegister() {
                     <Key size={24} color={pallete.blackFour} weight="fill" />
                 </Icon>
                 <Icon align="right" onClick={handleVisibleConfirmePassword}>
-                    {visiblePassword ? (
+                    {visibleConfirmPassword ? (
                         <Eye size={24} color={pallete.turquoiseOne} weight="fill" />
                     ) : (
                         <EyeSlash size={24} color={pallete.turquoiseOne} weight="fill" />
@@ -155,7 +183,10 @@ export function FormRegister() {
                         id="photographer" 
                         name="photographer" 
                         checked={isPhotographer}
-                        onChange={() => setIsPhotographer(!isPhotographer)}
+                        onChange={() => {
+                            setIsPhotographer(!isPhotographer); 
+                            setNewUser({...newUser, photographer: isPhotographer})
+                        }}
                     />
                     <label htmlFor="photographer">Sou fotógrafo</label>
                 </CheckBoxArea>
@@ -164,15 +195,21 @@ export function FormRegister() {
                         <Icon align="left">
                             <BagSimple size={24} color={pallete.blackFour} weight="fill" />
                         </Icon>
-                        <label htmlFor="especialization"></label>
-                        <input 
-                            type="text"
-                            id="especialization"
-                            name="especialization"
+                        <Icon align="right">
+                            <CaretDown size={24} weight="fill" style={{cursor: "auto"}} />
+                        </Icon>
+                        <label htmlFor="especializations"></label>
+                        <select 
+                            id="especializations"
+                            name="especializations"
                             placeholder="Especialização"
                             onChange={(event) => setNewUser({...newUser, specialization: event.target.value})}
                             required={isPhotographer ? true : false}
-                        />
+                        >
+                            {specializationOptions.map((specialization, index) => (
+                                index > 0 && <option key={specialization.name} value={specialization.name}>{specialization.name}</option>
+                            ))}
+                        </select>
                     </InputContainer>
                     <InputFlex>
                         <InputContainer>

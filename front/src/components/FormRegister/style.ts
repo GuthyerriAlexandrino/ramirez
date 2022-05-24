@@ -63,6 +63,28 @@ export const InputContainer = styled.div`
             outline: 2px solid ${pallete.turquoiseOne};
         }
     }
+
+    select {
+        width: 100%;
+        height: 3.125rem;
+        outline: 0px solid ${pallete.turquoiseOne};
+        border: none;
+        border-radius: 5px;
+        padding-left: 52px;
+        font-size: 1rem;
+        font-family: 'Inter', sans-serif;
+        color: ${pallete.whiteOne};
+        background-color: ${pallete.blackFive};
+        transition: outline 0.1s ease-in;
+        cursor: pointer;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+
+        &:focus {
+            outline: 2px solid ${pallete.turquoiseOne};
+        }
+    }
 `
 
 export const Icon = styled.i<IconProps>`

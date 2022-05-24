@@ -21,30 +21,7 @@ import EyeInvisible from "../../assets/ant-design_eye-invisible-filled.svg"
 import Link from "next/link";
 import Image from "next/image";
 import { useAuthLogin } from "../../context/AuthContext";
-import { Variants } from "framer-motion";
-
-let easing = [0.6, -0.05, 0.01, 0.99];
-
-const fadeInRight: Variants = {
-    initial: {
-        x: 60,
-        opacity: 0,
-        transition: { duration: 0.5, ease: easing }
-    },
-    animate: {
-        x: 0,
-        opacity: 1,
-        transition: { duration: 0.5, ease: easing }
-    }
-};
-  
-const stagger = {
-    animate: {
-        transition: {
-            staggerChildren: 0.1
-        }
-    }
-};
+import { makeFadeInRightAnimation, stagger } from "../../utils/animations";
 
 export default function LogIn()  {
 
@@ -67,19 +44,16 @@ export default function LogIn()  {
 
     return (
         <Container
-            // initial={{width: 0}} 
-            // animate={{width: "100vw"}} 
-            // exit={{ x: 100 }}
             initial='initial' 
             animate='animate' 
             exit={{ opacity: 0 }}
             variants={stagger}
         >
-            <LogInAside variants={fadeInRight}>
+            <LogInAside variants={makeFadeInRightAnimation()}>
                 <Image src={Logo}/>
                 <h1>Faça o seu login na plataforma</h1>
             </LogInAside>
-            <FormBody variants={fadeInRight} action="" onSubmit={handleSubmit}>
+            <FormBody variants={makeFadeInRightAnimation()} action="" onSubmit={handleSubmit}>
                 <InputContainer>
                     <Icon align="left">
                         <Image src={Email} width={24} height={24}/>

@@ -24,32 +24,9 @@ import { List, X } from "phosphor-react";
 import { NextPage } from "next";
 import Link from "next/link";
 import Image from "next/image";
+import { makeFadeInUptAnimation, stagger } from "../../utils/animations";
 
 let easing = [0.6, -0.05, 0.01, 0.99];
-
-const fadeInUp: Variants = {
-    initial: {
-      y: 60,
-      opacity: 0,
-      transition: { duration: 0.6, ease: easing }
-    },
-    animate: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.6,
-        ease: easing
-      }
-    }
-  };
-  
-const stagger = {
-    animate: {
-        transition: {
-            staggerChildren: 0.1
-        }
-    }
-};
 
 export const HomePage: NextPage = () => {
 
@@ -125,7 +102,7 @@ export const HomePage: NextPage = () => {
                 </HeaderContent>
             </Header>
             <Main>
-                <motion.div variants={fadeInUp}>
+                <motion.div variants={makeFadeInUptAnimation()}>
                     <Image src={logoHome}/>
                 </motion.div>
                 <Slider/>

@@ -1,14 +1,15 @@
+import { motion } from "framer-motion";
 import styled from "styled-components";
 import { pallete } from "../../styles/colors";
 
-export const Container = styled.main`
+export const Container = styled(motion.main)`
     display: grid;
     place-items: center;
     height: 100vh;
     background-color: ${pallete.blackOne};
 `
 
-export const Icon = styled.i`
+export const Icon = styled(motion.i)`
     position: relative;
     width: 300px;
     height: 275px;
@@ -17,7 +18,7 @@ export const Icon = styled.i`
 
 `
 
-export const Typography = styled.h1`
+export const Typography = styled(motion.h1)`
     color: ${pallete.whiteOne};
     font-style: normal;
     font-weight: 00;
@@ -27,7 +28,7 @@ export const Typography = styled.h1`
     text-transform: uppercase;
 `
 
-export const BackPageLink = styled.div`
+export const BackPageLink = styled(motion.div)`
     display: flex;
     align-items: center;
     justify-content: center;

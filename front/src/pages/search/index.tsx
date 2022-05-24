@@ -22,7 +22,7 @@ import Router from "next/router";
 
 export type User = {
     _id: {
-        "$oid": string;
+        $oid: string;
     },
     name: string;
     city: string;

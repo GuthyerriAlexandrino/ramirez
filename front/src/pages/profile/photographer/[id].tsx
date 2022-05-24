@@ -88,7 +88,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     }).then(res => res.json());
 
     const user = {
-        id: data._id.$oid ?? null,
+        id: data._id ?? null,
         name: data.name ?? null,
         city: data.city ?? null,
         state: data.state ?? null,

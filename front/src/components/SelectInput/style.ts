@@ -10,7 +10,7 @@ export const Container = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 150px;
+    width: 180px;
     height: 30px;
     border-radius: 5px;
     background-color: ${pallete.blackFour};

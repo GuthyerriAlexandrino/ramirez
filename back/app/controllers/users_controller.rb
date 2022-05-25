@@ -4,9 +4,13 @@ class UsersController < ApplicationController
 
   # GET /users
   def index
+    get = request.GET
     filters = { photographer: true }
-    location = FiltersService.format_location(params[:location])
-    @users = User.only([:name, :email, :specialization, :city, :state]).any_of(*location).where(filters)
+    get.each_pair { |k, v| filters[k] = v unless k == :location }
+    location = FiltersService.format_location(get[:location])
+    @users = User.only([:name, :email, :specialization, :city, :state]).where(filters)
+    @users = @users.any_of(*location) unless location.empty?
+    puts @users
     render json: @users
   end
 

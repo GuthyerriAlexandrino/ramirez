@@ -5,7 +5,7 @@ module FiltersService
   end
   
   def FiltersService.format_location(location)
-    locate = [{ photographer: true }]
+    locate = []
     locate = [{ city: location }, { state: location }] unless location.nil? || location == ""
     locate
   end

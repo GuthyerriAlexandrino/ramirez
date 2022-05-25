@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   def index
     get = request.GET
     filters = { photographer: true }
-    get.each_pair { |k, v| filters[k] = v unless k == :location }
+    get.each_pair { |k, v| filters[k] = v unless k == :location || v == "" }
     location = FiltersService.format_location(get[:location])
     @users = User.only([:name, :email, :specialization, :city, :state]).where(filters)
     @users = @users.any_of(*location) unless location.empty?

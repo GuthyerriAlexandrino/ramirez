@@ -5,6 +5,6 @@ class Comment
   field :name, type: String
   field :content, type: String
   field :likes, type: Integer
-  belongs_to :post
-  has_many :answers
+  embedded_in :post
+  embeds_many :answers
 end

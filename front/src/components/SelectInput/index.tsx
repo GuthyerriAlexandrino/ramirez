@@ -5,6 +5,7 @@ import { useState } from "react";
 
 interface SelectInputProps {
     selectName: string;
+    children: React.ReactNode
 }
 
 const data = [
@@ -16,24 +17,19 @@ const data = [
     {id: 6, value: "Aérea"},
 ]
 
-export function SelectInput({selectName}: SelectInputProps) {
+export function SelectInput({selectName, children}: SelectInputProps) {
 
-    const [currentName, setCurrentName] = useState(selectName);
     const [isActive, setIsActive] = useState(false);
 
     return (
         <Container onClick={() => setIsActive(!isActive)}>
-            <small>{currentName}</small>
+            <small>{selectName.length > 16 ? `${selectName.substring(0, 14)}...` : selectName}</small>
             <Icon>
                 <Image src={Select} width={15} height={15}/>
             </Icon>
             <PopupContainer isActive={isActive}>
                 <PopupList isActive={isActive}>
-                    {data.map((item, id) => (
-                        <PopupItem key={id} onClick={() => setCurrentName(item.value)}>
-                            {item.value}
-                        </PopupItem>
-                    ))}
+                    {children}
                 </PopupList>
             </PopupContainer>
         </Container>

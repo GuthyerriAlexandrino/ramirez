@@ -12,6 +12,11 @@ class User
   field :specialization, type: String
   field :city, type: String
   field :state, type: String
+  field :services_price, type: Array, default: []
+  field :views, type: Integer, default: 0
+  field :bio, type: String, default: ""
+  field :profile_img, type: String, default: ""
   field :photographer, type: Boolean
   index({ email: 1 }, { unique: true })
+  has_many :posts
 end

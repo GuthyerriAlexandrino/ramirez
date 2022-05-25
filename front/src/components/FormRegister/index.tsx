@@ -77,8 +77,13 @@ export function FormRegister() {
         .then(response => response.json())
         .catch(error => error);
 
+        if (res.error === "E11000") {
+            notifyError("Falha no cadastro! Esse e-mail já está cadastrado");
+            return;
+        }
         if (res.error) {
-            notifyError("Falha no cadastro. Verifique os campos preenchidos");
+            notifyError("Falha no cadastro! Verifique os campos preenchidos");
+            return;
         } else {
             notifySuccess("Conta registrada!");
             Router.push("/conclusion")

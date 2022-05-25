@@ -3759,3 +3759,1051 @@ MONGODB | localhost:27017 req:399 | ramirez.find | SUCCEEDED | 0.001s
 Completed 200 OK in 13ms (Views: 7.3ms | MongoDB: 0.0ms | Allocations: 20437)
 
 
+Started GET "/users" for 127.0.0.1 at 2022-05-23 20:57:25 -0300
+Processing by UsersController#index as */*
+Filter chain halted as :authorize_request rendered or redirected
+Completed 401 Unauthorized in 166ms (Views: 0.2ms | MongoDB: 0.0ms | Allocations: 1152)
+
+
+Started GET "/users" for 127.0.0.1 at 2022-05-23 20:57:25 -0300
+Processing by UsersController#index as */*
+Filter chain halted as :authorize_request rendered or redirected
+Completed 401 Unauthorized in 0ms (Views: 0.2ms | MongoDB: 0.0ms | Allocations: 117)
+
+
+Started POST "/login" for 127.0.0.1 at 2022-05-23 21:03:31 -0300
+MONGODB | localhost:27017 req:488 conn:1:1 | ramirez.find | STARTED | {"find"=>"specializations", "filter"=>{}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x31040 type=uuid data=0x50ec41640ec1453b...>}}
+MONGODB | localhost:27017 req:488 | ramirez.find | SUCCEEDED | 0.001s
+Processing by RegistrationController#login as */*
+  Parameters: {"user"=>{"email"=>"daniel@balasar.com.br", "password"=>"[FILTERED]"}, "registration"=>{"user"=>{"email"=>"daniel@balasar.com.br", "password"=>"[FILTERED]"}}}
+MONGODB | localhost:27017 req:489 conn:1:1 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"email"=>"daniel@balasar.com.br"}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x31040 type=uuid data=0x50ec41640ec1453b...>}}
+MONGODB | localhost:27017 req:489 | ramirez.find | SUCCEEDED | 0.001s
+Completed 200 OK in 292ms (Views: 0.5ms | MongoDB: 0.0ms | Allocations: 1319)
+
+
+Started GET "/users" for 127.0.0.1 at 2022-05-23 21:03:33 -0300
+Started GET "/users" for 127.0.0.1 at 2022-05-23 21:03:33 -0300
+Processing by UsersController#index as */*
+MONGODB | localhost:27017 req:491 conn:1:1 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"_id"=>BSON::ObjectId('628c1c0ebf3f860d474af3f0')}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x31040 type=uuid data=0x50ec41640ec1453b...>}}
+Processing by UsersController#index as */*
+MONGODB | localhost:27017 req:491 | ramirez.find | SUCCEEDED | 0.051s
+MONGODB | localhost:27017 req:492 conn:1:1 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"photographer"=>false}, "projection"=>{"_id"=>1, "name"=>1, "email"=>1}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x31040 type=uuid data=0x50ec41640ec1453b...>}}
+MONGODB | localhost:27017 req:492 | ramirez.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:494 conn:1:1 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"photographer"=>true}, "projection"=>{"_id"=>1, "name"=>1, "email"=>1, "specialization"=>1, "city"=>1, "state"=>1}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x31040 type=uuid data=0x50ec41640ec1453b...>}}
+MONGODB | localhost:27017 req:494 | ramirez.find | SUCCEEDED | 0.001s
+Completed 200 OK in 79ms (Views: 8.7ms | MongoDB: 0.1ms | Allocations: 22477)
+
+
+MONGODB | localhost:27017 req:495 conn:1:2 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"_id"=>BSON::ObjectId('628c1c0ebf3f860d474af3f0')}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x109940 type=uuid data=0x86f0cc64c19443f0...>}}
+MONGODB | localhost:27017 req:495 | ramirez.find | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:496 conn:1:2 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"photographer"=>false}, "projection"=>{"_id"=>1, "name"=>1, "email"=>1}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x109940 type=uuid data=0x86f0cc64c19443f0...>}}
+MONGODB | localhost:27017 req:496 | ramirez.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:497 conn:1:2 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"photographer"=>true}, "projection"=>{"_id"=>1, "name"=>1, "email"=>1, "specialization"=>1, "city"=>1, "state"=>1}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x109940 type=uuid data=0x86f0cc64c19443f0...>}}
+MONGODB | localhost:27017 req:497 | ramirez.find | SUCCEEDED | 0.003s
+Completed 200 OK in 114ms (Views: 8.0ms | MongoDB: 0.0ms | Allocations: 42527)
+
+
+Started POST "/login" for 127.0.0.1 at 2022-05-23 21:04:55 -0300
+Processing by RegistrationController#login as */*
+  Parameters: {"user"=>{"email"=>"daniel@balasar.com.br", "password"=>"[FILTERED]"}, "registration"=>{"user"=>{"email"=>"daniel@balasar.com.br", "password"=>"[FILTERED]"}}}
+MONGODB | localhost:27017 req:506 conn:1:2 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"email"=>"daniel@balasar.com.br"}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x109940 type=uuid data=0x86f0cc64c19443f0...>}}
+MONGODB | localhost:27017 req:506 | ramirez.find | SUCCEEDED | 0.000s
+Completed 200 OK in 201ms (Views: 0.2ms | MongoDB: 0.0ms | Allocations: 915)
+
+
+Started GET "/users" for 127.0.0.1 at 2022-05-23 21:04:56 -0300
+Processing by UsersController#index as */*
+MONGODB | localhost:27017 req:507 conn:1:2 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"_id"=>BSON::ObjectId('628c1c0ebf3f860d474af3f0')}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x109940 type=uuid data=0x86f0cc64c19443f0...>}}
+MONGODB | localhost:27017 req:507 | ramirez.find | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:508 conn:1:2 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"photographer"=>false}, "projection"=>{"_id"=>1, "name"=>1, "email"=>1}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x109940 type=uuid data=0x86f0cc64c19443f0...>}}
+MONGODB | localhost:27017 req:508 | ramirez.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:509 conn:1:2 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"photographer"=>true}, "projection"=>{"_id"=>1, "name"=>1, "email"=>1, "specialization"=>1, "city"=>1, "state"=>1}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x109940 type=uuid data=0x86f0cc64c19443f0...>}}
+MONGODB | localhost:27017 req:509 | ramirez.find | SUCCEEDED | 0.001s
+Completed 200 OK in 17ms (Views: 7.5ms | MongoDB: 0.0ms | Allocations: 21252)
+
+
+Started GET "/users" for 127.0.0.1 at 2022-05-23 21:04:56 -0300
+Processing by UsersController#index as */*
+MONGODB | localhost:27017 req:510 conn:1:2 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"_id"=>BSON::ObjectId('628c1c0ebf3f860d474af3f0')}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x109940 type=uuid data=0x86f0cc64c19443f0...>}}
+MONGODB | localhost:27017 req:510 | ramirez.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:511 conn:1:2 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"photographer"=>false}, "projection"=>{"_id"=>1, "name"=>1, "email"=>1}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x109940 type=uuid data=0x86f0cc64c19443f0...>}}
+MONGODB | localhost:27017 req:511 | ramirez.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:512 conn:1:2 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"photographer"=>true}, "projection"=>{"_id"=>1, "name"=>1, "email"=>1, "specialization"=>1, "city"=>1, "state"=>1}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x109940 type=uuid data=0x86f0cc64c19443f0...>}}
+MONGODB | localhost:27017 req:512 | ramirez.find | SUCCEEDED | 0.001s
+Completed 200 OK in 26ms (Views: 9.0ms | MongoDB: 0.0ms | Allocations: 21193)
+
+
+Started POST "/login" for 127.0.0.1 at 2022-05-23 21:20:30 -0300
+Processing by RegistrationController#login as */*
+  Parameters: {"user"=>{"email"=>"daniel@balasar.com.br", "password"=>"[FILTERED]"}, "registration"=>{"user"=>{"email"=>"daniel@balasar.com.br", "password"=>"[FILTERED]"}}}
+MONGODB | localhost:27017 req:606 conn:1:2 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"email"=>"daniel@balasar.com.br"}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x109940 type=uuid data=0x86f0cc64c19443f0...>}}
+MONGODB | localhost:27017 req:606 | ramirez.find | SUCCEEDED | 0.001s
+Completed 200 OK in 198ms (Views: 0.2ms | MongoDB: 0.0ms | Allocations: 925)
+
+
+Started GET "/users" for 127.0.0.1 at 2022-05-23 21:20:31 -0300
+Processing by UsersController#index as */*
+MONGODB | localhost:27017 req:607 conn:1:2 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"_id"=>BSON::ObjectId('628c1c0ebf3f860d474af3f0')}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x109940 type=uuid data=0x86f0cc64c19443f0...>}}
+MONGODB | localhost:27017 req:607 | ramirez.find | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:608 conn:1:2 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"photographer"=>false}, "projection"=>{"_id"=>1, "name"=>1, "email"=>1}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x109940 type=uuid data=0x86f0cc64c19443f0...>}}
+MONGODB | localhost:27017 req:608 | ramirez.find | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:609 conn:1:2 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"photographer"=>true}, "projection"=>{"_id"=>1, "name"=>1, "email"=>1, "specialization"=>1, "city"=>1, "state"=>1}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x109940 type=uuid data=0x86f0cc64c19443f0...>}}
+MONGODB | localhost:27017 req:609 | ramirez.find | SUCCEEDED | 0.001s
+Completed 200 OK in 14ms (Views: 7.1ms | MongoDB: 0.0ms | Allocations: 21230)
+
+
+Started GET "/users" for 127.0.0.1 at 2022-05-23 21:20:31 -0300
+Processing by UsersController#index as */*
+MONGODB | localhost:27017 req:610 conn:1:2 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"_id"=>BSON::ObjectId('628c1c0ebf3f860d474af3f0')}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x109940 type=uuid data=0x86f0cc64c19443f0...>}}
+MONGODB | localhost:27017 req:610 | ramirez.find | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:611 conn:1:2 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"photographer"=>false}, "projection"=>{"_id"=>1, "name"=>1, "email"=>1}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x109940 type=uuid data=0x86f0cc64c19443f0...>}}
+MONGODB | localhost:27017 req:611 | ramirez.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:612 conn:1:2 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"photographer"=>true}, "projection"=>{"_id"=>1, "name"=>1, "email"=>1, "specialization"=>1, "city"=>1, "state"=>1}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x109940 type=uuid data=0x86f0cc64c19443f0...>}}
+MONGODB | localhost:27017 req:612 | ramirez.find | SUCCEEDED | 0.001s
+Completed 200 OK in 18ms (Views: 8.7ms | MongoDB: 0.0ms | Allocations: 21217)
+
+
+Started GET "/users/628c19e5bf3f862da89a50c9" for 127.0.0.1 at 2022-05-23 21:27:46 -0300
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"628c19e5bf3f862da89a50c9"}
+MONGODB | localhost:27017 req:657 conn:1:2 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"_id"=>BSON::ObjectId('628c1c0ebf3f860d474af3f0')}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x109940 type=uuid data=0x86f0cc64c19443f0...>}}
+MONGODB | localhost:27017 req:657 | ramirez.find | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:658 conn:1:2 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"photographer"=>false, "_id"=>BSON::ObjectId('628c19e5bf3f862da89a50c9')}, "limit"=>1, "projection"=>{"_id"=>1, "name"=>1, "email"=>1}, "sort"=>{"_id"=>1}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x109940 type=uuid ...
+MONGODB | localhost:27017 req:658 | ramirez.find | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:659 conn:1:2 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"photographer"=>true, "_id"=>BSON::ObjectId('628c19e5bf3f862da89a50c9')}, "limit"=>1, "projection"=>{"_id"=>1, "name"=>1, "email"=>1, "specialization"=>1, "city"=>1, "state"=>1}, "sort"=>{"_id"=>1}, "$db"=>"ramirez", "lsid...
+MONGODB | localhost:27017 req:659 | ramirez.find | SUCCEEDED | 0.001s
+Completed 200 OK in 410ms (Views: 0.6ms | MongoDB: 0.0ms | Allocations: 2780)
+
+
+Started POST "/login" for 127.0.0.1 at 2022-05-23 21:28:03 -0300
+Processing by RegistrationController#login as */*
+  Parameters: {"user"=>{"email"=>"daniel@balasar.com.br", "password"=>"[FILTERED]"}, "registration"=>{"user"=>{"email"=>"daniel@balasar.com.br", "password"=>"[FILTERED]"}}}
+MONGODB | localhost:27017 req:662 conn:1:2 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"email"=>"daniel@balasar.com.br"}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x109940 type=uuid data=0x86f0cc64c19443f0...>}}
+MONGODB | localhost:27017 req:662 | ramirez.find | SUCCEEDED | 0.000s
+Completed 200 OK in 247ms (Views: 0.2ms | MongoDB: 0.0ms | Allocations: 912)
+
+
+Started GET "/users" for 127.0.0.1 at 2022-05-23 21:28:04 -0300
+Processing by UsersController#index as */*
+MONGODB | localhost:27017 req:663 conn:1:2 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"_id"=>BSON::ObjectId('628c1c0ebf3f860d474af3f0')}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x109940 type=uuid data=0x86f0cc64c19443f0...>}}
+MONGODB | localhost:27017 req:663 | ramirez.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:664 conn:1:2 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"photographer"=>false}, "projection"=>{"_id"=>1, "name"=>1, "email"=>1}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x109940 type=uuid data=0x86f0cc64c19443f0...>}}
+MONGODB | localhost:27017 req:664 | ramirez.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:665 conn:1:2 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"photographer"=>true}, "projection"=>{"_id"=>1, "name"=>1, "email"=>1, "specialization"=>1, "city"=>1, "state"=>1}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x109940 type=uuid data=0x86f0cc64c19443f0...>}}
+MONGODB | localhost:27017 req:665 | ramirez.find | SUCCEEDED | 0.001s
+Completed 200 OK in 37ms (Views: 16.3ms | MongoDB: 0.0ms | Allocations: 21217)
+
+
+Started GET "/users" for 127.0.0.1 at 2022-05-23 21:28:04 -0300
+Processing by UsersController#index as */*
+MONGODB | localhost:27017 req:666 conn:1:2 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"_id"=>BSON::ObjectId('628c1c0ebf3f860d474af3f0')}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x109940 type=uuid data=0x86f0cc64c19443f0...>}}
+MONGODB | localhost:27017 req:666 | ramirez.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:667 conn:1:2 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"photographer"=>false}, "projection"=>{"_id"=>1, "name"=>1, "email"=>1}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x109940 type=uuid data=0x86f0cc64c19443f0...>}}
+MONGODB | localhost:27017 req:667 | ramirez.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:668 conn:1:2 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"photographer"=>true}, "projection"=>{"_id"=>1, "name"=>1, "email"=>1, "specialization"=>1, "city"=>1, "state"=>1}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x109940 type=uuid data=0x86f0cc64c19443f0...>}}
+MONGODB | localhost:27017 req:668 | ramirez.find | SUCCEEDED | 0.001s
+Completed 200 OK in 20ms (Views: 8.8ms | MongoDB: 0.0ms | Allocations: 21217)
+
+
+Started GET "/users/628c19e2bf3f862da89a50bc" for 127.0.0.1 at 2022-05-23 21:28:15 -0300
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"628c19e2bf3f862da89a50bc"}
+MONGODB | localhost:27017 req:670 conn:1:2 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"_id"=>BSON::ObjectId('628c1c0ebf3f860d474af3f0')}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x109940 type=uuid data=0x86f0cc64c19443f0...>}}
+MONGODB | localhost:27017 req:670 | ramirez.find | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:671 conn:1:2 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"photographer"=>false, "_id"=>BSON::ObjectId('628c19e2bf3f862da89a50bc')}, "limit"=>1, "projection"=>{"_id"=>1, "name"=>1, "email"=>1}, "sort"=>{"_id"=>1}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x109940 type=uuid ...
+MONGODB | localhost:27017 req:671 | ramirez.find | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:672 conn:1:2 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"photographer"=>true, "_id"=>BSON::ObjectId('628c19e2bf3f862da89a50bc')}, "limit"=>1, "projection"=>{"_id"=>1, "name"=>1, "email"=>1, "specialization"=>1, "city"=>1, "state"=>1}, "sort"=>{"_id"=>1}, "$db"=>"ramirez", "lsid...
+MONGODB | localhost:27017 req:672 | ramirez.find | SUCCEEDED | 0.001s
+Completed 200 OK in 8ms (Views: 0.4ms | MongoDB: 0.0ms | Allocations: 2748)
+
+
+Started GET "/users/628c19e2bf3f862da89a50bc" for 127.0.0.1 at 2022-05-23 21:28:15 -0300
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"628c19e2bf3f862da89a50bc"}
+MONGODB | localhost:27017 req:673 conn:1:2 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"_id"=>BSON::ObjectId('628c1c0ebf3f860d474af3f0')}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x109940 type=uuid data=0x86f0cc64c19443f0...>}}
+MONGODB | localhost:27017 req:673 | ramirez.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:674 conn:1:2 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"photographer"=>false, "_id"=>BSON::ObjectId('628c19e2bf3f862da89a50bc')}, "limit"=>1, "projection"=>{"_id"=>1, "name"=>1, "email"=>1}, "sort"=>{"_id"=>1}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x109940 type=uuid ...
+MONGODB | localhost:27017 req:674 | ramirez.find | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:675 conn:1:2 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"photographer"=>true, "_id"=>BSON::ObjectId('628c19e2bf3f862da89a50bc')}, "limit"=>1, "projection"=>{"_id"=>1, "name"=>1, "email"=>1, "specialization"=>1, "city"=>1, "state"=>1}, "sort"=>{"_id"=>1}, "$db"=>"ramirez", "lsid...
+MONGODB | localhost:27017 req:675 | ramirez.find | SUCCEEDED | 0.001s
+Completed 200 OK in 12ms (Views: 0.5ms | MongoDB: 0.0ms | Allocations: 2784)
+
+
+Started GET "/users/628c19e2bf3f862da89a50bc" for 127.0.0.1 at 2022-05-23 21:28:59 -0300
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"628c19e2bf3f862da89a50bc"}
+MONGODB | localhost:27017 req:680 conn:1:2 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"_id"=>BSON::ObjectId('628c1c0ebf3f860d474af3f0')}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x109940 type=uuid data=0x86f0cc64c19443f0...>}}
+MONGODB | localhost:27017 req:680 | ramirez.find | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:681 conn:1:2 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"photographer"=>false, "_id"=>BSON::ObjectId('628c19e2bf3f862da89a50bc')}, "limit"=>1, "projection"=>{"name"=>1, "email"=>1, "_id"=>1}, "sort"=>{"_id"=>1}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x109940 type=uuid ...
+MONGODB | localhost:27017 req:681 | ramirez.find | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:682 conn:1:2 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"photographer"=>true, "_id"=>BSON::ObjectId('628c19e2bf3f862da89a50bc')}, "limit"=>1, "projection"=>{"name"=>1, "email"=>1, "_id"=>1, "specialization"=>1, "city"=>1, "state"=>1}, "sort"=>{"_id"=>1}, "$db"=>"ramirez", "lsid...
+MONGODB | localhost:27017 req:682 | ramirez.find | SUCCEEDED | 0.000s
+Completed 200 OK in 30ms (Views: 0.7ms | MongoDB: 0.0ms | Allocations: 9314)
+
+
+Started GET "/users/628c19e2bf3f862da89a50bc" for 127.0.0.1 at 2022-05-23 21:29:39 -0300
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"628c19e2bf3f862da89a50bc"}
+MONGODB | localhost:27017 req:687 conn:1:2 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"_id"=>BSON::ObjectId('628c1c0ebf3f860d474af3f0')}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x109940 type=uuid data=0x86f0cc64c19443f0...>}}
+MONGODB | localhost:27017 req:687 | ramirez.find | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:688 conn:1:2 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"photographer"=>false, "_id"=>BSON::ObjectId('628c19e2bf3f862da89a50bc')}, "limit"=>1, "projection"=>{"name"=>1, "email"=>1, "_id"=>1}, "sort"=>{"_id"=>1}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x109940 type=uuid ...
+MONGODB | localhost:27017 req:688 | ramirez.find | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:689 conn:1:2 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"photographer"=>true, "_id"=>BSON::ObjectId('628c19e2bf3f862da89a50bc')}, "limit"=>1, "projection"=>{"name"=>1, "email"=>1, "_id"=>1, "specialization"=>1, "city"=>1, "state"=>1}, "sort"=>{"_id"=>1}, "$db"=>"ramirez", "lsid...
+MONGODB | localhost:27017 req:689 | ramirez.find | SUCCEEDED | 0.001s
+Completed 200 OK in 31ms (Views: 0.7ms | MongoDB: 0.0ms | Allocations: 9323)
+
+
+Started POST "/login" for 127.0.0.1 at 2022-05-23 21:30:00 -0300
+MONGODB | localhost:27017 req:692 conn:1:2 | ramirez.find | STARTED | {"find"=>"specializations", "filter"=>{}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x109940 type=uuid data=0x86f0cc64c19443f0...>}}
+MONGODB | localhost:27017 req:692 | ramirez.find | SUCCEEDED | 0.001s
+Processing by RegistrationController#login as */*
+  Parameters: {"user"=>{"email"=>"daniel@balasar.com.br", "password"=>"[FILTERED]"}, "registration"=>{"user"=>{"email"=>"daniel@balasar.com.br", "password"=>"[FILTERED]"}}}
+MONGODB | localhost:27017 req:693 conn:1:2 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"email"=>"daniel@balasar.com.br"}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x109940 type=uuid data=0x86f0cc64c19443f0...>}}
+MONGODB | localhost:27017 req:693 | ramirez.find | SUCCEEDED | 0.000s
+Completed 200 OK in 227ms (Views: 0.2ms | MongoDB: 0.0ms | Allocations: 1317)
+
+
+Started GET "/users" for 127.0.0.1 at 2022-05-23 21:30:01 -0300
+Processing by UsersController#index as */*
+MONGODB | localhost:27017 req:694 conn:1:2 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"_id"=>BSON::ObjectId('628c1c0ebf3f860d474af3f0')}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x109940 type=uuid data=0x86f0cc64c19443f0...>}}
+MONGODB | localhost:27017 req:694 | ramirez.find | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:695 conn:1:2 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"photographer"=>false}, "projection"=>{"_id"=>1, "name"=>1, "email"=>1}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x109940 type=uuid data=0x86f0cc64c19443f0...>}}
+MONGODB | localhost:27017 req:695 | ramirez.find | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:696 conn:1:2 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"photographer"=>true}, "projection"=>{"_id"=>1, "name"=>1, "email"=>1, "specialization"=>1, "city"=>1, "state"=>1}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x109940 type=uuid data=0x86f0cc64c19443f0...>}}
+MONGODB | localhost:27017 req:696 | ramirez.find | SUCCEEDED | 0.000s
+Completed 200 OK in 13ms (Views: 6.9ms | MongoDB: 0.0ms | Allocations: 21250)
+
+
+Started GET "/users" for 127.0.0.1 at 2022-05-23 21:30:01 -0300
+Processing by UsersController#index as */*
+MONGODB | localhost:27017 req:697 conn:1:2 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"_id"=>BSON::ObjectId('628c1c0ebf3f860d474af3f0')}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x109940 type=uuid data=0x86f0cc64c19443f0...>}}
+MONGODB | localhost:27017 req:697 | ramirez.find | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:698 conn:1:2 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"photographer"=>false}, "projection"=>{"_id"=>1, "name"=>1, "email"=>1}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x109940 type=uuid data=0x86f0cc64c19443f0...>}}
+MONGODB | localhost:27017 req:698 | ramirez.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:699 conn:1:2 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"photographer"=>true}, "projection"=>{"_id"=>1, "name"=>1, "email"=>1, "specialization"=>1, "city"=>1, "state"=>1}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x109940 type=uuid data=0x86f0cc64c19443f0...>}}
+MONGODB | localhost:27017 req:699 | ramirez.find | SUCCEEDED | 0.001s
+Completed 200 OK in 29ms (Views: 19.6ms | MongoDB: 0.0ms | Allocations: 21193)
+
+
+Started GET "/users/628c19e2bf3f862da89a50bd" for 127.0.0.1 at 2022-05-23 21:30:22 -0300
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"628c19e2bf3f862da89a50bd"}
+MONGODB | localhost:27017 req:702 conn:1:2 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"_id"=>BSON::ObjectId('628c1c0ebf3f860d474af3f0')}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x109940 type=uuid data=0x86f0cc64c19443f0...>}}
+MONGODB | localhost:27017 req:702 | ramirez.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:703 conn:1:2 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"photographer"=>false, "_id"=>BSON::ObjectId('628c19e2bf3f862da89a50bd')}, "limit"=>1, "projection"=>{"name"=>1, "email"=>1, "_id"=>1}, "sort"=>{"_id"=>1}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x109940 type=uuid ...
+MONGODB | localhost:27017 req:703 | ramirez.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:704 conn:1:2 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"photographer"=>true, "_id"=>BSON::ObjectId('628c19e2bf3f862da89a50bd')}, "limit"=>1, "projection"=>{"name"=>1, "email"=>1, "_id"=>1, "specialization"=>1, "city"=>1, "state"=>1}, "sort"=>{"_id"=>1}, "$db"=>"ramirez", "lsid...
+MONGODB | localhost:27017 req:704 | ramirez.find | SUCCEEDED | 0.000s
+Completed 200 OK in 11ms (Views: 0.4ms | MongoDB: 0.0ms | Allocations: 2759)
+
+
+Started GET "/users/628c19e2bf3f862da89a50bd" for 127.0.0.1 at 2022-05-23 21:30:22 -0300
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"628c19e2bf3f862da89a50bd"}
+MONGODB | localhost:27017 req:705 conn:1:2 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"_id"=>BSON::ObjectId('628c1c0ebf3f860d474af3f0')}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x109940 type=uuid data=0x86f0cc64c19443f0...>}}
+MONGODB | localhost:27017 req:705 | ramirez.find | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:706 conn:1:2 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"photographer"=>false, "_id"=>BSON::ObjectId('628c19e2bf3f862da89a50bd')}, "limit"=>1, "projection"=>{"name"=>1, "email"=>1, "_id"=>1}, "sort"=>{"_id"=>1}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x109940 type=uuid ...
+MONGODB | localhost:27017 req:706 | ramirez.find | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:707 conn:1:2 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"photographer"=>true, "_id"=>BSON::ObjectId('628c19e2bf3f862da89a50bd')}, "limit"=>1, "projection"=>{"name"=>1, "email"=>1, "_id"=>1, "specialization"=>1, "city"=>1, "state"=>1}, "sort"=>{"_id"=>1}, "$db"=>"ramirez", "lsid...
+MONGODB | localhost:27017 req:707 | ramirez.find | SUCCEEDED | 0.001s
+Completed 200 OK in 10ms (Views: 0.6ms | MongoDB: 0.0ms | Allocations: 2764)
+
+
+Started POST "/login" for 127.0.0.1 at 2022-05-23 21:30:45 -0300
+MONGODB | localhost:27017 req:711 conn:1:2 | ramirez.find | STARTED | {"find"=>"specializations", "filter"=>{}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x109940 type=uuid data=0x86f0cc64c19443f0...>}}
+MONGODB | localhost:27017 req:711 | ramirez.find | SUCCEEDED | 0.001s
+Processing by RegistrationController#login as */*
+  Parameters: {"user"=>{"email"=>"daniel@balasar.com.br", "password"=>"[FILTERED]"}, "registration"=>{"user"=>{"email"=>"daniel@balasar.com.br", "password"=>"[FILTERED]"}}}
+MONGODB | localhost:27017 req:712 conn:1:2 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"email"=>"daniel@balasar.com.br"}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x109940 type=uuid data=0x86f0cc64c19443f0...>}}
+MONGODB | localhost:27017 req:712 | ramirez.find | SUCCEEDED | 0.001s
+Completed 200 OK in 226ms (Views: 0.2ms | MongoDB: 0.0ms | Allocations: 7354)
+
+
+Started GET "/users" for 127.0.0.1 at 2022-05-23 21:30:46 -0300
+Started GET "/users" for 127.0.0.1 at 2022-05-23 21:30:46 -0300
+Processing by UsersController#index as */*
+MONGODB | localhost:27017 req:713 conn:1:2 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"_id"=>BSON::ObjectId('628c1c0ebf3f860d474af3f0')}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x109940 type=uuid data=0x86f0cc64c19443f0...>}}
+MONGODB | localhost:27017 req:713 | ramirez.find | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:714 conn:1:2 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"photographer"=>false}, "projection"=>{"_id"=>1, "name"=>1, "email"=>1}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x109940 type=uuid data=0x86f0cc64c19443f0...>}}
+MONGODB | localhost:27017 req:714 | ramirez.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:715 conn:1:2 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"photographer"=>true}, "projection"=>{"_id"=>1, "name"=>1, "email"=>1, "specialization"=>1, "city"=>1, "state"=>1}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x109940 type=uuid data=0x86f0cc64c19443f0...>}}
+MONGODB | localhost:27017 req:715 | ramirez.find | SUCCEEDED | 0.000s
+Processing by UsersController#index as */*
+Completed 200 OK in 26ms (Views: 7.9ms | MongoDB: 0.0ms | Allocations: 22241)
+
+
+MONGODB | localhost:27017 req:716 conn:1:2 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"_id"=>BSON::ObjectId('628c1c0ebf3f860d474af3f0')}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x109940 type=uuid data=0x86f0cc64c19443f0...>}}
+MONGODB | localhost:27017 req:716 | ramirez.find | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:717 conn:1:2 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"photographer"=>false}, "projection"=>{"_id"=>1, "name"=>1, "email"=>1}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x109940 type=uuid data=0x86f0cc64c19443f0...>}}
+MONGODB | localhost:27017 req:717 | ramirez.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:718 conn:1:2 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"photographer"=>true}, "projection"=>{"_id"=>1, "name"=>1, "email"=>1, "specialization"=>1, "city"=>1, "state"=>1}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x109940 type=uuid data=0x86f0cc64c19443f0...>}}
+MONGODB | localhost:27017 req:718 | ramirez.find | SUCCEEDED | 0.001s
+Completed 200 OK in 41ms (Views: 22.4ms | MongoDB: 0.0ms | Allocations: 21564)
+
+
+Started GET "/users/628c19e2bf3f862da89a50bc" for 127.0.0.1 at 2022-05-23 21:30:50 -0300
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"628c19e2bf3f862da89a50bc"}
+MONGODB | localhost:27017 req:719 conn:1:2 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"_id"=>BSON::ObjectId('628c1c0ebf3f860d474af3f0')}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x109940 type=uuid data=0x86f0cc64c19443f0...>}}
+MONGODB | localhost:27017 req:719 | ramirez.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:720 conn:1:2 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"photographer"=>false, "_id"=>BSON::ObjectId('628c19e2bf3f862da89a50bc')}, "limit"=>1, "projection"=>{"name"=>1, "email"=>1, "_id"=>1}, "sort"=>{"_id"=>1}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x109940 type=uuid ...
+MONGODB | localhost:27017 req:720 | ramirez.find | SUCCEEDED | 0.005s
+MONGODB | localhost:27017 req:721 conn:1:2 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"photographer"=>true, "_id"=>BSON::ObjectId('628c19e2bf3f862da89a50bc')}, "limit"=>1, "projection"=>{"name"=>1, "email"=>1, "_id"=>1, "specialization"=>1, "city"=>1, "state"=>1}, "sort"=>{"_id"=>1}, "$db"=>"ramirez", "lsid...
+MONGODB | localhost:27017 req:721 | ramirez.find | SUCCEEDED | 0.000s
+Completed 200 OK in 18ms (Views: 0.3ms | MongoDB: 0.0ms | Allocations: 2811)
+
+
+Started GET "/users/628c19e2bf3f862da89a50bc" for 127.0.0.1 at 2022-05-23 21:30:50 -0300
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"628c19e2bf3f862da89a50bc"}
+MONGODB | localhost:27017 req:722 conn:1:2 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"_id"=>BSON::ObjectId('628c1c0ebf3f860d474af3f0')}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x109940 type=uuid data=0x86f0cc64c19443f0...>}}
+MONGODB | localhost:27017 req:722 | ramirez.find | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:723 conn:1:2 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"photographer"=>false, "_id"=>BSON::ObjectId('628c19e2bf3f862da89a50bc')}, "limit"=>1, "projection"=>{"name"=>1, "email"=>1, "_id"=>1}, "sort"=>{"_id"=>1}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x109940 type=uuid ...
+MONGODB | localhost:27017 req:723 | ramirez.find | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:724 conn:1:2 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"photographer"=>true, "_id"=>BSON::ObjectId('628c19e2bf3f862da89a50bc')}, "limit"=>1, "projection"=>{"name"=>1, "email"=>1, "_id"=>1, "specialization"=>1, "city"=>1, "state"=>1}, "sort"=>{"_id"=>1}, "$db"=>"ramirez", "lsid...
+MONGODB | localhost:27017 req:724 | ramirez.find | SUCCEEDED | 0.000s
+Completed 200 OK in 7ms (Views: 0.4ms | MongoDB: 0.0ms | Allocations: 2784)
+
+
+Started GET "/users/628c19e2bf3f862da89a50bc" for 127.0.0.1 at 2022-05-23 21:34:13 -0300
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"628c19e2bf3f862da89a50bc"}
+MONGODB | localhost:27017 req:746 conn:1:2 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"_id"=>BSON::ObjectId('628c1c0ebf3f860d474af3f0')}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x109940 type=uuid data=0x86f0cc64c19443f0...>}}
+MONGODB | localhost:27017 req:746 | ramirez.find | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:747 conn:1:2 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"photographer"=>false, "_id"=>BSON::ObjectId('628c19e2bf3f862da89a50bc')}, "limit"=>1, "projection"=>{"name"=>1, "email"=>1, "_id"=>1}, "sort"=>{"_id"=>1}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x109940 type=uuid ...
+MONGODB | localhost:27017 req:747 | ramirez.find | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:748 conn:1:2 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"photographer"=>true, "_id"=>BSON::ObjectId('628c19e2bf3f862da89a50bc')}, "limit"=>1, "projection"=>{"name"=>1, "email"=>1, "_id"=>1, "specialization"=>1, "city"=>1, "state"=>1}, "sort"=>{"_id"=>1}, "$db"=>"ramirez", "lsid...
+MONGODB | localhost:27017 req:748 | ramirez.find | SUCCEEDED | 0.000s
+Completed 200 OK in 7ms (Views: 0.3ms | MongoDB: 0.0ms | Allocations: 2803)
+
+
+Started GET "/users?specialization=Forense" for ::1 at 2022-05-24 19:19:30 -0300
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{"city"=>"West Brianneville", "email"=>"daniel@balasar.com.br", "name"=>"Daniel Lima", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "specialization"=>"Publicidade", "state"=>"Arkansas", "photographer"=>true}, "specialization"=>"Forense"}
+MONGODB | Topology type 'unknown' initializing.
+MONGODB | There was a change in the members of the 'Unknown' topology.
+MONGODB | Server localhost:27017 initializing.
+MONGODB | Waiting for up to 30.00 seconds for servers to be scanned: #<Cluster topology=Unknown[localhost:27017] servers=[#<Server address=localhost:27017 UNKNOWN>]>
+MONGODB | Waiting for up to 29.00 seconds for servers to be scanned: #<Cluster topology=Unknown[localhost:27017] servers=[#<Server address=localhost:27017 UNKNOWN>]>
+MONGODB | Server description for localhost:27017 changed from 'unknown' to 'standalone'.
+MONGODB | Topology type 'Unknown' changed to type 'Single'.
+MONGODB | localhost:27017 req:5 conn:1:1 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"photographer"=>true}, "projection"=>{"_id"=>1, "name"=>1, "email"=>1, "specialization"=>1, "city"=>1, "state"=>1}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x9680 type=uuid data=0xa29a7e7009f84a06...>}}
+MONGODB | localhost:27017 req:5 | ramirez.find | SUCCEEDED | 0.151s
+Completed 200 OK in 1408ms (Views: 1375.5ms | MongoDB: 0.2ms | Allocations: 18474)
+
+
+Started GET "/users?specialization=Forense" for ::1 at 2022-05-24 19:25:02 -0300
+  
+SyntaxError (/home/guthyerri/Desenvolvimento/Ruby/ramirez/back/app/controllers/users_controller.rb:9: syntax error, unexpected ')', expecting =>
+...hotographer: true, request.GET)
+...                              ^
+):
+  
+app/controllers/users_controller.rb:9: syntax error, unexpected ')', expecting =>
+app/controllers/users_controller.rb:9: syntax error, unexpected ')', expecting =>
+Started GET "/users?specialization=Forense" for ::1 at 2022-05-24 19:25:50 -0300
+  
+SyntaxError (/home/guthyerri/Desenvolvimento/Ruby/ramirez/back/app/controllers/users_controller.rb:10: syntax error, unexpected ')', expecting =>
+...re(photographer: true, filters)
+...                              ^
+):
+  
+app/controllers/users_controller.rb:10: syntax error, unexpected ')', expecting =>
+app/controllers/users_controller.rb:10: syntax error, unexpected ')', expecting =>
+Started GET "/users?specialization=Forense" for ::1 at 2022-05-24 19:29:00 -0300
+  
+SyntaxError (/home/guthyerri/Desenvolvimento/Ruby/ramirez/back/app/controllers/users_controller.rb:7: syntax error, unexpected ':', expecting `end'
+    filters = photographer: true
+                          ^
+):
+  
+app/controllers/users_controller.rb:7: syntax error, unexpected ':', expecting `end'
+app/controllers/users_controller.rb:7: syntax error, unexpected ':', expecting `end'
+Started GET "/users?specialization=Forense" for ::1 at 2022-05-24 19:29:16 -0300
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{"city"=>"West Brianneville", "email"=>"daniel@balasar.com.br", "name"=>"Daniel Lima", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "specialization"=>"Publicidade", "state"=>"Arkansas", "photographer"=>true}, "specialization"=>"Forense"}
+MONGODB | localhost:27017 req:64 conn:1:1 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"photographer"=>true, "specialization"=>"Forense"}, "projection"=>{"_id"=>1, "name"=>1, "email"=>1, "specialization"=>1, "city"=>1, "state"=>1}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x9680 type=uuid data=0xa29a7e...
+MONGODB | localhost:27017 req:64 | ramirez.find | SUCCEEDED | 0.000s
+Completed 200 OK in 4ms (Views: 3.4ms | MongoDB: 0.0ms | Allocations: 2666)
+
+
+Started GET "/users?users?&name=Guthyerri&specialization=Forense&orderby=visualizacoes&min_price=20&max_price=50&location=Quixada" for ::1 at 2022-05-24 19:29:36 -0300
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{"city"=>"West Brianneville", "email"=>"daniel@balasar.com.br", "name"=>"Daniel Lima", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "specialization"=>"Publicidade", "state"=>"Arkansas", "photographer"=>true}, "users?"=>nil, "name"=>"Guthyerri", "specialization"=>"Forense", "orderby"=>"visualizacoes", "min_price"=>"20", "max_price"=>"50", "location"=>"Quixada"}
+MONGODB | localhost:27017 req:67 conn:1:1 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"photographer"=>true, "users?"=>nil, "name"=>"Guthyerri", "specialization"=>"Forense", "orderby"=>"visualizacoes", "min_price"=>"20", "max_price"=>"50", "location"=>"Quixada"}, "projection"=>{"_id"=>1, "name"=>1, "email"=>...
+MONGODB | localhost:27017 req:67 | ramirez.find | SUCCEEDED | 0.000s
+Completed 200 OK in 3ms (Views: 2.5ms | MongoDB: 0.0ms | Allocations: 817)
+
+
+Started GET "/users?users?&specialization=Forense&orderby=visualizacoes&min_price=20&max_price=50&location=Quixada" for ::1 at 2022-05-24 19:29:44 -0300
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{"city"=>"West Brianneville", "email"=>"daniel@balasar.com.br", "name"=>"Daniel Lima", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "specialization"=>"Publicidade", "state"=>"Arkansas", "photographer"=>true}, "users?"=>nil, "specialization"=>"Forense", "orderby"=>"visualizacoes", "min_price"=>"20", "max_price"=>"50", "location"=>"Quixada"}
+MONGODB | localhost:27017 req:69 conn:1:1 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"photographer"=>true, "users?"=>nil, "specialization"=>"Forense", "orderby"=>"visualizacoes", "min_price"=>"20", "max_price"=>"50", "location"=>"Quixada"}, "projection"=>{"_id"=>1, "name"=>1, "email"=>1, "specialization"=>...
+MONGODB | localhost:27017 req:69 | ramirez.find | SUCCEEDED | 0.000s
+Completed 200 OK in 3ms (Views: 2.6ms | MongoDB: 0.0ms | Allocations: 801)
+
+
+Started GET "/users?users?&specialization=Forense&location=Quixada" for ::1 at 2022-05-24 19:39:54 -0300
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{"city"=>"West Brianneville", "email"=>"daniel@balasar.com.br", "name"=>"Daniel Lima", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "specialization"=>"Publicidade", "state"=>"Arkansas", "photographer"=>true}, "users?"=>nil, "specialization"=>"Forense", "location"=>"Quixada"}
+Completed 500 Internal Server Error in 22ms (MongoDB: 0.0ms | Allocations: 1914)
+
+
+  
+NoMethodError (undefined method `+' for {:photographer=>true}:Hash
+
+    filters = { photographer: true } + FiltersService.format_params(request.GET)
+                                     ^):
+  
+app/controllers/users_controller.rb:7:in `index'
+Started GET "/users?users?&specialization=Forense&location=Quixada" for ::1 at 2022-05-24 19:41:13 -0300
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{"city"=>"West Brianneville", "email"=>"daniel@balasar.com.br", "name"=>"Daniel Lima", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "specialization"=>"Publicidade", "state"=>"Arkansas", "photographer"=>true}, "users?"=>nil, "specialization"=>"Forense", "location"=>"Quixada"}
+MONGODB | localhost:27017 req:139 conn:1:1 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"photographer"=>true, "city"=>"Quixada", "state"=>"Quixada"}, "projection"=>{"_id"=>1, "name"=>1, "email"=>1, "specialization"=>1, "city"=>1, "state"=>1}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x9680 type=uuid dat...
+MONGODB | localhost:27017 req:139 | ramirez.find | SUCCEEDED | 0.000s
+Completed 200 OK in 4ms (Views: 2.4ms | MongoDB: 0.0ms | Allocations: 1275)
+
+
+Started GET "/users?specialization=Forense&location=Quixada" for ::1 at 2022-05-24 19:41:25 -0300
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{"city"=>"West Brianneville", "email"=>"daniel@balasar.com.br", "name"=>"Daniel Lima", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "specialization"=>"Publicidade", "state"=>"Arkansas", "photographer"=>true}, "specialization"=>"Forense", "location"=>"Quixada"}
+MONGODB | localhost:27017 req:141 conn:1:1 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"photographer"=>true, "city"=>"Quixada", "state"=>"Quixada"}, "projection"=>{"_id"=>1, "name"=>1, "email"=>1, "specialization"=>1, "city"=>1, "state"=>1}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x9680 type=uuid dat...
+MONGODB | localhost:27017 req:141 | ramirez.find | SUCCEEDED | 0.000s
+Completed 200 OK in 6ms (Views: 4.5ms | MongoDB: 0.0ms | Allocations: 788)
+
+
+Started GET "/users?specialization=Forense&location=Quixada" for ::1 at 2022-05-24 19:59:40 -0300
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{"city"=>"West Brianneville", "email"=>"daniel@balasar.com.br", "name"=>"Daniel Lima", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "specialization"=>"Publicidade", "state"=>"Arkansas", "photographer"=>true}, "specialization"=>"Forense", "location"=>"Quixada"}
+MONGODB | localhost:27017 req:251 conn:1:1 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"photographer"=>true, "city"=>"Quixada", "state"=>"Quixada"}, "projection"=>{"_id"=>1, "name"=>1, "email"=>1, "specialization"=>1, "city"=>1, "state"=>1}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x9680 type=uuid dat...
+MONGODB | localhost:27017 req:251 | ramirez.find | SUCCEEDED | 0.616s
+Completed 200 OK in 686ms (Views: 667.0ms | MongoDB: 0.6ms | Allocations: 773)
+
+
+Started GET "/users?specialization=Forense&location=Quixada" for ::1 at 2022-05-24 20:54:38 -0300
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{"city"=>"West Brianneville", "email"=>"daniel@balasar.com.br", "name"=>"Daniel Lima", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "specialization"=>"Publicidade", "state"=>"Arkansas", "photographer"=>true}, "specialization"=>"Forense", "location"=>"Quixada"}
+MONGODB | localhost:27017 req:582 conn:1:1 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"$or"=>[{"photographer"=>true}, {"city"=>"Quixada", "state"=>"Quixada"}]}, "projection"=>{"_id"=>1, "name"=>1, "email"=>1, "specialization"=>1, "city"=>1, "state"=>1}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x37780...
+MONGODB | localhost:27017 req:582 | ramirez.find | SUCCEEDED | 0.291s
+Completed 200 OK in 476ms (Views: 475.1ms | MongoDB: 0.3ms | Allocations: 13309)
+
+
+Started GET "/users?specialization=Forense&location=Quixada" for ::1 at 2022-05-24 20:55:17 -0300
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{"city"=>"West Brianneville", "email"=>"daniel@balasar.com.br", "name"=>"Daniel Lima", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "specialization"=>"Publicidade", "state"=>"Arkansas", "photographer"=>true}, "specialization"=>"Forense", "location"=>"Quixada"}
+MONGODB | localhost:27017 req:587 conn:1:1 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"$or"=>[{"city"=>"Quixada", "state"=>"Quixada"}], "photographer"=>true}, "projection"=>{"_id"=>1, "name"=>1, "email"=>1, "specialization"=>1, "city"=>1, "state"=>1}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x37780 t...
+MONGODB | localhost:27017 req:587 | ramirez.find | SUCCEEDED | 0.014s
+Completed 200 OK in 18ms (Views: 17.0ms | MongoDB: 0.0ms | Allocations: 1265)
+
+
+Started GET "/users?specialization=Forense&location=" for ::1 at 2022-05-24 20:55:26 -0300
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{"city"=>"West Brianneville", "email"=>"daniel@balasar.com.br", "name"=>"Daniel Lima", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "specialization"=>"Publicidade", "state"=>"Arkansas", "photographer"=>true}, "specialization"=>"Forense", "location"=>""}
+MONGODB | localhost:27017 req:589 conn:1:1 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"$or"=>[{"city"=>"", "state"=>""}], "photographer"=>true}, "projection"=>{"_id"=>1, "name"=>1, "email"=>1, "specialization"=>1, "city"=>1, "state"=>1}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x37780 type=uuid data=...
+MONGODB | localhost:27017 req:589 | ramirez.find | SUCCEEDED | 0.001s
+Completed 200 OK in 4ms (Views: 3.2ms | MongoDB: 0.0ms | Allocations: 834)
+
+
+Started GET "/users?specialization=Forense&location=" for ::1 at 2022-05-24 20:55:42 -0300
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{"city"=>"West Brianneville", "email"=>"daniel@balasar.com.br", "name"=>"Daniel Lima", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "specialization"=>"Publicidade", "state"=>"Arkansas", "photographer"=>true}, "specialization"=>"Forense", "location"=>""}
+MONGODB | localhost:27017 req:591 conn:1:1 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"$or"=>[{"city"=>"", "state"=>""}], "photographer"=>true}, "projection"=>{"_id"=>1, "name"=>1, "email"=>1, "specialization"=>1, "city"=>1, "state"=>1}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x37780 type=uuid data=...
+MONGODB | localhost:27017 req:591 | ramirez.find | SUCCEEDED | 0.001s
+Completed 200 OK in 11ms (Views: 10.3ms | MongoDB: 0.0ms | Allocations: 1269)
+
+
+Started GET "/users?specialization=Forense&location=" for ::1 at 2022-05-24 20:57:11 -0300
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{"city"=>"West Brianneville", "email"=>"daniel@balasar.com.br", "name"=>"Daniel Lima", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "specialization"=>"Publicidade", "state"=>"Arkansas", "photographer"=>true}, "specialization"=>"Forense", "location"=>""}
+MONGODB | localhost:27017 req:601 conn:1:1 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"$or"=>[{"city"=>"", "state"=>""}], "photographer"=>true}, "projection"=>{"_id"=>1, "name"=>1, "email"=>1, "specialization"=>1, "city"=>1, "state"=>1}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x37780 type=uuid data=...
+MONGODB | localhost:27017 req:601 | ramirez.find | SUCCEEDED | 0.001s
+Completed 200 OK in 3ms (Views: 2.6ms | MongoDB: 0.0ms | Allocations: 1269)
+
+
+Started GET "/users?specialization=Forense&location=" for ::1 at 2022-05-24 20:57:51 -0300
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{"city"=>"West Brianneville", "email"=>"daniel@balasar.com.br", "name"=>"Daniel Lima", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "specialization"=>"Publicidade", "state"=>"Arkansas", "photographer"=>true}, "specialization"=>"Forense", "location"=>""}
+MONGODB | localhost:27017 req:606 conn:1:1 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"$or"=>[{"city"=>"", "state"=>""}], "photographer"=>true}, "projection"=>{"_id"=>1, "name"=>1, "email"=>1, "specialization"=>1, "city"=>1, "state"=>1}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x37780 type=uuid data=...
+MONGODB | localhost:27017 req:606 | ramirez.find | SUCCEEDED | 0.000s
+Completed 200 OK in 3ms (Views: 1.9ms | MongoDB: 0.0ms | Allocations: 1245)
+
+
+Started GET "/users?specialization=Forense" for ::1 at 2022-05-24 20:58:50 -0300
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{"city"=>"West Brianneville", "email"=>"daniel@balasar.com.br", "name"=>"Daniel Lima", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "specialization"=>"Publicidade", "state"=>"Arkansas", "photographer"=>true}, "specialization"=>"Forense"}
+MONGODB | localhost:27017 req:613 conn:1:1 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"photographer"=>true}, "projection"=>{"_id"=>1, "name"=>1, "email"=>1, "specialization"=>1, "city"=>1, "state"=>1}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x37780 type=uuid data=0xf63971d3d9f74882...>}}
+MONGODB | localhost:27017 req:613 | ramirez.find | SUCCEEDED | 0.040s
+Completed 200 OK in 59ms (Views: 58.6ms | MongoDB: 0.0ms | Allocations: 12757)
+
+
+Started GET "/users?specialization=Forense" for ::1 at 2022-05-24 20:59:14 -0300
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{"city"=>"West Brianneville", "email"=>"daniel@balasar.com.br", "name"=>"Daniel Lima", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "specialization"=>"Publicidade", "state"=>"Arkansas", "photographer"=>true}, "specialization"=>"Forense"}
+MONGODB | localhost:27017 req:617 conn:1:1 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"$or"=>[{"city"=>nil, "state"=>nil}], "photographer"=>true}, "projection"=>{"_id"=>1, "name"=>1, "email"=>1, "specialization"=>1, "city"=>1, "state"=>1}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x37780 type=uuid dat...
+MONGODB | localhost:27017 req:617 | ramirez.find | SUCCEEDED | 0.001s
+Completed 200 OK in 4ms (Views: 2.8ms | MongoDB: 0.0ms | Allocations: 1269)
+
+
+Started GET "/users?specialization=Forense" for ::1 at 2022-05-24 21:05:59 -0300
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{"city"=>"West Brianneville", "email"=>"daniel@balasar.com.br", "name"=>"Daniel Lima", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "specialization"=>"Publicidade", "state"=>"Arkansas", "photographer"=>true}, "specialization"=>"Forense"}
+MONGODB | localhost:27017 req:658 conn:1:1 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"$or"=>[{"city"=>nil, "state"=>nil}], "photographer"=>true}, "projection"=>{"_id"=>1, "name"=>1, "email"=>1, "specialization"=>1, "city"=>1, "state"=>1}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x37780 type=uuid dat...
+MONGODB | localhost:27017 req:658 | ramirez.find | SUCCEEDED | 0.000s
+Completed 200 OK in 3ms (Views: 2.2ms | MongoDB: 0.0ms | Allocations: 1267)
+
+
+Started GET "/users?specialization=Forense" for ::1 at 2022-05-24 21:08:35 -0300
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{"city"=>"West Brianneville", "email"=>"daniel@balasar.com.br", "name"=>"Daniel Lima", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "specialization"=>"Publicidade", "state"=>"Arkansas", "photographer"=>true}, "specialization"=>"Forense"}
+Completed 500 Internal Server Error in 40ms (MongoDB: 0.0ms | Allocations: 457)
+
+
+  
+ArgumentError (Argument must be a Hash):
+  
+app/controllers/users_controller.rb:9:in `index'
+Started GET "/users?specialization=Forense" for ::1 at 2022-05-24 21:09:30 -0300
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{"city"=>"West Brianneville", "email"=>"daniel@balasar.com.br", "name"=>"Daniel Lima", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "specialization"=>"Publicidade", "state"=>"Arkansas", "photographer"=>true}, "specialization"=>"Forense"}
+MONGODB | localhost:27017 req:680 conn:1:1 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"$or"=>[{}], "photographer"=>true}, "projection"=>{"_id"=>1, "name"=>1, "email"=>1, "specialization"=>1, "city"=>1, "state"=>1}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x37780 type=uuid data=0xf63971d3d9f74882...>}...
+MONGODB | localhost:27017 req:680 | ramirez.find | SUCCEEDED | 0.001s
+Completed 200 OK in 10ms (Views: 8.9ms | MongoDB: 0.0ms | Allocations: 13314)
+
+
+Started GET "/users?specialization=Forense&location=" for ::1 at 2022-05-24 21:09:35 -0300
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{"city"=>"West Brianneville", "email"=>"daniel@balasar.com.br", "name"=>"Daniel Lima", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "specialization"=>"Publicidade", "state"=>"Arkansas", "photographer"=>true}, "specialization"=>"Forense", "location"=>""}
+MONGODB | localhost:27017 req:682 conn:1:1 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"$or"=>[{}], "photographer"=>true}, "projection"=>{"_id"=>1, "name"=>1, "email"=>1, "specialization"=>1, "city"=>1, "state"=>1}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x37780 type=uuid data=0xf63971d3d9f74882...>}...
+MONGODB | localhost:27017 req:682 | ramirez.find | SUCCEEDED | 0.001s
+Completed 200 OK in 13ms (Views: 12.2ms | MongoDB: 0.0ms | Allocations: 12703)
+
+
+Started GET "/users?specialization=Forense&location=Quixad%C3%A1" for ::1 at 2022-05-24 21:09:41 -0300
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{"city"=>"West Brianneville", "email"=>"daniel@balasar.com.br", "name"=>"Daniel Lima", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "specialization"=>"Publicidade", "state"=>"Arkansas", "photographer"=>true}, "specialization"=>"Forense", "location"=>"Quixadá"}
+MONGODB | localhost:27017 req:683 conn:1:1 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"$or"=>[{}], "photographer"=>true}, "projection"=>{"_id"=>1, "name"=>1, "email"=>1, "specialization"=>1, "city"=>1, "state"=>1}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x37780 type=uuid data=0xf63971d3d9f74882...>}...
+MONGODB | localhost:27017 req:683 | ramirez.find | SUCCEEDED | 0.000s
+Completed 200 OK in 9ms (Views: 9.0ms | MongoDB: 0.0ms | Allocations: 12687)
+
+
+Started GET "/users?specialization=Forense&location=Quixad%C3%A1" for ::1 at 2022-05-24 21:09:53 -0300
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{"city"=>"West Brianneville", "email"=>"daniel@balasar.com.br", "name"=>"Daniel Lima", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "specialization"=>"Publicidade", "state"=>"Arkansas", "photographer"=>true}, "specialization"=>"Forense", "location"=>"Quixadá"}
+MONGODB | localhost:27017 req:686 conn:1:1 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"$or"=>[{}], "photographer"=>true}, "projection"=>{"_id"=>1, "name"=>1, "email"=>1, "specialization"=>1, "city"=>1, "state"=>1}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x37780 type=uuid data=0xf63971d3d9f74882...>}...
+MONGODB | localhost:27017 req:686 | ramirez.find | SUCCEEDED | 0.000s
+Completed 200 OK in 10ms (Views: 8.5ms | MongoDB: 0.0ms | Allocations: 13297)
+
+
+Started GET "/users?specialization=Forense&location=Quixad%C3%A1" for ::1 at 2022-05-24 21:10:27 -0300
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{"city"=>"West Brianneville", "email"=>"daniel@balasar.com.br", "name"=>"Daniel Lima", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "specialization"=>"Publicidade", "state"=>"Arkansas", "photographer"=>true}, "specialization"=>"Forense", "location"=>"Quixadá"}
+MONGODB | localhost:27017 req:690 conn:1:1 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"$or"=>[{}], "photographer"=>true}, "projection"=>{"_id"=>1, "name"=>1, "email"=>1, "specialization"=>1, "city"=>1, "state"=>1}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x37780 type=uuid data=0xf63971d3d9f74882...>}...
+MONGODB | localhost:27017 req:690 | ramirez.find | SUCCEEDED | 0.001s
+Completed 200 OK in 15ms (Views: 13.3ms | MongoDB: 0.0ms | Allocations: 13320)
+
+
+Started GET "/users?specialization=Forense&location=Quixad%C3%A1" for ::1 at 2022-05-24 21:10:45 -0300
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{"city"=>"West Brianneville", "email"=>"daniel@balasar.com.br", "name"=>"Daniel Lima", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "specialization"=>"Publicidade", "state"=>"Arkansas", "photographer"=>true}, "specialization"=>"Forense", "location"=>"Quixadá"}
+MONGODB | localhost:27017 req:693 conn:1:1 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"$or"=>[{}], "photographer"=>true}, "projection"=>{"_id"=>1, "name"=>1, "email"=>1, "specialization"=>1, "city"=>1, "state"=>1}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x37780 type=uuid data=0xf63971d3d9f74882...>}...
+MONGODB | localhost:27017 req:693 | ramirez.find | SUCCEEDED | 0.003s
+Completed 200 OK in 14ms (Views: 12.2ms | MongoDB: 0.0ms | Allocations: 13280)
+
+
+Started GET "/users?specialization=Forense&location=Quixad%C3%A1" for ::1 at 2022-05-24 21:11:09 -0300
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{"city"=>"West Brianneville", "email"=>"daniel@balasar.com.br", "name"=>"Daniel Lima", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "specialization"=>"Publicidade", "state"=>"Arkansas", "photographer"=>true}, "specialization"=>"Forense", "location"=>"Quixadá"}
+MONGODB | localhost:27017 req:696 conn:1:1 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"$or"=>[{}], "photographer"=>true}, "projection"=>{"_id"=>1, "name"=>1, "email"=>1, "specialization"=>1, "city"=>1, "state"=>1}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x37780 type=uuid data=0xf63971d3d9f74882...>}...
+MONGODB | localhost:27017 req:696 | ramirez.find | SUCCEEDED | 0.001s
+Completed 200 OK in 20ms (Views: 18.7ms | MongoDB: 0.0ms | Allocations: 13320)
+
+
+Started GET "/users?specialization=Forense&location=Quixad%C3%A1" for ::1 at 2022-05-24 21:11:44 -0300
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{"city"=>"West Brianneville", "email"=>"daniel@balasar.com.br", "name"=>"Daniel Lima", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "specialization"=>"Publicidade", "state"=>"Arkansas", "photographer"=>true}, "specialization"=>"Forense", "location"=>"Quixadá"}
+MONGODB | localhost:27017 req:701 conn:1:1 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"$or"=>[{}], "photographer"=>true}, "projection"=>{"_id"=>1, "name"=>1, "email"=>1, "specialization"=>1, "city"=>1, "state"=>1}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x37780 type=uuid data=0xf63971d3d9f74882...>}...
+MONGODB | localhost:27017 req:701 | ramirez.find | SUCCEEDED | 0.001s
+Completed 200 OK in 11ms (Views: 8.4ms | MongoDB: 0.0ms | Allocations: 13321)
+
+
+Started GET "/users?specialization=Forense&location=Quixad%C3%A1" for ::1 at 2022-05-24 21:12:04 -0300
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{"city"=>"West Brianneville", "email"=>"daniel@balasar.com.br", "name"=>"Daniel Lima", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "specialization"=>"Publicidade", "state"=>"Arkansas", "photographer"=>true}, "specialization"=>"Forense", "location"=>"Quixadá"}
+MONGODB | localhost:27017 req:704 conn:1:1 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"$or"=>[{}], "photographer"=>true}, "projection"=>{"_id"=>1, "name"=>1, "email"=>1, "specialization"=>1, "city"=>1, "state"=>1}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x37780 type=uuid data=0xf63971d3d9f74882...>}...
+MONGODB | localhost:27017 req:704 | ramirez.find | SUCCEEDED | 0.001s
+Completed 200 OK in 15ms (Views: 14.2ms | MongoDB: 0.0ms | Allocations: 13281)
+
+
+Started GET "/users?specialization=Forense&location=Quixad%C3%A1" for ::1 at 2022-05-24 21:12:34 -0300
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{"city"=>"West Brianneville", "email"=>"daniel@balasar.com.br", "name"=>"Daniel Lima", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "specialization"=>"Publicidade", "state"=>"Arkansas", "photographer"=>true}, "specialization"=>"Forense", "location"=>"Quixadá"}
+MONGODB | localhost:27017 req:708 conn:1:1 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"$or"=>[{"city"=>"Quixadá", "state"=>"Quixadá"}], "photographer"=>true}, "projection"=>{"_id"=>1, "name"=>1, "email"=>1, "specialization"=>1, "city"=>1, "state"=>1}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x37780 t...
+MONGODB | localhost:27017 req:708 | ramirez.find | SUCCEEDED | 0.000s
+Completed 200 OK in 3ms (Views: 2.4ms | MongoDB: 0.0ms | Allocations: 1357)
+
+
+Started GET "/users?specialization=Forense&location=" for ::1 at 2022-05-24 21:12:55 -0300
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{"city"=>"West Brianneville", "email"=>"daniel@balasar.com.br", "name"=>"Daniel Lima", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "specialization"=>"Publicidade", "state"=>"Arkansas", "photographer"=>true}, "specialization"=>"Forense", "location"=>""}
+MONGODB | localhost:27017 req:711 conn:1:1 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"$or"=>[{}], "photographer"=>true}, "projection"=>{"_id"=>1, "name"=>1, "email"=>1, "specialization"=>1, "city"=>1, "state"=>1}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x37780 type=uuid data=0xf63971d3d9f74882...>}...
+MONGODB | localhost:27017 req:711 | ramirez.find | SUCCEEDED | 0.001s
+Completed 200 OK in 7ms (Views: 6.4ms | MongoDB: 0.0ms | Allocations: 13295)
+
+
+Started GET "/users?specialization=Forense&location=DE" for ::1 at 2022-05-24 21:13:04 -0300
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{"city"=>"West Brianneville", "email"=>"daniel@balasar.com.br", "name"=>"Daniel Lima", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "specialization"=>"Publicidade", "state"=>"Arkansas", "photographer"=>true}, "specialization"=>"Forense", "location"=>"DE"}
+MONGODB | localhost:27017 req:713 conn:1:1 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"$or"=>[{"city"=>"DE", "state"=>"DE"}], "photographer"=>true}, "projection"=>{"_id"=>1, "name"=>1, "email"=>1, "specialization"=>1, "city"=>1, "state"=>1}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x37780 type=uuid d...
+MONGODB | localhost:27017 req:713 | ramirez.find | SUCCEEDED | 0.000s
+Completed 200 OK in 3ms (Views: 3.0ms | MongoDB: 0.0ms | Allocations: 843)
+
+
+Started GET "/users?specialization=Forense&location=Argeliatown" for ::1 at 2022-05-24 21:13:08 -0300
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{"city"=>"West Brianneville", "email"=>"daniel@balasar.com.br", "name"=>"Daniel Lima", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "specialization"=>"Publicidade", "state"=>"Arkansas", "photographer"=>true}, "specialization"=>"Forense", "location"=>"Argeliatown"}
+MONGODB | localhost:27017 req:714 conn:1:1 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"$or"=>[{"city"=>"Argeliatown", "state"=>"Argeliatown"}], "photographer"=>true}, "projection"=>{"_id"=>1, "name"=>1, "email"=>1, "specialization"=>1, "city"=>1, "state"=>1}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0...
+MONGODB | localhost:27017 req:714 | ramirez.find | SUCCEEDED | 0.000s
+Completed 200 OK in 3ms (Views: 2.6ms | MongoDB: 0.0ms | Allocations: 837)
+
+
+Started GET "/users?specialization=Forense&location=Argeliatown" for ::1 at 2022-05-24 21:13:09 -0300
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{"city"=>"West Brianneville", "email"=>"daniel@balasar.com.br", "name"=>"Daniel Lima", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "specialization"=>"Publicidade", "state"=>"Arkansas", "photographer"=>true}, "specialization"=>"Forense", "location"=>"Argeliatown"}
+MONGODB | localhost:27017 req:715 conn:1:1 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"$or"=>[{"city"=>"Argeliatown", "state"=>"Argeliatown"}], "photographer"=>true}, "projection"=>{"_id"=>1, "name"=>1, "email"=>1, "specialization"=>1, "city"=>1, "state"=>1}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0...
+MONGODB | localhost:27017 req:715 | ramirez.find | SUCCEEDED | 0.007s
+Completed 200 OK in 9ms (Views: 8.4ms | MongoDB: 0.0ms | Allocations: 825)
+
+
+Started GET "/users?specialization=Forense&location=Argeliatown" for ::1 at 2022-05-24 21:14:52 -0300
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{"city"=>"West Brianneville", "email"=>"daniel@balasar.com.br", "name"=>"Daniel Lima", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "specialization"=>"Publicidade", "state"=>"Arkansas", "photographer"=>true}, "specialization"=>"Forense", "location"=>"Argeliatown"}
+MONGODB | localhost:27017 req:726 conn:1:1 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"$or"=>[{"city"=>"Argeliatown", "state"=>"Argeliatown"}], "photographer"=>true}, "projection"=>{"_id"=>1, "name"=>1, "email"=>1, "specialization"=>1, "city"=>1, "state"=>1}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0...
+MONGODB | localhost:27017 req:726 | ramirez.find | SUCCEEDED | 0.000s
+Completed 200 OK in 4ms (Views: 2.7ms | MongoDB: 0.0ms | Allocations: 1342)
+
+
+Started GET "/users?specialization=Forense&location=Argeliatown" for ::1 at 2022-05-24 21:16:01 -0300
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{"city"=>"West Brianneville", "email"=>"daniel@balasar.com.br", "name"=>"Daniel Lima", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "specialization"=>"Publicidade", "state"=>"Arkansas", "photographer"=>true}, "specialization"=>"Forense", "location"=>"Argeliatown"}
+MONGODB | localhost:27017 req:734 conn:1:1 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"$or"=>[{"city"=>"Argeliatown", "state"=>"Argeliatown"}], "photographer"=>true}, "projection"=>{"_id"=>1, "name"=>1, "email"=>1, "specialization"=>1, "city"=>1, "state"=>1}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0...
+MONGODB | localhost:27017 req:734 | ramirez.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:735 conn:1:1 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"$or"=>[{"city"=>"Argeliatown", "state"=>"Argeliatown"}], "photographer"=>true}, "projection"=>{"_id"=>1, "name"=>1, "email"=>1, "specialization"=>1, "city"=>1, "state"=>1}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0...
+MONGODB | localhost:27017 req:735 | ramirez.find | SUCCEEDED | 0.001s
+Completed 200 OK in 7ms (Views: 3.0ms | MongoDB: 0.0ms | Allocations: 1837)
+
+
+Started GET "/users?specialization=Forense&location=Argeliatown" for ::1 at 2022-05-24 21:16:40 -0300
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{"city"=>"West Brianneville", "email"=>"daniel@balasar.com.br", "name"=>"Daniel Lima", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "specialization"=>"Publicidade", "state"=>"Arkansas", "photographer"=>true}, "specialization"=>"Forense", "location"=>"Argeliatown"}
+MONGODB | localhost:27017 req:740 conn:1:1 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"$or"=>[{"city"=>"Argeliatown", "state"=>"Argeliatown"}], "photographer"=>true}, "projection"=>{"_id"=>1, "name"=>1, "email"=>1, "specialization"=>1, "city"=>1, "state"=>1}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0...
+MONGODB | localhost:27017 req:740 | ramirez.find | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:741 conn:1:1 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"$or"=>[{"city"=>"Argeliatown", "state"=>"Argeliatown"}], "photographer"=>true}, "projection"=>{"_id"=>1, "name"=>1, "email"=>1, "specialization"=>1, "city"=>1, "state"=>1}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0...
+MONGODB | localhost:27017 req:741 | ramirez.find | SUCCEEDED | 0.001s
+Completed 200 OK in 6ms (Views: 2.0ms | MongoDB: 0.0ms | Allocations: 1854)
+
+
+Started GET "/users?specialization=Forense&location=Argeliatown" for ::1 at 2022-05-24 21:17:06 -0300
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{"city"=>"West Brianneville", "email"=>"daniel@balasar.com.br", "name"=>"Daniel Lima", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "specialization"=>"Publicidade", "state"=>"Arkansas", "photographer"=>true}, "specialization"=>"Forense", "location"=>"Argeliatown"}
+MONGODB | localhost:27017 req:745 conn:1:1 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"$or"=>[{"city"=>"Argeliatown", "state"=>"Argeliatown"}], "photographer"=>true}, "projection"=>{"_id"=>1, "name"=>1, "email"=>1, "specialization"=>1, "city"=>1, "state"=>1}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0...
+MONGODB | localhost:27017 req:745 | ramirez.find | SUCCEEDED | 0.001s
+Completed 200 OK in 4ms (Views: 2.9ms | MongoDB: 0.0ms | Allocations: 1342)
+
+
+Started GET "/users?specialization=Forense&location=Argeliatown" for ::1 at 2022-05-24 21:23:55 -0300
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{"city"=>"West Brianneville", "email"=>"daniel@balasar.com.br", "name"=>"Daniel Lima", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "specialization"=>"Publicidade", "state"=>"Arkansas", "photographer"=>true}, "specialization"=>"Forense", "location"=>"Argeliatown"}
+Completed 200 OK in 1ms (Views: 0.2ms | MongoDB: 0.0ms | Allocations: 576)
+
+
+Started GET "/users?specialization=Forense&location=Argeliatown" for ::1 at 2022-05-24 21:24:45 -0300
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{"city"=>"West Brianneville", "email"=>"daniel@balasar.com.br", "name"=>"Daniel Lima", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "specialization"=>"Publicidade", "state"=>"Arkansas", "photographer"=>true}, "specialization"=>"Forense", "location"=>"Argeliatown"}
+Completed 200 OK in 1ms (Views: 0.2ms | MongoDB: 0.0ms | Allocations: 573)
+
+
+Started GET "/users?specialization=Forense&location=Argeliatown" for ::1 at 2022-05-24 21:26:37 -0300
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{"city"=>"West Brianneville", "email"=>"daniel@balasar.com.br", "name"=>"Daniel Lima", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "specialization"=>"Publicidade", "state"=>"Arkansas", "photographer"=>true}, "specialization"=>"Forense", "location"=>"Argeliatown"}
+Completed 200 OK in 1ms (Views: 0.2ms | MongoDB: 0.0ms | Allocations: 580)
+
+
+Started GET "/users?specialization=Forense&location=" for ::1 at 2022-05-24 21:37:28 -0300
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{"city"=>"West Brianneville", "email"=>"daniel@balasar.com.br", "name"=>"Daniel Lima", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "specialization"=>"Publicidade", "state"=>"Arkansas", "photographer"=>true}, "specialization"=>"Forense", "location"=>""}
+Completed 200 OK in 1ms (Views: 0.2ms | MongoDB: 0.0ms | Allocations: 249)
+
+
+Started GET "/users?specialization=Forense&location=" for ::1 at 2022-05-24 21:37:45 -0300
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{"city"=>"West Brianneville", "email"=>"daniel@balasar.com.br", "name"=>"Daniel Lima", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "specialization"=>"Publicidade", "state"=>"Arkansas", "photographer"=>true}, "specialization"=>"Forense", "location"=>""}
+MONGODB | localhost:27017 req:870 conn:1:1 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"$or"=>[{}], "photographer"=>true}, "projection"=>{"_id"=>1, "name"=>1, "email"=>1, "specialization"=>1, "city"=>1, "state"=>1}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x37780 type=uuid data=0xf63971d3d9f74882...>}...
+MONGODB | localhost:27017 req:870 | ramirez.find | SUCCEEDED | 0.001s
+Completed 200 OK in 16ms (Views: 14.8ms | MongoDB: 0.0ms | Allocations: 13302)
+
+
+Started GET "/users?specialization=Forense&location=" for ::1 at 2022-05-24 21:53:40 -0300
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{"city"=>"West Brianneville", "email"=>"daniel@balasar.com.br", "name"=>"Daniel Lima", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "specialization"=>"Publicidade", "state"=>"Arkansas", "photographer"=>true}, "specialization"=>"Forense", "location"=>""}
+Completed 200 OK in 3ms (Views: 0.2ms | MongoDB: 0.0ms | Allocations: 607)
+
+
+Started GET "/users?specialization=Forense&location=" for ::1 at 2022-05-24 21:54:11 -0300
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{"city"=>"West Brianneville", "email"=>"daniel@balasar.com.br", "name"=>"Daniel Lima", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "specialization"=>"Publicidade", "state"=>"Arkansas", "photographer"=>true}, "specialization"=>"Forense", "location"=>""}
+Completed 200 OK in 1ms (Views: 0.2ms | MongoDB: 0.0ms | Allocations: 269)
+
+
+Started GET "/users?specialization=Forense&location=" for ::1 at 2022-05-24 21:54:31 -0300
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{"city"=>"West Brianneville", "email"=>"daniel@balasar.com.br", "name"=>"Daniel Lima", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "specialization"=>"Publicidade", "state"=>"Arkansas", "photographer"=>true}, "specialization"=>"Forense", "location"=>""}
+MONGODB | localhost:27017 req:971 conn:1:1 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"$or"=>[{"photographer"=>true}], "photographer"=>true}, "projection"=>{"_id"=>1, "name"=>1, "email"=>1, "specialization"=>1, "city"=>1, "state"=>1}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x37780 type=uuid data=0xf...
+MONGODB | localhost:27017 req:971 | ramirez.find | SUCCEEDED | 0.001s
+Completed 200 OK in 10ms (Views: 9.0ms | MongoDB: 0.0ms | Allocations: 13339)
+
+
+Started GET "/users?specialization=Forense&location=" for ::1 at 2022-05-24 22:02:08 -0300
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{"city"=>"West Brianneville", "email"=>"daniel@balasar.com.br", "name"=>"Daniel Lima", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "specialization"=>"Publicidade", "state"=>"Arkansas", "photographer"=>true}, "specialization"=>"Forense", "location"=>""}
+MONGODB | localhost:27017 req:1018 conn:1:1 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"$or"=>[{"photographer"=>true}], "photographer"=>true}, "projection"=>{"_id"=>1, "name"=>1, "email"=>1, "specialization"=>1, "city"=>1, "state"=>1}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x37780 type=uuid data=0xf...
+MONGODB | localhost:27017 req:1018 | ramirez.find | SUCCEEDED | 0.001s
+Completed 200 OK in 49ms (Views: 30.2ms | MongoDB: 0.0ms | Allocations: 13339)
+
+
+Started GET "/users?specialization=Forense&location=" for ::1 at 2022-05-24 22:02:36 -0300
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{"city"=>"West Brianneville", "email"=>"daniel@balasar.com.br", "name"=>"Daniel Lima", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "specialization"=>"Publicidade", "state"=>"Arkansas", "photographer"=>true}, "specialization"=>"Forense", "location"=>""}
+MONGODB | localhost:27017 req:1022 conn:1:1 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"$or"=>[{"photographer"=>true}], "photographer"=>true}, "projection"=>{"_id"=>1, "name"=>1, "email"=>1, "specialization"=>1, "city"=>1, "state"=>1}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x37780 type=uuid data=0xf...
+MONGODB | localhost:27017 req:1022 | ramirez.find | SUCCEEDED | 0.001s
+Completed 200 OK in 9ms (Views: 8.1ms | MongoDB: 0.0ms | Allocations: 13321)
+
+
+Started GET "/users?specialization=Forense&location=DE" for ::1 at 2022-05-24 22:02:48 -0300
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{"city"=>"West Brianneville", "email"=>"daniel@balasar.com.br", "name"=>"Daniel Lima", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "specialization"=>"Publicidade", "state"=>"Arkansas", "photographer"=>true}, "specialization"=>"Forense", "location"=>"DE"}
+MONGODB | localhost:27017 req:1024 conn:1:1 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"$or"=>[{"city"=>"DE", "state"=>"DE"}], "photographer"=>true}, "projection"=>{"_id"=>1, "name"=>1, "email"=>1, "specialization"=>1, "city"=>1, "state"=>1}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x37780 type=uuid d...
+MONGODB | localhost:27017 req:1024 | ramirez.find | SUCCEEDED | 0.000s
+Completed 200 OK in 2ms (Views: 1.6ms | MongoDB: 0.0ms | Allocations: 844)
+
+
+Started GET "/users?specialization=Forense&location=" for ::1 at 2022-05-24 22:05:43 -0300
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{"city"=>"West Brianneville", "email"=>"daniel@balasar.com.br", "name"=>"Daniel Lima", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "specialization"=>"Publicidade", "state"=>"Arkansas", "photographer"=>true}, "specialization"=>"Forense", "location"=>""}
+MONGODB | localhost:27017 req:1043 conn:1:1 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"$or"=>[{"photographer"=>true}], "photographer"=>true}, "projection"=>{"_id"=>1, "name"=>1, "email"=>1, "specialization"=>1, "city"=>1, "state"=>1}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x37780 type=uuid data=0xf...
+MONGODB | localhost:27017 req:1043 | ramirez.find | SUCCEEDED | 0.001s
+Completed 200 OK in 53ms (Views: 52.7ms | MongoDB: 0.0ms | Allocations: 12710)
+
+
+MONGODB | Topology type 'unknown' initializing.
+MONGODB | There was a change in the members of the 'Unknown' topology.
+MONGODB | Server localhost:27017 initializing.
+MONGODB | Waiting for up to 30.00 seconds for servers to be scanned: #<Cluster topology=Unknown[localhost:27017] servers=[#<Server address=localhost:27017 UNKNOWN>]>
+MONGODB | Server description for localhost:27017 changed from 'unknown' to 'standalone'.
+MONGODB | Topology type 'Unknown' changed to type 'Single'.
+MONGODB | localhost:27017 req:5 conn:1:1 | ramirez.dropDatabase | STARTED | {"dropDatabase"=>1, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x7600 type=uuid data=0x4bed7cd9150041be...>}}
+MONGODB | localhost:27017 req:5 | ramirez.dropDatabase | SUCCEEDED | 0.207s
+MONGODB | localhost:27017 req:6 conn:1:1 | ramirez.find | STARTED | {"find"=>"specializations", "filter"=>{}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x7600 type=uuid data=0x4bed7cd9150041be...>}}
+MONGODB | localhost:27017 req:6 | ramirez.find | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:7 conn:1:1 | ramirez.createIndexes | STARTED | {"createIndexes"=>"users", "indexes"=>[{"key"=>{"email"=>1}, "background"=>false, "unique"=>true, "name"=>"email_1"}], "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x7600 type=uuid data=0x4bed7cd9150041be...>}}
+MONGODB | localhost:27017 req:7 | ramirez.createIndexes | SUCCEEDED | 0.482s
+MONGOID: Created indexes on User:
+MONGOID: Index: {:email=>1}, Options: {:unique=>true}
+MONGODB | localhost:27017 req:8 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"users", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('628d816abf3f867fec3e0e82'), "name"=>"Gilberto Zemlak", "email"=>"caleb.hagenes@example.org", "password_digest"=>"$2a$12$V1EXvI.tBJWBr3AAMhrSue8itDW6Ay7uZwUHX7n8rt2SY9R6MO1ii", ...
+MONGODB | localhost:27017 req:8 | ramirez.insert | SUCCEEDED | 0.032s
+MONGODB | localhost:27017 req:9 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"users", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('628d816abf3f867fec3e0e83'), "name"=>"Fr. Delisa Rolfson", "email"=>"palmer_pfeffer@example.com", "password_digest"=>"$2a$12$LSO6wNxGauxTp8OrRO0aSO/h5GHyVd9o1LZxghvYbZL3GCgnjF4k...
+MONGODB | localhost:27017 req:9 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:10 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"users", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('628d816bbf3f867fec3e0e84'), "name"=>"Dina Maggio", "email"=>"lyle.romaguera@example.net", "password_digest"=>"$2a$12$QP6SD0bVSbjtYCk9QUu9Xekvgr.bVCSoV9zwDwy1n8IQeA7frKITu", "sp...
+MONGODB | localhost:27017 req:10 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:11 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"users", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('628d816bbf3f867fec3e0e85'), "name"=>"Lenny Klocko", "email"=>"rigoberto_ebert@example.org", "password_digest"=>"$2a$12$SSZGaP1PcSgs5ysnnt5zMet91dT97.Va3L.GbuPq611cCGqRcOHU.", "...
+MONGODB | localhost:27017 req:11 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:12 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"users", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('628d816bbf3f867fec3e0e86'), "name"=>"Sparkle Quigley DC", "email"=>"doretha_greenholt@example.com", "password_digest"=>"$2a$12$IPXYxD8UZ4AqvVbSWYkxEOnOacCeEKwBfi41Lvyfcc1scI7qD...
+MONGODB | localhost:27017 req:12 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:13 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"users", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('628d816bbf3f867fec3e0e87'), "name"=>"Pres. Cornelia Rogahn", "email"=>"lean@example.com", "password_digest"=>"$2a$12$CZsyrrMCRjYN87AI8ZS5Ke/BFcGK9LvOp9M5FWj49C3FfpVwNfX4m", "sp...
+MONGODB | localhost:27017 req:13 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:14 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"users", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('628d816bbf3f867fec3e0e88'), "name"=>"Gonzalo Kertzmann", "email"=>"marlon@example.org", "password_digest"=>"$2a$12$C4AlBdy8.gYbmA0oaBjch.CdHrluXiPN23gzJvsgWRR7hhVfKG96K", "spec...
+MONGODB | localhost:27017 req:14 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:15 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"users", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('628d816cbf3f867fec3e0e89'), "name"=>"Vivian Carter", "email"=>"charlie_oconnell@example.com", "password_digest"=>"$2a$12$0aL.1d71uCIsWl2eefQCFeN9iyak5mUEsqw8..yeFKMSPcyK.uyvm",...
+MONGODB | localhost:27017 req:15 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:16 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"users", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('628d816cbf3f867fec3e0e8a'), "name"=>"Mr. Lillie Schroeder", "email"=>"dong@example.net", "password_digest"=>"$2a$12$3ULCKtCchrO6iRKYk9q4/OhF.Jli1APgf5v/AYLb5Ry7zFQRnPuBG", "spe...
+MONGODB | localhost:27017 req:16 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:17 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"users", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('628d816cbf3f867fec3e0e8b'), "name"=>"Prof. Jeanelle Kertzmann", "email"=>"drema_nienow@example.com", "password_digest"=>"$2a$12$W39YYxd4h8jcmj7D2d4APed7UY1I2QtliEMhbFVdfpV5uU76...
+MONGODB | localhost:27017 req:17 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:18 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"users", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('628d816cbf3f867fec3e0e8c'), "name"=>"Phyllis Bruen", "email"=>"lorrie@example.org", "password_digest"=>"$2a$12$t6QOEVCknfPNJz6QG/Ta7eVOp5hsNVFgNTi/fg6ROONcP1nut5ZYa", "speciali...
+MONGODB | localhost:27017 req:18 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:19 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"users", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('628d816cbf3f867fec3e0e8d'), "name"=>"Sal O'Reilly", "email"=>"yon.collier@example.org", "password_digest"=>"$2a$12$KUAHAaD.Q7nvj4t3FyQ.R.PcuPBKhliYLUkTZvH44I8wwCEJGs9Oq", "spec...
+MONGODB | localhost:27017 req:19 | ramirez.insert | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:20 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"users", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('628d816dbf3f867fec3e0e8e'), "name"=>"Ms. Noe Fay", "email"=>"jordan@example.org", "password_digest"=>"$2a$12$3wPiUOuisi9uJy2FKMU5ZefQqAE.xwyl6mQDcLN3KsrIeXXtlbAeq", "specializa...
+MONGODB | localhost:27017 req:20 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:21 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"users", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('628d816dbf3f867fec3e0e8f'), "name"=>"Quentin Bashirian VM", "email"=>"arnulfo_barton@example.com", "password_digest"=>"$2a$12$7jQPpZU861v6JtPiqWKMnOKygpdyXOyZgnxwsHk91c2XOeP73h...
+MONGODB | localhost:27017 req:21 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:22 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"users", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('628d816dbf3f867fec3e0e90'), "name"=>"Rodney Kuhn", "email"=>"johnathon.okeefe@example.org", "password_digest"=>"$2a$12$tM8RnpWgqEdqAIBIAsoJiOFHG.XMFh8CKfLYLxQtgdCMFLvGNtoZ.", "...
+MONGODB | localhost:27017 req:22 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:23 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"users", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('628d816dbf3f867fec3e0e91'), "name"=>"Kayleigh Gerlach PhD", "email"=>"rickie@example.com", "password_digest"=>"$2a$12$gSoOiigyEBjaygJJNcGjdOAOmamifsGc4nil16Lh3jHYAGS4htLOe", "s...
+MONGODB | localhost:27017 req:23 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:24 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"users", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('628d816dbf3f867fec3e0e92'), "name"=>"Marylin Pollich", "email"=>"conrad@example.org", "password_digest"=>"$2a$12$eI/OcGRnRLFMvFbQhIwH7uRtzGQVkbHhTGoowXXAqV5hzVjWtRRqy", "specia...
+MONGODB | localhost:27017 req:24 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:25 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"users", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('628d816ebf3f867fec3e0e93'), "name"=>"Rep. Clifton D'Amore", "email"=>"jayson_bosco@example.net", "password_digest"=>"$2a$12$8vBDmKQbiW4wLpXZKPTxaOUeEBO1P1H7ZjWwfCF7QMlm31vezqJ/...
+MONGODB | localhost:27017 req:25 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:26 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"users", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('628d816ebf3f867fec3e0e94'), "name"=>"Wally Kris", "email"=>"latricia@example.org", "password_digest"=>"$2a$12$ZxT0yCTi4cIGiFib6hpXV.g/nSmsP5LB/vcsep6JBNI9LlB9yQeM.", "specializ...
+MONGODB | localhost:27017 req:26 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:27 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"users", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('628d816ebf3f867fec3e0e95'), "name"=>"Tracy Kilback", "email"=>"nakita_mcclure@example.net", "password_digest"=>"$2a$12$C1eiXsMmpyIGHkLFCrYylOUUJXoJBINC0NxNjkkkvLay0e0gT0ORy", "...
+MONGODB | localhost:27017 req:27 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:28 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"users", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('628d816ebf3f867fec3e0e96'), "name"=>"Billye Zulauf", "email"=>"owen_lockman@example.com", "password_digest"=>"$2a$12$n.JBcoE8s0JxSxoKzonu8e/tfjC4p/fofQ7uF5YyBhX2wb4aSEKNe", "sp...
+MONGODB | localhost:27017 req:28 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:29 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"users", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('628d816ebf3f867fec3e0e97'), "name"=>"Mike Raynor", "email"=>"tyler@example.com", "password_digest"=>"$2a$12$jODh3cRHDAtDIuiDcAJFPeyCKdr4dsYnAqHUNCWtElgP5Sgy1h3N2", "specializat...
+MONGODB | localhost:27017 req:29 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:30 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"users", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('628d816fbf3f867fec3e0e98'), "name"=>"Johnny Mueller", "email"=>"bert@example.com", "password_digest"=>"$2a$12$nDNh7FdOBZN9Jd3lL90qMeNxNKpng59WseFUVUgEN0FELWK3mJlTe", "specializ...
+MONGODB | localhost:27017 req:30 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:31 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"users", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('628d816fbf3f867fec3e0e99'), "name"=>"Deann Torp", "email"=>"kelley_marks@example.net", "password_digest"=>"$2a$12$I6rzMgsGFVkNhHbox/frne1ZyGi8jJ6kbMcYWJPbhYYqZJB5m8m9i", "speci...
+MONGODB | localhost:27017 req:31 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:32 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"users", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('628d816fbf3f867fec3e0e9a'), "name"=>"Jacinto Adams", "email"=>"jamison.stracke@example.org", "password_digest"=>"$2a$12$xUvvtss8PJ.vMJSm6PxOxuM4prU8PB.1TMJKzBNTh9EC4tvnch9EK", ...
+MONGODB | localhost:27017 req:32 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:33 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"users", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('628d816fbf3f867fec3e0e9b'), "name"=>"Fredric Kozey", "email"=>"damion@example.net", "password_digest"=>"$2a$12$cUmQu1ixTcn90.EB/xA9Vu1xpFwcp9vF6ONXZ4Vzg4j1Nigbu7G1q", "photogra...
+MONGODB | localhost:27017 req:33 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:34 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"users", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('628d816fbf3f867fec3e0e9c'), "name"=>"Truman Swaniawski", "email"=>"ashley.jaskolski@example.org", "password_digest"=>"$2a$12$Hb0eHqLkcDjpzMC2MyO3/u1CUmsM7IgaSNlPHQw4tHXh.3eFh/G...
+MONGODB | localhost:27017 req:34 | ramirez.insert | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:35 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"users", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('628d8170bf3f867fec3e0e9d'), "name"=>"Karole Spinka", "email"=>"fred@example.com", "password_digest"=>"$2a$12$xOUokR.JVpda6YV2lOUn.eKg09xvqmUMCXcJYOLjMXU0joVmHGfwG", "photograph...
+MONGODB | localhost:27017 req:35 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:36 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"users", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('628d8170bf3f867fec3e0e9e'), "name"=>"Rep. Pat Goodwin", "email"=>"olen@example.com", "password_digest"=>"$2a$12$SlcEjFL24ralYE73iRRY9.lDlZHUpL3CXq3Fn7YlegxBedzQGvDlS", "photogr...
+MONGODB | localhost:27017 req:36 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:37 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"users", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('628d8170bf3f867fec3e0e9f'), "name"=>"Orlando Jast", "email"=>"bennie@example.org", "password_digest"=>"$2a$12$omxcO15zn3fcU7A0uzYX8.v17XAnoT73YFzJXccUQY6E19oiHVJGW", "photograp...
+MONGODB | localhost:27017 req:37 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:38 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"users", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('628d8170bf3f867fec3e0ea0'), "name"=>"Alvaro Lubowitz CPA", "email"=>"dawne_gleichner@example.net", "password_digest"=>"$2a$12$5sKxq1h3t9zusaRRPorFpe4ZUdLVeDGwq5MECfuSjqbbMtAaO5...
+MONGODB | localhost:27017 req:38 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:39 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"users", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('628d8170bf3f867fec3e0ea1'), "name"=>"Jim Haley", "email"=>"charleen@example.com", "password_digest"=>"$2a$12$pRJo.QBHxWeB0bkd9MgbweD1KgeT/IbujDsNGgWaOyIs8VOAPQY0a", "photograph...
+MONGODB | localhost:27017 req:39 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:40 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"users", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('628d8171bf3f867fec3e0ea2'), "name"=>"Conchita Runte", "email"=>"barbara@example.com", "password_digest"=>"$2a$12$3xKVjA9xDhWWQU3TZRN1c.KcluBSWXDqQUeL.rEfbbjGGsoUSH0f2", "photog...
+MONGODB | localhost:27017 req:40 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:41 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"users", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('628d8171bf3f867fec3e0ea3'), "name"=>"Elton Bechtelar", "email"=>"tod_lueilwitz@example.org", "password_digest"=>"$2a$12$kYCKF4wEgB1NMGCOXMsmPehDiz6FH4.iY/cweN9Nvt49.fR29858K", ...
+MONGODB | localhost:27017 req:41 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:42 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"users", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('628d8171bf3f867fec3e0ea4'), "name"=>"Megan Haley", "email"=>"eboni@example.org", "password_digest"=>"$2a$12$Uw08z8pWuai.PrMZnq/7wuq3PXVeP/3ucAEmDirrGda9hBpozuU7O", "photographe...
+MONGODB | localhost:27017 req:42 | ramirez.insert | SUCCEEDED | 0.004s
+MONGODB | localhost:27017 req:43 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"users", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('628d8171bf3f867fec3e0ea5'), "name"=>"Basilia Homenick", "email"=>"evia_smitham@example.com", "password_digest"=>"$2a$12$giCHV6ypZpygKp8M75WJQuMXA2ybL8Q9Mzc.28cGFLZEQml2uSkq.", ...
+MONGODB | localhost:27017 req:43 | ramirez.insert | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:44 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"users", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('628d8171bf3f867fec3e0ea6'), "name"=>"Malena Kiehn", "email"=>"branden@example.net", "password_digest"=>"$2a$12$QERosVk8MONwjSlFkF2YaOBs9ApO5tro4N8.Ma2IOUvHkNIq2TPkC", "photogra...
+MONGODB | localhost:27017 req:44 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:45 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"users", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('628d8171bf3f867fec3e0ea7'), "name"=>"Samual Auer", "email"=>"emilio@example.net", "password_digest"=>"$2a$12$VOftnaK4LE6A6PpSo0qC0uLhqewfGPBIFKcuJnsM7/nvBv88tBowm", "photograph...
+MONGODB | localhost:27017 req:45 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:46 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"users", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('628d8172bf3f867fec3e0ea8'), "name"=>"Jared Koss", "email"=>"teresa_maggio@example.org", "password_digest"=>"$2a$12$3T5y1yQWEXqXk89zzJd0T.keHl4JDPTieXz6gX6AueF4jVY9BntG6", "phot...
+MONGODB | localhost:27017 req:46 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:47 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"users", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('628d8172bf3f867fec3e0ea9'), "name"=>"Imogene Pfeffer", "email"=>"ed.doyle@example.org", "password_digest"=>"$2a$12$W6brMDqroYkeGbPFcFnxBuBIgY/F0d4Pem8smAkQK1s45KpmZgGQe", "phot...
+MONGODB | localhost:27017 req:47 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:49 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"users", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('628d8172bf3f867fec3e0eaa'), "name"=>"Ray Abshire", "email"=>"mckenzie.beier@example.com", "password_digest"=>"$2a$12$Olpa4Gj9LvV0MbvXt4cz0uV2zEv6Rv0JqZiKTlMd1RKQbUmCKnf2S", "ph...
+MONGODB | localhost:27017 req:49 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:50 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"users", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('628d8172bf3f867fec3e0eab'), "name"=>"Ryan Hilpert Jr.", "email"=>"willy@example.org", "password_digest"=>"$2a$12$ec/oOf2AVc9aj2DKUO4Z2Or62mXf5lRLD.A5QDTf4jWkMaY41kb0G", "photog...
+MONGODB | localhost:27017 req:50 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:51 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"users", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('628d8172bf3f867fec3e0eac'), "name"=>"Lelah Kozey", "email"=>"ernest_crist@example.com", "password_digest"=>"$2a$12$A2Tq8MJWm8N8IDBfMesPrur5g.ig4Ah0ZO9fOU3rfiL62optETc6q", "phot...
+MONGODB | localhost:27017 req:51 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:52 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"users", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('628d8173bf3f867fec3e0ead'), "name"=>"Fr. Jim Deckow", "email"=>"sharron@example.org", "password_digest"=>"$2a$12$r3KIvSFQrrwDJjCr63Aq1uXzlEj9UF4TEPR72dutFA7h.dI3WvdPe", "photog...
+MONGODB | localhost:27017 req:52 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:53 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"users", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('628d8173bf3f867fec3e0eae'), "name"=>"Rafael Johns I", "email"=>"mohamed_mcglynn@example.org", "password_digest"=>"$2a$12$EyoTUQC0rMy9vGfpFeEE0ukrH2b0ocEErM4oZCMJcuWBiSfkM5Fqm",...
+MONGODB | localhost:27017 req:53 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:54 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"users", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('628d8173bf3f867fec3e0eaf'), "name"=>"Lowell Zieme", "email"=>"isela@example.net", "password_digest"=>"$2a$12$z1DM1DHvC2iYq8/6ruCSNek1SNQkjEXykFgi27PAtSbeR1fDmbGqW", "photograph...
+MONGODB | localhost:27017 req:54 | ramirez.insert | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:55 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"users", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('628d8173bf3f867fec3e0eb0'), "name"=>"Rodrigo Langworth", "email"=>"corrin@example.com", "password_digest"=>"$2a$12$VNY.ZZYpRwiJZ6YWVotEZOAh5JOt5XrYVIelVUXhuHhoUeMsxIj/6", "phot...
+MONGODB | localhost:27017 req:55 | ramirez.insert | SUCCEEDED | 0.000s
+Started GET "/users?specialization=Forense&location=" for ::1 at 2022-05-24 22:08:03 -0300
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{"city"=>"West Brianneville", "email"=>"daniel@balasar.com.br", "name"=>"Daniel Lima", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "specialization"=>"Publicidade", "state"=>"Arkansas", "photographer"=>true}, "specialization"=>"Forense", "location"=>""}
+MONGODB | localhost:27017 req:1058 conn:1:1 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"$or"=>[{"photographer"=>true}], "photographer"=>true}, "projection"=>{"_id"=>1, "name"=>1, "email"=>1, "specialization"=>1, "city"=>1, "state"=>1}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x37780 type=uuid data=0xf...
+MONGODB | localhost:27017 req:1058 | ramirez.find | SUCCEEDED | 0.000s
+Completed 200 OK in 12ms (Views: 11.4ms | MongoDB: 0.0ms | Allocations: 12269)
+
+
+MONGODB | localhost:27017 req:56 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"users", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('628d8173bf3f867fec3e0eb1'), "name"=>"Mr. Emmett Pouros", "email"=>"francina.dickens@example.org", "password_digest"=>"$2a$12$b2DFZbk7fIuutfM/UiC6PekCPF2rRejS5T1Cg0KYe7kEhJ/v88....
+MONGODB | localhost:27017 req:56 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:57 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"users", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('628d8174bf3f867fec3e0eb2'), "name"=>"Bee Mann", "email"=>"bryan.rutherford@example.net", "password_digest"=>"$2a$12$1oSYtr90uMRx3SavPp4Z5OcUjIgXxuodrpUhFisUGsRTEA9HykiPy", "pho...
+MONGODB | localhost:27017 req:57 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:58 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"users", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('628d8174bf3f867fec3e0eb3'), "name"=>"Tracy Fisher", "email"=>"haydee@example.com", "password_digest"=>"$2a$12$kfQehD2epsEEyr.NhUGd5.xxFnbqPG4BbCeDyFcxh/2uDwCttnJWm", "photograp...
+MONGODB | localhost:27017 req:58 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:59 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"users", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('628d8174bf3f867fec3e0eb4'), "name"=>"Ramirez", "email"=>"guthyerri@davi.camilo", "password_digest"=>"$2a$12$1RtdVf3h3vVgYUvQaPDIz.W049J/7KR/a1jkFOWHMMA25qtyG.c0i", "specializat...
+MONGODB | localhost:27017 req:59 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:60 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"specializations", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('628d8174bf3f867fec3e0eb5'), "name"=>"Nenhum", "updated_at"=>2022-05-25 01:08:04.590385876 UTC, "created_at"=>2022-05-25 01:08:04.590385876 UTC}], "$db"=>"ramirez", "l...
+MONGODB | localhost:27017 req:60 | ramirez.insert | SUCCEEDED | 0.143s
+MONGODB | localhost:27017 req:61 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"specializations", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('628d8174bf3f867fec3e0eb6'), "name"=>"Eventos Sociais", "updated_at"=>2022-05-25 01:08:04.735051546 UTC, "created_at"=>2022-05-25 01:08:04.735051546 UTC}], "$db"=>"ram...
+MONGODB | localhost:27017 req:61 | ramirez.insert | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:62 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"specializations", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('628d8174bf3f867fec3e0eb7'), "name"=>"Publicidade", "updated_at"=>2022-05-25 01:08:04.737118615 UTC, "created_at"=>2022-05-25 01:08:04.737118615 UTC}], "$db"=>"ramirez...
+MONGODB | localhost:27017 req:62 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:63 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"specializations", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('628d8174bf3f867fec3e0eb8'), "name"=>"Arquitetura", "updated_at"=>2022-05-25 01:08:04.739067722 UTC, "created_at"=>2022-05-25 01:08:04.739067722 UTC}], "$db"=>"ramirez...
+MONGODB | localhost:27017 req:63 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:64 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"specializations", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('628d8174bf3f867fec3e0eb9'), "name"=>"Revistas", "updated_at"=>2022-05-25 01:08:04.740548952 UTC, "created_at"=>2022-05-25 01:08:04.740548952 UTC}], "$db"=>"ramirez", ...
+MONGODB | localhost:27017 req:64 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:65 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"specializations", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('628d8174bf3f867fec3e0eba'), "name"=>"Moda", "updated_at"=>2022-05-25 01:08:04.742001066 UTC, "created_at"=>2022-05-25 01:08:04.742001066 UTC}], "$db"=>"ramirez", "lsi...
+MONGODB | localhost:27017 req:65 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:66 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"specializations", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('628d8174bf3f867fec3e0ebb'), "name"=>"Jornalismo", "updated_at"=>2022-05-25 01:08:04.743252384 UTC, "created_at"=>2022-05-25 01:08:04.743252384 UTC}], "$db"=>"ramirez"...
+MONGODB | localhost:27017 req:66 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:67 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"specializations", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('628d8174bf3f867fec3e0ebc'), "name"=>"Astronomia", "updated_at"=>2022-05-25 01:08:04.744761246 UTC, "created_at"=>2022-05-25 01:08:04.744761246 UTC}], "$db"=>"ramirez"...
+MONGODB | localhost:27017 req:67 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:68 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"specializations", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('628d8174bf3f867fec3e0ebd'), "name"=>"Forense", "updated_at"=>2022-05-25 01:08:04.76094955 UTC, "created_at"=>2022-05-25 01:08:04.76094955 UTC}], "$db"=>"ramirez", "ls...
+MONGODB | localhost:27017 req:68 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:69 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"specializations", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('628d8174bf3f867fec3e0ebe'), "name"=>"Comercial", "updated_at"=>2022-05-25 01:08:04.762652565 UTC, "created_at"=>2022-05-25 01:08:04.762652565 UTC}], "$db"=>"ramirez",...
+MONGODB | localhost:27017 req:69 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:70 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"specializations", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('628d8174bf3f867fec3e0ebf'), "name"=>"Industrial", "updated_at"=>2022-05-25 01:08:04.764330143 UTC, "created_at"=>2022-05-25 01:08:04.764330143 UTC}], "$db"=>"ramirez"...
+MONGODB | localhost:27017 req:70 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:71 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"specializations", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('628d8174bf3f867fec3e0ec0'), "name"=>"Natureza", "updated_at"=>2022-05-25 01:08:04.766470258 UTC, "created_at"=>2022-05-25 01:08:04.766470258 UTC}], "$db"=>"ramirez", ...
+MONGODB | localhost:27017 req:71 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:72 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"specializations", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('628d8174bf3f867fec3e0ec1'), "name"=>"Subaquático", "updated_at"=>2022-05-25 01:08:04.769251848 UTC, "created_at"=>2022-05-25 01:08:04.769251848 UTC}], "$db"=>"ramirez...
+MONGODB | localhost:27017 req:72 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:73 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"specializations", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('628d8174bf3f867fec3e0ec2'), "name"=>"Cientifico", "updated_at"=>2022-05-25 01:08:04.771158475 UTC, "created_at"=>2022-05-25 01:08:04.771158475 UTC}], "$db"=>"ramirez"...
+MONGODB | localhost:27017 req:73 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:74 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"specializations", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('628d8174bf3f867fec3e0ec3'), "name"=>"Documentos Oficiais", "updated_at"=>2022-05-25 01:08:04.772755812 UTC, "created_at"=>2022-05-25 01:08:04.772755812 UTC}], "$db"=>...
+MONGODB | localhost:27017 req:74 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:75 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"specializations", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('628d8174bf3f867fec3e0ec4'), "name"=>"Aerofotografia", "updated_at"=>2022-05-25 01:08:04.774223847 UTC, "created_at"=>2022-05-25 01:08:04.774223847 UTC}], "$db"=>"rami...
+MONGODB | localhost:27017 req:75 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:76 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"specializations", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('628d8174bf3f867fec3e0ec5'), "name"=>"Documentarista", "updated_at"=>2022-05-25 01:08:04.77547299 UTC, "created_at"=>2022-05-25 01:08:04.77547299 UTC}], "$db"=>"ramire...
+MONGODB | localhost:27017 req:76 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:77 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"specializations", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('628d8174bf3f867fec3e0ec6'), "name"=>"Nu Artístico", "updated_at"=>2022-05-25 01:08:04.776580058 UTC, "created_at"=>2022-05-25 01:08:04.776580058 UTC}], "$db"=>"ramire...
+MONGODB | localhost:27017 req:77 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:78 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"specializations", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('628d8174bf3f867fec3e0ec7'), "name"=>"Modelos Dental", "updated_at"=>2022-05-25 01:08:04.778343547 UTC, "created_at"=>2022-05-25 01:08:04.778343547 UTC}], "$db"=>"rami...
+MONGODB | localhost:27017 req:78 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:79 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"specializations", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('628d8174bf3f867fec3e0ec8'), "name"=>"Eróticas", "updated_at"=>2022-05-25 01:08:04.780548314 UTC, "created_at"=>2022-05-25 01:08:04.780548314 UTC}], "$db"=>"ramirez", ...
+MONGODB | localhost:27017 req:79 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:80 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"specializations", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('628d8174bf3f867fec3e0ec9'), "name"=>"Sensuais", "updated_at"=>2022-05-25 01:08:04.783000495 UTC, "created_at"=>2022-05-25 01:08:04.783000495 UTC}], "$db"=>"ramirez", ...
+MONGODB | localhost:27017 req:80 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:81 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"specializations", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('628d8174bf3f867fec3e0eca'), "name"=>"Animais", "updated_at"=>2022-05-25 01:08:04.785136352 UTC, "created_at"=>2022-05-25 01:08:04.785136352 UTC}], "$db"=>"ramirez", "...
+MONGODB | localhost:27017 req:81 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:82 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"specializations", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('628d8174bf3f867fec3e0ecb'), "name"=>"Books", "updated_at"=>2022-05-25 01:08:04.786923325 UTC, "created_at"=>2022-05-25 01:08:04.786923325 UTC}], "$db"=>"ramirez", "ls...
+MONGODB | localhost:27017 req:82 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:83 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"specializations", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('628d8174bf3f867fec3e0ecc'), "name"=>"Crianças", "updated_at"=>2022-05-25 01:08:04.788646599 UTC, "created_at"=>2022-05-25 01:08:04.788646599 UTC}], "$db"=>"ramirez", ...
+MONGODB | localhost:27017 req:83 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:84 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"specializations", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('628d8174bf3f867fec3e0ecd'), "name"=>"Esportes", "updated_at"=>2022-05-25 01:08:04.79036849 UTC, "created_at"=>2022-05-25 01:08:04.79036849 UTC}], "$db"=>"ramirez", "l...
+MONGODB | localhost:27017 req:84 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:85 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"specializations", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('628d8174bf3f867fec3e0ece'), "name"=>"Medicina", "updated_at"=>2022-05-25 01:08:04.791996634 UTC, "created_at"=>2022-05-25 01:08:04.791996634 UTC}], "$db"=>"ramirez", ...
+MONGODB | localhost:27017 req:85 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:86 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"specializations", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('628d8174bf3f867fec3e0ecf'), "name"=>"Festas Infantis", "updated_at"=>2022-05-25 01:08:04.79372622 UTC, "created_at"=>2022-05-25 01:08:04.79372622 UTC}], "$db"=>"ramir...
+MONGODB | localhost:27017 req:86 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:87 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"specializations", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('628d8174bf3f867fec3e0ed0'), "name"=>"Produtos", "updated_at"=>2022-05-25 01:08:04.795233418 UTC, "created_at"=>2022-05-25 01:08:04.795233418 UTC}], "$db"=>"ramirez", ...
+MONGODB | localhost:27017 req:87 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:88 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"specializations", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('628d8174bf3f867fec3e0ed1'), "name"=>"Abstrata e Artística", "updated_at"=>2022-05-25 01:08:04.797116421 UTC, "created_at"=>2022-05-25 01:08:04.797116421 UTC}], "$db"=...
+MONGODB | localhost:27017 req:88 | ramirez.insert | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:89 conn:1:1 | ramirez.insert | STARTED | {"insert"=>"specializations", "ordered"=>true, "documents"=>[{"_id"=>BSON::ObjectId('628d8174bf3f867fec3e0ed2'), "name"=>"Cinema", "updated_at"=>2022-05-25 01:08:04.799059857 UTC, "created_at"=>2022-05-25 01:08:04.799059857 UTC}], "$db"=>"ramirez", "l...
+MONGODB | localhost:27017 req:89 | ramirez.insert | SUCCEEDED | 0.000s
+Started GET "/users?specialization=Forense&location=MT" for ::1 at 2022-05-24 22:08:28 -0300
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{"city"=>"West Brianneville", "email"=>"daniel@balasar.com.br", "name"=>"Daniel Lima", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "specialization"=>"Publicidade", "state"=>"Arkansas", "photographer"=>true}, "specialization"=>"Forense", "location"=>"MT"}
+MONGODB | localhost:27017 req:1061 conn:1:1 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"$or"=>[{"city"=>"MT", "state"=>"MT"}], "photographer"=>true}, "projection"=>{"_id"=>1, "name"=>1, "email"=>1, "specialization"=>1, "city"=>1, "state"=>1}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x37780 type=uuid d...
+MONGODB | localhost:27017 req:1061 | ramirez.find | SUCCEEDED | 0.000s
+Completed 200 OK in 4ms (Views: 2.1ms | MongoDB: 0.0ms | Allocations: 840)
+
+
+Started GET "/users?specialization=Forense&location=MT" for ::1 at 2022-05-24 22:10:06 -0300
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{"city"=>"West Brianneville", "email"=>"daniel@balasar.com.br", "name"=>"Daniel Lima", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "specialization"=>"Publicidade", "state"=>"Arkansas", "photographer"=>true}, "specialization"=>"Forense", "location"=>"MT"}
+MONGODB | localhost:27017 req:1072 conn:1:1 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"$or"=>[{"city"=>"MT", "state"=>"MT"}], "photographer"=>true}, "projection"=>{"_id"=>1, "name"=>1, "email"=>1, "specialization"=>1, "city"=>1, "state"=>1}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x37780 type=uuid d...
+MONGODB | localhost:27017 req:1072 | ramirez.find | SUCCEEDED | 0.001s
+Completed 200 OK in 33ms (Views: 2.3ms | MongoDB: 0.0ms | Allocations: 1395)
+
+
+Started GET "/users?specialization=Forense&location=MT" for ::1 at 2022-05-24 22:10:07 -0300
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{"city"=>"West Brianneville", "email"=>"daniel@balasar.com.br", "name"=>"Daniel Lima", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "specialization"=>"Publicidade", "state"=>"Arkansas", "photographer"=>true}, "specialization"=>"Forense", "location"=>"MT"}
+MONGODB | localhost:27017 req:1073 conn:1:1 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"$or"=>[{"city"=>"MT", "state"=>"MT"}], "photographer"=>true}, "projection"=>{"_id"=>1, "name"=>1, "email"=>1, "specialization"=>1, "city"=>1, "state"=>1}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x37780 type=uuid d...
+MONGODB | localhost:27017 req:1073 | ramirez.find | SUCCEEDED | 0.000s
+Completed 200 OK in 4ms (Views: 3.0ms | MongoDB: 0.0ms | Allocations: 846)
+
+
+Started GET "/users?specialization=Forense&location=MT" for ::1 at 2022-05-24 22:10:41 -0300
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{"city"=>"West Brianneville", "email"=>"daniel@balasar.com.br", "name"=>"Daniel Lima", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "specialization"=>"Publicidade", "state"=>"Arkansas", "photographer"=>true}, "specialization"=>"Forense", "location"=>"MT"}
+Completed 500 Internal Server Error in 1ms (MongoDB: 0.0ms | Allocations: 320)
+
+
+  
+SyntaxError (/home/guthyerri/Desenvolvimento/Ruby/ramirez/back/app/services/filters_service.rb:9: syntax error, unexpected ',', expecting =>
+... locate = { { city: location }, {state: location } } unless ...
+...                              ^
+/home/guthyerri/Desenvolvimento/Ruby/ramirez/back/app/services/filters_service.rb:9: syntax error, unexpected '}', expecting `end'
+...ocation }, {state: location } } unless location.nil? || loca...
+...                              ^
+):
+  
+app/services/filters_service.rb:9: syntax error, unexpected ',', expecting =>
+app/services/filters_service.rb:9: syntax error, unexpected '}', expecting `end'
+app/services/filters_service.rb:9: syntax error, unexpected ',', expecting =>
+app/services/filters_service.rb:9: syntax error, unexpected '}', expecting `end'
+app/controllers/users_controller.rb:8:in `index'
+Started GET "/users?specialization=Forense&location=MT" for ::1 at 2022-05-24 22:15:45 -0300
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{"city"=>"West Brianneville", "email"=>"daniel@balasar.com.br", "name"=>"Daniel Lima", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "specialization"=>"Publicidade", "state"=>"Arkansas", "photographer"=>true}, "specialization"=>"Forense", "location"=>"MT"}
+Completed 500 Internal Server Error in 2ms (MongoDB: 0.0ms | Allocations: 319)
+
+
+  
+SyntaxError (/home/guthyerri/Desenvolvimento/Ruby/ramirez/back/app/services/filters_service.rb:9: syntax error, unexpected ',', expecting =>
+... locate = { { city: location }, { state: location } } unless...
+...                              ^
+/home/guthyerri/Desenvolvimento/Ruby/ramirez/back/app/services/filters_service.rb:9: syntax error, unexpected '}', expecting `end'
+...cation }, { state: location } } unless location.nil? || loca...
+...                              ^
+):
+  
+app/services/filters_service.rb:9: syntax error, unexpected ',', expecting =>
+app/services/filters_service.rb:9: syntax error, unexpected '}', expecting `end'
+app/services/filters_service.rb:9: syntax error, unexpected ',', expecting =>
+app/services/filters_service.rb:9: syntax error, unexpected '}', expecting `end'
+app/controllers/users_controller.rb:8:in `index'
+Started GET "/users?specialization=Forense&location=MT" for ::1 at 2022-05-24 22:16:02 -0300
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{"city"=>"West Brianneville", "email"=>"daniel@balasar.com.br", "name"=>"Daniel Lima", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "specialization"=>"Publicidade", "state"=>"Arkansas", "photographer"=>true}, "specialization"=>"Forense", "location"=>"MT"}
+Completed 500 Internal Server Error in 1ms (MongoDB: 0.0ms | Allocations: 319)
+
+
+  
+SyntaxError (/home/guthyerri/Desenvolvimento/Ruby/ramirez/back/app/services/filters_service.rb:9: syntax error, unexpected ':', expecting `end'
+    locate = json: { { city: location }, { stat...
+                 ^
+/home/guthyerri/Desenvolvimento/Ruby/ramirez/back/app/services/filters_service.rb:9: syntax error, unexpected ',', expecting =>
+...e = json: { { city: location }, { state: location } } unless...
+...                              ^
+/home/guthyerri/Desenvolvimento/Ruby/ramirez/back/app/services/filters_service.rb:9: syntax error, unexpected '}', expecting `end'
+...cation }, { state: location } } unless location.nil? || loca...
+...                              ^
+):
+  
+app/services/filters_service.rb:9: syntax error, unexpected ':', expecting `end'
+app/services/filters_service.rb:9: syntax error, unexpected ',', expecting =>
+app/services/filters_service.rb:9: syntax error, unexpected '}', expecting `end'
+app/services/filters_service.rb:9: syntax error, unexpected ':', expecting `end'
+app/services/filters_service.rb:9: syntax error, unexpected ',', expecting =>
+app/services/filters_service.rb:9: syntax error, unexpected '}', expecting `end'
+app/controllers/users_controller.rb:8:in `index'
+Started GET "/users?specialization=Forense&location=MT" for ::1 at 2022-05-24 22:16:32 -0300
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{"city"=>"West Brianneville", "email"=>"daniel@balasar.com.br", "name"=>"Daniel Lima", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "specialization"=>"Publicidade", "state"=>"Arkansas", "photographer"=>true}, "specialization"=>"Forense", "location"=>"MT"}
+MONGODB | localhost:27017 req:1112 conn:1:1 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"$or"=>[{"crit1"=>{"city"=>"MT"}, "crit2"=>{"state"=>"MT"}}], "photographer"=>true}, "projection"=>{"_id"=>1, "name"=>1, "email"=>1, "specialization"=>1, "city"=>1, "state"=>1}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Bina...
+MONGODB | localhost:27017 req:1112 | ramirez.find | SUCCEEDED | 0.000s
+Completed 200 OK in 5ms (Views: 2.3ms | MongoDB: 0.0ms | Allocations: 1423)
+
+
+Started GET "/users?specialization=Forense&location=MT" for ::1 at 2022-05-24 22:28:22 -0300
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{"city"=>"West Brianneville", "email"=>"daniel@balasar.com.br", "name"=>"Daniel Lima", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "specialization"=>"Publicidade", "state"=>"Arkansas", "photographer"=>true}, "specialization"=>"Forense", "location"=>"MT"}
+MONGODB | localhost:27017 req:1184 conn:1:1 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"$or"=>[{"city"=>"MT"}, {"crit2"=>{"state"=>"MT"}}], "photographer"=>true}, "projection"=>{"_id"=>1, "name"=>1, "email"=>1, "specialization"=>1, "city"=>1, "state"=>1}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x3778...
+MONGODB | localhost:27017 req:1184 | ramirez.find | SUCCEEDED | 0.001s
+Completed 200 OK in 5ms (Views: 3.6ms | MongoDB: 0.0ms | Allocations: 1409)
+
+
+Started GET "/users?specialization=Forense&location=MT" for ::1 at 2022-05-24 22:28:39 -0300
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{"city"=>"West Brianneville", "email"=>"daniel@balasar.com.br", "name"=>"Daniel Lima", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "specialization"=>"Publicidade", "state"=>"Arkansas", "photographer"=>true}, "specialization"=>"Forense", "location"=>"MT"}
+MONGODB | localhost:27017 req:1187 conn:1:1 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"$or"=>[{"city"=>"MT"}, {"state"=>"MT"}], "photographer"=>true}, "projection"=>{"_id"=>1, "name"=>1, "email"=>1, "specialization"=>1, "city"=>1, "state"=>1}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x37780 type=uuid...
+MONGODB | localhost:27017 req:1187 | ramirez.find | SUCCEEDED | 0.001s
+Completed 200 OK in 12ms (Views: 10.4ms | MongoDB: 0.0ms | Allocations: 1962)
+
+
+Started GET "/users?specialization=Forense&location=MT" for ::1 at 2022-05-24 22:29:23 -0300
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{"city"=>"West Brianneville", "email"=>"daniel@balasar.com.br", "name"=>"Daniel Lima", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "specialization"=>"Publicidade", "state"=>"Arkansas", "photographer"=>true}, "specialization"=>"Forense", "location"=>"MT"}
+MONGODB | localhost:27017 req:1192 conn:1:1 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"$or"=>[{"city"=>"MT"}, {"state"=>"MT"}], "photographer"=>true}, "projection"=>{"_id"=>1, "name"=>1, "email"=>1, "specialization"=>1, "city"=>1, "state"=>1}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x37780 type=uuid...
+MONGODB | localhost:27017 req:1192 | ramirez.find | SUCCEEDED | 0.000s
+Completed 200 OK in 5ms (Views: 2.4ms | MongoDB: 0.0ms | Allocations: 1957)
+
+
+Started GET "/users?specialization=Forense&location=" for ::1 at 2022-05-24 22:29:25 -0300
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{"city"=>"West Brianneville", "email"=>"daniel@balasar.com.br", "name"=>"Daniel Lima", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "specialization"=>"Publicidade", "state"=>"Arkansas", "photographer"=>true}, "specialization"=>"Forense", "location"=>""}
+MONGODB | localhost:27017 req:1194 conn:1:1 | ramirez.find | STARTED | {"find"=>"users", "filter"=>{"photographer"=>true}, "projection"=>{"_id"=>1, "name"=>1, "email"=>1, "specialization"=>1, "city"=>1, "state"=>1}, "$db"=>"ramirez", "lsid"=>{"id"=><BSON::Binary:0x37780 type=uuid data=0xf63971d3d9f74882...>}}
+MONGODB | localhost:27017 req:1194 | ramirez.find | SUCCEEDED | 0.001s
+Completed 200 OK in 14ms (Views: 12.8ms | MongoDB: 0.0ms | Allocations: 12691)
+
+

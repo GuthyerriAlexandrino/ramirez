@@ -1,7 +1,7 @@
 class RegistrationController < ApplicationController
   VALID_EMAIL_REGEX = /\A([\w+\-]\.?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
   HOURS = 2.hours
-  SPECIALIZATIONS = SpecializationHelper.instance.specializations
+  SPECIALIZATIONS = SpecializationService.instance.specializations
 
   def login
     login_params
@@ -30,7 +30,7 @@ class RegistrationController < ApplicationController
       u.password = nil
       render json: u, status: :ok
     rescue Mongo::Error::OperationFailure => e
-      render json: e.to_s.split()[1], status: :conflict
+      render json: { error: e.to_s.split()[1]}, status: :conflict
     end
   end
     

@@ -1,8 +1,8 @@
 # Singleton class
-class SpecializationHelper
+class SpecializationService
   attr_reader :specializations
-  def SpecializationHelper.instance
-    @instance = SpecializationHelper.new if @instance.nil?
+  def SpecializationService.instance
+    @instance = SpecializationService.new if @instance.nil?
   end
 
   private

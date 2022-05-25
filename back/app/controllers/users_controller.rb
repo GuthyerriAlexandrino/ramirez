@@ -4,8 +4,9 @@ class UsersController < ApplicationController
 
   # GET /users
   def index
-    @users = User.only([:name, :email]).where(photographer: false)
-    @users += User.only([:name, :email, :specialization, :city, :state]).where(photographer: true)
+    filters = { photographer: true }
+    location = FiltersService.format_location(params[:location])
+    @users = User.only([:name, :email, :specialization, :city, :state]).any_of(*location).where(filters)
     render json: @users
   end
 
@@ -44,13 +45,13 @@ class UsersController < ApplicationController
     def set_user
       # @user = find(params[:id])
       @user = []
-      @user << User.only([:name, :email]).where(photographer: false, id: params[:id]).first()
-      @user << User.only([:name, :email, :specialization, :city, :state]).where(photographer: true, id:params[:id]).first()
+      @user << User.only([:name, :email, :_id]).where(photographer: false, id: params[:id]).first()
+      @user << User.only([:name, :email, :_id, :specialization, :city, :state]).where(photographer: true, id:params[:id]).first()
       @user.compact!
     end
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation, :specialization, :city, :state, :updated_at, :created_at)
+      params.require(:user).permit(:name, :email, :photographer, :password, :password_confirmation, :specialization, :city, :state, :updated_at, :created_at)
     end
 end

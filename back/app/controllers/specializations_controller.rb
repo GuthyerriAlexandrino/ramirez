@@ -1,4 +1,5 @@
 class SpecializationsController < ApplicationController
+  before_action :authorize_request
   before_action :set_specialization, only: %i[ show update destroy ]
 
   # GET /specializations

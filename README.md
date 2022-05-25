@@ -8,6 +8,10 @@ Tática utilizada:
 Link para as histórias de usuário:  
 [Notion](https://www.notion.so/Hist-rias-de-Usu-rio-5e39243b01154f63bc0c80c2c6965625)
 
+Software utilizado para anotações de ferramentas:  
+[Obsidian](https://obsidian.md/)
+
+
 Principais ferramentas do projeto:
 
 1. Ruby - 3.1.2v

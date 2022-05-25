@@ -6,10 +6,8 @@ class UsersController < ApplicationController
   def index
     filters = FiltersService.format_params(request.GET)
     location = FiltersService.format_location(request.GET[:location])
-    puts filters
     @users = User.only([:name, :email, :specialization, :city, :state]).where(filters)
     @users = @users.any_of(*location) unless location.empty?
-    puts @users
     render json: @users
   end
 

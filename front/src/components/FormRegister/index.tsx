@@ -101,8 +101,6 @@ export function FormRegister() {
         getAllSpecializations();
     }, [])
 
-    console.log(newUser.specialization)
-
     return (
         <FormBody action="" onSubmit={handleSubmit}>
             <h2>Criar a sua conta</h2>
@@ -190,7 +188,7 @@ export function FormRegister() {
                         checked={isPhotographer}
                         onChange={() => {
                             setIsPhotographer(!isPhotographer); 
-                            setNewUser({...newUser, photographer: isPhotographer})
+                            setNewUser({...newUser, photographer: !isPhotographer})
                         }}
                     />
                     <label htmlFor="photographer">Sou fotógrafo</label>

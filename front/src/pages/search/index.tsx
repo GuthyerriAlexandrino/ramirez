@@ -55,8 +55,6 @@ const orderOptions = [
 export const getServerSideProps: GetServerSideProps = async (context) => {
     const { ["ramirez-user"]: token } = parseCookies(context);
 
-    console.log(token);
-
     if (!token) {
         return {
             redirect: {

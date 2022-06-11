@@ -22,24 +22,6 @@ import Router from "next/router";
 import { PopupItem } from "../../components/SelectInput/style";
 import { GetServerSideProps } from "next";
 
-
-export const getServerSideProps: GetServerSideProps = async (context) => {
-    const { ["ramirez-user"]: token } = parseCookies(context);
-
-    if (!token) {
-        return {
-            redirect: {
-                destination: '/login',
-                permanent: false,
-            }
-        }
-    }
-
-    return {
-        props: {}
-    }
-}
-
 export type User = {
     _id: {
         $oid: string;
@@ -69,6 +51,26 @@ const orderOptions = [
     {name: "Curtidas"},
     {name: "Preço"}
 ]
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+    const { ["ramirez-user"]: token } = parseCookies(context);
+
+    console.log(token);
+
+    if (!token) {
+        return {
+            redirect: {
+                destination: '/login',
+                permanent: false,
+            }
+        }
+    }
+
+    return {
+        props: {}
+    }
+}
+
 
 export default function Search() {
 
@@ -147,7 +149,7 @@ export default function Search() {
                     </div>
                     <AditionalInputs>
                         <SelectInput selectName={search.specialization ? search.specialization : "Especialização"} >
-                            {specializationOptions.map((item, id) => (
+                            {Array.isArray(specializationOptions) && specializationOptions.map((item, id) => (
                                 <PopupItem key={id} onClick={() => setSearch({...search, specialization: item.name === "Nenhum" ? "" : item.name})}>
                                     {item.name}
                                 </PopupItem>
@@ -198,7 +200,7 @@ export default function Search() {
                     </AditionalInputs>
                 </SearchInputContainer>
                 <PhotographersList>
-                    {users?.map(user => (
+                    {Array.isArray(users) && users?.map(user => (
                         <PhotographerCard key={user._id.$oid} user={user}/>
                     ))}
                 </PhotographersList>

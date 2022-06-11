@@ -19,7 +19,9 @@ export default function SignUp() {
                 <FormRegister/>
             </SignUpFormContainer>
             <SignUpAside variants={makeFadeInRightAnimation()}>
-                <Image src={Logo}/>
+                <Link href="/">
+                    <Image src={Logo} style={{cursor: "pointer"}}/>
+                </Link>
                 <h1>Encontre profissionais ou destaque o seu trabalho</h1>
                 <p>Junte-se a nossa comunidade e una-se a outros profissionais</p>
                 <BackPageLink>

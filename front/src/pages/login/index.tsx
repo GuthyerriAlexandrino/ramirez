@@ -50,7 +50,9 @@ export default function LogIn()  {
             variants={stagger}
         >
             <LogInAside variants={makeFadeInRightAnimation()}>
-                <Image src={Logo}/>
+                <Link href="/">
+                    <Image src={Logo} style={{cursor: "pointer"}}/>
+                </Link>
                 <h1>Faça o seu login na plataforma</h1>
             </LogInAside>
             <FormBody variants={makeFadeInRightAnimation()} action="" onSubmit={handleSubmit}>

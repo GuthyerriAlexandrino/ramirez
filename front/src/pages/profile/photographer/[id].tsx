@@ -79,7 +79,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         }
     }
 
-    const data: User = await fetch(`http://localhost:3001/users/${id}`, {
+    const data: User[] = await fetch(`http://localhost:3001/users/${id}`, {
         method: "GET",
         headers: {
             "Access-Control-Allow-Origin": "*",
@@ -88,11 +88,11 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     }).then(res => res.json());
 
     const user = {
-        id: data._id ?? null,
-        name: data.name ?? null,
-        city: data.city ?? null,
-        state: data.state ?? null,
-        specialization: data.specialization ?? null
+        id: data[0]._id ?? null,
+        name: data[0].name ?? null,
+        city: data[0].city ?? null,
+        state: data[0].state ?? null,
+        specialization: data[0].specialization ?? null
     }
 
     return {

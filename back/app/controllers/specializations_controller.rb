@@ -1,10 +1,6 @@
 class SpecializationsController < ApplicationController
 <<<<<<< HEAD
-<<<<<<< HEAD
   # before_action :authorize_request, except: index
-=======
-  before_action :authorize_request, except: :index
->>>>>>> ffc14c980a6ebaba904c13a25b5eeb9af8cf7206
 =======
   before_action :authorize_request, except: :index
 >>>>>>> ffc14c980a6ebaba904c13a25b5eeb9af8cf7206

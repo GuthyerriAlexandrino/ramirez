@@ -58,6 +58,18 @@ export const IconsArea = styled.div`
     justify-content: center;
 `
 
+export const CommentaryInputContainer = styled.article`
+
+`
+
+export const CommentaryInput = styled.input`
+
+`
+export const CommentaryButton = styled.button`
+
+
+`
+
 export const FeedBackArea = styled.article`
     width: 100%;
     margin-top: 2.813rem;

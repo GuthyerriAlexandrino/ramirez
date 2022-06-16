@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { Header } from "../../components/Header";
 import { 
     Container, 
@@ -9,10 +8,13 @@ import {
     PostContainer, 
     PostArea,
     PostContent, 
-    PostImage
+    PostImage,
+    CommentaryInputContainer,
+    CommentaryInput,
+    CommentaryButton
 } from "./style";
 
-import Image01 from "../../assets/water-animal/image5.jpg"
+// import Image01 from "../../assets/water-animal/image5.jpg"
 
 import { TrashSimple, Chat, Heart } from "phosphor-react";
 import { pallete } from "../../styles/colors";
@@ -26,10 +28,8 @@ export default function Post() {
                 <PostArea>
                     <PostContent>
                         <PostImage>
-                            <Image 
-                                src={Image01} 
-                                layout="responsive"
-                                objectFit="cover"
+                            <img 
+                                src="https://picsum.photos/200" 
                             />
                         </PostImage>
                         <ContentFooter>
@@ -38,22 +38,27 @@ export default function Post() {
                                 <TrashSimple 
                                     color={pallete.grayOne} 
                                     size={30} 
-                                    weight="fill" 
+                                    weight="fill"
+                                    style={{cursor: "pointer"}}
                                 />
                                 <Chat 
                                     color={pallete.grayOne} 
                                     size={30} weight="fill" 
-                                    style={{marginLeft: "1.25rem"}} 
+                                    style={{marginLeft: "1.25rem", cursor: "pointer"}} 
                                 />
                                 <Heart 
                                     color={pallete.grayOne} 
                                     size={30} 
                                     weight="fill" 
-                                    style={{marginLeft: "1.25rem"}} 
+                                    style={{marginLeft: "1.25rem", cursor: "pointer"}} 
                                 />
                             </IconsArea>
                         </ContentFooter>
                     </PostContent>
+                    <CommentaryInputContainer>
+                        <CommentaryInput/>
+                        <CommentaryButton/>
+                    </CommentaryInputContainer>
                     <FeedBackArea>
                         <h2>Comentários (4)</h2>
                         <FeedBackList>

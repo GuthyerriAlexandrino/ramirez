@@ -37,7 +37,7 @@ rng = Random.new
     name: Faker::Name.name,
     email: Faker::Internet.safe_email,
     password: Faker::Internet.password,
-    specialization: hobbies[rng.rand(0...hobbies.size)],
+    specialization: [hobbies[rng.rand(0...hobbies.size)]],
     city: Faker::Address.city,
     state: Faker::Address.state_abbr,
     photographer: true,
@@ -55,9 +55,9 @@ end
 
 User.create(
   name: "Ramirez",
-  email: "guthyerri@davi.camilo",
+  email: "guthyerri@davi.alice",
   password: "e o que he man?",
-  specialization: "Dar dinheiro para fotógrafos",
+  specialization: ["Dar dinheiro para fotógrafos"],
   city: "Quixadá",
   state: "CE",
   photographer: true,

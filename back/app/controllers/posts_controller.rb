@@ -1,11 +1,11 @@
 class PostsController < ApplicationController
+  before_action :authorize_request, except: :create
   before_action :set_post, only: %i[ show update destroy ]
 
   # GET /posts
   def index
-    @posts = Post.all
-
-    render json: @posts
+    # @posts = Post.All
+    # render json: @posts
   end
 
   # GET /posts/1
@@ -15,7 +15,11 @@ class PostsController < ApplicationController
 
   # POST /posts
   def create
+    user = authorize_request
+    return if user.nil?
+
     @post = Post.new(post_params)
+    user.posts << @post
 
     if @post.save
       render json: @post, status: :created, location: @post
@@ -41,11 +45,11 @@ class PostsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_post
-      @post = Post.find(params[:id])
+      @post = PostService.user_posts(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:title, :img, :price, :likes)
+      params.require(:post).permit(:title, :img, :price).tap { |u| u.require([:title, :img]) }
     end
 end

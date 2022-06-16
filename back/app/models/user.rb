@@ -9,7 +9,7 @@ class User
   field :email, type: String
   field :password, type: String
   field :password_digest, type: String
-  field :specialization, type: String
+  field :specialization, type: Array
   field :city, type: String
   field :state, type: String
   field :services_price, type: Array, default: []

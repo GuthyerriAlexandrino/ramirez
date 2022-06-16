@@ -1,12 +1,12 @@
 class UsersController < ApplicationController
   before_action :authorize_request, except: :create
-  before_action :set_user, only: %i[ show update destroy ]
+  before_action :set_user, only: :show
 
   # GET /users
   def index
     filters = FiltersService.format_params(request.GET)
     location = FiltersService.format_location(request.GET[:location])
-    @users = User.only([:name, :email, :specialization, :city, :state]).where(filters)
+    @users = User.only(UserService.search_view).where(filters)
     @users = @users.any_of(*location) unless location.empty?
     render json: @users
   end
@@ -14,6 +14,13 @@ class UsersController < ApplicationController
   # GET /users/1
   def show
     render json: @user
+  end
+
+  def set_img
+    fs = FireStorageService.instance
+    fs = fs.img_bucket
+    file = fs.file("pexels-ylanite-koppens-2479246.jpg")
+    # render json: file, status: :ok
   end
 
   # POST /users
@@ -29,6 +36,7 @@ class UsersController < ApplicationController
 
   # PATCH/PUT /users/1
   def update
+    @user = find 
     if @user.update(user_params)
       render json: @user
     else
@@ -53,6 +61,6 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:name, :email, :photographer, :password, :password_confirmation, :specialization, :city, :state, :updated_at, :created_at)
+      params.require(:user).permit(UserService.all_permited)
     end
 end

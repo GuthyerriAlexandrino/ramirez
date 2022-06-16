@@ -6,14 +6,20 @@ ruby "3.1.2"
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.3"
 
+# Mongo functions in ruby
 gem "mongoid"
 
+# Json Web Token
 gem 'jwt'
 
+# Security for passwords
 gem 'bcrypt'
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
+
+# Firebase storage service
+gem "google-cloud-storage"
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 # gem "jbuilder"

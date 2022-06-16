@@ -4,7 +4,7 @@ class Post
   field :title, type: String
   field :img, type: String
   field :price, type: Float
-  field :likes, type: Integer
   embedded_in :user
-  embeds_many :comments
+  embeds_many :likes
+  has_many :comments
 end

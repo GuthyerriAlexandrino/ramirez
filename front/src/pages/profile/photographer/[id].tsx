@@ -24,17 +24,6 @@ import ProfileImg from "../../../assets/profile.jpg"
 import Image from "next/image";
 import Link from "next/link";
 
-import Image1 from "../../../assets/water-animal/image1.jpg";
-import Image2 from "../../../assets/water-animal/image2.jpg";
-import Image3 from "../../../assets/water-animal/image3.jpg";
-import Image4 from "../../../assets/water-animal/image4.jpg";
-import Image5 from "../../../assets/water-animal/image5.jpg";
-import Image6 from "../../../assets/water-animal/image6.jpg";
-import Image7 from "../../../assets/water-animal/image7.jpg";
-import Image8 from "../../../assets/water-animal/image8.jpg";
-import Image9 from "../../../assets/water-animal/image9.jpg";
-import Image10 from "../../../assets/water-animal/image10.jpg";
-import Image11 from "../../../assets/water-animal/image11.jpg";
 import Masonry from "react-masonry-css";
 import { Header } from "../../../components/Header";
 import { useEffect, useState } from "react";
@@ -44,20 +33,22 @@ import { User } from "../../search";
 import { parseCookies } from "nookies";
 import { useInView } from "react-intersection-observer";
 import { useAnimation } from "framer-motion";
+import { MenuButton } from "../../../components/MenuButton";
 
 let photos = [
-    { id: 1, src: Image1 },
-    { id: 2, src: Image2 },
-    { id: 3, src: Image3 },
-    { id: 4, src: Image4 },
-    { id: 5, src: Image5 },
-    { id: 6, src: Image6 },
-    { id: 7, src: Image7 },
-    { id: 8, src: Image8 },
-    { id: 9, src: Image9 },
-    { id: 10, src: Image10 },
-    { id: 11, src: Image11 },
-];
+    {id:1, width: 640, height: 960},
+    {id:2, width: 1920, height: 2880},
+    {id:3, width: 2400, height: 3600},
+    {id:4, width: 640, height: 425},
+    {id:5, width: 1440, height: 1277},
+    {id:6, width: 2400, height: 1596},
+    {id:7, width: 640, height: 960},
+    {id:8, width: 1920, height: 2880},
+    {id:9, width: 2400, height: 3600},
+    {id:10, width: 640, height: 425},
+    {id:11, width: 1920, height: 1277},
+    {id: 12, width: 2400, height: 1596}
+]
 
 const breakpointColumnsObj = {
     default: 4,
@@ -103,7 +94,15 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 }
 
 interface PhotographerProps {
-    user: User;
+    user: {
+        id: {
+            $oid: string;
+        };
+        name: string;
+        city: string;
+        state: string;
+        specialization: string;
+    }
 }
 
 export default function ProfilePhotographer({user}: PhotographerProps) {
@@ -144,6 +143,7 @@ export default function ProfilePhotographer({user}: PhotographerProps) {
             exit={{ x: "100%" }}
         >
             <Header/>
+            <MenuButton id={user.id.$oid} openModal={() => handlePopUpScreen(true)}/>
             <ProfileInfoContainer>
                 <ProfileInfo>
                     <ProfileAside>
@@ -190,11 +190,6 @@ export default function ProfilePhotographer({user}: PhotographerProps) {
                 </ProfileInfo>
             </ProfileInfoContainer>
             <DividerArea>
-                <PublishButton 
-                    onClick={() => handlePopUpScreen(true)}
-                >
-                    Postar nova foto
-                </PublishButton>
                 <Divider vertical={false} height={2}/>
             </DividerArea>
             <PhotosGallery>
@@ -203,12 +198,17 @@ export default function ProfilePhotographer({user}: PhotographerProps) {
                     className={styles.myMasonryGrid}
                     columnClassName={styles.msyMasonryGridColumn}
                 >
-                    {photos.map((photo, id) => (
+                    {photos.map((id) => (
                         <Link href="/post">
-                            <PhotoItem key={id} ref={ref} animate={animation}>
-                                <Image src={photo.src}/>
+                            <PhotoItem key={id.id}>
+                                <Image 
+                                    loading="lazy" 
+                                    src={`https://picsum.photos/${id.width}/${id.height}`} 
+                                    width={id.width} 
+                                    height={id.height}
+                                />
                             </PhotoItem>
-                       </Link>
+                        </Link>
                     ))}
                 </Masonry>
             </PhotosGallery>

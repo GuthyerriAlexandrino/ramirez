@@ -29,7 +29,7 @@ export type User = {
     name: string;
     city: string;
     state: string;
-    specialization: string;
+    specialization: string[];
 }
 
 type Specialization = {

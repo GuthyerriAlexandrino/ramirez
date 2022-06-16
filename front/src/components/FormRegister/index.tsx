@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Button, CheckBoxArea, CheckBoxConfirm, FormBody, Icon, InputContainer, InputFlex, Panel } from "./style";
-import { BagSimple, Buildings, CaretDown, Eye, EyeSlash, Key, User } from "phosphor-react";
+import { Buildings, Eye, EyeSlash, Key, User } from "phosphor-react";
 import Email from "../../assets/email.svg";
 
 import Image from "next/image";
@@ -13,15 +13,11 @@ type User = {
     email: string;
     password: string;
     password_confirmation: string;
-    specialization: string;
     city: string;
     state: string;
     photographer: boolean
 }
 
-type Specialization = {
-    name: string;
-}
 
 export function FormRegister() {
 
@@ -30,7 +26,6 @@ export function FormRegister() {
         email: "",
         password: "",
         password_confirmation: "",
-        specialization: "Nenhum",
         city: "",
         state: "",
         photographer: false
@@ -39,7 +34,6 @@ export function FormRegister() {
     const [visiblePassword, setVisiblePassword] = useState(false);
     const [visibleConfirmPassword, setVisibleConfirmPassword] = useState(false);
     const [isPhotographer, setIsPhotographer] = useState(false);
-    const [specializationOptions, setSpecializationOptions] = useState<Specialization[]>([]);
 
     const {
         notifySuccess,
@@ -87,19 +81,9 @@ export function FormRegister() {
         } else {
             notifySuccess("Conta registrada!");
             Router.push("/conclusion")
-            console.log(res)
         }
     }
 
-    useEffect(() => {
-        async function getAllSpecializations() {
-            const data = await fetch("http://localhost:3001/specializations", {
-                method: "GET"
-            }).then(response => response.json());
-            setSpecializationOptions(data)
-        }
-        getAllSpecializations();
-    }, [])
 
     return (
         <FormBody action="" onSubmit={handleSubmit}>
@@ -194,26 +178,6 @@ export function FormRegister() {
                     <label htmlFor="photographer">Sou fotógrafo</label>
                 </CheckBoxArea>
                 <Panel active={isPhotographer}>
-                    <InputContainer>
-                        <Icon align="left">
-                            <BagSimple size={24} color={pallete.blackFour} weight="fill" />
-                        </Icon>
-                        <Icon align="right">
-                            <CaretDown size={24} weight="fill" style={{cursor: "auto"}} />
-                        </Icon>
-                        <label htmlFor="especializations"></label>
-                        <select 
-                            id="especializations"
-                            name="especializations"
-                            placeholder="Especialização"
-                            onChange={(event) => setNewUser({...newUser, specialization: event.target.value})}
-                            required={isPhotographer ? true : false}
-                        >
-                            {specializationOptions.map((specialization, index) => (
-                                index > 0 && <option key={specialization.name} value={specialization.name}>{specialization.name}</option>
-                            ))}
-                        </select>
-                    </InputContainer>
                     <InputFlex>
                         <InputContainer>
                             <Icon align="left">

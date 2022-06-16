@@ -1,6 +1,5 @@
-import { CardContainer, Especialization, PhotographerImage, PhotographerInfo } from "./style";
+import { CardContainer,  CardContent, FilterImage, ListSpecialization } from "./style";
 
-import Photographer from "../../assets/photographer-profile.png"
 import { User } from "../../pages/search";
 import Link from "next/link";
 
@@ -11,16 +10,25 @@ type PhotographerCardProps = {
 export function PhotographerCard({user}: PhotographerCardProps) {
     return (
         <Link href={`/profile/photographer/${user._id.$oid}`}>
-            <CardContainer>
-                <PhotographerImage src={Photographer} width={72} height={72}  />
-                <PhotographerInfo>
-                    <span>{user.name}</span>
-                    <small>{user.city} - {user.state}</small>
-                </PhotographerInfo>
-                <Especialization>
-                    <span>Área:</span>
-                    <span>{user.specialization}</span>
-                </Especialization>
+            <CardContainer image="../../assets/profile.jpg">
+                <FilterImage/>
+                <CardContent>
+                    <h3>{user.name}</h3>
+                    <div>
+                        <article>
+                            <span>{user.city} - {user.state}</span>
+                            <strong>R$ 20 - 40</strong>
+                        </article>
+                        <ListSpecialization>
+                            <span>Especialidades:</span>
+                            <ul>
+                                {user?.specialization?.map(item => (
+                                    <li>{item}</li>
+                                ))}
+                            </ul>
+                        </ListSpecialization>
+                    </div>
+                </CardContent>
             </CardContainer>
         </Link>
     )

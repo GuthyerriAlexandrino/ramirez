@@ -11,5 +11,6 @@ export const pallete = {
     whiteOne: "#ffffff",
     turquoiseOne: "#40e0d0",
     green: "#3CB371",
-    red: "#FF6347"
+    red: "#FF6347",
+    yellow: "#EFB700"
 }

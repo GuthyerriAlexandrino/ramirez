@@ -73,7 +73,7 @@ export default function LogIn()  {
                     <Icon align="left">
                         <Image src={Password} width={24} height={24}/>
                     </Icon>
-                    <Icon align="right" onClick={handleVisiblePassword}>
+                    <Icon align="right" valuePosition={10} onClick={handleVisiblePassword}>
                         <Image src={visible ? EyeVisible : EyeInvisible} width={24} height={24}/>
                     </Icon>
                     <label htmlFor="passworld"></label>

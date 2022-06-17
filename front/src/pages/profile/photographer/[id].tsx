@@ -29,7 +29,7 @@ import { Header } from "../../../components/Header";
 import { useEffect, useState } from "react";
 import { PublishPhoto } from "../../../components/PublishPhoto";
 import { GetServerSideProps } from "next";
-import { User } from "../../search";
+import { UserP } from "../../search";
 import { parseCookies } from "nookies";
 import { useInView } from "react-intersection-observer";
 import { useAnimation } from "framer-motion";
@@ -70,7 +70,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         }
     }
 
-    const data: User[] = await fetch(`http://localhost:3001/users/${id}`, {
+    const data: UserP[] = await fetch(`http://localhost:3001/users/${id}`, {
         method: "GET",
         headers: {
             "Access-Control-Allow-Origin": "*",

@@ -1,10 +1,10 @@
 import { CardContainer,  CardContent, FilterImage, ListSpecialization } from "./style";
 
-import { User } from "../../pages/search";
+import { UserP } from "../../pages/search";
 import Link from "next/link";
 
 type PhotographerCardProps = {
-    user: User;
+    user: UserP;
 }
 
 export function PhotographerCard({user}: PhotographerCardProps) {

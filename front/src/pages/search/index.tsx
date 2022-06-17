@@ -22,7 +22,7 @@ import Router from "next/router";
 import { PopupItem } from "../../components/SelectInput/style";
 import { GetServerSideProps } from "next";
 
-export type User = {
+export type UserP = {
     _id: {
         $oid: string;
     },
@@ -75,7 +75,7 @@ export default function Search() {
     const [search, setSearch] = useState({} as Search);
 
     const [isLocationActive, setIsLocationActive] = useState(false);
-    const [users, setUsers] = useState<User[]>([]);
+    const [users, setUsers] = useState<UserP[]>([]);
     const [specializationOptions, setSpecializationOptions] = useState<Specialization[]>([]);
 
     const {

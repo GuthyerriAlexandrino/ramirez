@@ -123,7 +123,7 @@ export const CheckBoxArea = styled.div`
 
 export const Panel = styled.div<PanelProps>`
     width: 100%;
-    height: ${props => props.active ? "132px" : "0px"};
+    height: ${props => props.active ? "70px" : "0px"};
     padding: ${props => props.active ? "2px" : "0px"};
     overflow: hidden;
     transition: all 0.2s ease-in-out;

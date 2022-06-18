@@ -12,5 +12,4 @@ Rails.application.routes.draw do
   post '/login', to: 'registration#login'
   post '/register', to: 'registration#register'
   get '/setimg', to: 'users#set_img'
-  post '/complete_registration', to:'registration#register_all_fields'
 end

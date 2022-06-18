@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authorize_request, except: :create
+  before_action :authorize_request, except: [:create, :debug_update]
   before_action :set_user, only: :show
 
   # GET /users
@@ -20,7 +20,7 @@ class UsersController < ApplicationController
     fs = FireStorageService.instance
     fs = fs.img_bucket
     file = fs.file("pexels-ylanite-koppens-2479246.jpg")
-    # render json: file, status: :ok
+    # render json: file.url, status: :ok
   end
 
   # POST /users
@@ -34,13 +34,16 @@ class UsersController < ApplicationController
   #   end
   # end
 
-  # PATCH/PUT /users/1
   def update
-    @user = find 
-    if @user.update(user_params)
-      render json: @user
+    user = authorize_request
+    return if user.nil?
+
+    return render json: {error: "Invalid user token"}, status: :unprocessable_entity if user.email != user_params[:email]
+
+    if user.update(user_params)
+      render json: user
     else
-      render json: @user.errors, status: :unprocessable_entity
+      render error: {json: user.errors, status: :unprocessable_entity}
     end
   end
 

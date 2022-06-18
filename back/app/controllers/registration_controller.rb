@@ -26,7 +26,7 @@ class RegistrationController < ApplicationController
     user_params = register_params()
     return render json: { error: 'Invalid email' }, status: :bad_request unless user_params[:email] =~ VALID_EMAIL_REGEX
     return render json: { error: 'Password too short'}, status: :bad_request unless user_params[:password].length >= 8
-    return render json: { error: 'Specialization don\'t exists'}, status: :bad_request unless SPECIALIZATIONS.include?(user_params[:specialization])
+    # return render json: { error: 'Specialization don\'t exists'}, status: :bad_request unless SPECIALIZATIONS.include?(user_params[:specialization])
 
     begin
       u = User.create(user_params.permit(user_params.keys).to_h)
@@ -35,11 +35,6 @@ class RegistrationController < ApplicationController
     rescue Mongo::Error::OperationFailure => e
       render json: { error: e.to_s.split()[1]}, status: :conflict
     end
-  end
-
-  def register_all_fields
-    user = authorize_request
-    render "aa" unless user.nil?
   end
 
   ## Renderiza o AA só se user for nil, atualizar email gda
@@ -51,12 +46,8 @@ class RegistrationController < ApplicationController
   end
 
   def register_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation, :specialization, :city, :state, :photographer).tap do |u|
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :city, :state, :photographer).tap do |u|
       u.require([:name, :email, :password, :password_confirmation, :photographer])
     end
-  end
-
-  def register_all_fields_params
-    params.require(:user).permit(:name, :email, :specialization, :city, :state, :bio, :services_price)
   end
 end

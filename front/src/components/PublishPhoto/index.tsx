@@ -8,12 +8,16 @@ import {
     PopupContainer,
     Typography,
     ButtonSubmit,
-    IconArea
+    IconArea,
+    IconContainer,
+    PreviewImage
 } from "./style";
 
 import { FilePlus, XCircle } from "phosphor-react";
 import { pallete } from "../../styles/colors";
-import { useState } from "react";
+import { FormEvent, useState } from "react";
+import Image from "next/image";
+import { parseCookies } from "nookies";
 
 interface Post {
     title: string;
@@ -27,19 +31,24 @@ type PublishPhotoProps = {
 
 export function PublishPhoto({handlePopUp}: PublishPhotoProps) {
 
-    const [post, setPost] = useState<Post>({} as Post);
+    const [photoImageContent, setPhotoImageContent] = useState<File>();
+    const [photoPrice, setPhotoPrice] = useState<number | null>();
+    const [photoTitle, setPhotoTitle] = useState("");
 
-
-    async function addNewPost() {
+    async function addNewPost(event: FormEvent<HTMLFormElement>) {
+        event.preventDefault();
 
         const imageData = new FormData();
-        imageData.append('image', post?.image, post.image?.name)
+        imageData.append('image', photoImageContent!, photoTitle)
+
+        let cookies = parseCookies();
+        let token = cookies["ramirez-user"]
 
         const newPost = {
             post: {
-                title: post.title,
-                image: imageData,
-                price: post.price ? post.price : 0
+                title: photoTitle,
+                image: photoImageContent,
+                price: photoPrice ? photoPrice : 0
             }
         }
         
@@ -47,14 +56,15 @@ export function PublishPhoto({handlePopUp}: PublishPhotoProps) {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': '*'
+                'Access-Control-Allow-Origin': '*',
+                'Authorization': `Bearer ${token}`
             },
             body: JSON.stringify(newPost)
         })
         .then(response => response.json())
         .catch(error => error);
+        console.log(res)
     }
-
 
     return (
         <PopupContainer>
@@ -63,7 +73,7 @@ export function PublishPhoto({handlePopUp}: PublishPhotoProps) {
                     <XCircle color={pallete.red} weight="fill" size={40} />
                 </IconArea>
                 <Typography>Postar uma nova foto</Typography>
-                <FormArea>
+                <FormArea onSubmit={addNewPost}>
                     <InputContainer>
                         <label htmlFor="title">Título</label>
                         <InputValue 
@@ -72,7 +82,7 @@ export function PublishPhoto({handlePopUp}: PublishPhotoProps) {
                             name="title" 
                             placeholder="Digite aqui um título para sua foto"
                             required
-                            onChange={(event) => setPost({...post, title: event.target.value})}
+                            onChange={(event) => setPhotoTitle(event.target.value)}
                         />
                     </InputContainer>
                     <InputContainer>
@@ -82,16 +92,29 @@ export function PublishPhoto({handlePopUp}: PublishPhotoProps) {
                             id="price" 
                             name="price" 
                             placeholder="Digite aqui o preço da voto. Ex.: 100"
-                            onChange={(event) => setPost({...post, price: Number(event.target.value)})}
+                            onChange={(event) => setPhotoPrice(Number(event.target.value))}
                         />
                     </InputContainer>
                     <InputContainer>
                         <label>Foto</label>
                         <InputFileLabel>
-                            <span>{post ? `> ${post}` : "Insira aqui uma foto"}</span>
-                            <div>
-                                <FilePlus color={pallete.grayTwo} weight="fill" size={40}/>
-                            </div>
+                            <span>{photoImageContent ? `> ${photoImageContent.name}` : "Insira aqui uma foto"}</span>
+                                {photoImageContent ? (
+                                    <PreviewImage>
+                                        <Image 
+                                            src={URL.createObjectURL(photoImageContent!)} 
+                                            alt="foto para publicação"
+                                            layout="fixed"
+                                            width={100}
+                                            height={100}
+                                            objectFit="cover"
+                                        />
+                                    </PreviewImage>
+                                ) : (
+                                    <IconContainer>
+                                        <FilePlus color={pallete.grayTwo} weight="fill" size={40}/>
+                                    </IconContainer>
+                                )}
                             <InputFile
                                 type="file"
                                 id="file"
@@ -99,11 +122,11 @@ export function PublishPhoto({handlePopUp}: PublishPhotoProps) {
                                 placeholder="Insira aqui uma foto"
                                 required
                                 accept=".jpg,.jpeg,.png"
-                                onChange={(e) => e.target.files && setPost({...post, image: e.target.files[0]!})}
+                                onChange={(e) => e.target.files && setPhotoImageContent(e.target.files[0]!)}
                             />
                         </InputFileLabel>
                     </InputContainer>
-                    <ButtonSubmit type="button" onClick={addNewPost}>Postar foto</ButtonSubmit>
+                    <ButtonSubmit type="submit">Postar foto</ButtonSubmit>
                 </FormArea>
             </FormAreaContainer>            
         </PopupContainer>

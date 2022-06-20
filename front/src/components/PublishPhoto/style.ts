@@ -108,18 +108,28 @@ export const InputFileLabel = styled.label`
         font-size: 1rem;
         color: ${pallete.grayTwo};
     }
+`;
 
-    div {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 6.25rem;
-        height: 6.25rem;
-        margin-top: 1.25rem;
-        border: 1px dashed ${pallete.grayTwo};
+export const PreviewImage = styled.div`
+    width: 6.25rem;
+    height: 6.25rem;
+    border-radius: 10px;
+
+    img {
         border-radius: 10px;
     }
-`;
+`
+
+export const IconContainer = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 6.25rem;
+    height: 6.25rem;
+    margin-top: 1.25rem;
+    border: 1px dashed ${pallete.grayTwo};
+    border-radius: 10px;
+`
 
 export const InputFile = styled.input`
     display: none;

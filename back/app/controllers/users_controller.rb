@@ -4,9 +4,11 @@ class UsersController < ApplicationController
 
   # GET /users
   def index
-    filters = FiltersService.format_params(request.GET)
-    location = FiltersService.format_location(request.GET[:location])
-    @users = User.only(UserService.search_view).where(filters)
+    filters = FiltersService.matching_params(request.GET)
+    location = FiltersService.location_params(request.GET[:location])
+    order = FiltersService.order_params(request.GET[:orderBy])
+    price = FiltersService.price_params(min_price: request.GET[:minPrice], max_price: request.GET[:maxPrice])
+    @users = User.where(filters.merge(price)).only(UserService.search_view).order_by(order)
     @users = @users.any_of(*location) unless location.empty?
     render json: @users
   end
@@ -14,8 +16,12 @@ class UsersController < ApplicationController
   # GET /users/1
   def show
     user = authorize_request
-
-    p View.find()
+    p @user
+    unless View.where(:user => user.id, :photographer => @user.id).exists?
+      View.create(user: user.id, photographer: params[:id])
+      @user.update(views: @user.views + 1)
+    end
+    @user.password_digest = nil
     render json: @user
   end
 
@@ -23,7 +29,6 @@ class UsersController < ApplicationController
     fs = FireStorageService.instance
     fs = fs.img_bucket
     file = fs.file("pexels-ylanite-koppens-2479246.jpg")
-    #send_file image, :type => file.content_type, :disposition => file.content_disposition
     render json: file.media_url, status: :ok
   end
 
@@ -42,7 +47,7 @@ class UsersController < ApplicationController
     user = authorize_request
     return if user.nil?
 
-    return render json: {error: "Invalid user token"}, status: :unprocessable_entity if user.email != user_params[:email]
+    return render json: {error: "Invalid user token"}, status: :unprocessable_entity if user.id != user_params[:id]
 
     if user.update(user_params)
       render json: user
@@ -59,7 +64,7 @@ class UsersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
-      @user = User.without(:password_digest, :password).where(id: params[:id])
+      @user = User.where(id: params[:id]).first
     end
 
     # Only allow a list of trusted parameters through.

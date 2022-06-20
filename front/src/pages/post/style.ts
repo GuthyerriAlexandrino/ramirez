@@ -59,15 +59,50 @@ export const IconsArea = styled.div`
 `
 
 export const CommentaryInputContainer = styled.article`
-
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-top: 2rem;
+    width: 100%;
 `
 
-export const CommentaryInput = styled.input`
+export const CommentaryInput = styled.textarea`
+    width: 100%;
+    height: 6.25rem;
+    resize: none;
+    resize: none;
+    border: 1px solid ${pallete.grayOne};
+    border-radius: 10px;
+    padding: 1rem;
+    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+    color: ${pallete.whiteOne};
+    background-color: ${pallete.blackSix};
+    transition: outline 0.1s ease-in;
+
+    &:focus {
+        outline: 2px solid ${pallete.turquoiseOne};
+    }
 
 `
 export const CommentaryButton = styled.button`
+    width: 7.188rem;
+    border: 1px solid ${pallete.grayOne};
+    border-radius: 5px;
+    padding: 0.375rem 0.75rem;
+    margin-top: 0.75rem;
+    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+    color: ${pallete.whiteOne};
+    background-color: ${pallete.blackSix};
+    transition: all 0.5s cubic-bezier( 0.7, 0.2, 0.88, 0.33 );
+    cursor: pointer;
 
-
+    &:hover {
+        background-color: ${pallete.turquoiseOne};
+        font-weight: 700;
+        color: ${pallete.blackFive}
+    }
 `
 
 export const FeedBackArea = styled.article`

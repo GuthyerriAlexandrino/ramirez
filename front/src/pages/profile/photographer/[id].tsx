@@ -154,6 +154,7 @@ export default function ProfilePhotographer({user}: PhotographerProps) {
                                 objectFit="cover"
                                 width={176}
                                 height={176}
+                                alt={"Foto de perfil"}
                             />
                         </ProfileImage>
                         <ProfileName>
@@ -199,13 +200,15 @@ export default function ProfilePhotographer({user}: PhotographerProps) {
                     columnClassName={styles.msyMasonryGridColumn}
                 >
                     {photos.map((id) => (
-                        <Link href="/post">
+                        // eslint-disable-next-line @next/next/link-passhref
+                        <Link href="/post" key={id.id}>
                             <PhotoItem key={id.id}>
                                 <Image 
                                     loading="lazy" 
                                     src={`https://picsum.photos/${id.width}/${id.height}`} 
                                     width={id.width} 
                                     height={id.height}
+                                    alt="Foto da galeria"
                                 />
                             </PhotoItem>
                         </Link>

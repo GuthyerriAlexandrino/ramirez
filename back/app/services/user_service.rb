@@ -6,6 +6,6 @@ module UserService
   end
 
   def UserService.search_view
-    [:name, :email, :specialization, :city, :state]
+    [:name, :email, :specialization, :city, :state, :views]
   end
 end

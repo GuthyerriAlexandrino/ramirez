@@ -4,7 +4,7 @@ require "google/cloud/storage"
 class FireStorageService
   attr_reader :img_bucket
   def FireStorageService.instance
-    @instance = FireStorageService.new if @instance.nil?
+    @instance ||= FireStorageService.new
   end
 
   private

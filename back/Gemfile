@@ -48,6 +48,8 @@ group :development, :test do
   gem "faker"
   gem "seedbank"
   gem "rack-cors"
+  gem "awesome_print"
+  gem "rspec-rails"
 end
 
 group :development do

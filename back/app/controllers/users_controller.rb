@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authorize_request, except: [:create, :debug_update]
+  before_action :authorize_request, except: [:create, :show]
   before_action :set_user, only: :show
 
   # GET /users
@@ -13,6 +13,9 @@ class UsersController < ApplicationController
 
   # GET /users/1
   def show
+    user = authorize_request
+
+    p View.find()
     render json: @user
   end
 
@@ -20,7 +23,8 @@ class UsersController < ApplicationController
     fs = FireStorageService.instance
     fs = fs.img_bucket
     file = fs.file("pexels-ylanite-koppens-2479246.jpg")
-    # render json: file.url, status: :ok
+    #send_file image, :type => file.content_type, :disposition => file.content_disposition
+    render json: file.media_url, status: :ok
   end
 
   # POST /users
@@ -55,11 +59,7 @@ class UsersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
-      # @user = find(params[:id])
-      @user = []
-      @user << User.only([:name, :email, :_id]).where(photographer: false, id: params[:id]).first()
-      @user << User.only([:name, :email, :_id, :specialization, :city, :state]).where(photographer: true, id:params[:id]).first()
-      @user.compact!
+      @user = User.without(:password_digest, :password).where(id: params[:id])
     end
 
     # Only allow a list of trusted parameters through.

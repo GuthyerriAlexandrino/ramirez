@@ -16,7 +16,11 @@ class PostsController < ApplicationController
   # POST /posts
   def create
     user = authorize_request
-    return if user.nil?
+    return if user.nil? || params[:img].nil?
+    
+    p params[:img]
+
+    return 0
 
     @post = Post.new(post_params)
     user.posts << @post
@@ -50,6 +54,6 @@ class PostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:title, :img, :price).tap { |u| u.require([:title, :img]) }
+      params.require(:post).permit(:title, :price).tap { |u| u.require(:title) }
     end
 end

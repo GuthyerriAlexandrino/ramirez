@@ -30,7 +30,7 @@ export const FormBody = styled(motion.form)`
     }
 `
 
-export const InputContainer = styled.div<InputContainer>`
+export const InputContainer = styled(motion.div)<InputContainer>`
     position: relative;
     margin-bottom: 1rem;
 

@@ -36,8 +36,8 @@ export function MenuButton({id, openModal}: MenuButtonProps) {
             <Toggle onClick={() => setActived(!actived)} active={actived}>
                 <GearSix size={30} color={pallete.whiteOne} weight="fill" />
             </Toggle>
-            {buttonsRender.map(button => (
-                <OptionMenu id="menu-li" value={button.style} active={actived}>
+            {buttonsRender.map((button, index) => (
+                <OptionMenu key={index} id="menu-li" value={button.style} active={actived}>
                     <i>
                         {button.icon}
                     </i>

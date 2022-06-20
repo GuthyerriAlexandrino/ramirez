@@ -1,6 +1,10 @@
 import { motion } from "framer-motion";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { pallete } from "../../styles/colors";
+
+interface IconProps {
+    valuePosition?: number;
+}
 
 export const PopupContainer = styled(motion.div)`
     position: fixed;
@@ -58,6 +62,7 @@ export const FormArea = styled.form`
 `
 
 export const InputContainer = styled.div`
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -82,11 +87,42 @@ export const InputValue = styled.input`
     font-weight: 500;
     font-size: 0.875rem;
     line-height: 1.063rem;
-    color: #9f9f9f;
+    color: ${pallete.whiteOne};
     border: none;
     border-radius: 5px;
     padding: 0.5rem;
     background-color: ${pallete.blackFive};
+
+    &[type=number] {
+        -webkit-appearance: textfield;
+        -moz-appearance: textfield;
+        appearance: textfield;
+    }
+
+    &[type=number]::-webkit-inner-spin-button, 
+    &[type=number]::-webkit-outer-spin-button { 
+        -webkit-appearance: none;
+    }
+`
+
+export const Icon = styled.i<IconProps>`
+    position: absolute;
+    bottom: 0;
+    right: ${props => `${props.valuePosition}px`};
+    transition: all ease 0.2s;
+    cursor: pointer;
+
+    &[data-title=minus] {
+        &:nth-child(2):hover {
+            filter: brightness(85%);
+        }
+    }
+
+    &[data-title=plus] {
+        &:nth-child(3):hover {
+            filter: brightness(85%);
+        }
+    }
 `
 
 export const InputFileLabel = styled.label`

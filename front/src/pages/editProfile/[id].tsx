@@ -506,7 +506,7 @@ export default function EditProfile({user}: PhotographerProps) {
                             </div>
                         </Panel>
                     </ProfileProfessionalData>
-                    <Button type="submit">Confirsmar</Button>
+                    <Button type="submit">Confirmar</Button>
                 </EditForm>
             </EditFormContainer>
         </Container>

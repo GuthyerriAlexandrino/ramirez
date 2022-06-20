@@ -53,7 +53,6 @@ export function PublishPhoto({handlePopUp}: PublishPhotoProps) {
         })
         .then(response => response.json())
         .catch(error => error);
-        console.log(newPost)
     }
 
 

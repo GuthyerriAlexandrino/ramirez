@@ -22,6 +22,7 @@ import { CommentaryCard } from "../../components/CommentaryCard";
 import { useEffect, useState } from "react";
 import { getDownloadURL, ref } from "firebase/storage";
 import { storage } from "../../utils/keys/firebaseconfig";
+import Image from "next/image";
 
 export default function Post() {
 
@@ -54,10 +55,11 @@ export default function Post() {
                 <PostArea>
                     <PostContent>
                         <PostImage>
-                            <img 
+                            <Image 
                                 src={image}
                                 width={"100%"}
                                 height={"100%"}
+                                alt={"Imagem da postagem"}
                             />
                         </PostImage>
                         <ContentFooter>

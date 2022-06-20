@@ -247,6 +247,7 @@ export default function EditProfile({user}: PhotographerProps) {
                                 objectFit="cover"
                                 width={150} 
                                 height={150}
+                                alt={"Foto de perfil"}
                             />
                         </ProfileImage>
                         <h2>{user.name}</h2>
@@ -268,7 +269,7 @@ export default function EditProfile({user}: PhotographerProps) {
                         </InputContainer>
                         <InputContainer variants={variantsItems}>
                             <Icon align="left">
-                                <Image src={Email} width={24} height={24}/>
+                                <Image src={Email} width={24} height={24} alt="ícone de email"/>
                             </Icon>
                             <label htmlFor="email"></label>
                             <input 

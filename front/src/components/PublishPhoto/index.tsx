@@ -10,14 +10,17 @@ import {
     ButtonSubmit,
     IconArea,
     IconContainer,
-    PreviewImage
+    PreviewImage,
+    Icon
 } from "./style";
 
-import { FilePlus, XCircle } from "phosphor-react";
+import { FilePlus, Minus, Plus, XCircle } from "phosphor-react";
 import { pallete } from "../../styles/colors";
 import { FormEvent, useState } from "react";
 import Image from "next/image";
 import { parseCookies } from "nookies";
+import { formatBytes } from "../../utils/formatBytes";
+import { useNotify } from "../../context/NotifyContext";
 
 interface Post {
     title: string;
@@ -32,18 +35,28 @@ type PublishPhotoProps = {
 export function PublishPhoto({handlePopUp}: PublishPhotoProps) {
 
     const [photoImageContent, setPhotoImageContent] = useState<File>();
-    const [photoPrice, setPhotoPrice] = useState<number | null>();
+    const [photoPrice, setPhotoPrice] = useState<number | null>(null);
     const [photoTitle, setPhotoTitle] = useState("");
+
+    const {
+        notifySuccess,
+        notifyError
+    } = useNotify();
 
     async function addNewPost(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
+
+        if (!verifyIfSizesImageIsValid()) {
+            notifyError("Falha ao postar conteúdo! Tamanho da imagem é maior que 2 MB!")
+            return;
+        }
 
         const imageData = new FormData();
         imageData.append('image', photoImageContent!, photoTitle)
 
         let cookies = parseCookies();
         let token = cookies["ramirez-user"]
-
+        
         const newPost = {
             post: {
                 title: photoTitle,
@@ -64,6 +77,31 @@ export function PublishPhoto({handlePopUp}: PublishPhotoProps) {
         .then(response => response.json())
         .catch(error => error);
         console.log(res)
+    }
+
+    function changePhotoPrice(value: number) {
+        if (value < 0) {
+            setPhotoPrice((photoPrice! - 1) < 0 ? 0 : photoPrice! - 1);
+            return;
+        }
+        setPhotoPrice(photoPrice! + 1)
+    }
+
+    function verifyIfSizesImageIsValid() {
+        const {value, sizes} = formatBytes(photoImageContent?.size!);
+
+        if (sizes === "mb" && value > 2) {
+            return false;
+        }
+        return true;
+    }
+
+    function renderSizeOfImage() {
+        const {value, sizes} = formatBytes(photoImageContent?.size!);
+
+        return (
+            <strong>{value!} <sub>{sizes}</sub></strong>
+        )
     }
 
     return (
@@ -87,34 +125,60 @@ export function PublishPhoto({handlePopUp}: PublishPhotoProps) {
                     </InputContainer>
                     <InputContainer>
                         <label htmlFor="price">Preço</label>
+                        <Icon 
+                            title="Valor mínimo"
+                            data-title="minus"
+                            valuePosition={40}  
+                            onClick={() => changePhotoPrice(-1)}
+                        >
+                            <Minus 
+                                size={24} 
+                                color={pallete.red} 
+                                weight="bold" 
+                            />
+                        </Icon>
+                        <Icon 
+                            title="Valor máximo"
+                            data-title="plus"
+                            valuePosition={10}
+                            onClick={() => changePhotoPrice(1)}
+                        >
+                            <Plus 
+                                size={24} 
+                                color={pallete.green} 
+                                weight="bold" 
+                            />
+                        </Icon>
                         <InputValue
-                            type="number" 
                             id="price" 
                             name="price" 
-                            placeholder="Digite aqui o preço da voto. Ex.: 100"
+                            type="number"
+                            value={photoPrice === null ? "" : photoPrice} 
                             onChange={(event) => setPhotoPrice(Number(event.target.value))}
+                            placeholder="Digite aqui o preço da voto. Ex.: 100"
+                            min={0}
                         />
                     </InputContainer>
                     <InputContainer>
-                        <label>Foto</label>
+                        <label>Foto {renderSizeOfImage()} </label>
                         <InputFileLabel>
                             <span>{photoImageContent ? `> ${photoImageContent.name}` : "Insira aqui uma foto"}</span>
-                                {photoImageContent ? (
-                                    <PreviewImage>
-                                        <Image 
-                                            src={URL.createObjectURL(photoImageContent!)} 
-                                            alt="foto para publicação"
-                                            layout="fixed"
-                                            width={100}
-                                            height={100}
-                                            objectFit="cover"
-                                        />
-                                    </PreviewImage>
-                                ) : (
-                                    <IconContainer>
-                                        <FilePlus color={pallete.grayTwo} weight="fill" size={40}/>
-                                    </IconContainer>
-                                )}
+                            {photoImageContent ? (
+                                <PreviewImage>
+                                    <Image 
+                                        src={URL.createObjectURL(photoImageContent!)} 
+                                        alt="foto para publicação"
+                                        layout="fixed"
+                                        width={100}
+                                        height={100}
+                                        objectFit="cover"
+                                    />
+                                </PreviewImage>
+                            ) : (
+                                <IconContainer>
+                                    <FilePlus color={pallete.grayTwo} weight="fill" size={40}/>
+                                </IconContainer>
+                            )}
                             <InputFile
                                 type="file"
                                 id="file"

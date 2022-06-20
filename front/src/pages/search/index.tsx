@@ -46,10 +46,10 @@ type Search = {
 }
 
 const orderOptions = [
-    {name: "Nenhum"},
-    {name: "Visitas"},
-    {name: "Curtidas"},
-    {name: "Preço"}
+    {name: "Nenhum", field: null},
+    {name: "Visitas", field: "visitas"},
+    {name: "Curtidas", field: "curtidas"},
+    {name: "Preço", field: "preco"}
 ]
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
@@ -94,6 +94,7 @@ export default function Search() {
 
     useEffect(() => {
         getUsers();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     async function getUsers() {

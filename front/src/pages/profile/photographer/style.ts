@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 import styled, { css } from "styled-components";
 import { pallete } from "../../../styles/colors";
 
@@ -87,7 +88,7 @@ export const ProfileLocation = styled.small`
 
 
 export const Divider = styled.div<DividerProps>`
-    width: ${props => props.vertical ? "1px" : "100%"};
+    width: ${props => props.vertical ? "4px" : "100%"};
     height: ${props => `${props.height}px`};
     background-color: ${pallete.turquoiseOne};
 `
@@ -139,8 +140,14 @@ export const ProfileAbout = styled.section`
         margin: 1.25rem 1.25rem 0 1.25rem;
     }
 
-    p {
+    p[data-bio=hasBio] {
         font-weight: 500;
+        color: ${pallete.whiteOne};
+    }
+
+    p[data-bio=noBio] {
+        font-weight: 500;
+        color: ${pallete.grayOne}
     }
 
     @media screen and (max-width: 935px) {
@@ -230,7 +237,7 @@ export const PublishButton = styled.button`
     }
 `
 
-export const PhotosGallery = styled.main`
+export const PhotosGallery = styled(motion.main)`
     display: flex;
     align-items: center;
     justify-content: center;
@@ -240,16 +247,58 @@ export const PhotosGallery = styled.main`
 `
 
 export const PhotoItem = styled(motion.div)`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 10px;
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
-    cursor: pointer;
+    width: 100%;
+    margin:  0 0 20px;
+    padding: 10px;
+    overflow: hidden;
+    break-inside: avoid;
+    border: 0px solid ${pallete.turquoiseOne};
     transition: all 0.2s ease;
-
+    cursor: pointer;
+    
     &:hover {
-        transform: scale(1.1);
-        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+        border: 1px solid ${pallete.turquoiseOne};
+    }
+
+    img {
+        max-width: 100%;
+    }
+`
+
+export const ImageLazyLoad = styled(LazyLoadImage)`
+    max-width: 100%;
+    width: 100%;
+    margin:  0 0 20px;
+    padding: 10px;
+    overflow: hidden;
+    break-inside: avoid;
+    border: 0px solid ${pallete.turquoiseOne};
+    transition: all 0.2s ease;
+    cursor: pointer;
+    
+    &:hover {
+        border: 1px solid ${pallete.turquoiseOne};
+    }
+`
+
+export const MansoryGrid = styled(motion.div)`
+    width: 97%;
+    margin: 20px auto;
+    columns: 4;
+    column-gap: 40px;
+
+    @media screen and (max-width: 1200px) {
+        columns: 3;
+        width: calc(100% - 40px);
+        box-sizing: border-box;
+        padding: 20px 20px 20px 0;
+    }
+
+    @media screen and (max-width: 768px) {
+        columns: 2;
+    }
+
+    @media screen and (max-width: 480px) {
+        columns: 1;
     }
 `

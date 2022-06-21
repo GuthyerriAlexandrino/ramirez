@@ -15,16 +15,15 @@ import {
     PublishButton,
     PhotosGallery,
     PhotoItem,
-    ProfileLocation
+    ProfileLocation,
+    MansoryGrid,
+    ImageLazyLoad
 } from "./style";
-
-import styles from "./styles.module.css"
 
 import ProfileImg from "../../../assets/profile.jpg"
 import Image from "next/image";
 import Link from "next/link";
 
-import Masonry from "react-masonry-css";
 import { Header } from "../../../components/Header";
 import { useEffect, useState } from "react";
 import { PublishPhoto } from "../../../components/PublishPhoto";
@@ -34,6 +33,8 @@ import { parseCookies } from "nookies";
 import { useInView } from "react-intersection-observer";
 import { useAnimation } from "framer-motion";
 import { MenuButton } from "../../../components/MenuButton";
+import 'react-lazy-load-image-component/src/effects/blur.css';
+import { motion }from "framer-motion";
 
 let photos = [
     {id:1, width: 640, height: 960},
@@ -49,13 +50,6 @@ let photos = [
     {id:11, width: 1920, height: 1277},
     {id: 12, width: 2400, height: 1596}
 ]
-
-const breakpointColumnsObj = {
-    default: 4,
-    1100: 3,
-    700: 2,
-    500: 1,
-};
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
     const { id } = context.params!;
@@ -79,11 +73,15 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     }).then(res => res.json());
 
     const user = {
-        id: data._id ?? null,
+        _id: data._id ?? null,
         name: data.name ?? null,
         city: data.city ?? null,
         state: data.state ?? null,
-        specialization: data.specialization ?? null
+        bio: data.bio ?? null,
+        specialization: data.specialization ?? null,
+        services_price: data.services_price ?? null,
+        profile_img: data.profile_img ?? null,
+        views: data.views ?? null
     }
 
     return {
@@ -94,16 +92,16 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 }
 
 interface PhotographerProps {
-    user: {
-        id: {
-            $oid: string;
-        };
-        name: string;
-        city: string;
-        state: string;
-        specialization: string;
-    }
+    user: UserP
 }
+
+const stagger = {
+    animate: {
+        transition: {
+            staggerChildren: 0.2
+        }
+    }
+};
 
 export default function ProfilePhotographer({user}: PhotographerProps) {
 
@@ -143,7 +141,7 @@ export default function ProfilePhotographer({user}: PhotographerProps) {
             exit={{ x: "100%" }}
         >
             <Header/>
-            <MenuButton id={user.id.$oid} openModal={() => handlePopUpScreen(true)}/>
+            <MenuButton id={user._id.$oid} openModal={() => handlePopUpScreen(true)}/>
             <ProfileInfoContainer>
                 <ProfileInfo>
                     <ProfileAside>
@@ -163,28 +161,39 @@ export default function ProfilePhotographer({user}: PhotographerProps) {
                         <ProfileLocation>
                             {user.city} - {user.state}
                         </ProfileLocation>
-                        <Divider vertical={false} height={1}/>
+                        <Divider vertical={false} height={2}/>
                         <ProfileViews>
                             <p>
-                                Esse perfil recebeu <br/> <span>12 visualizações</span>
+                                Esse perfil recebeu <br/>
+                                <span>
+                                    {user.views <= 1 ? `${user.views} visualização` : `${user.views} visualizações`}
+                                </span>
                             </p>
                         </ProfileViews>
                     </ProfileAside>
                     <ProfileAbout>
                         <h2>Sobre mim</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sit amet tellus pharetra, fermentum massa feugiat, ornare felis. Curabitur et mattis mi. Ut gravida purus dictum dui porttitor hendrerit. Curabitur a porta augue.</p>
+                        <p data-bio={user.bio !== "" ? "hasBio" : 'noBio'}>
+                            {user.bio !== "" ? user.bio : "Nenhuma informação escrita..."}
+                        </p>
                     </ProfileAbout>
                     <ProfileCareer>
                         <h2>Carreira Profissional</h2>
                         <CareerDataContainer>
                             <CareerData isRight={false}>
                                 <h3>Especialização</h3>
-                                <span>{user.specialization}</span>
+                                {user.specialization.map((item, index) => (
+                                    <span key={index}>{item}</span>
+                                ))}
                             </CareerData>
                             <Divider vertical={true} height={90}/>
                             <CareerData isRight={true}>
                                 <h3>Valor de Serviço</h3>
-                                <span>R$ 30 -  R$ 40 / foto</span>
+                                {user.services_price.length >  0 ? (
+                                    <span>R$ {user.services_price[0]} -  R$ {user.services_price[1]} / foto</span>
+                                ) : (
+                                    <span>Sem informações</span>
+                                )}
                             </CareerData>
                         </CareerDataContainer>
                     </ProfileCareer>
@@ -193,27 +202,26 @@ export default function ProfilePhotographer({user}: PhotographerProps) {
             <DividerArea>
                 <Divider vertical={false} height={2}/>
             </DividerArea>
-            <PhotosGallery>
-                <Masonry
-                    breakpointCols={breakpointColumnsObj}
-                    className={styles.myMasonryGrid}
-                    columnClassName={styles.msyMasonryGridColumn}
-                >
+            <PhotosGallery variants={stagger} ref={ref}>
+                <MansoryGrid>
                     {photos.map((id) => (
                         // eslint-disable-next-line @next/next/link-passhref
-                        <Link href="/post" key={id.id}>
-                            <PhotoItem key={id.id}>
-                                <Image 
-                                    loading="lazy" 
+                        <Link href="/post" key={id.id} >
+                            <motion.div 
+                                key={id.id} 
+                                animate={animation}
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.95 }}
+                            >
+                                <ImageLazyLoad
+                                    effect="blur" 
                                     src={`https://picsum.photos/${id.width}/${id.height}`} 
-                                    width={id.width} 
-                                    height={id.height}
                                     alt="Foto da galeria"
                                 />
-                            </PhotoItem>
+                            </motion.div>
                         </Link>
                     ))}
-                </Masonry>
+                </MansoryGrid>
             </PhotosGallery>
             {popupIsOpen && <PublishPhoto handlePopUp={handlePopUpScreen}/>}
         </Container>

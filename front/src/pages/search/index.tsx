@@ -29,7 +29,11 @@ export type UserP = {
     name: string;
     city: string;
     state: string;
+    bio: string;
     specialization: string[];
+	profile_img: string,
+	services_price: number[],
+	views: number
 }
 
 type Specialization = {

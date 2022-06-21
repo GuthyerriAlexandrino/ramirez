@@ -22,12 +22,6 @@ import { parseCookies } from "nookies";
 import { formatBytes } from "../../utils/formatBytes";
 import { useNotify } from "../../context/NotifyContext";
 
-interface Post {
-    title: string;
-    image: File;
-    price?: number;
-}
-
 type PublishPhotoProps = {
     handlePopUp: (value: boolean) => void;
 }
@@ -39,7 +33,6 @@ export function PublishPhoto({handlePopUp}: PublishPhotoProps) {
     const [photoTitle, setPhotoTitle] = useState("");
 
     const {
-        notifySuccess,
         notifyError
     } = useNotify();
 

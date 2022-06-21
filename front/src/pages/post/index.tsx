@@ -23,6 +23,7 @@ import { useEffect, useState } from "react";
 import { getDownloadURL, ref } from "firebase/storage";
 import { storage } from "../../utils/keys/firebaseconfig";
 import Image from "next/image";
+import { Loading } from "../../components/Loading";
 
 export default function Post() {
 
@@ -54,14 +55,20 @@ export default function Post() {
             <PostContainer>
                 <PostArea>
                     <PostContent>
-                        <PostImage>
+                        {image ? (
                             <Image 
                                 src={image}
+                                alt={"Imagem da postagem"}
                                 width={"100%"}
                                 height={"100%"}
-                                alt={"Imagem da postagem"}
+                                layout="responsive"
+                                objectFit="cover"
                             />
-                        </PostImage>
+                        ) : (
+                            <PostImage>
+                                    <Loading/>
+                            </PostImage>
+                        )}
                         <ContentFooter>
                             <span>R$ 25,00</span>
                             <IconsArea>

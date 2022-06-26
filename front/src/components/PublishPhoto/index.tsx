@@ -46,6 +46,7 @@ export function PublishPhoto({handlePopUp}: PublishPhotoProps) {
 
         const imageData = new FormData();
         imageData.append('image', photoImageContent!, photoTitle)
+        imageData.append('price', photoPrice?.toString()!, photoTitle)
 
         let cookies = parseCookies();
         let token = cookies["ramirez-user"]
@@ -64,7 +65,7 @@ export function PublishPhoto({handlePopUp}: PublishPhotoProps) {
                 'Access-Control-Allow-Origin': '*',
                 'Authorization': 'debug'
             },
-            body: JSON.stringify(newPost)
+            body: imageData
         }).then(response => response.json());
         console.log(res)
     }

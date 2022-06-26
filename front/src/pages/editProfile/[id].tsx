@@ -39,16 +39,20 @@ import { makeFadeInRightAnimation } from "../../utils/animations";
 import { motion } from "framer-motion";
 
 type User = {
-    _id: string;
-    name: string;
+    _id?: {
+        $oid: string;
+    },
+    bio: string,
+    city: string;
     email: string;
+    name: string;
     password: string;
     password_confirmation: string;
-    about: string;
-    specialization: string[];
-    city: string;
-    state: string;
     photographer: boolean
+    profile_img: string,
+    services_price: number[],
+    specialization: string[];
+    state: string;
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
@@ -64,7 +68,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         }
     }
 
-    const data: User[] = await fetch(`http://localhost:3001/users/${id}`, {
+    const data: User = await fetch(`http://localhost:3001/users/${id}`, {
         method: "GET",
         headers: {
             "Access-Control-Allow-Origin": "*",
@@ -73,12 +77,16 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     }).then(res => res.json());
 
     const user = {
-        id: data[0]._id ?? null,
-        email: data[0].email ?? null,
-        name: data[0].name ?? null,
-        city: data[0].city ?? null,
-        state: data[0].state ?? null,
-        specialization: data[0].specialization ?? null
+        _id: data._id ?? null,
+        bio: data.bio ?? null,
+        city: data.city ?? null,
+        email: data.email ?? null,
+        name: data.name ?? null,
+        photographer: data.photographer ?? null,
+        profile_img: data.profile_img ?? null,
+        services_price: data.services_price ?? null,
+        specialization: data.specialization ?? null,
+        state: data.state ?? null,
     }
 
     return {
@@ -109,18 +117,25 @@ export default function EditProfile({user}: PhotographerProps) {
     const [selectedSpecializations, setSelectedSpecializations] = useState<string[]>(user.specialization);
     const [visiblePassword, setVisiblePassword] = useState(false);
     const [visibleConfirmPassword, setVisibleConfirmPassword] = useState(false);
-    const [isPhotographer, setIsPhotographer] = useState(false);
-    const [minusValue, setMinusValue] = useState<number>(0);
+    const [isPhotographer, setIsPhotographer] = useState(user.photographer);
+    const [minusValue, setMinusValue] = useState(0);
     const [maxValue, setMaxValue] = useState(0);
     const [editedUser, setEditedUser] = useState<User>({
-        name: "",
+        bio: "",
         email: "",
+        city: "",
+        name: "",
         password: "",
         password_confirmation: "",
-        city: "",
-        state: "",
-        photographer: false
+        photographer: false,
+        profile_img: "",
+        specialization: [],
+        services_price: [0, 0],
+        state: ""
     } as User);
+
+
+    console.log(user.photographer)
 
 
     useEffect(() => {
@@ -140,15 +155,22 @@ export default function EditProfile({user}: PhotographerProps) {
         let token = cookies["ramirez-user"]
 
         const modifiedUserToEdit = {
-            name: editedUser.name,
-            email: editedUser.email,
-            password: editedUser.password,
-            password_confirmation: editedUser.password_confirmation,
-            city: editedUser.city,
-            state: editedUser.state,
+            user: {
+                bio: editedUser.bio,
+                city: editedUser.city,
+                specialization: editedUser.specialization,
+                services_price: [minusValue, maxValue],
+                name: editedUser.name,
+                email: editedUser.email,
+                password: editedUser.password,
+                password_confirmation: editedUser.password_confirmation,
+                photographer: editedUser.photographer,
+                profile_img: editedUser.profile_img,
+                state: editedUser.state,
+            }
         }
 
-        const res= await fetch(`http://localhost:3001/users/${user._id}`, {
+        const res= await fetch(`http://localhost:3001/users/${user?._id?.$oid!}`, {
             method: "PUT",
             headers:{
                 'Content-Type': 'application/json',
@@ -345,11 +367,12 @@ export default function EditProfile({user}: PhotographerProps) {
                                 <textarea 
                                     id="about"
                                     name="about" 
-                                    defaultValue={user.about}
+                                    defaultValue={user.bio}
                                     placeholder="Escreva sobre você..."
                                     cols={50}
                                     minLength={0}
-                                    maxLength={3000} 
+                                    maxLength={3000}
+                                    onChange={(event) => setEditedUser({...editedUser, bio: event.target.value})} 
                                 />
                             </InputContainer>
                             <InputContainer isSelect variants={variantsItems}>
@@ -365,7 +388,7 @@ export default function EditProfile({user}: PhotographerProps) {
                                     onChange={(event) => addNewSpecialization(event.target.value)}
                                     required={isPhotographer ? true : false}
                                 >
-                                    {specializationOptions.map((specialization, index) => (
+                                    {specializationOptions.map((specialization) => (
                                         <option key={specialization.name} value={specialization.name}>{specialization.name}</option>
                                     ))}
                                 </select>

@@ -50,25 +50,33 @@ export function PublishPhoto({handlePopUp}: PublishPhotoProps) {
         let cookies = parseCookies();
         let token = cookies["ramirez-user"]
         
+        // const newPost = {
+        //     post: {
+        //         image: URL.createObjectURL(photoImageContent!),
+        //         price: photoPrice ? photoPrice : 0,
+        //         title: photoTitle
+        //     }
+        // }
+
+
+        console.log(imageData)
+
         const newPost = {
             post: {
-                title: photoTitle,
-                image: photoImageContent,
-                price: photoPrice ? photoPrice : 0
+                img: imageData,
+                price: 0,
+                title: photoTitle
             }
         }
         
-        const res = await fetch("http://localhost/3001/posts", {
+        const res = await fetch("http://localhost:3001/matarocris", {
             method: "POST",
             headers: {
-                'Content-Type': 'application/json',
                 'Access-Control-Allow-Origin': '*',
-                'Authorization': `Bearer ${token}`
+                'Authorization': 'debug'
             },
-            body: JSON.stringify(newPost)
-        })
-        .then(response => response.json())
-        .catch(error => error);
+            body: imageData
+        }).then(response => response.json());
         console.log(res)
     }
 
@@ -104,7 +112,12 @@ export function PublishPhoto({handlePopUp}: PublishPhotoProps) {
                     <XCircle color={pallete.red} weight="fill" size={40} />
                 </IconArea>
                 <Typography>Postar uma nova foto</Typography>
-                <FormArea onSubmit={addNewPost}>
+                <FormArea 
+                    action="http://localhost:3001" 
+                    encType="multipart/form-data"
+                    method="post" 
+                    onSubmit={addNewPost}
+                >
                     <InputContainer>
                         <label htmlFor="title">Título</label>
                         <InputValue 

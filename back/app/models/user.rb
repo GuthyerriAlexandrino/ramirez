@@ -18,6 +18,13 @@ class User
   field :profile_img, type: String, default: ""
   field :photographer, type: Boolean
   index({ email: 1 }, { unique: true })
+
+  # Validations
+  validates_length_of :password, minimum: 8
+  validates_length_of :services_price, minimum: 2, maximum: 2
+  validates_uniqueness_of :email
+
+  # Embeddings
   embeds_many :posts
   has_one :view
 end

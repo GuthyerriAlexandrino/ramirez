@@ -50,6 +50,7 @@ group :development, :test do
   gem "rack-cors"
   gem "awesome_print"
   gem "rspec-rails"
+  gem 'mongoid-rspec'
 end
 
 group :development do

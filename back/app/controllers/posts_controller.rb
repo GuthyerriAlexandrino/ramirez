@@ -16,19 +16,32 @@ class PostsController < ApplicationController
   # POST /posts
   def create
     user = authorize_request
-    return if user.nil? || params[:img].nil?
+    return if user.nil? || params[:image].nil?
     
-    p params[:img]
+    bucket = FireStorageService.instance.img_bucket
+    file_uploaded = params[:image].tempfile
+    ext = Rack::Mime::MIME_TYPES.invert[params[:image].content_type]
+    filename = "#{user.name}/#{SecureRandom.uuid}.#{ext}"
+    res = bucket.create_file(file_uploaded, filename)
+    post_hash = {
+      title: filename,
+      image: res.name,
+    }
+    post_hash[:price] = params[:price] unless params[:price].nil?
+    
+    begin
+      @post = Post.new(post_hash)
+      user.posts << @post
 
-    return 0
-
-    @post = Post.new(post_params)
-    user.posts << @post
-
-    if @post.save
-      render json: @post, status: :created, location: @post
-    else
-      render json: @post.errors, status: :unprocessable_entity
+      if @post.save
+        render json: @post, status: :created, location: @post
+      else
+        bucket.file(filename).delete
+        render json: @post.errors, status: :unprocessable_entity
+      end
+    rescue StandardError => e
+      bucket.file(filename).delete
+      render error: e, status: :unprocessable_entity
     end
   end
 

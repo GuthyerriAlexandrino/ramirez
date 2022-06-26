@@ -150,6 +150,16 @@ GEM
       activemodel (>= 5.1, < 7.1, != 7.0.0)
       mongo (>= 2.10.5, < 3.0.0)
       ruby2_keywords (~> 0.0.5)
+    mongoid-compatibility (0.5.1)
+      activesupport
+      mongoid (>= 2.0)
+    mongoid-rspec (4.1.0)
+      activesupport (>= 3.0.0)
+      mongoid (>= 3.1)
+      mongoid-compatibility (>= 0.5.1)
+      rspec-core (~> 3.3)
+      rspec-expectations (~> 3.3)
+      rspec-mocks (~> 3.3)
     msgpack (1.5.1)
     multi_json (1.15.0)
     net-imap (0.2.3)
@@ -264,6 +274,7 @@ DEPENDENCIES
   google-cloud-storage
   jwt
   mongoid
+  mongoid-rspec
   puma (~> 5.0)
   rack-cors
   rails (~> 7.0.3)

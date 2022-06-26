@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   post '/login', to: 'registration#login'
   post '/register', to: 'registration#register'
   get '/setimg', to: 'users#set_img'
+  post '/matarocris', to: 'posts#create'
 end

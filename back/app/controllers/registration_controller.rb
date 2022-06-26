@@ -36,8 +36,6 @@ class RegistrationController < ApplicationController
       render json: { error: e.to_s.split()[1]}, status: :conflict
     end
   end
-
-  ## Renderiza o AA só se user for nil, atualizar email gda
     
   private
   

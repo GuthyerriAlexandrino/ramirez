@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  ActionController::Parameters.action_on_unpermitted_parameters = :raise
   before_action :authorize_request, except: [:create, :show]
   before_action :set_user, only: :show
 
@@ -16,12 +17,14 @@ class UsersController < ApplicationController
   # GET /users/1
   def show
     user = authorize_request
-    p @user
     unless View.where(:user => user.id, :photographer => @user.id).exists?
-      View.create(user: user.id, photographer: params[:id])
-      @user.update(views: @user.views + 1)
+      View.create(user: user.id, photographer: @user.id)
+      unless @user.update(views: @user.views + 1)
+        View.delete(user: user.id, photographer: @user.id)
+      end
     end
     @user.password_digest = nil
+    @user.email = nil
     render json: @user
   end
 
@@ -31,17 +34,6 @@ class UsersController < ApplicationController
     file = fs.file("pexels-ylanite-koppens-2479246.jpg")
     render json: file.media_url, status: :ok
   end
-
-  # POST /users
-  # def create
-  #   @user = User.new(user_params)
-
-  #   if @user.save
-  #     render json: @user, status: :created, location: @user
-  #   else
-  #     render json: @user.errors, status: :unprocessable_entity
-  #   end
-  # end
 
   def update
     user = authorize_request

@@ -10,7 +10,7 @@ type PhotographerCardProps = {
 export function PhotographerCard({user}: PhotographerCardProps) {
     return (
         <Link href={`/profile/photographer/${user._id.$oid}`}>
-            <CardContainer image="../../assets/profile.jpg">
+            <CardContainer >
                 <FilterImage/>
                 <CardContent>
                     <h3>{user.name}</h3>
@@ -23,7 +23,7 @@ export function PhotographerCard({user}: PhotographerCardProps) {
                             <span>Especialidades:</span>
                             <ul>
                                 {user?.specialization?.map(item => (
-                                    <li>{item}</li>
+                                    <li key={item}>{item}</li>
                                 ))}
                             </ul>
                         </ListSpecialization>

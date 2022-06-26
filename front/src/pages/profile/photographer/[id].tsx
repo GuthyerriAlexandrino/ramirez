@@ -20,7 +20,7 @@ import {
     ImageLazyLoad
 } from "./style";
 
-import ProfileImg from "../../../assets/profile.jpg"
+// import ProfileImg from "../../../assets/profile.jpg"
 import Image from "next/image";
 import Link from "next/link";
 
@@ -147,7 +147,7 @@ export default function ProfilePhotographer({user}: PhotographerProps) {
                     <ProfileAside>
                         <ProfileImage>
                             <Image 
-                                src={ProfileImg}
+                                src={"/default-user.png"}
                                 layout="responsive"
                                 objectFit="cover"
                                 width={176}

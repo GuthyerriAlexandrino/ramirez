@@ -11,7 +11,8 @@ import {
     PostImage,
     CommentaryInputContainer,
     CommentaryInput,
-    CommentaryButton
+    CommentaryButton,
+    PostLoading
 } from "./style";
 
 // import Image01 from "../../assets/water-animal/image5.jpg"
@@ -56,18 +57,20 @@ export default function Post() {
                 <PostArea>
                     <PostContent>
                         {image ? (
-                            <Image 
-                                src={image}
-                                alt={"Imagem da postagem"}
-                                width={"100%"}
-                                height={"100%"}
-                                layout="responsive"
-                                objectFit="cover"
-                            />
-                        ) : (
                             <PostImage>
-                                    <Loading/>
+                                <Image 
+                                    src={image}
+                                    alt={"Imagem da postagem"}
+                                    // width={"100%"}
+                                    // height={100}
+                                    layout="fill"
+                                    objectFit="cover"
+                                />
                             </PostImage>
+                        ) : (
+                            <PostLoading>
+                                <Loading/>
+                            </PostLoading>
                         )}
                         <ContentFooter>
                             <span>R$ 25,00</span>

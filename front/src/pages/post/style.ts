@@ -25,9 +25,16 @@ export const PostContent = styled.section`
     width: 100%;
 `
 
-export const PostImage = styled.div`
+export const PostLoading = styled.div`
     width: 100%;
     height: 100%;
+    border-radius: 10px;
+`
+
+export const PostImage = styled.div`
+    position: relative;
+    width: 100%;
+    height: 50vh;
     border-radius: 10px;
 
     img {

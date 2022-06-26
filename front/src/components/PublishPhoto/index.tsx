@@ -46,17 +46,10 @@ export function PublishPhoto({handlePopUp}: PublishPhotoProps) {
 
         const imageData = new FormData();
         imageData.append('image', photoImageContent!, photoTitle)
+        imageData.append('price', photoPrice ? photoPrice?.toString() : "0")
 
         let cookies = parseCookies();
         let token = cookies["ramirez-user"]
-        
-        const newPost = {
-            post: {
-                img: imageData,
-                price: 0,
-                title: photoTitle
-            }
-        }
         
         const res = await fetch("http://localhost:3001/matarocris", {
             method: "POST",
@@ -64,8 +57,8 @@ export function PublishPhoto({handlePopUp}: PublishPhotoProps) {
                 'Access-Control-Allow-Origin': '*',
                 'Authorization': 'debug'
             },
-            body: JSON.stringify(newPost)
-        }).then(response => response.json());
+            body: imageData
+        }).then(response => response);
         console.log(res)
     }
 

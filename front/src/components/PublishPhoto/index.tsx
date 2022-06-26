@@ -50,17 +50,6 @@ export function PublishPhoto({handlePopUp}: PublishPhotoProps) {
         let cookies = parseCookies();
         let token = cookies["ramirez-user"]
         
-        // const newPost = {
-        //     post: {
-        //         image: URL.createObjectURL(photoImageContent!),
-        //         price: photoPrice ? photoPrice : 0,
-        //         title: photoTitle
-        //     }
-        // }
-
-
-        console.log(imageData)
-
         const newPost = {
             post: {
                 img: imageData,
@@ -75,7 +64,7 @@ export function PublishPhoto({handlePopUp}: PublishPhotoProps) {
                 'Access-Control-Allow-Origin': '*',
                 'Authorization': 'debug'
             },
-            body: imageData
+            body: JSON.stringify(newPost)
         }).then(response => response.json());
         console.log(res)
     }

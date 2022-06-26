@@ -2,10 +2,6 @@ import { motion } from "framer-motion";
 import styled from "styled-components";
 import { pallete } from "../../styles/colors";
 
-type CardContainerProps = {
-    image?: string;
-}
-
 export const CardContent = styled.div`
     position: absolute;
     left: 0;
@@ -68,11 +64,11 @@ export const FilterImage = styled.div`
     transition: background 0.25s;
 `
 
-export const CardContainer = styled(motion.div)<CardContainerProps>`
+export const CardContainer = styled(motion.div)`
     position: relative;
     width: 250px;
     height: 250px;
-    background: url("https://github.com/Guthyerri-Alexandrino.png") ;
+    background-image: url("/default-user.png") ;
     background-size: cover;
     border-radius: 20px;
     cursor: pointer;

@@ -44,14 +44,17 @@ class PostsController < ApplicationController
   # DELETE /posts/1
   def destroy
     user = authorize_request
+    return if user.nil?
 
-    user.posts.clear
+    bucket = FireStorageService.instance.img_bucket
+    bucket.file(@post.image).delete
+    user.delete(@post)
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_post
-      # @post = PostService.user_posts(params[:id])
+      @post = PostService.user_posts(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

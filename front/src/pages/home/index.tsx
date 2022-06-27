@@ -51,7 +51,6 @@ export const HomePage: NextPage = () => {
                 transition: { duration: 0.6, ease: easing }
             });
         }
-        console.log(inView);
     }, [animation, inView])
 
     return (

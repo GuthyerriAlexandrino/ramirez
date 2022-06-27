@@ -37,6 +37,7 @@ import Email from "../../assets/email.svg";
 import { pallete } from "../../styles/colors";
 import { makeFadeInRightAnimation } from "../../utils/animations";
 import { motion } from "framer-motion";
+import { useAuthLogin } from "../../context/AuthContext";
 
 type User = {
     _id?: {
@@ -134,8 +135,9 @@ export default function EditProfile({user}: PhotographerProps) {
         state: ""
     } as User);
 
-
-    console.log(user.photographer)
+    const {
+        userSectionId
+    } = useAuthLogin();
 
 
     useEffect(() => {
@@ -259,7 +261,7 @@ export default function EditProfile({user}: PhotographerProps) {
             initial='initial' 
             animate='animate' 
         >
-            <Header/>
+            <Header userId={userSectionId}/>
             <EditFormContainer variants={makeFadeInRightAnimation()}>
                 <EditForm onSubmit={editPhotographerData}>
                     <ProfileBasicInfo>

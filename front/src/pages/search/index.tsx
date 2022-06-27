@@ -83,7 +83,8 @@ export default function Search() {
     const [specializationOptions, setSpecializationOptions] = useState<Specialization[]>([]);
 
     const {
-        verifyTokenExpiration
+        verifyTokenExpiration,
+        userSectionId
     } = useAuthLogin();
 
     useEffect(() => {
@@ -138,7 +139,7 @@ export default function Search() {
             animate={{width: "100vw"}} 
             exit={{ x: "100%" }}
         >
-            <Header/>
+            <Header userId={userSectionId}/>
             <SearchPhotographerContainer>
                 <h1>Pesquisa por algum fotógrafo</h1>
                 <SearchInputContainer>

@@ -30,18 +30,27 @@ export const HeaderContainer = styled.header`
 `
 
 export const MenuContainer = styled.nav`
-    width: 200px;
+    width: 10rem;
 
     ul {
         display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: space-evenly;
         list-style: none;
-        width: 100%;
+        width: 90%;
 
         li {
-            margin-right: 10px;
+
+            position: relative;
+            display: flex;
+            align-items: center;
+            width: 45px;
+            height: 45px;
             color: ${pallete.whiteOne};
+
+            img {
+                border-radius: 50%;
+            }
         }
     }
 `

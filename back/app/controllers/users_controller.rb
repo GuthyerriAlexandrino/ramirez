@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   ActionController::Parameters.action_on_unpermitted_parameters = :raise
-  before_action :authorize_request, except: [:create, :show]
+  before_action :authorize_request, except: [:create, :update, :show]
   before_action :set_user, only: :show
 
   # GET /users

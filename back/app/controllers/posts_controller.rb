@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :authorize_request, only: :show
-  before_action :set_post, only: %i[ show update destroy ]
+  before_action :set_post, only: %i[ show update]
 
   # GET /posts
   def index
@@ -46,9 +46,11 @@ class PostsController < ApplicationController
     user = authorize_request
     return if user.nil?
 
+    post = user.posts.find(params[:id])
+
     bucket = FireStorageService.instance.img_bucket
-    bucket.file(@post.image).delete
-    user.delete(@post)
+    bucket.file(post.image).delete
+    user.delete(post)
   end
 
   private

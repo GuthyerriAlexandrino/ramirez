@@ -59,7 +59,6 @@ export function PublishPhoto({handlePopUp}: PublishPhotoProps) {
             },
             body: imageData
         }).then(response => response);
-        console.log(res)
     }
 
     function changePhotoPrice(value: number) {

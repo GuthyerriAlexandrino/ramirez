@@ -24,8 +24,10 @@ class PostsController < ApplicationController
     res = bucket.create_file(file_uploaded, filename)
     post_hash = PostService.post_params(filename, params[:price], res.name)
     
-    begin 
-      user.posts << Post.new(post_hash)
+    begin
+      p = Post.new(post_hash)
+      user.posts << p
+      render json: p, status: :created
     rescue Mongo::Error => e
       bucket.file(filename).delete
       render error: e, status: :unprocessable_entity

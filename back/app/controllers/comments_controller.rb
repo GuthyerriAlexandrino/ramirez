@@ -15,8 +15,17 @@ class CommentsController < ApplicationController
 
   # POST /comments
   def create
-    
+    user = authorize_request
+
+    return if user.nil?
+
+  begin
+    c = user.post.find(comment_params[:post_id]).create(comment_params.reject { |k, v| k == :post_id } )
+    render json: c, status: :created
+  rescue Mongo::Error => e
+    render json: { error: e }, status: :bad_request
   end
+end
 
   # PATCH/PUT /comments/1
   def update
@@ -40,6 +49,6 @@ class CommentsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def comment_params
-      params.require(:comment).permit(:user_id, :content).tap { |c| c.require([:user_id, :content]) }
+      params.require(:comment).permit(:user_id, :content, :post_id).tap { |c| c.require([:user_id, :content, :post_id]) }
     end
 end

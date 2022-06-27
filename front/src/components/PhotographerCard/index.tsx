@@ -9,6 +9,7 @@ type PhotographerCardProps = {
 
 export function PhotographerCard({user}: PhotographerCardProps) {
     return (
+        // eslint-disable-next-line @next/next/link-passhref
         <Link href={`/profile/photographer/${user._id.$oid}`}>
             <CardContainer >
                 <FilterImage/>

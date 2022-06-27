@@ -20,7 +20,7 @@ class User
   index({ email: 1 }, { unique: true })
 
   # Validations
-  # validates_length_of :name, minimum: , maximum: 
+  validates_length_of :name, minimum: 3, maximum: 160
   validates_length_of :password, minimum: 8
   validates_length_of :services_price, minimum: 2, maximum: 2
   validates_uniqueness_of :email

@@ -33,7 +33,11 @@ module FiltersService
       price = {:services_price.elem_match => {:$gte => min_price, :$lte => max_price} }
     end   
     price
-  end 
+  end
+
+  def self.check_pagination(page)
+    page.nil? || (Integer(params[:page]) rescue false)
+  end
 
   private
   def self.check_param(key, value)

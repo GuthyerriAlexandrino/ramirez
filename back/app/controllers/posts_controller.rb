@@ -2,12 +2,6 @@ class PostsController < ApplicationController
   before_action :authorize_request, only: :show
   before_action :set_post, only: %i[ show update]
 
-  # GET /posts
-  def index
-    # @posts = Post.All
-    # render json: @posts
-  end
-
   # GET /posts/1
   def show
     render json: @post
@@ -28,20 +22,19 @@ class PostsController < ApplicationController
       p = Post.new(post_hash)
       user.posts << p
       render json: p, status: :created
-    rescue Mongo::Error => e
+    rescue Mongoid::Error => e
       bucket.file(filename).delete
       render error: e, status: :unprocessable_entity
     end
   end
 
-  # PATCH/PUT /posts/1
-  # def update
-  #   if @post.update(post_params)
-  #     render json: @post
-  #   else
-  #     render json: @post.errors, status: :unprocessable_entity
-  #   end
-  # end
+  # POST /posts/1
+  def like
+    user = authorize_request
+    return if user.nil?
+
+
+  end
 
   # DELETE /posts/1
   def destroy

@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     price = FiltersService.price_params(min_price: request.GET[:minPrice], max_price: request.GET[:maxPrice])
     @users = User.where(filters.merge(price)).only(UserService.search_view).order_by(order)
     @users = @users.any_of(*location) unless location.empty?
-    render json: @users
+    render json: @users.page(params[:page])
   end
 
   # GET /users/1

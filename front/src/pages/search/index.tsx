@@ -82,9 +82,11 @@ export default function Search() {
     const [users, setUsers] = useState<UserP[]>([]);
     const [specializationOptions, setSpecializationOptions] = useState<Specialization[]>([]);
 
+    let cookies = parseCookies();
+    let userSectionId = cookies["ramirez-user-id"]
+
     const {
         verifyTokenExpiration,
-        userSectionId
     } = useAuthLogin();
 
     useEffect(() => {

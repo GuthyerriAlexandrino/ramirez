@@ -105,13 +105,19 @@ const stagger = {
 export default function ProfilePhotographer({user}: PhotographerProps) {
 
     const [popupIsOpen, setPopupIsOpen] = useState(false);
+
+    const { ref, inView } = useInView();
+    const animation = useAnimation();
+
+    let cookies = parseCookies();
+    let userSectionId = cookies["ramirez-user-id"]
+
+    const {
+    } = useAuthLogin();
     
     function handlePopUpScreen(value: boolean) {
         setPopupIsOpen(value);
     }
-
-    const { ref, inView } = useInView();
-    const animation = useAnimation();
 
     useEffect(() => {
         if (inView) {
@@ -131,10 +137,6 @@ export default function ProfilePhotographer({user}: PhotographerProps) {
             });
         }
     }, [animation, inView])
-
-    const {
-        userSectionId
-    } = useAuthLogin();
 
     return (
         <Container

@@ -9,6 +9,10 @@ gem "rails", "~> 7.0.3"
 # Mongo functions in ruby
 gem "mongoid"
 
+# Pagination functions
+gem 'kaminari-mongoid'
+gem 'kaminari-actionview'
+
 # Json Web Token
 gem 'jwt'
 

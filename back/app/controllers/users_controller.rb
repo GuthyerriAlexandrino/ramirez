@@ -47,16 +47,17 @@ class UsersController < ApplicationController
     file = fs.file("pexels-ylanite-koppens-2479246.jpg")
   end
 
+  # PUT /users/1
   def update
     user = authorize_request
     return if user.nil?
 
-    return render json: {error: "Invalid user token"}, status: :unprocessable_entity if user.id != user_params[:id]
+    return render json: {error: "Invalid user token"}, status: :unprocessable_entity if user.id.to_s != user_params[:id]
 
     if user.update(user_params)
       render json: user
     else
-      render error: {json: user.errors, status: :unprocessable_entity}
+      render json: {error: user.errors, status: :unprocessable_entity}
     end
   end
 

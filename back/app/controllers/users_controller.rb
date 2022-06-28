@@ -32,7 +32,8 @@ class UsersController < ApplicationController
   # GET user/1
   def user_data
     user = authorize_request
-    return unless user.nil? || user.id != params[:id]
+    return if user.nil?
+    return render json: { error: 'User cookie and id dont match'}, status: :bad_request if user.id.to_s != params[:id]
 
     render json: user, status: :ok
   end

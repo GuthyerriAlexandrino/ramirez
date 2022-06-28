@@ -38,13 +38,16 @@ class UsersController < ApplicationController
     render json: user, status: :ok
   end
 
-  # POST /users/profile_image
+  # POST /user/profile_image
   def profile_image
     user = authorize_request
+    return if user.nil?
 
     bucket = FireStorageService.instance.img_bucket
-    file_uploaded = params[:image].tempfile
-    file = fs.file("pexels-ylanite-koppens-2479246.jpg")
+    file = params[:image]
+    filename = "#{user.name}/profile#{Rack::Mime::MIME_TYPES.invert[file.content_type]}"
+    bucket.create_file(file.tempfile, filename)
+    render json: { filename }, status: :ok
   end
 
   # PUT /users/1
@@ -52,10 +55,10 @@ class UsersController < ApplicationController
     user = authorize_request
     return if user.nil?
 
-    return render json: {error: "Invalid user token"}, status: :unprocessable_entity if user.id.to_s != user_params[:id]
+    return render json: {error: "Invalid user token"}, status: :unprocessable_entity if user.id.to_s != params[:id]
 
     if user.update(user_params)
-      render json: user
+      render json: user, status: :ok
     else
       render json: {error: user.errors, status: :unprocessable_entity}
     end

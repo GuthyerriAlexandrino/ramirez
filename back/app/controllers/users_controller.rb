@@ -38,7 +38,7 @@ class UsersController < ApplicationController
     render json: user, status: :ok
   end
 
-  # PUT /user/profile_image
+  # PUT /users/profile_image
   def profile_image
     user = authorize_request
     return if user.nil?
@@ -47,10 +47,10 @@ class UsersController < ApplicationController
     file = params[:image]
     filename = "#{user.name}/profile#{Rack::Mime::MIME_TYPES.invert[file.content_type]}"
     bucket.create_file(file.tempfile, filename)
-    if user.update(profile_image: filename)
-      render json: { filename }, status: :ok
+    if user.update_attributes(profile_image: filename)
+      render json: filename, status: :ok
     else
-      render json: {error: user.errors, status: :unprocessable_entity}
+      render json: { error: user.errors }, status: :unprocessable_entity
     end
   end
 
@@ -59,12 +59,12 @@ class UsersController < ApplicationController
     user = authorize_request
     return if user.nil?
 
-    return render json: {error: "Invalid user token"}, status: :unprocessable_entity if user.id.to_s != params[:id]
+    return render json: { error: "Invalid user token" }, status: :unprocessable_entity if user.id.to_s != params[:id]
 
     if user.update(user_params)
       render json: user, status: :ok
     else
-      render json: {error: user.errors, status: :unprocessable_entity}
+      render json: { error: user.errors }, status: :unprocessable_entity 
     end
   end
 

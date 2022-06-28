@@ -8,6 +8,29 @@ export const stagger = {
     }
 };
 
+export const variants = {
+    animate: {
+      transition: { staggerChildren: 0.07, delayChildren: 0.2 }
+    },
+};
+
+export const variantsItems = {
+    initial: {
+        x: 60,
+        opacity: 0,
+        transition: {
+            x: { stiffness: 1000, velocity: -100 }
+        }
+    },
+    animate: {
+        x: 0,
+        opacity: 1,
+        transition: {
+            x: { stiffness: 1000, velocity: -100 }
+        }
+    }
+};
+
 
 export function makeFadeInRightAnimation() {
 

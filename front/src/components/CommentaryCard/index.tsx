@@ -12,8 +12,18 @@ import {
 
 import Image01 from "../../assets/photographer-profile.png";
 import { pallete } from "../../styles/colors";
+import { useState } from "react";
 
-export function CommentaryCard() {
+interface CommentaryCardProps {
+    id: string;
+    incrementLikes: (commentaryId: string) => void;
+    deleteCommentary: (commentaryId: string) => void;
+}
+
+export function CommentaryCard({id, incrementLikes, deleteCommentary}: CommentaryCardProps) {
+
+    const [isLikeButtonClicked, setIsLikeButtonClicked] = useState(false);
+
     return (
         <Container>
             <CommentaryInfo>
@@ -23,6 +33,7 @@ export function CommentaryCard() {
                             src={Image01}
                             layout="responsive"
                             objectFit="cover"
+                            alt="Foto do usuário"
                         />
                     </CommentaryImage>
                     <CommentaryDetail>
@@ -31,8 +42,25 @@ export function CommentaryCard() {
                     </CommentaryDetail>
                 </CommentaryProfile>
                 <IconsArea>
-                    <Heart color={pallete.grayOne} size={30} weight="fill"/>
-                    <TrashSimple color={pallete.grayOne} size={30} weight="fill" style={{marginLeft: "1.188rem"}}/>
+                    <Heart 
+                        color={isLikeButtonClicked ? pallete.red : pallete.grayOne} 
+                        size={30} 
+                        weight="fill"
+                        onClick={() => {
+                            setIsLikeButtonClicked(!isLikeButtonClicked) 
+                            incrementLikes(id)
+                        }}
+                        style={{cursor: "pointer", transition: "all 0.2s ease"}}
+                    />
+                    <TrashSimple 
+                        color={pallete.grayOne} 
+                        size={30} 
+                        weight="fill" 
+                        onClick={() => {
+                            deleteCommentary(id)
+                        }}
+                        style={{marginLeft: "1.188rem"}}
+                    />
                 </IconsArea>
             </CommentaryInfo>
             <Content>

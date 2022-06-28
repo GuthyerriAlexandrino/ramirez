@@ -14,8 +14,6 @@ import {
     PostLoading
 } from "./style";
 
-// import Image01 from "../../assets/water-animal/image5.jpg"
-
 import { TrashSimple, Chat, Heart } from "phosphor-react";
 import { useEffect, useState } from "react";
 import { getDownloadURL, ref } from "firebase/storage";
@@ -26,24 +24,27 @@ import { Header } from "../../../../../components/Header";
 import { Loading } from "../../../../../components/Loading";
 import { pallete } from "../../../../../styles/colors";
 import { CommentaryCard } from "../../../../../components/CommentaryCard";
-import { useAuthLogin } from "../../../../../context/AuthContext";
-
-interface RouterProperties {
-    id: string;
-}
+import { parseCookies } from "nookies";
 
 export default function Post() {
 
+    const router = useRouter();
+
     const [image, setImage] = useState<any>();
-    const {
-        userSectionId
-    } = useAuthLogin()
+    const [userCommentary, setUserCommentary] = useState("");
+
+    let cookies = parseCookies();
+    let userSectionId = cookies["ramirez-user-id"]
 
     async function getImageFromApi() {
+
+        let cookies = parseCookies();
+        let token = cookies["ramirez-user"];
+
         const data = await fetch("http://127.0.0.1:3001/setimg/", {
             method: "GET",
             headers: {
-                "Authorization": `debug`
+                "Authorization": `Bearer ${token}`
             }
         }).then(result => result.text().then(link => link));
         const foresRef = ref(storage, "pexels-ylanite-koppens-2479246.jpg");
@@ -57,13 +58,69 @@ export default function Post() {
     }
 
     async function sendCommentaryToPost() {
-        const commentary = await fetch("http://127.0.0.1:3001/comments", {
-            method: "GET",
+
+        let cookies = parseCookies();
+        let token = cookies["ramirez-user"];
+
+        const newComment = {
+            comment: {
+                user_id: router.query.id,
+                content: userCommentary
+            }
+        }
+
+        await fetch("http://127.0.0.1:3001/comments", {
+            method: "POST",
             headers: {
-                "Authorization": `debug`
+                "Authorization": `Bearer ${token}`
             },
-            // body: {}
-        })
+            body: JSON.stringify(newComment)
+        }).then(response => response)
+        .catch(error => console.log(error))
+    }
+
+    async function incrementLikeAmountInACommentary(commentaryId: string) {
+
+        let cookies = parseCookies();
+        let token = cookies["ramirez-user"];
+
+        const incrementLike = {
+            comment: {
+                post_id: router.query.post,
+                author_id: userSectionId
+            }
+        }
+
+        await fetch(`http://127.0.0.1:3001/comments/${commentaryId}`, {
+            method: "POST",
+            headers: {
+                "Authorization": `Bearer ${token}`
+            },
+            body: JSON.stringify(incrementLike)
+        }).then(response => response)
+        .catch(error => console.log(error))
+    }
+
+    async function deleteACommentaryFromPost(commentaryId: string) {
+
+        let cookies = parseCookies();
+        let token = cookies["ramirez-user"];
+
+        const commentaryToDelete = {
+            comment: {
+                post_id: router.query.post,
+                author_id: userSectionId
+            }
+        }
+
+        await fetch(`http://127.0.0.1:3001/comments/${commentaryId}`, {
+            method: "DELETE",
+            headers: {
+                "Authorization": `Bearer ${token}`
+            },
+            body: JSON.stringify(commentaryToDelete)
+        }).then(response => response)
+        .catch(error => console.log(error))
     }
 
     useEffect(() => {
@@ -110,7 +167,7 @@ export default function Post() {
                                     color={pallete.grayOne} 
                                     size={30} 
                                     weight="fill" 
-                                    style={{marginLeft: "1.25rem", cursor: "pointer"}} 
+                                    style={{marginLeft: "1.25rem", cursor: "pointer"}}
                                 />
                             </IconsArea>
                         </ContentFooter>
@@ -121,11 +178,13 @@ export default function Post() {
                             cols={50}
                             minLength={0}
                             maxLength={500} 
+                            onClick={(event) => setUserCommentary(event.currentTarget.value)}
                         />
                         <CommentaryButton
                             type="button"
                             title="Clique para comentar"
                             value={"Comentar"}
+                            onClick={() => sendCommentaryToPost()}
                         >
                             Comentar
                         </CommentaryButton>
@@ -133,7 +192,11 @@ export default function Post() {
                     <FeedBackArea>
                         <h2>Comentários (4)</h2>
                         <FeedBackList>
-                            <CommentaryCard/>
+                            <CommentaryCard
+                                id="1"
+                                incrementLikes={incrementLikeAmountInACommentary}
+                                deleteCommentary={deleteACommentaryFromPost}
+                            />
                         </FeedBackList>
                     </FeedBackArea>
                 </PostArea> 

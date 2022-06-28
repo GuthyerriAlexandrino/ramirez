@@ -9,14 +9,19 @@ import {
     Container,
     EditForm,
     EditFormContainer,
+    IconEdit,
+    IconExclude,
     InputFlex,
+    ModalChangeImage,
+    ModalChangeImageContainer,
     Panel,
     ProfileBasicInfo,
     ProfileData,
     ProfileImage,
     ProfileProfessionalData,
     Signal,
-    SpecializationTags
+    SpecializationTags,
+    UpdateImage
 } from "./style";
 
 import Profile from "../../assets/profile.jpg";
@@ -24,9 +29,11 @@ import { Icon, InputContainer } from "../../styles/form";
 import { 
     BagSimple, 
     Buildings, 
+    Camera, 
     CurrencyCircleDollar,
     Eye,
     EyeSlash,
+    FilePlus,
     Key,
     Minus,
     Plus,
@@ -35,7 +42,7 @@ import {
 } from "phosphor-react";
 import Email from "../../assets/email.svg";
 import { pallete } from "../../styles/colors";
-import { makeFadeInRightAnimation } from "../../utils/animations";
+import { makeFadeInRightAnimation, variants, variantsItems } from "../../utils/animations";
 import { motion } from "framer-motion";
 import { useAuthLogin } from "../../context/AuthContext";
 
@@ -50,7 +57,6 @@ type User = {
     password: string;
     password_confirmation: string;
     photographer: boolean
-    profile_img: string,
     services_price: number[],
     specialization: string[];
     state: string;
@@ -84,7 +90,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         email: data.email ?? null,
         name: data.name ?? null,
         photographer: data.photographer ?? null,
-        profile_img: data.profile_img ?? null,
+        // profile_img: data.profile_img ?? null,
         services_price: data.services_price ?? null,
         specialization: data.specialization ?? null,
         state: data.state ?? null,
@@ -114,6 +120,11 @@ const signalColors = [
 
 export default function EditProfile({user}: PhotographerProps) {
 
+    let cookies = parseCookies();
+    let userSectionId = cookies["ramirez-user-id"]
+
+    const [editImageFormIsActive, setEditImageFormIsActive] = useState(false);
+    const [photoImageContent, setPhotoImageContent] = useState<File>();
     const [specializationOptions, setSpecializationOptions] = useState<Specialization[]>([]);
     const [selectedSpecializations, setSelectedSpecializations] = useState<string[]>(user.specialization);
     const [visiblePassword, setVisiblePassword] = useState(false);
@@ -122,23 +133,17 @@ export default function EditProfile({user}: PhotographerProps) {
     const [minusValue, setMinusValue] = useState(0);
     const [maxValue, setMaxValue] = useState(0);
     const [editedUser, setEditedUser] = useState<User>({
-        bio: "",
-        email: "",
-        city: "",
-        name: "",
+        bio: user.bio,
+        email: user.email,
+        city: user.city,
+        name: user.name,
         password: "",
         password_confirmation: "",
-        photographer: false,
-        profile_img: "",
+        photographer: isPhotographer,
         specialization: [],
         services_price: [0, 0],
         state: ""
     } as User);
-
-    const {
-        userSectionId
-    } = useAuthLogin();
-
 
     useEffect(() => {
         async function getAllSpecializations() {
@@ -149,6 +154,21 @@ export default function EditProfile({user}: PhotographerProps) {
         }
         getAllSpecializations();
     }, [])
+
+    async function updatePhotographerImage() {
+        let cookies = parseCookies();
+        let token = cookies["ramirez-user"]
+
+        await fetch(`http://localhost:3001/users/profile_image/${user?._id?.$oid!}`, {
+            method: "PUT",
+            headers:{
+                'Content-Type': 'multipart/form-data',
+                'Access-Control-Allow-Origin': '*',
+                "Authorization": `Bearer ${token}`
+            },
+            body: photoImageContent
+        })
+    }
 
     async function editPhotographerData(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
@@ -167,15 +187,16 @@ export default function EditProfile({user}: PhotographerProps) {
                 password: editedUser.password,
                 password_confirmation: editedUser.password_confirmation,
                 photographer: editedUser.photographer,
-                profile_img: editedUser.profile_img,
                 state: editedUser.state,
             }
         }
 
+        console.log(modifiedUserToEdit)
+
         const res= await fetch(`http://localhost:3001/users/${user?._id?.$oid!}`, {
             method: "PUT",
             headers:{
-                'Content-Type': 'application/json',
+                // 'Content-Type': 'application/json',
                 'Access-Control-Allow-Origin': '*',
                 "Authorization": `Bearer ${token}`
             },
@@ -233,46 +254,63 @@ export default function EditProfile({user}: PhotographerProps) {
         return signalColors[selectedSpecializations.length].color;
     }
 
-    const variants = {
-        animate: {
-          transition: { staggerChildren: 0.07, delayChildren: 0.2 }
-        },
-    };
-
-    const variantsItems = {
-        initial: {
-            x: 60,
-            opacity: 0,
-            transition: {
-                x: { stiffness: 1000, velocity: -100 }
-            }
-        },
-        animate: {
-            x: 0,
-            opacity: 1,
-            transition: {
-                x: { stiffness: 1000, velocity: -100 }
-            }
-        }
-    };
-
     return (
         <Container
             initial='initial' 
             animate='animate' 
         >
             <Header userId={userSectionId}/>
+            <ModalChangeImageContainer isActive={editImageFormIsActive}>
+                <ModalChangeImage>
+                    <div data-name="photoEditImage">
+                        <Image
+                            src={photoImageContent ? URL.createObjectURL(photoImageContent!) : "/default-user.png"} 
+                            objectFit="cover"
+                            width={100} 
+                            height={100}
+                            alt={"Foto de perfil"}
+                        />
+                        <IconEdit>
+                            <FilePlus size={15} weight="bold" />
+                        </IconEdit>
+                        <input
+                            type="file"
+                            id="file"
+                            name="file"
+                            placeholder="Insira aqui uma foto"
+                            accept=".jpg,.jpeg,.png"
+                            onChange={(e) => e.target.files && setPhotoImageContent(e.target.files[0]!)}
+                        />
+                    </div>
+                    <div data-name="photoImageContent">
+                        <strong>{user.name}</strong>
+                    </div>
+                    <small data-name="photoImageSpan">Personalizando meu perfil</small>
+                    <button 
+                        type="button" 
+                        onClick={() => updatePhotographerImage()}
+                    >
+                        Alterar foto
+                    </button>
+                    <IconExclude onClick={() => setEditImageFormIsActive(false)}>
+                        <XCircle color={pallete.red} size={40} weight="fill" />
+                    </IconExclude>
+                </ModalChangeImage>
+            </ModalChangeImageContainer>
             <EditFormContainer variants={makeFadeInRightAnimation()}>
                 <EditForm onSubmit={editPhotographerData}>
                     <ProfileBasicInfo>
-                        <ProfileImage>
+                        <ProfileImage onClick={() => setEditImageFormIsActive(true)}>
                             <Image 
-                                src={Profile} 
+                                src={"/default-user.png"} 
                                 objectFit="cover"
                                 width={150} 
                                 height={150}
                                 alt={"Foto de perfil"}
                             />
+                            <UpdateImage>
+                                <Camera color={pallete.grayThree} size={30} weight="fill" />
+                            </UpdateImage>
                         </ProfileImage>
                         <h2>{user.name}</h2>
                     </ProfileBasicInfo>
@@ -320,7 +358,7 @@ export default function EditProfile({user}: PhotographerProps) {
                             <input 
                                 id="password" 
                                 name="password"
-                                type="text" 
+                                type={visiblePassword ? "text" : "password"} 
                                 placeholder="Senha"  
                                 pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                                 onChange={(event) => setEditedUser({...editedUser, password: event.target.value})}
@@ -341,7 +379,7 @@ export default function EditProfile({user}: PhotographerProps) {
                             <input 
                                 id="confirm_password"
                                 name="confirm_password"
-                                type="text" 
+                                type={visibleConfirmPassword ? "text" : "password"} 
                                 placeholder="Confirmação de senha"
                                 pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                                 onChange={(event) => setEditedUser({...editedUser, password_confirmation: event.target.value})}
@@ -356,6 +394,7 @@ export default function EditProfile({user}: PhotographerProps) {
                                 id="photographer" 
                                 name="photographer" 
                                 checked={isPhotographer}
+                                disabled={user.photographer ? true : false}
                                 onChange={() => {
                                     setIsPhotographer(!isPhotographer); 
                                     setEditedUser({...editedUser, photographer: !isPhotographer})

@@ -10,6 +10,10 @@ interface SignalProps {
     color: string;
 }
 
+interface ModalChangeImageContainerProps {
+    isActive: boolean;
+}
+
 export const Container = styled(motion.div)`
     display: flex;
     flex-direction: column;
@@ -39,6 +43,10 @@ export const EditForm = styled(motion.form)`
 `
 
 export const ProfileBasicInfo = styled.aside`
+    display: flex;
+    flex-direction: column;
+    place-items: center;
+
     h2 {
         font-style: normal;
         font-weight: 500;
@@ -51,18 +59,44 @@ export const ProfileBasicInfo = styled.aside`
     }
 `
 
+export const UpdateImage = styled.div`
+    position: absolute;
+    bottom: -30px;
+    display: flex;
+    justify-content: center;
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+    background-color: ${pallete.blackFour};
+    width: 150px;
+    transition: all ease 0.2s;
+
+`
+
 export const ProfileImage = styled.div`
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 100%;
+    width: 150px;
     height: 10rem;
     border-radius: 50%;
+    overflow: hidden;
+    transition: all ease 0.5s;
+    cursor: pointer;
 
     img {
         border-radius: 50%;
     }
+
+    &:hover {
+        filter: grayscale(1);
+
+        ${UpdateImage} {
+            bottom: 0;
+        }
+    }
+
 `
 
 export const ProfileData = styled(motion.section)`
@@ -188,9 +222,111 @@ export const Button = styled.button`
     color: #000000;
     background-color: #f2f2f2;
     cursor: pointer;
-    transition: background 0.2s ease-in-out;
+    transition: filter 0.2s ease-in-out;
 
     &:hover {
-        background-color: #E1E1E1;
+        filter: brightness(0.9);
+    }
+`
+
+export const ModalChangeImageContainer = styled.section<ModalChangeImageContainerProps>`
+    position: fixed;
+    display: ${props => props.isActive ? "flex" : "none"};
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 10000;
+`
+
+export const IconEdit = styled.div`
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 5px;
+    right: 5px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: ${pallete.grayOne};
+    color: ${pallete.blackFive};
+`
+
+export const IconExclude = styled.div`
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+`
+
+export const ModalChangeImage = styled.div`
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    max-width: 600px;
+    width: 600px;
+    min-height: 250px;
+    border-radius: 6px;
+    background-color: ${pallete.blackFive};
+
+    div[data-name=photoEditImage] {
+        position: relative;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        transition: all ease 0.5s;
+        border-radius: 50%;
+
+        img {
+            border-radius: 50%;
+        }
+
+        input {
+            background-color: red;
+            border-radius: 40%;
+            width: 100px;
+            height: 100px;
+            transform: translate(2%, -104%);
+            opacity: 0;
+            cursor: pointer;
+        }
+
+    }
+
+    div[data-name=photoImageContent] {
+        strong {
+            color: ${pallete.whiteOne};
+            margin-right: 0.2rem;
+        }
+    }
+
+    small {
+        text-transform: uppercase;
+        font-weight: 600;
+        letter-spacing: -1px;
+        color: ${pallete.turquoiseOne};
+    }
+
+    button {
+        font-size: 0.8rem;
+        font-family: 'Inter', sans-serif;
+        font-weight: 600;
+        text-transform: uppercase;
+        border: none;
+        border-radius: 5px;
+        padding: 0.5rem;
+        color: #000000;
+        background-color: #f2f2f2;
+        cursor: pointer;
+        transition: filter 0.2s ease-in-out;
+
+        &:hover {
+            filter: brightness(0.9);
+        }
     }
 `

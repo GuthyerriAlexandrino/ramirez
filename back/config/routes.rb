@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   post '/register', to: 'registration#register'
 
   # User extra routes
-  post '/users/profile_image', to: 'users#profile_image'
+  put '/user/profile_image', to: 'users#profile_image'
   get '/user/:id', to: 'users#user_data'
 
   # Comment extra routes

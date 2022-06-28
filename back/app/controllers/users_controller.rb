@@ -29,11 +29,21 @@ class UsersController < ApplicationController
     render json: @user
   end
 
-  def set_img
-    fs = FireStorageService.instance
-    fs = fs.img_bucket
+  # GET user/1
+  def user_data
+    user = authorize_request
+    return unless user.nil? || user.id != params[:id]
+
+    render json: user, status: :ok
+  end
+
+  # POST /users/profile_image
+  def profile_image
+    user = authorize_request
+
+    bucket = FireStorageService.instance.img_bucket
+    file_uploaded = params[:image].tempfile
     file = fs.file("pexels-ylanite-koppens-2479246.jpg")
-    render json: file.media_url, status: :ok
   end
 
   def update

@@ -24,7 +24,9 @@ export function Header({userId}: HeaderProps) {
                 <MenuContainer>
                     <ul>
                         <li>
-                            <a>Ajuda</a>
+                            <Link href={"/search"}>
+                                <span>Pesquisar</span>
+                            </Link>
                         </li>
                         <li>
                             <Link href={`/profile/photographer/${userId}`}>

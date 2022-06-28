@@ -9,6 +9,7 @@ export const HeaderContainer = styled.header`
     justify-content: space-between;
     width: 100%;
     margin-bottom: 3.75rem;
+    margin-top: 0.5rem;
 
     &::after {
         content: '';
@@ -35,7 +36,7 @@ export const MenuContainer = styled.nav`
     ul {
         display: flex;
         align-items: center;
-        justify-content: space-evenly;
+        justify-content: space-between;
         list-style: none;
         width: 90%;
 
@@ -47,6 +48,8 @@ export const MenuContainer = styled.nav`
             width: 45px;
             height: 45px;
             color: ${pallete.whiteOne};
+            cursor: pointer;
+
 
             img {
                 border-radius: 50%;

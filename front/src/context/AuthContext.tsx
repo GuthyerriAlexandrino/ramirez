@@ -25,7 +25,6 @@ type User = {
 type AuthContextProps = {
     isAuthenticated: boolean;
     token: Token;
-    userSectionId: string;
     setToken: (value: Token) => void;
     verifyTokenExpiration: () => boolean;
     handleLogin: (value: User) => Promise<void>;
@@ -39,7 +38,6 @@ type AuthProviderProps = {
 
 export function AuthProvider({children}: AuthProviderProps) {
     const [user, setUser] = useState<User | null>(null);
-    const [userSectionId, setUserSectionId] = useState<string>("");
     const [token, setToken] = useState<Token>({} as Token);
 
     const {
@@ -92,9 +90,12 @@ export function AuthProvider({children}: AuthProviderProps) {
             notifyError("Falha no login! Verifique os campos preenchidos.")
         } else {
             setUser(user.user);
-            setUserSectionId(res.user.$oid)
-            
+
             setCookie(undefined, "ramirez-user", res.token, {
+                expires: new Date(res.exp)
+            })
+
+            setCookie(undefined, "ramirez-user-id", res.user.$oid, {
                 expires: new Date(res.exp)
             })
     
@@ -108,7 +109,6 @@ export function AuthProvider({children}: AuthProviderProps) {
             value={{
                 isAuthenticated,
                 token,
-                userSectionId,
                 setToken,
                 verifyTokenExpiration,
                 handleLogin

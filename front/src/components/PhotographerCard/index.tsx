@@ -18,7 +18,11 @@ export function PhotographerCard({user}: PhotographerCardProps) {
                     <div>
                         <article>
                             <span>{user.city} - {user.state}</span>
-                            <strong>R$ 20 - 40</strong>
+                            {user.services_price.length > 0 ? (
+                                <strong>R$ {user.services_price[0]} - {user.services_price[1]}</strong>
+                            ) : (
+                                <strong>Nenhum preço informado</strong>
+                            )}
                         </article>
                         <ListSpecialization>
                             <span>Especialidades:</span>

@@ -26,6 +26,7 @@ import { parseCookies } from "nookies";
 import { storage, ref } from "../../../../../utils/keys/firebaseconfig";
 import { useRouter } from "next/router";
 import { GetServerSideProps } from "next";
+import { useNotify } from "../../../../../context/NotifyContext";
 
 interface Post {
     price: number,
@@ -80,6 +81,11 @@ export default function Post({ postContent }: PostScreenProps) {
     const [image, setImage] = useState<any>();
     const [userCommentary, setUserCommentary] = useState("");
 
+    const {
+        notifyError,
+        notifySuccess
+    } = useNotify();
+
     let cookies = parseCookies();
     let userSectionId = cookies["ramirez-user-id"];
 
@@ -128,17 +134,26 @@ export default function Post({ postContent }: PostScreenProps) {
 
     async function sendCommentaryToPost() {
 
+        if (userCommentary === "") {
+            notifyError("Error! Comentário está vazio!");
+            return;
+        }
+
         let cookies = parseCookies();
         let token = cookies["ramirez-user"];
 
+        const userId = window?.location.pathname.split("/")[3];
+        const postId = window?.location.pathname.split("/")[5];
+
         const newComment = {
             comment: {
-                user_id: router.query.id,
-                content: userCommentary
+                user_id: userId,
+                content: userCommentary,
+                post_id: postId
             }
         }
 
-        await fetch("http://127.0.0.1:3001/comments", {
+        const res = await fetch("http://127.0.0.1:3001/comments", {
             method: "POST",
             headers: {
                 "Authorization": `Bearer ${token}`
@@ -146,6 +161,8 @@ export default function Post({ postContent }: PostScreenProps) {
             body: JSON.stringify(newComment)
         }).then(response => response)
         .catch(error => console.log(error))
+
+        console.log(res)
     }
 
     async function incrementLikeAmountInACommentary(commentaryId: string) {
@@ -251,7 +268,7 @@ export default function Post({ postContent }: PostScreenProps) {
                             cols={50}
                             minLength={0}
                             maxLength={500} 
-                            onClick={(event) => setUserCommentary(event.currentTarget.value)}
+                            onChange={(event) => setUserCommentary(event.target.value)}
                         />
                         <CommentaryButton
                             type="button"

@@ -62,6 +62,10 @@ export function AuthProvider({children}: AuthProviderProps) {
             }
         }).then(res => res.json());
 
+        if (data.profile_img === "") {
+            return;
+        }
+
         const foresRef = ref(storage, data.profile_img);
         await getDownloadURL(foresRef)
         .then(url => {

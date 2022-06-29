@@ -35,6 +35,7 @@ import { PublishPhoto } from "../../../../components/PublishPhoto";
 import { getDownloadURL } from "firebase/storage";
 import { ref as refFirebase, storage } from "../../../../utils/keys/firebaseconfig";
 import { useAuthLogin } from "../../../../context/AuthContext";
+import Router from "next/router";
 
 let photos = [
     {id:1, width: 640, height: 960},
@@ -114,10 +115,7 @@ export default function ProfilePhotographer({user}: PhotographerProps) {
 
     const [popupIsOpen, setPopupIsOpen] = useState(false);
     const [allPostsList, setAllPostsList] = useState<Post[]>([]);
-
-    const {
-        userProfileImage
-    } = useAuthLogin();
+    const [profileImage, setProfileImage] = useState<string | null>();
 
 
     const { ref, inView } = useInView();
@@ -132,8 +130,20 @@ export default function ProfilePhotographer({user}: PhotographerProps) {
         setPopupIsOpen(value);
     }
 
+    async function getProfileImage() {
+        if (user.profile_img === "") {
+            setProfileImage("/default-user.png")
+            return;
+        }
+
+        const foresRef = refFirebase(storage, user.profile_img);
+        await getDownloadURL(foresRef)
+        .then(url => setProfileImage(url))
+        .catch(error => console.log(error));
+    }
+
     async function getAllPostsFromUser() {
-        const allPosts: Post[] = await fetch(`http://localhost:3001/posts/${userSectionId}`, {
+        const allPosts: Post[] = await fetch(`http://localhost:3001/posts/${user._id.$oid}`, {
             method: "GET",
             headers: {
                 'Access-Control-Allow-Origin': '*',
@@ -159,8 +169,9 @@ export default function ProfilePhotographer({user}: PhotographerProps) {
     }
 
     useEffect(() => {
+        getProfileImage();
         getAllPostsFromUser();
-    }, [])
+    }, [window?.location.pathname])
 
     useEffect(() => {
         if (inView) {
@@ -194,7 +205,7 @@ export default function ProfilePhotographer({user}: PhotographerProps) {
                     <ProfileAside>
                         <ProfileImage>
                             <Image 
-                                src={userProfileImage ? userProfileImage : "/default-user.png"}
+                                src={profileImage ? profileImage : "/default-user.png"}
                                 layout="responsive"
                                 objectFit="cover"
                                 width={176}

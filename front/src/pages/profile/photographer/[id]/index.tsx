@@ -18,7 +18,6 @@ import {
     ImageLazyLoad
 } from "./style";
 
-// import ProfileImg from "../../../assets/profile.jpg"
 import Image from "next/image";
 import Link from "next/link";
 
@@ -33,6 +32,8 @@ import { Header } from "../../../../components/Header";
 import { UserP } from "../../../search";
 import { MenuButton } from "../../../../components/MenuButton";
 import { PublishPhoto } from "../../../../components/PublishPhoto";
+import { getDownloadURL } from "firebase/storage";
+import { ref as refFirebase, storage } from "../../../../utils/keys/firebaseconfig";
 import { useAuthLogin } from "../../../../context/AuthContext";
 
 let photos = [
@@ -102,22 +103,58 @@ const stagger = {
     }
 };
 
+interface Post {
+    _id: {
+        $oid: string;
+    },
+    image: string;
+}
+
 export default function ProfilePhotographer({user}: PhotographerProps) {
 
     const [popupIsOpen, setPopupIsOpen] = useState(false);
+    const [allPostsList, setAllPostsList] = useState<Post[]>([]);
+
+    const {
+        userProfileImage
+    } = useAuthLogin();
+
 
     const { ref, inView } = useInView();
     const animation = useAnimation();
 
-    let cookies = parseCookies();
-    let userSectionId = cookies["ramirez-user-id"]
+    const cookies = parseCookies();
+    const userSectionId = cookies["ramirez-user-id"]
+    const token = cookies["ramirez-user"]
 
-    const {
-    } = useAuthLogin();
     
     function handlePopUpScreen(value: boolean) {
         setPopupIsOpen(value);
     }
+
+    async function getAllPostsFromUser() {
+        const allPosts: string[] = await fetch(`http://localhost:3001/posts/${userSectionId}`, {
+            method: "GET",
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Authorization': `Bearer ${token}`
+            }
+        }).then(response => response.json())
+        .catch(error => error.json());
+
+        if (allPosts) {
+            Array.from(allPosts).forEach(async (post: any) => {
+                const foresRef = refFirebase(storage, post.image);
+                await getDownloadURL(foresRef)
+                .then(url => setAllPostsList([...allPostsList, {_id: post._id, image: url}]))
+                .catch(error => console.log(error));
+            })
+        }
+    }
+
+    useEffect(() => {
+        getAllPostsFromUser();
+    }, [])
 
     useEffect(() => {
         if (inView) {
@@ -151,7 +188,7 @@ export default function ProfilePhotographer({user}: PhotographerProps) {
                     <ProfileAside>
                         <ProfileImage>
                             <Image 
-                                src={"/default-user.png"}
+                                src={userProfileImage ? userProfileImage : "/default-user.png"}
                                 layout="responsive"
                                 objectFit="cover"
                                 width={176}
@@ -208,21 +245,21 @@ export default function ProfilePhotographer({user}: PhotographerProps) {
             </DividerArea>
             <PhotosGallery variants={stagger} ref={ref}>
                 <MansoryGrid>
-                    {photos.map((id) => (
+                     {Array.from(allPostsList).map((id) => (
                         // eslint-disable-next-line @next/next/link-passhref
                         <Link 
-                            href={`/profile/photographer/${user?._id?.$oid}/post/${id.id}`} 
-                            key={id.id} 
+                            href={`/profile/photographer/${user?._id?.$oid}/post/${id._id.$oid}`} 
+                            key={id._id.$oid} 
                         >
                             <motion.div 
-                                key={id.id} 
+                                key={id._id.$oid} 
                                 animate={animation}
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
                             >
                                 <ImageLazyLoad
                                     effect="blur" 
-                                    src={`https://picsum.photos/${id.width}/${id.height}`} 
+                                    src={id.image} 
                                     alt="Foto da galeria"
                                 />
                             </motion.div>

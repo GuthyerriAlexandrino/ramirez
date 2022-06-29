@@ -17,6 +17,7 @@ class PostsController < ApplicationController
   def create
     user = authorize_request
     return if user.nil? || params[:image].nil?
+    return render json: { error: 'User is not a photographer' } unless user.photographer
     
     bucket = FireStorageService.instance.img_bucket
     file_uploaded = params[:image].tempfile

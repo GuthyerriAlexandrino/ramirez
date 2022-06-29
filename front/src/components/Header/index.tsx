@@ -2,12 +2,18 @@ import Image from "next/image";
 import { HeaderContainer, MenuContainer } from "./style";
 import Logo from "../../assets/logo.svg";
 import Link from "next/link";
+import { useAuthLogin } from "../../context/AuthContext";
 
 interface HeaderProps {
     userId: string;
 }
 
 export function Header({userId}: HeaderProps) {
+
+    const {
+        userProfileImage
+    } = useAuthLogin();
+
     return (
         <HeaderContainer>
             <div>
@@ -31,7 +37,7 @@ export function Header({userId}: HeaderProps) {
                         <li>
                             <Link href={`/profile/photographer/${userId}`}>
                                 <Image
-                                    src={"/default-user.png"}
+                                    src={userProfileImage ? userProfileImage : "/default-user.png"}
                                     layout="fill"
                                     objectFit="cover"
                                     width={45}

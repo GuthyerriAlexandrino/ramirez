@@ -8,14 +8,8 @@ import React, {
 import Router from "next/router";
 import { setCookie, parseCookies } from "nookies";
 import { useNotify } from "./NotifyContext";
-
-type Token = {
-    token: string;
-	exp: string;
-	user: {
-		$oid: string;
-	}
-}
+import { ref, storage } from "../utils/keys/firebaseconfig";
+import { getDownloadURL } from "firebase/storage";
 
 type User = {
     email: string;
@@ -23,10 +17,8 @@ type User = {
 }
 
 type AuthContextProps = {
-    isAuthenticated: boolean;
-    token: Token;
-    setToken: (value: Token) => void;
     verifyTokenExpiration: () => boolean;
+    userProfileImage: string;
     handleLogin: (value: User) => Promise<void>;
 }
 
@@ -37,25 +29,46 @@ type AuthProviderProps = {
 }
 
 export function AuthProvider({children}: AuthProviderProps) {
-    const [user, setUser] = useState<User | null>(null);
-    const [token, setToken] = useState<Token>({} as Token);
+
+    const [userProfileImage, setUserProfileImage] = useState("");
 
     const {
         notifySuccess,
         notifyError
     } = useNotify();
 
-    const isAuthenticated = !!user;
 
     useEffect(() => {
         const cookies = parseCookies();
         const token = cookies['ramirez-user']
 
         if (token) {
+            getProfileImage();
             // Router.push("/search")
         } 
 
     }, [])
+
+    async function getProfileImage() {
+        const cookies = parseCookies();
+        const token = cookies['ramirez-user']
+        const id = cookies['ramirez-user-id']
+
+        const data = await fetch(`http://localhost:3001/users/${id}`, {
+            method: "GET",
+            headers: {
+                "Access-Control-Allow-Origin": "*",
+                "Authorization": `Bearer ${token}`
+            }
+        }).then(res => res.json());
+
+        const foresRef = ref(storage, data.profile_img);
+        await getDownloadURL(foresRef)
+        .then(url => {
+            setUserProfileImage(url)
+        })
+        .catch(error => console.log(error));
+    }
 
     function verifyTokenExpiration() {
         const cookies = parseCookies();
@@ -89,7 +102,6 @@ export function AuthProvider({children}: AuthProviderProps) {
         if (res.error) {
             notifyError("Falha no login! Verifique os campos preenchidos.")
         } else {
-            setUser(user.user);
 
             setCookie(undefined, "ramirez-user", res.token, {
                 expires: new Date(res.exp)
@@ -107,9 +119,7 @@ export function AuthProvider({children}: AuthProviderProps) {
     return (
         <AuthContext.Provider
             value={{
-                isAuthenticated,
-                token,
-                setToken,
+                userProfileImage,
                 verifyTokenExpiration,
                 handleLogin
             }}

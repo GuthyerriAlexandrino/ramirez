@@ -1,7 +1,7 @@
 require_relative "boot"
 
 require "rails"
-require "mongoid"
+# require "mongoid"
 # Pick the frameworks you want:
 require "active_model/railtie"
 require "active_job/railtie"
@@ -14,7 +14,7 @@ require "action_mailer/railtie"
 require "action_view/railtie"
 require "action_cable/engine"
 require "rails/test_unit/railtie"
-Mongoid.load!("config/mongoid.yml")
+# Mongoid.load!("config/mongoid.yml")
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.

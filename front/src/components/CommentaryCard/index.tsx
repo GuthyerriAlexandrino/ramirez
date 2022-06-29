@@ -25,12 +25,13 @@ interface CommentUser {
 }
 interface CommentaryCardProps {
     id: string;
+    like: string;
     content: Comment;
     incrementLikes: (commentaryId: string) => void;
     deleteCommentary: (commentaryId: string) => void;
 }
 
-export function CommentaryCard({id, content, incrementLikes, deleteCommentary}: CommentaryCardProps) {
+export function CommentaryCard({id, like, content, incrementLikes, deleteCommentary}: CommentaryCardProps) {
 
     const [isLikeButtonClicked, setIsLikeButtonClicked] = useState(false);
     const [commentUser, setCommentUser] = useState<CommentUser>({} as CommentUser);
@@ -105,7 +106,7 @@ export function CommentaryCard({id, content, incrementLikes, deleteCommentary}: 
                 </CommentaryProfile>
                 <IconsArea>
                     <Heart 
-                        color={isLikeButtonClicked ? pallete.red : pallete.grayOne} 
+                        color={(like === userSectionId) ? pallete.red : pallete.grayOne} 
                         size={30} 
                         weight="fill"
                         onClick={() => {

@@ -83,6 +83,14 @@ export interface Comment {
     post_id: {
         $oid: string;
     },
+    likes: {
+        _id: {
+            $oid: string
+        },
+        user_id: {
+            $oid: string
+        }
+    },
     user_id: {
         $oid: string;
     }
@@ -144,7 +152,6 @@ export default function Post({ postContent }: PostScreenProps) {
         }).then(result => result.json())
         .catch(error => error.json())
 
-        console.log(data)
     }
 
     async function getComments() {
@@ -161,7 +168,6 @@ export default function Post({ postContent }: PostScreenProps) {
         }).then(result => result.json())
         .catch(error => error.json())
 
-        console.log(data)
         setCommentsList(data)
     }
 
@@ -197,8 +203,6 @@ export default function Post({ postContent }: PostScreenProps) {
         .catch(error => console.log(error))
 
         setCommentsList([...commentsList, res]);
-
-        console.log(res)
     }
 
     async function incrementLikeAmountInACommentary(commentaryId: string) {
@@ -206,21 +210,28 @@ export default function Post({ postContent }: PostScreenProps) {
         let cookies = parseCookies();
         let token = cookies["ramirez-user"];
 
+        const userId = window?.location.pathname.split("/")[3];
+        const postId = window?.location.pathname.split("/")[5];
+
         const incrementLike = {
-            comment: {
-                post_id: router.query.post,
-                author_id: userSectionId
+            comments: {
+                post_id: postId,
+                author_id: userId,
+                id: commentaryId
             }
         }
 
-        await fetch(`http://127.0.0.1:3001/comments/${commentaryId}`, {
+        const res = await fetch(`http://127.0.0.1:3001/comments_like`, {
             method: "POST",
             headers: {
+                'Content-Type': 'application/json',
                 "Authorization": `Bearer ${token}`
             },
             body: JSON.stringify(incrementLike)
         }).then(response => response)
         .catch(error => console.log(error))
+
+        console.log(res)
     }
 
     async function deleteACommentaryFromPost(commentaryId: string) {
@@ -252,7 +263,7 @@ export default function Post({ postContent }: PostScreenProps) {
     useEffect(() => {
         getImageFromApi()
         getComments()
-    }, [commentsList.length])
+    }, [commentsList?.length])
 
     return (
         <Container>
@@ -323,8 +334,9 @@ export default function Post({ postContent }: PostScreenProps) {
                     <FeedBackArea>
                         <h2>Comentários ({commentsList?.length})</h2>
                         <FeedBackList>
-                            {commentsList.map(comment => (
+                            {commentsList?.map(comment => (
                                 <CommentaryCard
+                                    like={comment?.likes?.user_id?.$oid!}
                                     content={comment}
                                     key={comment._id.$oid}
                                     id={comment._id.$oid}

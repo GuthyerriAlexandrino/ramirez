@@ -61,7 +61,7 @@ User.create(
   name: "Ramirez",
   email: "guthyerri@davi.alice",
   password: "e o que he man?",
-  password: "e o que he man?",
+  password_confirmation: "e o que he man?",
   specialization: ["Dar dinheiro para fotógrafos"],
   city: "Quixadá",
   state: "CE",

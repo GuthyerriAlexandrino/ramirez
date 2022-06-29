@@ -26,7 +26,7 @@ class CommentsController < ApplicationController
   begin
     post = user.post.find(comment_params[:post_id])
     raise Mongoid::Errors::DocumentNotFound.new "This author is not the owner of the specified post" if post.nil?
-    comment = post.comments.create(comment_params.reject { |k, v| k == :post_id } )
+    comment = post.comments.create!(comment_params.reject { |k, v| k == :post_id } )
     render json: c, status: :created
   rescue Mongoid::Errors => e
     render json: { error: e }, status: :bad_request

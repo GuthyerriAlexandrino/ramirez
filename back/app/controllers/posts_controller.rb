@@ -25,8 +25,8 @@ class PostsController < ApplicationController
     post_hash = PostService.post_params(params[:title], params[:price], res.name)
     
     begin
-      p = Post.new(post_hash)
-      user.posts << p
+      # p = Post.new(post_hash)
+      user.posts.create!(post_hash)
       render json: p, status: :created
     rescue Mongoid::Error => e
       bucket.file(filename).delete

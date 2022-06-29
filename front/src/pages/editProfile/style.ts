@@ -176,6 +176,7 @@ export const SpecializationTags = styled(motion.ul)`
         text-align: left;
         padding: 0.2rem;
         margin-bottom: 0.8rem;
+        margin-left: 0.7rem;
         border-radius: 5px;
         color: ${pallete.turquoiseOne};
         font-size: 0.8rem;

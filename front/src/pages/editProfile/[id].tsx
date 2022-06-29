@@ -1,4 +1,4 @@
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useEffect, useRef, useState } from "react";
 import { GetServerSideProps } from "next";
 import Image from "next/image";
 import { parseCookies } from "nookies";
@@ -24,7 +24,6 @@ import {
     UpdateImage
 } from "./style";
 
-import Profile from "../../assets/profile.jpg";
 import { Icon, InputContainer } from "../../styles/form";
 import { 
     BagSimple, 
@@ -45,6 +44,8 @@ import { pallete } from "../../styles/colors";
 import { makeFadeInRightAnimation, variants, variantsItems } from "../../utils/animations";
 import { motion } from "framer-motion";
 import { useAuthLogin } from "../../context/AuthContext";
+import { useNotify } from "../../context/NotifyContext";
+import { useRouter } from "next/router";
 
 type User = {
     _id?: {
@@ -54,6 +55,7 @@ type User = {
     city: string;
     email: string;
     name: string;
+    profile_img?: string;
     password: string;
     password_confirmation: string;
     photographer: boolean
@@ -75,7 +77,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         }
     }
 
-    const data: User = await fetch(`http://localhost:3001/users/${id}`, {
+    const data: User = await fetch(`http://localhost:3001/user/${id}`, {
         method: "GET",
         headers: {
             "Access-Control-Allow-Origin": "*",
@@ -89,8 +91,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         city: data.city ?? null,
         email: data.email ?? null,
         name: data.name ?? null,
+        password: data.password ?? null,
         photographer: data.photographer ?? null,
-        // profile_img: data.profile_img ?? null,
+        profile_img: data.profile_img ?? null,
         services_price: data.services_price ?? null,
         specialization: data.specialization ?? null,
         state: data.state ?? null,
@@ -120,30 +123,57 @@ const signalColors = [
 
 export default function EditProfile({user}: PhotographerProps) {
 
+    const router = useRouter();
+
     let cookies = parseCookies();
     let userSectionId = cookies["ramirez-user-id"]
 
+    const {
+        userProfileImage
+    } = useAuthLogin();
+
+    const {
+        notifyError,
+        notifySuccess
+    } = useNotify();
+
+    const [hasInfoChanged, setHasInfoChanged] = useState(false);
     const [editImageFormIsActive, setEditImageFormIsActive] = useState(false);
     const [photoImageContent, setPhotoImageContent] = useState<File>();
     const [specializationOptions, setSpecializationOptions] = useState<Specialization[]>([]);
-    const [selectedSpecializations, setSelectedSpecializations] = useState<string[]>(user.specialization);
+    const [selectedSpecializations, setSelectedSpecializations] = useState<string[]>(user.specialization ? user.specialization : []);
     const [visiblePassword, setVisiblePassword] = useState(false);
     const [visibleConfirmPassword, setVisibleConfirmPassword] = useState(false);
     const [isPhotographer, setIsPhotographer] = useState(user.photographer);
-    const [minusValue, setMinusValue] = useState(0);
-    const [maxValue, setMaxValue] = useState(0);
+    const [minusValue, setMinusValue] = useState(user.services_price?.length > 0 ? user.services_price[0] : 0);
+    const [maxValue, setMaxValue] = useState(user.services_price?.length > 0 ? user.services_price[1] : 0);
     const [editedUser, setEditedUser] = useState<User>({
         bio: user.bio,
-        email: user.email,
         city: user.city,
+        state: user.state,
+        email: user.email,
         name: user.name,
+        profile_img: user.profile_img,
         password: "",
         password_confirmation: "",
         photographer: isPhotographer,
         specialization: [],
-        services_price: [0, 0],
-        state: ""
+        services_price: user.services_price?.length > 0 ? user.services_price : [0, 0],
     } as User);
+
+    function verifyIfPhotographerHasImage() {
+        if (userProfileImage) {
+            return userProfileImage
+        }
+        return "/default-user.png"
+    }
+
+    useEffect(() => {
+        if (hasInfoChanged) {
+            setHasInfoChanged(false)
+            router.push(`/editProfile/${userSectionId}`)
+        }
+    }, [hasInfoChanged, router, userSectionId])
 
     useEffect(() => {
         async function getAllSpecializations() {
@@ -156,18 +186,30 @@ export default function EditProfile({user}: PhotographerProps) {
     }, [])
 
     async function updatePhotographerImage() {
+
         let cookies = parseCookies();
         let token = cookies["ramirez-user"]
 
-        await fetch(`http://localhost:3001/users/profile_image/${user?._id?.$oid!}`, {
+        const newProfileImage = new FormData();
+        newProfileImage.append("image", photoImageContent!);
+
+        const res = await fetch(`http://localhost:3001/user/profile_image`, {
             method: "PUT",
             headers:{
-                'Content-Type': 'multipart/form-data',
                 'Access-Control-Allow-Origin': '*',
                 "Authorization": `Bearer ${token}`
             },
-            body: photoImageContent
-        })
+            body: newProfileImage
+        }).then(response => response)
+        .catch(error => error)
+
+        if (res.error) {
+            notifyError("Não foi possível atualizar foto. Tente novamente!")
+            return;
+        }
+        setEditedUser({...editedUser, profile_img: res})
+        notifyError("Foto atualizada com sucesso")
+        setHasInfoChanged(true)
     }
 
     async function editPhotographerData(event: FormEvent<HTMLFormElement>) {
@@ -190,22 +232,26 @@ export default function EditProfile({user}: PhotographerProps) {
                 state: editedUser.state,
             }
         }
-
-        console.log(modifiedUserToEdit)
-
-        const res= await fetch(`http://localhost:3001/users/${user?._id?.$oid!}`, {
+        
+        const res= await fetch(`http://localhost:3001/users/${userSectionId}`, {
             method: "PUT",
             headers:{
-                // 'Content-Type': 'application/json',
+                'Content-Type': 'application/json',
                 'Access-Control-Allow-Origin': '*',
                 "Authorization": `Bearer ${token}`
             },
             body: JSON.stringify(modifiedUserToEdit)
-        })
+        }).then(result => result.json())
+        .catch(error => error.json())
 
-        console.log(res)
+        if (res.error) {
+            notifyError("Não foi possível atualizar as informações. Verifique os campos!")
+            return;
+        }
+        notifySuccess("Informações atualizadas!")
+        setHasInfoChanged(true)
     }
-    
+
     function handleVisiblePassword() {
         setVisiblePassword(!visiblePassword);
     }
@@ -234,6 +280,10 @@ export default function EditProfile({user}: PhotographerProps) {
         if (selectedSpecializations.length >= 3) {
             return;
         }
+
+        if (specialization.toLowerCase() === "nenhum") {
+            return;
+        }
         setSelectedSpecializations([...selectedSpecializations, specialization])
         setEditedUser({...editedUser, specialization: [...selectedSpecializations, specialization]})
     }
@@ -247,11 +297,11 @@ export default function EditProfile({user}: PhotographerProps) {
     }
 
     function selectSignalColors(): string {
-        if (selectedSpecializations.length > 3) {
+        if (selectedSpecializations?.length > 3) {
             return signalColors[2].color
         }
 
-        return signalColors[selectedSpecializations.length].color;
+        return signalColors[selectedSpecializations?.length].color;
     }
 
     return (
@@ -264,7 +314,7 @@ export default function EditProfile({user}: PhotographerProps) {
                 <ModalChangeImage>
                     <div data-name="photoEditImage">
                         <Image
-                            src={photoImageContent ? URL.createObjectURL(photoImageContent!) : "/default-user.png"} 
+                            src={photoImageContent ? URL.createObjectURL(photoImageContent!) : verifyIfPhotographerHasImage()} 
                             objectFit="cover"
                             width={100} 
                             height={100}
@@ -302,7 +352,7 @@ export default function EditProfile({user}: PhotographerProps) {
                     <ProfileBasicInfo>
                         <ProfileImage onClick={() => setEditImageFormIsActive(true)}>
                             <Image 
-                                src={"/default-user.png"} 
+                                src={verifyIfPhotographerHasImage()} 
                                 objectFit="cover"
                                 width={150} 
                                 height={150}
@@ -338,7 +388,7 @@ export default function EditProfile({user}: PhotographerProps) {
                                 id="email" 
                                 name="email" 
                                 type="text"
-                                defaultValue={user.email} 
+                                defaultValue={user.email}
                                 placeholder="E-mail" 
                                 onChange={(event) => setEditedUser({...editedUser, email: event.target.value})}
                             />
@@ -412,7 +462,7 @@ export default function EditProfile({user}: PhotographerProps) {
                                     placeholder="Escreva sobre você..."
                                     cols={50}
                                     minLength={0}
-                                    maxLength={3000}
+                                    maxLength={1000}
                                     onChange={(event) => setEditedUser({...editedUser, bio: event.target.value})} 
                                 />
                             </InputContainer>
@@ -436,7 +486,7 @@ export default function EditProfile({user}: PhotographerProps) {
                             </InputContainer>
                             <SpecializationTags variants={variants}>
                                 <legend>
-                                    Especializações {selectedSpecializations.length}/3
+                                    Especializações {selectedSpecializations ? selectedSpecializations.length : "0" }/3
                                     <Signal color={selectSignalColors()}/>
                                 </legend>
                                 {selectedSpecializations.map((specialization) => (
@@ -528,7 +578,7 @@ export default function EditProfile({user}: PhotographerProps) {
                                     <input 
                                         id="max_value" 
                                         name="max_value" 
-                                        type={"number"} 
+                                        type={"number"}
                                         value={maxValue === 0 ? "" : maxValue}
                                         onChange={(event) => setMaxValue(Number(event.target.value))}
                                         placeholder="Valor máximo"

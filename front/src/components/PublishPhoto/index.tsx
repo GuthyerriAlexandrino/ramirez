@@ -21,6 +21,7 @@ import Image from "next/image";
 import { parseCookies } from "nookies";
 import { formatBytes } from "../../utils/formatBytes";
 import { useNotify } from "../../context/NotifyContext";
+import { useRouter } from "next/router";
 
 type PublishPhotoProps = {
     handlePopUp: (value: boolean) => void;
@@ -28,12 +29,15 @@ type PublishPhotoProps = {
 
 export function PublishPhoto({handlePopUp}: PublishPhotoProps) {
 
+    const router = useRouter();
+
     const [photoImageContent, setPhotoImageContent] = useState<File>();
     const [photoPrice, setPhotoPrice] = useState<number | null>(null);
     const [photoTitle, setPhotoTitle] = useState("");
 
     const {
-        notifyError
+        notifyError,
+        notifySuccess
     } = useNotify();
 
     async function addNewPost(event: FormEvent<HTMLFormElement>) {
@@ -45,11 +49,15 @@ export function PublishPhoto({handlePopUp}: PublishPhotoProps) {
         }
 
         const imageData = new FormData();
-        imageData.append('image', photoImageContent!, photoTitle)
-        imageData.append('price', photoPrice ? photoPrice?.toString() : "0")
+        imageData.append('image', photoImageContent!)
+        imageData.append('title', photoTitle)
+        if (photoPrice! > 0) {
+            imageData.append('price', photoPrice?.toString()!)
+        }
 
         let cookies = parseCookies();
         let token = cookies["ramirez-user"]
+        let userSectionId = cookies["ramirez-user-id"]
         
         const res = await fetch("http://localhost:3001/posts", {
             method: "POST",
@@ -60,6 +68,14 @@ export function PublishPhoto({handlePopUp}: PublishPhotoProps) {
             body: imageData
         }).then(response => response)
         .catch(error => error.json())
+
+        if (res.error) {
+            notifyError("Não foi possível enviar a imagem. Verifique os campos!")
+        }
+        notifySuccess("Postagem enviada com sucesso!");
+        handlePopUp(false);
+        router.push(`/profile/photographer/${userSectionId}`)
+        console.log(res)
     }
 
     function changePhotoPrice(value: number) {

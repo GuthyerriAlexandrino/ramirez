@@ -44,7 +44,7 @@ class CommentsController < ApplicationController
     author = User.find(com_params[:author_id])
     post = author&.posts&.find(com_params[:post_id])
     comment = post&.comments&.find(com_params[:id])
-    like = comment&.likes&.find(user.id)
+    like = comment&.likes&.find_by(user_id: user.id)
 
     return render json: {error: "Invalid post author" }, status: :bad_request if author.nil?
     return render json: {error: "This author is not the owner of the specified post" }, status: :bad_request if post.nil?

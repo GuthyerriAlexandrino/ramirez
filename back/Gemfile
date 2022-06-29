@@ -55,6 +55,7 @@ group :development, :test do
   gem "awesome_print"
   gem "rspec-rails"
   gem 'mongoid-rspec'
+  gem 'database_cleaner-mongoid'
 end
 
 group :development do

@@ -51,7 +51,8 @@ class PostsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_post
-      @post = PostService.user_posts(params[:id])
+      @post = PostService.post(params[:id])
+      # @post = PostService.user_posts(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

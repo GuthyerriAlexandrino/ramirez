@@ -5,7 +5,7 @@ module PostService
   end
 
   def self.post(post_id)
-    
+    Post.find(post_id)
   end
 
   def self.post_params(title, price, uri)

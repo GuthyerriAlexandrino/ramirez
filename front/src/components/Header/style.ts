@@ -31,7 +31,7 @@ export const HeaderContainer = styled.header`
 `
 
 export const MenuContainer = styled.nav`
-    width: 10rem;
+    width: 13rem;
 
     ul {
         display: flex;
@@ -45,7 +45,9 @@ export const MenuContainer = styled.nav`
             position: relative;
             display: flex;
             align-items: center;
-            width: 45px;
+            justify-content: center;
+            text-align: center;
+            width: 50px;
             height: 45px;
             color: ${pallete.whiteOne};
             cursor: pointer;

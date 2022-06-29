@@ -6,7 +6,7 @@ import React, {
     useState 
 } from "react";
 import Router from "next/router";
-import { setCookie, parseCookies } from "nookies";
+import { setCookie, parseCookies, destroyCookie } from "nookies";
 import { useNotify } from "./NotifyContext";
 import { ref, storage } from "../utils/keys/firebaseconfig";
 import { getDownloadURL } from "firebase/storage";
@@ -18,6 +18,8 @@ type User = {
 
 type AuthContextProps = {
     verifyTokenExpiration: () => boolean;
+    getProfileImage: () => void;
+    removeToken: () => void;
     userProfileImage: string;
     handleLogin: (value: User) => Promise<void>;
 }
@@ -43,8 +45,10 @@ export function AuthProvider({children}: AuthProviderProps) {
         const token = cookies['ramirez-user']
 
         if (token) {
-            getProfileImage();
-            // Router.push("/search")
+            if (Router.asPath === "/login") {
+                Router.push("/search")
+            }
+            // getProfileImage();
         } 
 
     }, [])
@@ -82,6 +86,11 @@ export function AuthProvider({children}: AuthProviderProps) {
             return false;
         } 
         return true;
+    }
+
+    function removeToken() {
+        destroyCookie(null, "ramirez-user")
+        destroyCookie(null, "ramirez-user-id")
     }
 
     async function handleLogin({email, password}: User) {
@@ -124,6 +133,8 @@ export function AuthProvider({children}: AuthProviderProps) {
         <AuthContext.Provider
             value={{
                 userProfileImage,
+                getProfileImage,
+                removeToken,
                 verifyTokenExpiration,
                 handleLogin
             }}

@@ -3,6 +3,7 @@ import { HeaderContainer, MenuContainer } from "./style";
 import Logo from "../../assets/logo.svg";
 import Link from "next/link";
 import { useAuthLogin } from "../../context/AuthContext";
+import { useEffect } from "react";
 
 interface HeaderProps {
     userId: string;
@@ -11,8 +12,15 @@ interface HeaderProps {
 export function Header({userId}: HeaderProps) {
 
     const {
-        userProfileImage
+        userProfileImage,
+        getProfileImage,
+        removeToken
     } = useAuthLogin();
+
+
+    useEffect(() => {
+        getProfileImage();
+    }, [])
 
     return (
         <HeaderContainer>
@@ -32,6 +40,11 @@ export function Header({userId}: HeaderProps) {
                         <li>
                             <Link href={"/search"}>
                                 <span>Pesquisar</span>
+                            </Link>
+                        </li>
+                        <li onClick={() => removeToken()}>
+                            <Link href={"/login"}>
+                                <span>Sair</span>
                             </Link>
                         </li>
                         <li>

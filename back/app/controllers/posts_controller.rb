@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :authorize_request, only: :index
+  before_action :authorize_request, only: %i[show index]
   before_action :set_posts, only: :index
   before_action :set_post, only: :show
 
@@ -47,11 +47,16 @@ class PostsController < ApplicationController
     user = authorize_request
     return if user.nil?
 
-    post = user.posts.find(params[:id])
+    begin 
+      post = user.posts.find(params[:id])
 
-    bucket = FireStorageService.instance.img_bucket
-    bucket.file(post.image).delete
-    user.delete(post)
+      bucket = FireStorageService.instance.img_bucket
+      bucket.file(post.image).delete
+      user.posts.delete(post)
+      render json: post, status: :ok
+    rescue Mongo::Error => e
+      render json: { error: e }, status: :unprocessable_entity
+    end
   end
 
   private
@@ -61,7 +66,7 @@ class PostsController < ApplicationController
     end
 
     def set_post
-      @post = Post.find(params[:id])
+      @post = User.find(params[:u_id]).posts.find(params[:p_id])
     end
 
     # Only allow a list of trusted parameters through.

@@ -8,7 +8,7 @@ interface IconProps {
 }
 
 interface InputContainer {
-    isSelect?: boolean;
+    isselect?: string;
 }
 
 export const FormBody = styled(motion.form)`
@@ -34,7 +34,7 @@ export const InputContainer = styled(motion.div)<InputContainer>`
     position: relative;
     margin-bottom: 1rem;
 
-    ${props => props.isSelect ? css`
+    ${props => props.isselect ? css`
         &::after {
             content: '';
             position: absolute;

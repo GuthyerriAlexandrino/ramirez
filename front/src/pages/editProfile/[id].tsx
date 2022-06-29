@@ -466,7 +466,7 @@ export default function EditProfile({user}: PhotographerProps) {
                                     onChange={(event) => setEditedUser({...editedUser, bio: event.target.value})} 
                                 />
                             </InputContainer>
-                            <InputContainer isSelect variants={variantsItems}>
+                            <InputContainer isselect="true" variants={variantsItems}>
                                 <Icon align="left">
                                     <BagSimple size={24} color={pallete.blackFour} weight="fill" />
                                 </Icon>

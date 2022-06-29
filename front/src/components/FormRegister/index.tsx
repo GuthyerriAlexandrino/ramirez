@@ -57,7 +57,15 @@ export function FormRegister() {
         }
         
         const user = {
-            user: newUser
+            user: {
+                name: newUser.name,
+                email: newUser.email,
+                password: newUser.password,
+                password_confirmation: newUser.password_confirmation,
+                city: newUser.photographer ? newUser.city : null,
+                state: newUser.photographer ? newUser.state : null,
+                photographer: newUser.photographer
+            }
         }
 
         const res = await fetch("http://localhost:3001/register", {

@@ -203,13 +203,17 @@ export default function EditProfile({user}: PhotographerProps) {
         }).then(response => response)
         .catch(error => error)
 
-        if (res.error) {
+        if (res.status === 500) {
             notifyError("Não foi possível atualizar foto. Tente novamente!")
             return;
         }
         setEditedUser({...editedUser, profile_img: res})
-        notifyError("Foto atualizada com sucesso")
+        notifySuccess("Foto atualizada com sucesso! Aguarde alguns segundos")
+        setEditImageFormIsActive(false)
         setHasInfoChanged(true)
+        setTimeout(() => {
+            router.reload()
+        }, 3000);
     }
 
     async function editPhotographerData(event: FormEvent<HTMLFormElement>) {

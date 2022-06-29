@@ -74,12 +74,27 @@ interface PostScreenProps {
     postContent: Post
 }
 
+export interface Comment {
+    _id: {
+        $oid: string;
+    },
+    content: string;
+    created_at: Date;
+    post_id: {
+        $oid: string;
+    },
+    user_id: {
+        $oid: string;
+    }
+}
+
 export default function Post({ postContent }: PostScreenProps) {
 
     const router = useRouter();
 
     const [image, setImage] = useState<any>();
     const [userCommentary, setUserCommentary] = useState("");
+    const [commentsList, setCommentsList] = useState<Comment[]>([]);
 
     const {
         notifyError,
@@ -132,6 +147,24 @@ export default function Post({ postContent }: PostScreenProps) {
         console.log(data)
     }
 
+    async function getComments() {
+        const postId = window?.location.pathname.split("/")[5];
+
+        let cookies = parseCookies();
+        let token = cookies["ramirez-user"];
+
+        const data: Comment[] = await fetch(`http://127.0.0.1:3001/comments/${postId}`, {
+            method: "GET",
+            headers: {
+                "Authorization": `Bearer ${token}`
+            }
+        }).then(result => result.json())
+        .catch(error => error.json())
+
+        console.log(data)
+        setCommentsList(data)
+    }
+
     async function sendCommentaryToPost() {
 
         if (userCommentary === "") {
@@ -153,14 +186,17 @@ export default function Post({ postContent }: PostScreenProps) {
             }
         }
 
-        const res = await fetch("http://127.0.0.1:3001/comments", {
+        const res: Comment = await fetch("http://127.0.0.1:3001/comments", {
             method: "POST",
             headers: {
+                "Content-Type": "application/json",
                 "Authorization": `Bearer ${token}`
             },
             body: JSON.stringify(newComment)
-        }).then(response => response)
+        }).then(response => response.json())
         .catch(error => console.log(error))
+
+        setCommentsList([...commentsList, res]);
 
         console.log(res)
     }
@@ -199,19 +235,24 @@ export default function Post({ postContent }: PostScreenProps) {
             }
         }
 
-        await fetch(`http://127.0.0.1:3001/comments/${commentaryId}`, {
+        const deletedComment: Comment = await fetch(`http://127.0.0.1:3001/comments/${commentaryId}`, {
             method: "DELETE",
             headers: {
                 "Authorization": `Bearer ${token}`
             },
             body: JSON.stringify(commentaryToDelete)
-        }).then(response => response)
+        }).then(response => response.json())
         .catch(error => console.log(error))
+
+        console.log(deletedComment)
+
+        setCommentsList(commentsList.filter(data => data?._id?.$oid !== deletedComment?._id?.$oid))
     }
 
     useEffect(() => {
         getImageFromApi()
-    }, [])
+        getComments()
+    }, [commentsList.length])
 
     return (
         <Container>
@@ -280,13 +321,17 @@ export default function Post({ postContent }: PostScreenProps) {
                         </CommentaryButton>
                     </CommentaryInputContainer>
                     <FeedBackArea>
-                        <h2>Comentários (4)</h2>
+                        <h2>Comentários ({commentsList?.length})</h2>
                         <FeedBackList>
-                            <CommentaryCard
-                                id="1"
-                                incrementLikes={incrementLikeAmountInACommentary}
-                                deleteCommentary={deleteACommentaryFromPost}
-                            />
+                            {commentsList.map(comment => (
+                                <CommentaryCard
+                                    content={comment}
+                                    key={comment._id.$oid}
+                                    id={comment._id.$oid}
+                                    incrementLikes={incrementLikeAmountInACommentary}
+                                    deleteCommentary={deleteACommentaryFromPost}
+                                />
+                            ))}
                         </FeedBackList>
                     </FeedBackArea>
                 </PostArea> 

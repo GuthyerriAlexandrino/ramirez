@@ -171,7 +171,7 @@ export default function ProfilePhotographer({user}: PhotographerProps) {
     useEffect(() => {
         getProfileImage();
         getAllPostsFromUser();
-    }, [window?.location.pathname])
+    }, [])
 
     useEffect(() => {
         if (inView) {

@@ -88,6 +88,7 @@ export default function Search() {
 
     const {
         verifyTokenExpiration,
+        getProfileImage,
     } = useAuthLogin();
 
 
@@ -102,6 +103,7 @@ export default function Search() {
     }, [])
 
     useEffect(() => {
+        getProfileImage();
         getUsers();
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])

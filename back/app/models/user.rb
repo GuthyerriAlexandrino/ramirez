@@ -28,8 +28,6 @@ class User
 
   validates_numericality_of :views, only_integer: true
 
-  validates_confirmation_of :password
-
   validates_uniqueness_of :email
 
   # Embeddings

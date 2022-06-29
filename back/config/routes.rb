@@ -15,7 +15,8 @@ Rails.application.routes.draw do
   
   # Post routes
   get '/posts/:id', to: 'posts#index'
-  get '/post/:id', to: 'posts#show'
+  get '/post/:u_id/:p_id', to: 'posts#show'
+  delete '/posts/:id', to: 'posts#destroy'
 
   # User extra routes
   put '/user/profile_image', to: 'users#profile_image'

@@ -51,9 +51,9 @@ type Search = {
 
 const orderOptions = [
     {name: "Nenhum", field: null},
-    {name: "Visitas", field: "visitas"},
-    {name: "Curtidas", field: "curtidas"},
-    {name: "Preço", field: "preco"}
+    {name: "Visitas", field: "views"},
+    {name: "Curtidas", field: "likes"},
+    {name: "Preço", field: "price"}
 ]
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
@@ -81,6 +81,7 @@ export default function Search() {
     const [isLocationActive, setIsLocationActive] = useState(false);
     const [users, setUsers] = useState<UserP[]>([]);
     const [specializationOptions, setSpecializationOptions] = useState<Specialization[]>([]);
+    const [selectOrderByValue, setSelectOrderByValue] = useState("");
 
     let cookies = parseCookies();
     let userSectionId = cookies["ramirez-user-id"]
@@ -88,6 +89,7 @@ export default function Search() {
     const {
         verifyTokenExpiration,
     } = useAuthLogin();
+
 
     useEffect(() => {
         async function getAllSpecializations() {
@@ -161,9 +163,15 @@ export default function Search() {
                                 </PopupItem>
                             ))}
                         </SelectInput>
-                        <SelectInput selectName={search.orderBy ? search.orderBy : "Ordenação por:"}>
+                        <SelectInput selectName={search.orderBy ? selectOrderByValue : "Ordenação por:"}>
                             {orderOptions.map((item, id) => (
-                                <PopupItem key={id} onClick={() => setSearch({...search, orderBy: item.name === "Nenhum" ? "" : item.name})}>
+                                <PopupItem 
+                                    key={id} 
+                                    onClick={() => {
+                                        setSearch({...search, orderBy: item.name === "Nenhum" ? "" : item.field!})
+                                        setSelectOrderByValue(item.name === "Nenhum" ? "" : item.name)
+                                    }}
+                                >
                                     {item.name}
                                 </PopupItem>
                             ))}

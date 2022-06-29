@@ -53,14 +53,14 @@ class CommentsController < ApplicationController
     if like.nil?
       begin 
         comment.likes.create!(user_id: user.id)
+        return render json: 'Object created', status: :ok
       rescue Mongoid::Errors => e
         return render 
       end
     else
       like.destroy
+      return render json: 'Object destroyed', status: :ok
     end
-
-    render json: {}, status: :ok
   end
 
   # PATCH/PUT /comments/1
@@ -78,8 +78,6 @@ class CommentsController < ApplicationController
     return if user.nil?
 
     return render json: { error: 'Specified user is not the owner of the comment' }, status: :bad_request
-    
-    # Não lembro o que eu tava fazendo
     @comment.destroy
   end
 

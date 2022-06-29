@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   # Post routes
   get '/posts/:id', to: 'posts#index'
   get '/post/:u_id/:p_id', to: 'posts#show'
+  post '/posts/', to: 'posts#create'
   delete '/posts/:id', to: 'posts#destroy'
 
   # User extra routes

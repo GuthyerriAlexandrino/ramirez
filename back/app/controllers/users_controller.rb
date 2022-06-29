@@ -64,6 +64,11 @@ class UsersController < ApplicationController
     
     u_params = user_params
     u_params[:photographer] = true if user.photographer = true
+    u_params[:specialization].each do |s|
+      unless SpecializationService.instance.specializations.include?(s)
+        return render json: { error: 'Invalid specialization' } , status: :unprocessable_entity
+      end
+    end
     update_user = User.find(user.id)
 
     if update_user.update(u_params)

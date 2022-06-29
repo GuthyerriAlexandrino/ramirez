@@ -31,10 +31,10 @@ class RegistrationController < ApplicationController
     # return render json: { error: 'Specialization don\'t exists'}, status: :bad_request unless SPECIALIZATIONS.include?(user_params[:specialization])
 
     begin
-      u = User.create(user_params.permit(user_params.keys).to_h)
+      u = User.create!(user_params.permit(user_params.keys).to_h)
       u.password = nil
       render json: u, status: :ok
-    rescue Mongo::Error::OperationFailure => e
+    rescue Mongoid::Errors::OperationFailure => e
       render json: { error: e.to_s.split()[1]}, status: :conflict
     end
   end

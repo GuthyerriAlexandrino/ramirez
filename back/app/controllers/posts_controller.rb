@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
-  before_action :authorize_request, only: %i[show index]
-  before_action :set_posts, only: :index
   before_action :set_post, only: :show
+  before_action :set_posts, only: :index
+  before_action :authorize_request, only: %i[show index]
 
   # GET /posts/1
   def index

@@ -24,7 +24,7 @@ class CommentsController < ApplicationController
     return if user.nil?
 
   begin
-    post = user.post.find(comment_params[:post_id])
+    post = user.posts.find(comment_params[:post_id])
     raise Mongoid::Errors::DocumentNotFound.new "This author is not the owner of the specified post" if post.nil?
     comment = post.comments.create!(comment_params.reject { |k, v| k == :post_id } )
     render json: c, status: :created
@@ -49,7 +49,11 @@ def like # To-do
   return render json: {error: "This comment don't exists in the specified post" }, status: :bad_request if comment.nil?
 
   if like.nil?
-    comment.likes.create(user.id)
+    begin 
+      comment.likes.create!(user.id)
+    rescue Mongoid::Errors => e
+      return render 
+    end
   else
     like.destroy
   end

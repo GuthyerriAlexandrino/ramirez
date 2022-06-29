@@ -25,10 +25,9 @@ class PostsController < ApplicationController
     post_hash = PostService.post_params(params[:title], params[:price], res.name)
     
     begin
-      # p = Post.new(post_hash)
       user.posts.create!(post_hash)
       render json: p, status: :created
-    rescue Mongoid::Error => e
+    rescue Mongoid::Errors => e
       bucket.file(filename).delete
       render error: e, status: :unprocessable_entity
     end
@@ -54,7 +53,7 @@ class PostsController < ApplicationController
       bucket.file(post.image).delete
       user.posts.delete(post)
       render json: post, status: :ok
-    rescue Mongo::Error => e
+    rescue Mongoid::Errors => e
       render json: { error: e }, status: :unprocessable_entity
     end
   end

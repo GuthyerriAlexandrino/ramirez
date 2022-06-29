@@ -60,8 +60,11 @@ class UsersController < ApplicationController
     return if user.nil?
 
     return render json: { error: "Invalid user token" }, status: :unprocessable_entity if user.id.to_s != params[:id]
+    
+    u_params = user_params
+    u_params[:photographer] = true if user.photographer = true
 
-    if user.update(user_params)
+    if user.update(u_params)
       render json: user, status: :ok
     else
       render json: { error: user.errors }, status: :unprocessable_entity 

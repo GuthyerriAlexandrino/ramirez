@@ -47,7 +47,7 @@ class UsersController < ApplicationController
     file = params[:image]
     filename = "#{user.name}/profile#{Rack::Mime::MIME_TYPES.invert[file.content_type]}"
     bucket.create_file(file.tempfile, filename)
-    if user.update_attributes(profile_img: filename)
+    if user.update(profile_img: filename)
       render json: filename, status: :ok
     else
       render json: { error: user.errors }, status: :unprocessable_entity

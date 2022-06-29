@@ -16,7 +16,7 @@ class PostsController < ApplicationController
     file_uploaded = params[:image].tempfile
     filename = PostService.parse_filename(user.name, params[:image].content_type)
     res = bucket.create_file(file_uploaded, filename)
-    post_hash = PostService.post_params(filename, params[:price], res.name)
+    post_hash = PostService.post_params(params[:title], params[:price], res.name)
     
     begin
       p = Post.new(post_hash)

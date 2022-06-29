@@ -16,17 +16,64 @@ import {
 
 import { TrashSimple, Chat, Heart } from "phosphor-react";
 import { useEffect, useState } from "react";
-import { getDownloadURL, ref } from "firebase/storage";
+import { getDownloadURL } from "firebase/storage";
 import Image from "next/image";
-import { useRouter } from "next/router";
-import { storage } from "../../../../../utils/keys/firebaseconfig";
 import { Header } from "../../../../../components/Header";
 import { Loading } from "../../../../../components/Loading";
 import { pallete } from "../../../../../styles/colors";
 import { CommentaryCard } from "../../../../../components/CommentaryCard";
 import { parseCookies } from "nookies";
+import { storage, ref } from "../../../../../utils/keys/firebaseconfig";
+import { useRouter } from "next/router";
+import { GetServerSideProps } from "next";
 
-export default function Post() {
+interface Post {
+    price: number,
+    title: string,
+}
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+    const { id, post } = context.params!;
+    const { ["ramirez-user"]: token } = parseCookies(context);
+
+    if (!token) {
+        return {
+            redirect: {
+                destination: '/login',
+                permanent: false,
+            }
+        }
+    }
+
+    const data: Post = await fetch(`http://localhost:3001/post/${id}/${post}`, {
+        method: "GET",
+        headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Authorization": `Bearer ${token}`
+        }
+    }).then(res => res.json());
+
+    const postContent = {
+        price: data.price ?? null,
+        title: data.title ?? null,
+    }
+
+    return {
+        props: {
+            postContent,
+        },
+    }
+}
+
+interface PostImage {
+    image: string;
+}
+
+interface PostScreenProps {
+    postContent: Post
+}
+
+export default function Post({ postContent }: PostScreenProps) {
 
     const router = useRouter();
 
@@ -34,27 +81,49 @@ export default function Post() {
     const [userCommentary, setUserCommentary] = useState("");
 
     let cookies = parseCookies();
-    let userSectionId = cookies["ramirez-user-id"]
+    let userSectionId = cookies["ramirez-user-id"];
 
     async function getImageFromApi() {
+
+        const userId = window?.location.pathname.split("/")[3];
+        const postId = window?.location.pathname.split("/")[5];
 
         let cookies = parseCookies();
         let token = cookies["ramirez-user"];
 
-        const data = await fetch("http://127.0.0.1:3001/setimg/", {
+        const data: PostImage = await fetch(`http://127.0.0.1:3001/post/${userId}/${postId}`, {
             method: "GET",
             headers: {
                 "Authorization": `Bearer ${token}`
             }
-        }).then(result => result.text().then(link => link));
-        const foresRef = ref(storage, "pexels-ylanite-koppens-2479246.jpg");
-        // const foresRef = ref(storage, "trigo.jpg");
-        getDownloadURL(foresRef)
-        .then(url => {
-            setImage(url)
-    
-        })
-        .catch(error => console.log(error))
+        }).then(result => result.json());
+
+        if (data.image !== undefined) {
+            const foresRef = ref(storage, data.image);
+            await getDownloadURL(foresRef)
+            .then(url => {
+                setImage(url)
+            })
+            .catch(error => console.log(error))
+        }
+    }
+
+    async function deletePost() {
+
+        const postId = window?.location.pathname.split("/")[5];
+
+        let cookies = parseCookies();
+        let token = cookies["ramirez-user"];
+
+        const data: PostImage = await fetch(`http://127.0.0.1:3001/posts/${postId}`, {
+            method: "DELETE",
+            headers: {
+                "Authorization": `Bearer ${token}`
+            }
+        }).then(result => result.json())
+        .catch(error => error.json())
+
+        console.log(data)
     }
 
     async function sendCommentaryToPost() {
@@ -150,13 +219,17 @@ export default function Post() {
                             </PostLoading>
                         )}
                         <ContentFooter>
-                            <span>R$ 25,00</span>
+                            <span>
+                                {postContent.title}
+                                {postContent.price ? ` - R$ ${postContent.price}` : ""}
+                            </span>
                             <IconsArea>
                                 <TrashSimple 
                                     color={pallete.grayOne} 
                                     size={30} 
                                     weight="fill"
                                     style={{cursor: "pointer"}}
+                                    onClick={() => deletePost()}
                                 />
                                 <Chat 
                                     color={pallete.grayOne} 

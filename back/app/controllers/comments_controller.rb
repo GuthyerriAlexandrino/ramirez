@@ -68,6 +68,12 @@ end
 
   # DELETE /comments/1
   def destroy
+    user = authorize_request
+    return if user.nil?
+
+    return render json: { error: 'Specified user is not the owner of the comment' }, status: :bad_request
+    
+    # Não lembro o que eu tava fazendo
     @comment.destroy
   end
 

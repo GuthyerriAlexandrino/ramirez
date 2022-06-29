@@ -4,10 +4,6 @@ module PostService
     user.posts
   end
 
-  def self.post(post_id)
-    Post.find(post_id)
-  end
-
   def self.post_params(title, price, uri)
     post = { title: title, image: uri }
     post[:price] = price.to_f unless price.nil?

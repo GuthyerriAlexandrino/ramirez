@@ -1,8 +1,14 @@
 class PostsController < ApplicationController
-  before_action :authorize_request, only: :show
-  before_action :set_post, only: %i[ show update]
+  before_action :authorize_request, only: :index
+  before_action :set_posts, only: :index
+  before_action :set_post, only: :show
 
   # GET /posts/1
+  def index
+    render json: @post
+  end
+
+  # GET /post/1
   def show
     render json: @post
   end
@@ -50,13 +56,16 @@ class PostsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    def set_posts
+      @post = PostService.user_posts(params[:id])
+    end
+
     def set_post
-      @post = PostService.post(params[:id])
-      # @post = PostService.user_posts(params[:id])
+      @post = Post.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.permit(:image, :price).tap { |p| p.require(:image) }
+      params.permit(:image, :price, :title).tap { |p| p.require(:image) }
     end
 end

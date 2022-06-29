@@ -51,14 +51,15 @@ export function PublishPhoto({handlePopUp}: PublishPhotoProps) {
         let cookies = parseCookies();
         let token = cookies["ramirez-user"]
         
-        const res = await fetch("http://localhost:3001/matarocris", {
+        const res = await fetch("http://localhost:3001/posts", {
             method: "POST",
             headers: {
                 'Access-Control-Allow-Origin': '*',
-                'Authorization': 'debug'
+                'Authorization': `Bearer ${token}`
             },
             body: imageData
-        }).then(response => response);
+        }).then(response => response)
+        .catch(error => error.json())
     }
 
     function changePhotoPrice(value: number) {

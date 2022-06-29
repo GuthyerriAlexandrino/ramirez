@@ -133,7 +133,7 @@ export default function ProfilePhotographer({user}: PhotographerProps) {
     }
 
     async function getAllPostsFromUser() {
-        const allPosts: string[] = await fetch(`http://localhost:3001/posts/${userSectionId}`, {
+        const allPosts: Post[] = await fetch(`http://localhost:3001/posts/${userSectionId}`, {
             method: "GET",
             headers: {
                 'Access-Control-Allow-Origin': '*',
@@ -142,14 +142,20 @@ export default function ProfilePhotographer({user}: PhotographerProps) {
         }).then(response => response.json())
         .catch(error => error.json());
 
-        if (allPosts) {
-            Array.from(allPosts).forEach(async (post: any) => {
-                const foresRef = refFirebase(storage, post.image);
-                await getDownloadURL(foresRef)
-                .then(url => setAllPostsList([...allPostsList, {_id: post._id, image: url}]))
-                .catch(error => console.log(error));
-            })
+        await generateImagesLinks(allPosts)
+    }
+
+    async function generateImagesLinks(allPosts: Post[]) {
+        let urlsLinks: Post[] = []
+
+        for (let post of allPosts) {
+            const foresRef = refFirebase(storage, post.image);
+            await getDownloadURL(foresRef)
+            .then(url => urlsLinks.push({_id: post._id, image: url}))
+            .catch(error => console.log(error));
         }
+
+        setAllPostsList(urlsLinks)
     }
 
     useEffect(() => {
@@ -252,7 +258,6 @@ export default function ProfilePhotographer({user}: PhotographerProps) {
                             key={id._id.$oid} 
                         >
                             <motion.div 
-                                key={id._id.$oid} 
                                 animate={animation}
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}

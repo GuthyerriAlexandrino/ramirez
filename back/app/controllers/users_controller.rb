@@ -47,7 +47,9 @@ class UsersController < ApplicationController
     file = params[:image]
     filename = "#{user.name}/profile#{Rack::Mime::MIME_TYPES.invert[file.content_type]}"
     bucket.create_file(file.tempfile, filename)
-    if user.update(profile_img: filename)
+    update_user = User.find(user.id)
+
+    if update_user.update(profile_img: filename)
       render json: filename, status: :ok
     else
       render json: { error: user.errors }, status: :unprocessable_entity
@@ -58,13 +60,13 @@ class UsersController < ApplicationController
   def update
     user = authorize_request
     return if user.nil?
-
     return render json: { error: "Invalid user token" }, status: :unprocessable_entity if user.id.to_s != params[:id]
     
     u_params = user_params
     u_params[:photographer] = true if user.photographer = true
+    update_user = User.find(user.id)
 
-    if user.update(u_params)
+    if update_user.update(u_params)
       render json: user, status: :ok
     else
       render json: { error: user.errors }, status: :unprocessable_entity 

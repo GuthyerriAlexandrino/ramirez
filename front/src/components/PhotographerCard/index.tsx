@@ -2,16 +2,37 @@ import { CardContainer,  CardContent, FilterImage, ListSpecialization } from "./
 
 import { UserP } from "../../pages/search";
 import Link from "next/link";
+import { useState } from "react";
+import { ref, storage } from "../../utils/keys/firebaseconfig";
+import { getDownloadURL } from "firebase/storage";
 
 type PhotographerCardProps = {
     user: UserP;
 }
 
 export function PhotographerCard({user}: PhotographerCardProps) {
+
+    const [userProfileImage, setUserProfileImage] = useState("");
+
+    async function getImageForCard() {
+        if (user.profile_img === "") {
+            return;
+        }
+
+        const foresRef = ref(storage, user.profile_img);
+        await getDownloadURL(foresRef)
+        .then(url => {
+            setUserProfileImage(url)
+        })
+        .catch(error => console.log(error));
+    }
+
+    getImageForCard()
+
     return (
         // eslint-disable-next-line @next/next/link-passhref
         <Link href={`/profile/photographer/${user._id.$oid}`}>
-            <CardContainer >
+            <CardContainer imageUrl={userProfileImage ? userProfileImage : "/default-user.png"}>
                 <FilterImage/>
                 <CardContent>
                     <h3>{user.name}</h3>

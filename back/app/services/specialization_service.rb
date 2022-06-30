@@ -2,7 +2,7 @@
 class SpecializationService
   attr_reader :specializations
   def SpecializationService.instance
-    @instance = SpecializationService.new if @instance.nil?
+    @instance ||= SpecializationService.new
   end
 
   private

@@ -1,17 +1,18 @@
 class UsersController < ApplicationController
   ActionController::Parameters.action_on_unpermitted_parameters = :raise
-  before_action :authorize_request, except: [:create, :show]
+  before_action :authorize_request, except: [:create, :update, :show]
   before_action :set_user, only: :show
 
   # GET /users
   def index
+    return render json: { error: 'Page field must be integer' }, status: :bad_request unless FiltersService.check_pagination(params[:page])
     filters = FiltersService.matching_params(request.GET)
     location = FiltersService.location_params(request.GET[:location])
     order = FiltersService.order_params(request.GET[:orderBy])
     price = FiltersService.price_params(min_price: request.GET[:minPrice], max_price: request.GET[:maxPrice])
     @users = User.where(filters.merge(price)).only(UserService.search_view).order_by(order)
     @users = @users.any_of(*location) unless location.empty?
-    render json: @users
+    render json: @users.page(params[:page])
   end
 
   # GET /users/1
@@ -28,23 +29,52 @@ class UsersController < ApplicationController
     render json: @user
   end
 
-  def set_img
-    fs = FireStorageService.instance
-    fs = fs.img_bucket
-    file = fs.file("pexels-ylanite-koppens-2479246.jpg")
-    render json: file.media_url, status: :ok
+  # GET user/1
+  def user_data
+    user = authorize_request
+    return if user.nil?
+    return render json: { error: 'User cookie and id dont match'}, status: :bad_request if user.id.to_s != params[:id]
+
+    render json: user, status: :ok
   end
 
-  def update
+  # PUT /users/profile_image
+  def profile_image
     user = authorize_request
     return if user.nil?
 
-    return render json: {error: "Invalid user token"}, status: :unprocessable_entity if user.id != user_params[:id]
+    bucket = FireStorageService.instance.img_bucket
+    file = params[:image]
+    filename = "#{user.name}/profile#{Rack::Mime::MIME_TYPES.invert[file.content_type]}"
+    bucket.create_file(file.tempfile, filename)
+    update_user = User.find(user.id)
 
-    if user.update(user_params)
-      render json: user
+    if update_user.update(profile_img: filename)
+      render json: filename, status: :ok
     else
-      render error: {json: user.errors, status: :unprocessable_entity}
+      render json: { error: user.errors }, status: :unprocessable_entity
+    end
+  end
+
+  # PUT /users/1
+  def update
+    user = authorize_request
+    return if user.nil?
+    return render json: { error: "Invalid user token" }, status: :unprocessable_entity if user.id.to_s != params[:id]
+    
+    u_params = user_params
+    u_params[:photographer] = true if user.photographer = true
+    u_params[:specialization].each do |s|
+      unless SpecializationService.instance.specializations.include?(s)
+        return render json: { error: 'Invalid specialization' } , status: :unprocessable_entity
+      end
+    end
+    update_user = User.find(user.id)
+
+    if update_user.update(u_params)
+      render json: user, status: :ok
+    else
+      render json: { error: user.errors }, status: :unprocessable_entity 
     end
   end
 

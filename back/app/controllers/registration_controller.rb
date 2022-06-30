@@ -25,14 +25,16 @@ class RegistrationController < ApplicationController
   def register
     user_params = register_params()
     return render json: { error: 'Invalid email' }, status: :bad_request unless user_params[:email] =~ VALID_EMAIL_REGEX
-    return render json: { error: 'Password too short'}, status: :bad_request unless user_params[:password].length >= 8
+    return render json: { error: 'Password too short' }, status: :bad_request unless user_params[:password].length >= 8
+    return render json: { error: 'Password differs from confirmation' }, status: :bad_request unless user_params[:password] == user_params[:password_confirmation]
+    
     # return render json: { error: 'Specialization don\'t exists'}, status: :bad_request unless SPECIALIZATIONS.include?(user_params[:specialization])
 
     begin
-      u = User.create(user_params.permit(user_params.keys).to_h)
+      u = User.create!(user_params.permit(user_params.keys).to_h)
       u.password = nil
       render json: u, status: :ok
-    rescue Mongo::Error::OperationFailure => e
+    rescue Mongoid::Errors => e
       render json: { error: e.to_s.split()[1]}, status: :conflict
     end
   end

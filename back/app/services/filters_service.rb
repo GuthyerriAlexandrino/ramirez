@@ -1,7 +1,7 @@
 module FiltersService
   def self.matching_params(params)
     new_hash = { photographer: true }
-    params.each_pair { |k, v| new_hash[k.to_sym] = v unless self.check_param(k, v) }
+    params.each_pair { |k, v| new_hash[k.to_sym] = v if self.check_param(k, v) }
     new_hash[:name] = /.*#{params[:name]}.*/ unless params[:name].nil? || params[:name] == ""
     new_hash[:specialization.exists] = true
     new_hash
@@ -35,12 +35,16 @@ module FiltersService
     price
   end
 
+  def self.check_pagination(page)
+    page.nil? || (Integer(params[:page]) rescue false)
+  end
+
   private
   def self.check_param(key, value)
     key = key.to_sym
-    exception1 = %i[location orderBy minPrice maxPrice].include?(key)
-    exception2 = value == "" || value.nil?
+    condition1 = %i[name specialization].include?(key)
+    condition2 = value != "" && !value.nil?
 
-    exception1 || exception2
+    condition1 && condition2
   end
 end

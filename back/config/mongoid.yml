@@ -1,0 +1,17 @@
+development:
+  clients:
+    default:
+      database: ramirez
+      hosts:
+        - localhost:27017
+      options:
+  options:
+    
+test:
+  clients:
+    default:
+      database: ramirez
+      hosts:
+        - localhost:27017
+      options:
+  options:

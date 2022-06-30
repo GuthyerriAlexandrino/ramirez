@@ -1,6 +1,7 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'spec_helper'
 require 'mongoid-rspec'
+require 'database_cleaner/mongoid'
 ENV['RAILS_ENV'] ||= 'development'
 require_relative '../config/environment'
 # Prevent database truncation if the environment is production
@@ -28,6 +29,18 @@ RSpec.configure do |config|
   config.use_active_record = false
   config.include Mongoid::Matchers, type: :model
 
+
+  
+config.before(:each) do
+  DatabaseCleaner[:mongoid].strategy = :deletion
+  DatabaseCleaner.start
+end
+config.after(:each) do
+  DatabaseCleaner.clean
+end
+
+
+
   # If you enable ActiveRecord support you should unncomment these lines,
   # note if you'd prefer not to run each example within a transaction, you
   # should set use_transactional_fixtures to false.
@@ -54,4 +67,18 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
-end
+
+
+
+
+#   Failure/Error:
+#   config.before(:each) do
+#     DatabaseCleaner[:mongoid].strategy = [:deletion, only: ["users"]]
+#     DatabaseCleaner.start
+  end
+
+# NameError:
+#   undefined local variable or method `config' for main:Object
+
+#   config.before(:each) do
+

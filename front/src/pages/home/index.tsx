@@ -21,14 +21,13 @@ import Icon2 from "../../assets/icon2.svg";
 import Icon3 from "../../assets/icon3.svg";
 import { Slider } from "../../components/Slider";
 import { List, X } from "phosphor-react";
-import { NextPage } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { makeFadeInUptAnimation, stagger } from "../../utils/animations";
 
 let easing = [0.6, -0.05, 0.01, 0.99];
 
-export const HomePage: NextPage = () => {
+export default function HomePage() {
 
     const [menuIsActive, setMenuIsActive] = useState(false);
     const { ref, inView } = useInView();

@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
   Mongoid.raise_not_found_error = false
   before_action :authorize_request, only: %i[show index]
-  before_action :set_comment, only: %i[ show update destroy ]
+  before_action :set_comment, only: %i[show update destroy]
 
   # GET /comments/{post_id}
   def index
@@ -18,18 +18,16 @@ class CommentsController < ApplicationController
   def create
     user = authorize_request
     return if user.nil?
-    return render json: { error: 'User is not photographer' } unless user.photographer
-    return render json: { error: 'Invalid image' } if params[:image].nil?
 
     begin
-      author = User.find(comment_params[:user_id])
-      post = author&.posts.find(comment_params[:post_id])
-      raise Mongoid::Errors::DocumentNotFound.new(User, comment_params[:user_id]) if author.nil?
-      raise Mongoid::Errors::DocumentNotFound.new(Post, comment_params[:post_id]) if post.nil?
-      com_params = { user_id: user.id , content: comment_params[:content] }
-      comment = post.comments.create!(com_params)
+      post = PostService.get_post(comment_params[:user_id], comment_params[:post_id])
+      raise Mongoid::Errors::DocumentNotFound.new(Post, comment_params[:post_id]), 'Post not found' if post.nil?
+
+      comment = post.comments.create!({ user_id: user.id, content: comment_params[:content] })
       render json: comment, status: :created
     rescue Mongoid::Errors => e
+      render json: { error: e }, status: :bad_request
+    rescue UserService::InvalidUserException => e
       render json: { error: e }, status: :bad_request
     end
   end
@@ -40,55 +38,38 @@ class CommentsController < ApplicationController
     return if user.nil?
 
     com_params = params.require(:comments).permit(:post_id, :author_id, :id)
+    begin
+      post = PostService.get_post(com_params[:author_id], com_params[:post_id])
+      raise self::InvalidPostException.new, 'This author is not the owner of the specified post' if post.nil?
 
-    author = User.find(com_params[:author_id])
-    post = author&.posts&.find(com_params[:post_id])
-    comment = post&.comments&.find(com_params[:id])
-    like = comment&.likes&.find_by(user_id: user.id)
-
-    return render json: {error: "Invalid post author" }, status: :bad_request if author.nil?
-    return render json: {error: "This author is not the owner of the specified post" }, status: :bad_request if post.nil?
-    return render json: {error: "This comment don't exists in the specified post" }, status: :bad_request if comment.nil?
-
-    if like.nil?
-      begin 
-        comment.likes.create!(user_id: user.id)
-        return render json: 'Object created', status: :ok
-      rescue Mongoid::Errors => e
-        return render 
-      end
-    else
-      like.destroy
-      return render json: 'Object destroyed', status: :ok
+      comment = CommentService.get_comment(com_params[:id], post)
+      render LikeService.like(user.id, comment)
+    rescue StandardError => e
+      render json: { error: e }, status: :bad_request
     end
   end
-
-  # PATCH/PUT /comments/1
-  # def update
-  #   if @comment.update(comment_params)
-  #     render json: @comment
-  #   else
-  #     render json: @comment.errors, status: :unprocessable_entity
-  #   end
-  # end
 
   # DELETE /comments/1
   def destroy
     user = authorize_request
     return if user.nil?
 
-    return render json: { error: 'Specified user is not the owner of the comment' }, status: :bad_request
+    unless user.id == @comment.user_id
+      return render json: { error: 'Specified user is not the owner of the comment' }, status: :bad_request
+    end
+
     @comment.destroy
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_comment
-      @comment = Comment.find(params[:id])
-    end
+  
+  # Use callbacks to share common setup or constraints between actions.
+  def set_comment
+    @comment = Comment.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def comment_params
-      params.require(:comment).permit(:user_id, :content, :post_id).tap { |c| c.require([:user_id, :content, :post_id]) }
-    end
+  # Only allow a list of trusted parameters through.
+  def comment_params
+    params.require(:comment).permit(:user_id, :content, :post_id).tap { |c| c.require(%i[user_id content post_id]) }
+  end
 end

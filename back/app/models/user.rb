@@ -23,7 +23,7 @@ class User
   # scope :followers, -> { where() }
 
   # Validations
-  validates_length_of :name, minimum: 3, maximum: 160
+  validates_length_of :name, minimum: 1, maximum: 160
   validates_length_of :services_price, minimum: 2, maximum: 2, allow_nil: true
   validates_length_of :city, minimum: 1, maximum: 70, allow_nil: true
   validates_length_of :state, minimum: 2, maximum: 2, allow_nil: true

@@ -34,8 +34,10 @@ class RegistrationController < ApplicationController
       u = User.create!(user_params.permit(user_params.keys).to_h)
       u.password = nil
       render json: u, status: :ok
+    rescue Mongoid::Errors::Validations => e
+      render json: { error: e.to_s.split[1] }, status: :conflict
     rescue Mongoid::Errors => e
-      render json: { error: e.to_s.split()[1]}, status: :conflict
+      render json: { error: e.to_s.split[1] }, status: :conflict
     end
   end
     

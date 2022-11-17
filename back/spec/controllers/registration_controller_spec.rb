@@ -1,8 +1,5 @@
 require 'rails_helper'
 
-
-  
-
 describe RegistrationController, type: :controller do
   describe "login" do
     it "login success" do
@@ -51,7 +48,7 @@ describe RegistrationController, type: :controller do
     it "register fail" do
       post :register, params: { user: { name: "Ana", email: "guthyerri@davi.alice", password: "123456789", password_confirmation:"123456789", city: "Mombaça", state:"CE", photographer: false } }
       post :register, params: { user: { name: "Ana", email: "guthyerri@davi.alice", password: "123456789", password_confirmation:"123456789", city: "Mombaça", state:"CE", photographer: false } }
-      expect(response.status).to  409
+      expect(response.status).to eq 409
     end
   end
 end

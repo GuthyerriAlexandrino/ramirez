@@ -27,5 +27,8 @@ Rails.application.routes.draw do
   # User extra routes
   put '/user/profile_image', to: 'users#profile_image'
   get '/user/:id', to: 'users#user_data'
+  get '/user/:id/followers', to: 'users#followers'
+  get '/user/follow/:other', to: 'users#follow'
+  get '/user/unfollow/:other', to: 'users#unfollow'
   
 end

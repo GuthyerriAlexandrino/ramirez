@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   # GET /users
   def index
     return render json: { error: 'Page field must be integer' }, status: :bad_request unless FiltersService.check_pagination(params[:page])
+    
     filters = FiltersService.matching_params(request.GET)
     location = FiltersService.location_params(request.GET[:location])
     order = FiltersService.order_params(request.GET[:orderBy])
@@ -15,27 +16,50 @@ class UsersController < ApplicationController
     render json: @users.page(params[:page])
   end
 
-  # GET /users/1
-  def show
-    user = authorize_request
-    unless View.where(:user => user.id, :photographer => @user.id).exists?
-      View.create(user: user.id, photographer: @user.id)
-      unless @user.update(views: @user.views + 1)
-        View.delete(user: user.id, photographer: @user.id)
-      end
-    end
-    @user.password_digest = nil
-    @user.email = nil
-    render json: @user
-  end
-
   # GET user/1
   def user_data
     user = authorize_request
     return if user.nil?
-    return render json: { error: 'User cookie and id dont match'}, status: :bad_request if user.id.to_s != params[:id]
+    return render json: { error: 'User cookie and id dont match' }, status: :bad_request if user.id.to_s != params[:id]
 
     render json: user, status: :ok
+  end
+
+  # GET user/1/followers
+  def followers
+    photographer = get_photographer
+
+    render json: photographer.followers, status: :ok
+  rescue Mongoid::Errors::InvalidFind
+    render json: { error: 'Invalid photographer' }, status: :bad_request
+  rescue Mongoid::Errors::MongoidError => e
+    render json: { error: e.to_s.split[1] }, status: :internal_server_error
+  end
+
+  # GET user/follow/1
+  def follow
+    user = authorize_request
+    other = User.find(params[:other])
+    user.follow(other)
+  end
+
+  # GET user/unfollow/1
+  def unfollow
+    user = authorize_request
+    other = User.find(params[:other])
+    user.unfollow(other)
+  end
+
+  # GET user/1/
+  def following
+    photographer = get_photographer
+
+    render json: photographer.following, status: :ok
+
+  rescue Mongoid::Errors::InvalidFind
+    render json: { error: 'Invalid photographer' }, status: :bad_request
+  rescue Mongoid::Errors::MongoidError => e
+    render json: { error: e.to_s.split[1] }, status: :internal_server_error
   end
 
   # PUT /users/profile_image
@@ -60,8 +84,8 @@ class UsersController < ApplicationController
   def update
     user = authorize_request
     return if user.nil?
-    return render json: { error: "Invalid user token" }, status: :unprocessable_entity if user.id.to_s != params[:id]
-    
+    return render json: { error: 'Invalid user token' }, status: :unprocessable_entity if user.id.to_s != params[:id]
+
     u_params = user_params
     u_params[:photographer] = true if user.photographer = true
     u_params[:specialization].each do |s|
@@ -87,6 +111,13 @@ class UsersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_user
       @user = User.where(id: params[:id]).first
+    end
+
+    def get_photographer
+      user = authorize_request
+      return nil if user.nil?
+    
+      User.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

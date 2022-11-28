@@ -8,22 +8,22 @@ class RegistrationController < ApplicationController
     user_params = login_params
     begin
       @user = User.find_by(email: user_params[:email].downcase)
-    rescue
+    rescue JWT::DecodeError
       return render json: { error: 'Unauthorized' }, status: :unauthorized
     end
 
-    if @user&.authenticate(user_params[:password])
+    if @user.authenticate(user_params[:password])
       token = JsonWebToken.encode(user_id: @user.id, exp: HOURS.from_now)
       time = Time.now + HOURS.to_i
-      render json: { token: token, exp: time.strftime("%Y-%m-%d#{'T'}%H:%M"),
-                      user: @user._id }, status: :ok
+      render json: { token:, exp: time.strftime('%Y-%m-%dT%H:%M'),
+                     user: @user._id }, status: :ok
     else
       render json: { error: 'Unauthorized' }, status: :unauthorized
     end
   end
   
   def register
-    user_params = register_params()
+    user_params = register_params
     return render json: { error: 'Invalid email' }, status: :bad_request unless user_params[:email] =~ VALID_EMAIL_REGEX
     return render json: { error: 'Password too short' }, status: :bad_request unless user_params[:password].length >= 8
     return render json: { error: 'Password differs from confirmation' }, status: :bad_request unless user_params[:password] == user_params[:password_confirmation]

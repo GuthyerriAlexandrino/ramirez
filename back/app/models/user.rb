@@ -20,7 +20,8 @@ class User
   index({ email: 1 }, { unique: true })
 
   # Scopes
-  # scope :followers, -> { where() }
+  scope :followers, -> { Follower.where(user_id: :id) }
+  scope :following, -> { Following.where(user_id: :id) }
 
   # Validations
   validates_length_of :name, minimum: 1, maximum: 160
@@ -34,4 +35,15 @@ class User
   embeds_many :posts
   embeds_many :followers
   embeds_many :following
+
+  # Methods
+  def follow(other)
+    following.create!(other)
+    other.followers.create!(id)
+  end
+
+  def unfollow(other)
+    following.destroy!(other)
+    other.followers.destroy!(id)
+  end
 end

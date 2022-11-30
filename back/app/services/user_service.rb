@@ -6,7 +6,7 @@ module UserService
   end
 
   def UserService.search_view
-    [:name, :email, :profile_img, :specialization, :services_price, :city, :state, :views]
+    [:name, :email, :profile_img, :specialization, :services_price, :city, :state, :views, :bio]
   end
 
   class InvalidUserException < StandardError; end

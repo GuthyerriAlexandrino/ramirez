@@ -10,7 +10,7 @@ development:
 production:
   clients:
     default:
-      uri: ${MONGO_CONNECTION}
+      uri: mongodb+srv://doadmin:5pu7a3608j21kwCK@ramirez-a7eae1d8.mongo.ondigitalocean.com/admin?tls=true&authSource=admin&replicaSet=ramirez
 
   options:
     

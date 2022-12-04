@@ -10,7 +10,7 @@ development:
 production:
   clients:
     default:
-      uri: ${MONGO_CONNECTION}
+      uri: ${env.MONGO_CONNECTION}
 
   options:
     

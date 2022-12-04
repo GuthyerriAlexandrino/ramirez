@@ -8,9 +8,11 @@ development:
   options:
 
 production:
-  clients:
+  sessions:
     default:
       database: admin
+      username: doadmin
+      password: ${MONGO_PASSWORD}
       hosts:
         - ramirez-a7eae1d8.mongo.ondigitalocean.com
       options:

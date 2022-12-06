@@ -3,7 +3,7 @@ development:
     default:
       database: admin
       hosts:
-        - mongodb+srv://ramirez-a7eae1d8.mongo.ondigitalocean.com
+        - localhost:27017
       options:
   options:
 
@@ -17,8 +17,8 @@ production:
 test:
   clients:
     default:
-      database: ramirez
+      database: ramirez_test
       hosts:
-        - mongodb+srv://ramirez-a7eae1d8.mongo.ondigitalocean.co
+        - mongodb+srv://doadmin:5pu7a3608j21kwCK@ramirez-a7eae1d8.mongo.ondigitalocean.com/admin?tls=true&authSource=admin&replicaSet=ramirez
       options:
   options:

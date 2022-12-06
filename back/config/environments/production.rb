@@ -4,7 +4,7 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Firebase auth
-  #export GOOGLE_APPLICATION_CREDENTIALS="../ramirez_firebase.key"
+  export GOOGLE_APPLICATION_CREDENTIALS= ${FIREK}
 
   # Code is not reloaded between requests.
   config.cache_classes = true

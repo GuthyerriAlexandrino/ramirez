@@ -2,7 +2,7 @@
 require 'spec_helper'
 require 'mongoid-rspec'
 require 'database_cleaner/mongoid'
-ENV['RAILS_ENV'] ||= 'development'
+ENV['RAILS_ENV'] = 'test'
 require_relative '../config/environment'
 # Prevent database truncation if the environment is production
 abort("The Rails environment is running in production mode!") if Rails.env.production?

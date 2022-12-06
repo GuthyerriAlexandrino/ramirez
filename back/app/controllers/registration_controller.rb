@@ -8,7 +8,7 @@ class RegistrationController < ApplicationController
     user_params = login_params
     begin
       @user = User.find_by(email: user_params[:email].downcase)
-    rescue JWT::DecodeError
+    rescue Exception
       return render json: { error: 'Unauthorized' }, status: :unauthorized
     end
 

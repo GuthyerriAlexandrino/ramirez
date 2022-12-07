@@ -5,7 +5,7 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Firebase auth
-  GOOGLE_APPLICATION_CREDENTIALS = StringIO.new(ENV['FIREK'])
+  GOOGLE_APPLICATION_CREDENTIALS = StringIO.new(ENV['FIREK']).string
 
   # Code is not reloaded between requests.
   config.cache_classes = true

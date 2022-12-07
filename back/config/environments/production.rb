@@ -5,7 +5,7 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Firebase auth
-  FILE = tempfile.new('firebase.key')
+  FILE = Tempfile.new('firebase.key')
   FILE.write(ENV['FIREK'])
   GOOGLE_APPLICATION_CREDENTIALS = FILE.path
 

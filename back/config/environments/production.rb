@@ -7,6 +7,7 @@ Rails.application.configure do
   # Firebase auth
   FILE = Tempfile.new('firebase.key')
   FILE.write(ENV['FIREK'])
+  FILE.close
   GOOGLE_APPLICATION_CREDENTIALS = FILE.path
 
   # Code is not reloaded between requests.

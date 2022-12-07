@@ -1,11 +1,10 @@
 require "active_support/core_ext/integer/time"
-require 'tempfile'
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Firebase auth
-  FILE = Tempfile.new('firebase.key')
+  FILE = File.new('firebase.key', 'w')
   FILE.write(ENV['FIREK'])
   FILE.close
   GOOGLE_APPLICATION_CREDENTIALS = FILE.path

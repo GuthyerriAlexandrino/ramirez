@@ -1,11 +1,13 @@
 require "active_support/core_ext/integer/time"
-require 'stringio'
+require 'tempfile'
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Firebase auth
-  GOOGLE_APPLICATION_CREDENTIALS = StringIO.new(ENV['FIREK']).string
+  FILE = tempfile.new('firebase.key')
+  FILE.write(ENV['FIREK'])
+  GOOGLE_APPLICATION_CREDENTIALS = FILE.path
 
   # Code is not reloaded between requests.
   config.cache_classes = true

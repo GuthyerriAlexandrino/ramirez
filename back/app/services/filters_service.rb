@@ -3,7 +3,6 @@ module FiltersService
     new_hash = { photographer: true }
     params.each_pair { |k, v| new_hash[k.to_sym] = v if check_param(k, v) }
     new_hash[:name] = /.*#{params[:name]}.*/ unless !params.key?(:name) || params[:name] == ''
-    new_hash[:specialization.exists] = true
     new_hash
   end
   
